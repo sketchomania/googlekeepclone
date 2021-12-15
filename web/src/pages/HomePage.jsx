@@ -1,10 +1,10 @@
-import MainMenu from "../components/label/MainMenu";
+import MainMenu from "../components/labels/MainMenu";
 import MainArea from "../components/main/MainArea";
 
 const HomePage = () => {
   return (
     <div>
-      <h1>Ypu're in home page</h1>
+      <h1>Home page</h1>
       <MainMenu />
       <MainArea />
     </div>

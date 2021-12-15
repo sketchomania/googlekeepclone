@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 import classes from "./Layout.module.css";
 import MainNavigation from "./MainNavigation";
@@ -6,8 +7,10 @@ import MainNavigation from "./MainNavigation";
 const Layout = (props) => {
   return (
     <Fragment>
-      <MainNavigation />
-      <main className={classes.main}>{props.children}</main>
+      <BrowserRouter>
+        <MainNavigation />
+        <main className={classes.main}>{props.children}</main>
+      </BrowserRouter>
     </Fragment>
   );
 };

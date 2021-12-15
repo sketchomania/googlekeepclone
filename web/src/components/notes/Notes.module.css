@@ -1,0 +1,13 @@
+.notes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(147, 244, 247);
+  border: 1px solid rgb(97, 29, 29);
+  margin: 4rem;
+  border-radius: 1rem;
+  flex-wrap: wrap;
+  max-width: 1020px;
+  width: 100%;
+}

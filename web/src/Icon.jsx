@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-function Icon({ name, ...otherProps }) {
+const Icon = (props) => {
+  const { name, ...otherProps } = props;
+
   const [iconModule, setIconModule] = useState(null);
 
   useEffect(() => {
-    import(`./icons/${name}_black_24dp.svg`)
+    import(`./${name}.svg`)
       .then((module) => {
         setIconModule(module);
       })
@@ -22,6 +24,6 @@ function Icon({ name, ...otherProps }) {
   };
 
   return <>{renderIcon()}</>;
-}
+};
 
 export default Icon;

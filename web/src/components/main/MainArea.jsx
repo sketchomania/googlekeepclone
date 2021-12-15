@@ -1,14 +1,23 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getNotes } from "../../actions/notes";
 import "./MainArea.module.css";
-import TakeANote from "./TakeANote";
-import ShowNotes from "./ShowNotes";
+import TakeNote from "./TakeNote";
+import Notes from "../notes/Notes";
 
 const MainArea = () => {
+  const [currentId, setCurrentId] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getNotes());
+  }, [currentId, dispatch]);
   return (
     <div>
       <h4>Main Area</h4>
-      <TakeANote />
-      <h4>gap</h4>
-      <ShowNotes />
+      <TakeNote currentId={currentId} setCurrentId={setCurrentId} />
+      <Notes />
     </div>
   );
 };
