@@ -10,7 +10,6 @@ export const getNotes = async (req, res) => {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-  res.send("There you go!"); // remove in future
 };
 
 export const createNote = async (req, res) => {
@@ -25,5 +24,18 @@ export const createNote = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
-  res.send("Created Successfully!"); // remove in future
+};
+
+export const updateNote = async (req, res) => {
+  const { id: _id } = req.params;
+  const note = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send(`No note with id: ${id}`);
+
+  const updatedNote = await NoteContent.findByIdAndUpdate(_id, note, {
+    new: true,
+  });
+
+  res.json(updatedNote);
 };

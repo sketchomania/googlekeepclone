@@ -17,7 +17,7 @@ const MainArea = () => {
     <div>
       <h4>Main Area</h4>
       <TakeNote currentId={currentId} setCurrentId={setCurrentId} />
-      <Notes />
+      <Notes setCurrentId={setCurrentId} />
     </div>
   );
 };
