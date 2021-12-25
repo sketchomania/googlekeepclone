@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 
-// import Icon from "./Icon";
+import Icon from "./Icon";
 import logo from "./logo.svg";
 import menu from "./icons/menu_black_24dp.svg";
 import "./App.css";
@@ -25,12 +25,15 @@ function App() {
         </Switch>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <Icon className="icon" name="logo" />
+          <Icon className="icon" name="star" />
+          {/* <Icon className="icon" name="unicorn" /> */}
           <img src={menu} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
           <a
-            className="App-link"
+            className="App-link App-logo"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"

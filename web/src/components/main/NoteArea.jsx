@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { getNotes } from "../../actions/notes";
-import "./MainArea.module.css";
-import TakeNote from "./TakeNote";
+import classes from "./NoteArea.module.css";
+import AddNote from "./AddNote";
 import Notes from "../notes/Notes";
 
 const MainArea = () => {
@@ -16,7 +16,7 @@ const MainArea = () => {
   return (
     <div>
       <h4>Main Area</h4>
-      <TakeNote currentId={currentId} setCurrentId={setCurrentId} />
+      <AddNote currentId={currentId} setCurrentId={setCurrentId} />
       <Notes setCurrentId={setCurrentId} />
     </div>
   );

@@ -4,3 +4,10 @@
   margin: 0.3rem;
   border-radius: 1rem;
 }
+
+.note:hover,
+.note:focus,
+.note:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}

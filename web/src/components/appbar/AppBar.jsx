@@ -5,10 +5,10 @@ import { ReactComponent as Theme } from "../../icons/dark_mode_black_24dp.svg";
 import { ReactComponent as View } from "../../icons/view_agenda_black_24dp.svg";
 import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
 import { ReactComponent as Account } from "../../icons/account_circle_black_24dp.svg";
-import classes from "./MainNavigation.module.css";
+import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
 
-const MainNavigation = () => {
+const AppBar = () => {
   const isLoggedIn = true;
   const logo = (
     <img
@@ -60,4 +60,4 @@ const MainNavigation = () => {
   );
 };
 
-export default MainNavigation;
+export default AppBar;

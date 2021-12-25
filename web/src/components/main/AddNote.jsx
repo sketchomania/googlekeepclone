@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 // import Button from "../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
 
-import classes from "./TakeNote.module.css";
+import classes from "./AddNote.module.css";
 import { createNote, updateNote } from "../../actions/notes";
 
 const TakeNote = ({ currentId, setCurrentId }) => {
@@ -38,6 +38,19 @@ const TakeNote = ({ currentId, setCurrentId }) => {
     } else {
       dispatch(createNote(noteData));
     }
+    clear();
+    setExpanded(false);
+  };
+
+  const clear = () => {
+    setCurrentId(null);
+    setNoteData({
+      title: "",
+      description: "",
+      color: "",
+      labels: "",
+      isPinned: "",
+    });
   };
 
   return (
