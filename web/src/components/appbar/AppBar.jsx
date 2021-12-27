@@ -18,8 +18,9 @@ const AppBar = () => {
   );
 
   return (
-    <header className={classes.header}>
-      <Menu /> {/* on click show label list  */}
+    <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
+      <Menu className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />{" "}
+      {/* on click show label list  */}
       <Link to="/" style={{ textDecoration: "none" }}>
         <div className={classes.logo}>
           {logo}
@@ -31,16 +32,16 @@ const AppBar = () => {
       <nav className={classes.nav}>
         <ul>
           <li>
-            <Theme />
+            <Theme className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
           </li>
           <li>
-            <View />
+            <View className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
           </li>
           <li>
-            <Setting />
+            <Setting className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
           </li>
           <li>
-            <Account />
+            <Account className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
           </li>
         </ul>
         <ul>

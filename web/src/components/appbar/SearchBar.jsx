@@ -27,11 +27,18 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={fromSubmitHandler} className={classes.form}>
+    <form
+      onSubmit={fromSubmitHandler}
+      className="relative flex w-6/12 h-11 p-0.5 mx-auto rounded-lg justify-between items-center bg-gray-200 shadow-sm shadow-gray-200"
+    >
       <label>
-        <Search className={classes.icon} onClick={expandHandler} />
+        <Search
+          className="stroke-2 p-0.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full"
+          onClick={expandHandler}
+        />
       </label>
       <input
+        className="bg-inherit w-4/5 h-6 p-0 mx-4 my-0"
         id="search"
         type="text"
         placeholder="search"
@@ -42,7 +49,7 @@ const SearchBar = () => {
       ></input>
       {isExpanded && (
         <button onClick={collapsHandler}>
-          <Close className={classes.icon} />
+          <Close className="stroke-2 p-0.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
         </button>
       )}
     </form>

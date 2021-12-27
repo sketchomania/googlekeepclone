@@ -1,10 +1,37 @@
 .note {
-  background-color: cadetblue;
+  max-width: 42.5rem;
+  width: 42.5rem;
   border: 1px solid brown;
-  margin: 0.3rem;
+  margin: 1rem;
+  padding: 0.5rem;
   border-radius: 1rem;
+  /* background-color: cadetblue; */
 }
 
+.noteheader {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid yellowgreen;
+}
+
+/* .desc {
+  border: 1px solid gray;
+}
+
+.label {
+  border: 1px solid lightblue;
+}
+.notefooter {
+  border: 1px solid yellowgreen;
+} */
+.noteheader,
+.notefooter,
+.label,
+.desc {
+  border: 1px solid lightsalmon;
+  margin: 0.2rem;
+  padding: 0.4rem;
+}
 .note:hover,
 .note:focus,
 .note:active {

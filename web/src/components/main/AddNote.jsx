@@ -58,7 +58,7 @@ const TakeNote = ({ currentId, setCurrentId }) => {
       <Card className={classes.input}>
         <form className={classes.form} onSubmit={submitHandler}>
           {isExpanded && (
-            <p>
+            <p class="border-solid border-2 border-indigo-600">
               <textarea
                 id="title"
                 name="title"
@@ -71,7 +71,7 @@ const TakeNote = ({ currentId, setCurrentId }) => {
               ></textarea>
             </p>
           )}
-          <p>
+          <p class="border-solid border-2 m-1 border-indigo-600">
             <textarea
               name="note-content"
               placeholder="Take a note..."
@@ -83,7 +83,7 @@ const TakeNote = ({ currentId, setCurrentId }) => {
             ></textarea>
           </p>
           {isExpanded && (
-            <p>
+            <p class="border-solid border-2 border-indigo-600">
               <textarea
                 name="note-labels"
                 placeholder="Note labels..."

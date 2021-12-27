@@ -14,7 +14,7 @@ form {
   background-color: rgb(187, 117, 117);
   
 } */
-form input {
+.input {
   background: inherit;
   /* border: none; */
   width: 85%;
