@@ -14,7 +14,7 @@ const MainArea = () => {
     dispatch(getNotes());
   }, [currentId, dispatch]);
   return (
-    <div>
+    <div className="grow w-full border-2 border-amber-700">
       <h4>Main Area</h4>
       <AddNote currentId={currentId} setCurrentId={setCurrentId} />
       <Notes setCurrentId={setCurrentId} />

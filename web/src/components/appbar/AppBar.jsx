@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Menu } from "../../icons/menu_black_24dp.svg";
-import { ReactComponent as Theme } from "../../icons/dark_mode_black_24dp.svg";
+import { ReactComponent as Light } from "../../icons/light_mode_black_24dp.svg";
+import { ReactComponent as Dark } from "../../icons/dark_mode_black_24dp.svg";
 import { ReactComponent as View } from "../../icons/view_agenda_black_24dp.svg";
 import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
 import { ReactComponent as Account } from "../../icons/account_circle_black_24dp.svg";
@@ -32,7 +33,10 @@ const AppBar = () => {
       <nav className={classes.nav}>
         <ul>
           <li>
-            <Theme className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
+            <Light className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
+          </li>
+          <li>
+            <Dark className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
           </li>
           <li>
             <View className="stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full" />
