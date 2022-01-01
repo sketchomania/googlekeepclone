@@ -8,6 +8,7 @@ import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
 import { ReactComponent as Account } from "../../icons/account_circle_black_24dp.svg";
 import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
+import { useState } from "react";
 
 const AppBar = () => {
   const isLoggedIn = true;
@@ -17,6 +18,8 @@ const AppBar = () => {
       alt="logo"
     />
   );
+
+  // const [isMounted, setIsMounted] = useState(false);
 
   return (
     <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">

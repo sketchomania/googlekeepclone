@@ -27,4 +27,5 @@ const Note = ({ note, setCurrentId }) => {
   );
 };
 
+// note have a 1px border of selected colour
 export default Note;

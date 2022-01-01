@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 import noteRoutes from "./routes/notes.js";
+import labelRoutes from "./routes/labels.js";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 app.use(cors());
 
 app.use("/notes", noteRoutes);
+app.use("/labels", labelRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://googlekeeep:googlekeep007@cluster0.nylpb.mongodb.net/g-keep?retryWrites=true&w=majority";
