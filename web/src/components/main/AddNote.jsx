@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "./AddNote.module.css";
 import { createNote, updateNote } from "../../actions/notes";
 
-const TakeNote = ({ currentId, setCurrentId }) => {
+const AddNote = ({ currentId, setCurrentId }) => {
   const [noteData, setNoteData] = useState({
     title: "",
     description: "",
@@ -103,4 +103,4 @@ const TakeNote = ({ currentId, setCurrentId }) => {
   );
 };
 
-export default TakeNote;
+export default AddNote;

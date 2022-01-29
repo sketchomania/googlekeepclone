@@ -20,3 +20,13 @@ export const createLabel = (label) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const updateLabel = (id, label) => async (dispatch) => {
+  try {
+    const { data } = await api.updateLabel(id, label);
+
+    dispatch({ type: UPDATE_LABEL, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

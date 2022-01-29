@@ -22,7 +22,6 @@ const Note = ({ note, setCurrentId }) => {
           <ActionBar />
         </div>
       </div>
-      <div className="max-w-2xl w-full" onClick={() => {}}>hey</div>
     </>
   );
 };

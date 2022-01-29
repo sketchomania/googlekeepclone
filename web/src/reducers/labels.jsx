@@ -6,9 +6,13 @@ const labels = (labels = [], action) => {
       return action.payload;
     case CREATE_LABEL:
       return [...labels, action.payload];
+    case UPDATE_LABEL:
+      return labels.map((label) =>
+        label._id === action.payload._id ? action.payload : label
+      );
     default:
       return labels;
   }
 };
-
+//have a doupt about labels or label should  be used above
 export default labels;
