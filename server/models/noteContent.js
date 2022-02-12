@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// const Schema = mongoose.Schema;
+
 const noteSchema = mongoose.Schema({
   title: String,
   description: String,

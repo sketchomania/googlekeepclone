@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import Card from "../UI/Card";
+// import Card from "../UI/Card";
 // import Button from "../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
 
-import classes from "./AddNote.module.css";
+// import classes from "./AddNote.module.css";
 import { createNote, updateNote } from "../../actions/notes";
 
 const AddNote = ({ currentId, setCurrentId }) => {
@@ -23,6 +23,10 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   const expandHandler = () => {
     setExpanded(true);
+  };
+
+  const collapsHandler = () => {
+    setExpanded(false);
   };
 
   useEffect(() => {
@@ -55,52 +59,76 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   return (
     <>
-      <Card className={classes.input}>
-        <form className={classes.form} onSubmit={submitHandler}>
-          {isExpanded && (
-            <p class="border-solid border-2 border-indigo-600">
+      <div className="my-8 p-2 border border-green-400 flex items-center">
+        {/* <Card className={classes.input}> */}
+        <form
+          className="w-144 p-2 h-full flex border border-orange-400"
+          onSubmit={submitHandler}
+        >
+          <div className="flex-col w-full">
+            {isExpanded && (
+              <p className="border-solid border-2 border-indigo-600">
+                <textarea
+                  className="w-full h-6"
+                  id="title"
+                  name="title"
+                  type="text"
+                  placeholder="Title"
+                  value={noteData.title}
+                  onChange={(e) => {
+                    setNoteData({ ...noteData, title: e.target.value });
+                  }}
+                ></textarea>
+              </p>
+            )}
+            <p className={`${para}`}>
               <textarea
-                id="title"
-                name="title"
-                type="text"
-                placeholder="Title"
-                value={noteData.title}
+                className={`${text}`}
+                name="note-content"
+                placeholder="Take a note..."
+                onClick={expandHandler}
+                value={noteData.description}
                 onChange={(e) => {
-                  setNoteData({ ...noteData, title: e.target.value });
+                  setNoteData({ ...noteData, description: e.target.value });
                 }}
               ></textarea>
             </p>
-          )}
-          <p class="border-solid border-2 m-1 border-indigo-600">
-            <textarea
-              name="note-content"
-              placeholder="Take a note..."
-              onClick={expandHandler}
-              value={noteData.description}
-              onChange={(e) => {
-                setNoteData({ ...noteData, description: e.target.value });
-              }}
-            ></textarea>
-          </p>
-          {isExpanded && (
-            <p class="border-solid border-2 border-indigo-600">
-              <textarea
-                name="note-labels"
-                placeholder="Note labels..."
-                value={noteData.labels}
-                onChange={(e) => {
-                  setNoteData({ ...noteData, labels: e.target.value });
-                }}
-              ></textarea>
+            {isExpanded && (
+              <p className={`${para}`}>
+                <textarea
+                  className={`${text}`}
+                  name="note-labels"
+                  placeholder="Note labels..."
+                  value={noteData.labels}
+                  onChange={(e) => {
+                    setNoteData({ ...noteData, labels: e.target.value });
+                  }}
+                ></textarea>
+              </p>
+            )}
+          </div>
+          <div className="flex">
+            <button
+              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+              type="submit"
+            >
+              Done
+            </button>
+            <p
+              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+              onClick={collapsHandler}
+            >
+              Close
             </p>
-          )}
-          <div>
-            <button type="submit">Done</button>
           </div>
         </form>
-      </Card>
+        {/* </Card> */}
+      </div>
     </>
   );
 };
+
+const para = "border-solid border-2 border-indigo-600";
+const text = "w-full h-6";
 
 export default AddNote;

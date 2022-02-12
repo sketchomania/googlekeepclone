@@ -8,7 +8,8 @@ const Notes = ({ setCurrentId }) => {
 
   return (
     <div className="flex items-center justify-center flex-wrap w-full border-2 border-cyan-500">
-      <p>Notes component</p>
+      <p>Notes component</p><br/>
+      {/* {console.log(notes)} */}
       {notes.map((note) => (
         <div key={note._id}>
           <Note note={note} setCurrentId={setCurrentId} />

@@ -8,12 +8,15 @@ const Note = ({ note, setCurrentId }) => {
   return (
     <>
       <div
-        className="border border-indigo-600 max-w-2xl w-full h-auto m-1 p-1 rounded-2xl"
+        className="border border-indigo-600 max-w-2xl w-144 h-auto m-1 p-1 rounded-2xl"
         onClick={() => {}}
       >
+        {console.log(note.title)}
         <div className="border border-red-900 p-1.5">
           <Title title={note.title} />
           <Content description={note.description} />
+          <p>{`Color: ${note.color}`}</p>
+          <p>{`Created at: ${note.createdAt}`}</p>
         </div>
         <div className="">
           <LabelBar labels={note.labels} />

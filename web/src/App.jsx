@@ -7,11 +7,30 @@ import "./App.css";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
+import { useState } from "react";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    // if (darkMode) {
+    //   setTheme(theme === "light" ? "dark" : "light");
+    //   setDarkMode(theme === "light" ? false : true);
+    // }
+    if (darkMode) {
+      setDarkMode(!darkMode);
+      setTheme("light");
+    } else {
+      setDarkMode(!darkMode);
+      setTheme("dark");
+    }
+  };
+
+  // {`App ${theme}`}
   return (
-    <div className="App">
-      <Layout>
+    <div className={`${theme}`}>
+      <Layout darkMode={darkMode} toggleTheme={toggleTheme}>
         <Switch>
           <Route path="/" exact>
             <HomePage />

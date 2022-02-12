@@ -6,16 +6,24 @@ import { ReactComponent as Edit } from "../../../icons/edit_black_24dp.svg";
 import { ReactComponent as Archive } from "../../../icons/archive_black_24dp.svg";
 import { ReactComponent as Bin } from "../../../icons/bin_black_24dp.svg";
 
-const label = (props, { label, setCurrnetId }) => {
+// const label = (props, { label, setCurrnetId }) => {
+const label = ({ label, setCurrnetId }) => {
   return (
     <>
       <div className="flex items-center m-2 ml-0 p-1 bg-gray-200 rounded-r-3xl">
         <div className={`${sty2}`}>
+          {/* {props.name === "Archive" ? (
+            <Archive className={`${sty1}`} />
+            ) : (
+              <Label className={`${sty1}`} />
+            )} */}
           <Label className={`${sty1}`} />
         </div>
-        {/* {console.log(label.name)} */}
-        {/* <p>{label}</p> */}
-        <p>{props.name ? props.name : "Label Auto Generated"}</p>
+        {console.log(label)}
+        {/* {console.log(label)} */}
+
+        <div>{/* <p>{label}</p> */}</div>
+        {/* <p>{props.name ? props.name : "from database"}</p> */}
       </div>
     </>
   );

@@ -30,9 +30,9 @@ const MainMenu = () => {
           </div>
           <AddLabel currentId={currentId} setCurrentId={setCurrentId} />
           <Label name={"👇labels"} />
-          <Labels />
+          <Labels setCurrentId={setCurrentId} />
+          <Label name={"--------------"} />
           <Label name={"Default Labels"} />
-          <Label name={"Default Labels"} />
           <Label />
           <Label />
           <Label />
@@ -51,7 +51,7 @@ const MainMenu = () => {
           <Label />
           <Label />
           <Label name={"Default Labels"} />
-          <Label name={"-------------"} />
+          <Label name={"--------------"} />
         </div>
         <div>
           <Label name={"Archive"} />
