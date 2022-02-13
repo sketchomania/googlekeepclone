@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import NoteContent from "../models/noteContent.js";
+import NoteContent from "../models/note.js";
 
 export const getNotes = async (req, res) => {
   try {

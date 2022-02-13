@@ -13,12 +13,7 @@ import { ReactComponent as Logout } from "../../icons/logout_black_24dp.svg";
 import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
 
-const AppBar = ({
-  loginHandler,
-  isLoggedIn,
-  darkMode,
-  toggleTheme,
-}) => {
+const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme }) => {
   const logo = (
     <img
       src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
@@ -52,8 +47,11 @@ const AppBar = ({
               //   // changeTheme(darkMode ? themes.light : themes.dark);
               // }}
             >
-              {darkMode && <Light className={`${sty1}`} />}
-              {!darkMode && <Dark className={`${sty1}`} />}
+              {darkMode ? (
+                <Light className={`${sty1}`} />
+              ) : (
+                <Dark className={`${sty1}`} />
+              )}
             </button>
             {/* )}
             </ThemeContext.Consumer> */}
@@ -61,11 +59,12 @@ const AppBar = ({
         </ul>
         <ul>
           <li>
-            <button
-              onClick={toggleTheme}
-            >
-              {darkMode && <View className={`${sty1}`} />}
-              {!darkMode && <Grid className={`${sty1}`} />}
+            <button onClick={toggleTheme}>
+              {darkMode ? (
+                <View className={`${sty1}`} />
+              ) : (
+                <Grid className={`${sty1}`} />
+              )}
             </button>
           </li>
           <li>

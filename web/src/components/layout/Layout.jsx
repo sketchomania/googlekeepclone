@@ -19,8 +19,8 @@ const Layout = (props) => {
         <AppBar
           toggleTheme={props.toggleTheme}
           darkMode={props.darkMode}
-          loginHandler={loginHandler}
-          isLoggedIn={isLoggedIn}
+          loginHandler
+          isLoggedIn
         />
         <main className="bg-white dark:bg-gray-700 m-12 w-11/12">
           {props.children}
