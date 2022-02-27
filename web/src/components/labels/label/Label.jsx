@@ -7,7 +7,7 @@ import { ReactComponent as Archive } from "../../../icons/archive_black_24dp.svg
 import { ReactComponent as Bin } from "../../../icons/bin_black_24dp.svg";
 
 // const label = (props, { label, setCurrnetId }) => {
-const label = ({ label, setCurrnetId }) => {
+const label = ({ label,name, setCurrnetId }) => {
   return (
     <>
       <div className="flex items-center m-2 ml-0 p-1 bg-gray-200 rounded-r-3xl">
@@ -19,10 +19,8 @@ const label = ({ label, setCurrnetId }) => {
             )} */}
           <Label className={`${sty1}`} />
         </div>
-        {console.log(label)}
         {/* {console.log(label)} */}
-
-        <div>{/* <p>{label}</p> */}</div>
+        <div><p>{name}</p></div>
         {/* <p>{props.name ? props.name : "from database"}</p> */}
       </div>
     </>

@@ -13,7 +13,8 @@ const Labels = ({ setCurrentId }) => {
       {/* {console.log(notes)} */}
       {labels.map((label) => (
         <div key={label._id}>
-          <Label label={label} setCurrentId={setCurrentId} />
+          {console.log(label.name)}
+          <Label label={label} name={label.name} setCurrentId={setCurrentId} />
         </div>
       ))}
     </div>

@@ -6,7 +6,6 @@ type Label {
  title: Stirng!
  assignedNotes: [Note]
  creator: User!
- createdAt: String!
 }
 
 type Note {
@@ -30,6 +29,7 @@ type User {
  password: String!
  createdLabels: [Label]
  createdNotes: [Note]
+ darkMode: Boolean!
 }
 
 input LabelInput {
