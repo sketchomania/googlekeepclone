@@ -1,10 +1,10 @@
-import bulidScheme, { buildSchema } from "graphql";
+import { buildSchema } from "graphql";
 
-module.exports = buildSchema(`
+const graphQLSchema = buildSchema(`
 type Label {
  _id: ID!
- title: Stirng!
- assignedNotes: [Note]
+ title: String!
+ assignedNotes: [Note!]
  creator: User!
 }
 
@@ -12,40 +12,27 @@ type Note {
  _id: ID!
  title: String!
  description: String!
- background: String
- pinned: Boolean 
- selected: Boolean
- listMode: Boolean
- archived: Boolean
- addedLabels: [Label]
- creator: User!
- createdAt: String!
- updatedAt: String!
+ labels: [String!]
 }
 
 type User {
  _id: ID!
  email: String!
  password: String!
- createdLabels: [Label]
- createdNotes: [Note]
+ createdLabels: [Label!]
+ createdNotes: [Note!]
  darkMode: Boolean!
 }
 
 input LabelInput {
  title: String!
- assignedNotes: [Note]
+ assignedNotes: [String]
 }
 
 input NoteInput {
  title: String!
  description: String!
- background: String
- pinned: Boolean 
- selected: Boolean
- listMode: Boolean
- archived: Boolean
- addedLabels: [Label]
+ labels: [String!]
 }
 
 input UserInput {
@@ -54,8 +41,8 @@ input UserInput {
 }
 
 type RootQuery {
- Labels: [Label!]!
- Notes: [Note!]!
+ labels: [Label!]!
+ notes: [Note!]!
 }
 
 type RootMutation {
@@ -69,3 +56,32 @@ schema {
     mutation: RootMutation
 }
 `);
+
+export default graphQLSchema;
+
+
+// type Note {
+//     _id: ID!
+//     title: String!
+//     description: String!
+//     background: String
+//     pinned: Boolean 
+//     selected: Boolean
+//     listMode: Boolean
+//     archived: Boolean
+//     addedLabels: [Label]
+//     creator: User!
+//     createdAt: String!
+//     updatedAt: String!
+//    }
+
+// input NoteInput {
+//     title: String!
+//     description: String!
+//     background: String
+//     pinned: Boolean 
+//     selected: Boolean
+//     listMode: Boolean
+//     archived: Boolean
+//     addedLabels: [String]
+//    }

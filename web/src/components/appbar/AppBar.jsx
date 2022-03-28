@@ -13,7 +13,7 @@ import { ReactComponent as Logout } from "../../icons/logout_black_24dp.svg";
 import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
 
-const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme }) => {
+const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme ,toggleLabelMenu}) => {
   const logo = (
     <img
       src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
@@ -25,7 +25,7 @@ const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme }) => {
 
   return (
     <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
-      <Menu className={`${sty1}`} /> {/* on click show label list  */}
+      <Menu className={`${sty1}`} onClick={toggleLabelMenu}/> {/* on click show label list  */}
       <Link to="/" style={{ textDecoration: "none" }}>
         <div className={classes.logo}>
           {logo}

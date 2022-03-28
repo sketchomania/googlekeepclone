@@ -11,7 +11,8 @@ import { useState } from "react";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
+  const [showLabel, setShowLabel] = useState(true);
 
   const toggleTheme = () => {
     // if (darkMode) {
@@ -19,21 +20,31 @@ function App() {
     //   setDarkMode(theme === "light" ? false : true);
     // }
     if (darkMode) {
-      setDarkMode(!darkMode);
+      setDarkMode(false);
       setTheme("light");
     } else {
-      setDarkMode(!darkMode);
+      setDarkMode(true);
       setTheme("dark");
     }
+  };
+
+  const toggleLabelMenu = () => {
+    console.log("toggleLabelMenu clicked !!!", "showLabel is: ",showLabel);
+    setShowLabel(!showLabel);
+    // showLabel ? setShowLabel(false) : setShowLabel(true);
   };
 
   // {`App ${theme}`}
   return (
     <div className={`${theme}`}>
-      <Layout darkMode={darkMode} toggleTheme={toggleTheme}>
+      <Layout
+        darkMode={darkMode}
+        toggleTheme={toggleTheme}
+        toggleLabelMenu={toggleLabelMenu}
+      >
         <Switch>
           <Route path="/" exact>
-            <HomePage />
+            <HomePage showLabel={showLabel} />
           </Route>
           <Route pat="/auth">
             <AuthPage />

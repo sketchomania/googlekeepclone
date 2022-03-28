@@ -1,7 +1,9 @@
-const notesResolver = require("./notes");
+import notesResolver from "./notes.js";
+// import { labelResolver } from "./labels";
+// import notesResolver from "./notes";
 
 const rootResolver = {
   ...notesResolver,
 };
 
-module.exports = rootResolver;
+export default rootResolver;

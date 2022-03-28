@@ -6,10 +6,14 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    trim: true,
+    lowercase: true,
   },
   password: {
     type: String,
     required: true,
+    trim: true,
+    minlength: 7,
   },
   createdNotes: [
     {
@@ -23,4 +27,11 @@ const userSchema = new Schema({
       ref: "Label",
     },
   ],
+  darkMode: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
+
+// need to export userSchema here......!!!
