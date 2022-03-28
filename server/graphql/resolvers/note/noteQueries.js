@@ -1,7 +1,6 @@
-//  This file is not being used goto note/
-import NoteContent from "../../models/note.js";
+import NoteContent from "../../../models/note.js";
 
-const notesResolver = {
+const noteQueries = {
   notes: async (req, res) => {
     try {
       const noteContent = await NoteContent.find();
@@ -13,6 +12,7 @@ const notesResolver = {
       res.status(404).json({ message: error.message });
     }
   },
+  //   note: async (req,res) => {},
 };
 
-export default notesResolver;
+export default noteQueries;

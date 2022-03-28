@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const labelSchema = Schema({
-  title: {
+const labelSchema = new Schema({
+  name: {
     type: String,
     required: true,
     trim: true,

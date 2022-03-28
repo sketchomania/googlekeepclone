@@ -1,7 +1,6 @@
-//  This file is not being used goto label/
-import Label from "../../models/label.js";
+import Label from "../../../models/label.js";
 
-const labelResolver = {
+const labelQueries = {
   labels: async (req, res) => {
     try {
       const labels = await Label.find();
@@ -13,6 +12,7 @@ const labelResolver = {
       res.status(404).json({ message: error.message });
     }
   },
+  // label: async(req,res) => {},
 };
 
-export default labelResolver;
+export default labelQueries;
