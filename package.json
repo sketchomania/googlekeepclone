@@ -1,0 +1,23 @@
+{
+  "name": "working-on-g-keep",
+  "version": "1.0.0",
+  "description": "google keep clone",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sketchomania/googlekeepclone.git"
+  },
+  "private": "true",
+  "author": "Vaibhav Kushwaha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sketchomania/googlekeepclone/issues"
+  },
+  "homepage": "https://github.com/sketchomania/googlekeepclone#readme"
+}
