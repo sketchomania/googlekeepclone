@@ -11,6 +11,14 @@ const labelQueries = {
       throw err;
     }
   },
+
+  label: async (args) => {
+    try {
+      return await Label.findById(args.id);
+    } catch (err) {
+      throw err;
+    }
+  },
 };
 
 export default labelQueries;

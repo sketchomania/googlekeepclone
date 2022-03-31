@@ -18,7 +18,27 @@ const noteMutations = {
 
   deleteNote: async (args) => {
     try {
-      await NoteContent.findByIdAndRemove({ _id: args.noteId });
+      await NoteContent.findByIdAndRemove({ _id: args.id });
+      return true;
+    } catch (err) {
+      return false;
+    }
+  },
+
+  updateNote: async (args) => {
+    try {
+      return await NoteContent.findOneAndUpdate(
+        { _id: args.id },
+        {
+          $set: {
+            title: args.noteUpdateInput.title,
+            description: args.noteUpdateInput.description,
+          },
+        },
+        {
+          new: true,
+        }
+      );
     } catch (err) {
       throw err;
     }

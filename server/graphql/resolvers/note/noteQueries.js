@@ -11,6 +11,14 @@ const noteQueries = {
       throw err;
     }
   },
+
+  note: async (args) => {
+    try {
+      return await NoteContent.findById(args.id);
+    } catch (err) {
+      throw err;
+    }
+  },
 };
 
 export default noteQueries;

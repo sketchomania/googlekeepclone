@@ -24,17 +24,26 @@ type User {
  darkMode: Boolean!
 }
 
-input LabelInput {
- name: String!
-}
-
 input NoteCreateInput {
  title: String!
  description: String!
  labels: [String!]
 }
 
-input UserInput {
+input NoteUpdateInput {
+ title: String!
+ description: String!
+}
+
+input LabelCreateInput {
+ name: String!
+}
+
+input LabelUpdateInput {
+ name: String!
+}
+
+input UserCreateInput {
  email: String!
  password: String!
 }
@@ -44,15 +53,19 @@ type RootQuery {
  note(id: ID!): Note
 
  labels: [Label!]!
- label(id: ID!): label
+ label(id: ID!): Label
 }
 
 type RootMutation {
- createNote(noteCreateInput: NoteCreateInput): Note
-//  updateNote(id: ID!, noteUpdateInput!): Note!
- createLabel(labelInput: LabelInput): Label
-//  updateLabel(id: ID!, labelUpdateInput!): Label!
- createUser(userInput: UserInput): User
+ createNote(noteCreateInput: NoteCreateInput): Note!
+ updateNote(id: ID!, noteUpdateInput: NoteUpdateInput): Note!
+ deleteNote(id: ID!): Boolean!
+
+ createLabel(labelCreateInput: LabelCreateInput): Label
+ updateLabel(id: ID!, labelUpdateInput: LabelUpdateInput): Label!
+ deleteLabel(id: ID!): Boolean!
+
+ createUser(userCreateInput: UserCreateInput): User
 }
 
 schema {
