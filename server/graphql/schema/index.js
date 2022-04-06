@@ -13,6 +13,14 @@ type Note {
  title: String!
  description: String!
  labels: [String!]
+ Background: String
+ creator: User!
+ pinned: Boolean!
+ selected: Boolean!
+ listMode: Boolean!
+ archived: Boolean!
+ createdAt: String!
+ updatedAt: String!
 }
 
 type User {
@@ -80,26 +88,15 @@ export default graphQLSchema;
 // # //     _id: ID!
 // # //     title: String!
 // # //     description: String!
+// # //     Labels: [Label]
 // # //     background: String
+// # //     creator: User!
 // # //     pinned: Boolean
 // # //     selected: Boolean
 // # //     listMode: Boolean
 // # //     archived: Boolean
-// # //     addedLabels: [Label]
-// # //     creator: User!
 // # //     createdAt: String!
 // # //     updatedAt: String!
-// # //    }
-
-// # // input NoteInput {
-// # //     title: String!
-// # //     description: String!
-// # //     background: String
-// # //     pinned: Boolean
-// # //     selected: Boolean
-// # //     listMode: Boolean
-// # //     archived: Boolean
-// # //     addedLabels: [String]
 // # //    }
 
 // # // labels: [String!]
@@ -121,14 +118,5 @@ export default graphQLSchema;
 // # // And since Episode! is also non-nullable, you can always expect every item of the array to be an Episode object.
 
 // # // labels: [String!]!
-
-// # // type User {
-// # // _id: ID!
-// # // email: String!
-// # // password: String!
-// # // createdLabels: [Label!]
-// # // createdNotes: [Note!]
-// # // darkMode: Boolean!
-// # // }
 
 // # // assignedNotes: [String!]

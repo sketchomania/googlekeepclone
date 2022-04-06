@@ -1,9 +1,9 @@
-import NoteContent from "../../../models/note.js";
+import Note from "../../../models/note.js";
 
 const noteMutations = {
   createNote: async (args) => {
     try {
-      const note = new NoteContent({
+      const note = new Note({
         title: args.noteCreateInput.title,
         description: args.noteCreateInput.description,
         labels: args.noteCreateInput.labels,
@@ -18,7 +18,7 @@ const noteMutations = {
 
   deleteNote: async (args) => {
     try {
-      await NoteContent.findByIdAndRemove({ _id: args.id });
+      await Note.findByIdAndRemove({ _id: args.id });
       return true;
     } catch (err) {
       return false;
@@ -27,7 +27,7 @@ const noteMutations = {
 
   updateNote: async (args) => {
     try {
-      return await NoteContent.findOneAndUpdate(
+      return await Note.findOneAndUpdate(
         { _id: args.id },
         {
           $set: {

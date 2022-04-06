@@ -2,22 +2,34 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const noteSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-    trim: true,
+const noteSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    labels: [String],
+    background: { type: String, default: "" },
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    pinned: { type: Boolean, default: false },
+    selected: { type: Boolean, default: false },
+    listMode: { type: Boolean, default: false },
+    archived: { type: Boolean, default: false },
+    // createdAt: { type: Date, default: new Date() },
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  labels: [String],
-  // color: String,
-  // pinned: { type: Boolean, default: false },
-  // createdAt: { type: Date, default: new Date() },
-});
+  {
+    timestamps: true,
+  }
+);
 
-const NoteContent = mongoose.model("NoteContent", noteSchema);
+const Note = mongoose.model("Note", noteSchema);
 
-export default NoteContent;
+export default Note;

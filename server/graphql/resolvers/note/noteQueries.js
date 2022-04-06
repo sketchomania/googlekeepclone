@@ -1,10 +1,10 @@
-import NoteContent from "../../../models/note.js";
+import Note from "../../../models/note.js";
 
 const noteQueries = {
   notes: async (req, res) => {
     try {
-      const noteContent = await NoteContent.find();
-      return noteContent.map((note) => {
+      const allNotes = await Note.find();
+      return allNotes.map((note) => {
         return note;
       });
     } catch (err) {
@@ -14,7 +14,7 @@ const noteQueries = {
 
   note: async (args) => {
     try {
-      return await NoteContent.findById(args.id);
+      return await Note.findById(args.id);
     } catch (err) {
       throw err;
     }
