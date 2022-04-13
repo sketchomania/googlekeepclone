@@ -2,7 +2,7 @@
 const AuthForm = () => {
     return (
         <div>
-            <h3>This is AuthForm component</h3>
+            <h3>This is your AuthForm component</h3>
         </div>
     )
 }

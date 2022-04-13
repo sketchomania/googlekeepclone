@@ -1,13 +1,6 @@
 import { buildSchema } from "graphql";
 
 const graphQLSchema = buildSchema(`
-type Label {
- _id: ID!
- name: String!
- assignedNotes: [Note!]
- creator: User!
-}
-
 type Note {
  _id: ID!
  title: String!
@@ -19,8 +12,16 @@ type Note {
  selected: Boolean!
  listMode: Boolean!
  archived: Boolean!
+ movedToBin: Boolean!
  createdAt: String!
  updatedAt: String!
+}
+
+type Label {
+ _id: ID!
+ name: String!
+ assignedNotes: [Note!]
+ creator: User!
 }
 
 type User {
@@ -30,6 +31,12 @@ type User {
  createdLabels: [Label!]
  createdNotes: [Note!]
  darkMode: Boolean!
+}
+
+type AuthData {
+ userId: ID!
+ token: String!
+ tokenExpirationTime: Int!
 }
 
 input NoteCreateInput {
@@ -62,6 +69,8 @@ type RootQuery {
 
  labels: [Label!]!
  label(id: ID!): Label
+
+ login(email: String!, password: String!): AuthData!
 }
 
 type RootMutation {
@@ -77,28 +86,14 @@ type RootMutation {
 }
 
 schema {
-    query: RootQuery
-    mutation: RootMutation
+ query: RootQuery
+ mutation: RootMutation
 }
 `);
 
 export default graphQLSchema;
 
-// # // type Note {
-// # //     _id: ID!
-// # //     title: String!
-// # //     description: String!
-// # //     Labels: [Label]
-// # //     background: String
-// # //     creator: User!
-// # //     pinned: Boolean
-// # //     selected: Boolean
-// # //     listMode: Boolean
-// # //     archived: Boolean
-// # //     createdAt: String!
-// # //     updatedAt: String!
-// # //    }
-
+// note { movedToBin: Boolean!}
 // # // labels: [String!]
 // # // This means that the list itself can be null, but it can't have any null members. For example, in JSON:
 // # // myField: null // valid

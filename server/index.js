@@ -29,7 +29,7 @@ app.use(
 );
 
 const CONNECTION_URL =
-  "mongodb+srv://googlekeeep:googlekeep007@cluster0.nylpb.mongodb.net/g-keep?retryWrites=true&w=majority";
+  "mongodb+srv://clipclip:Rezgs0bT5Ge7uNi4@cluster0.nylpb.mongodb.net/g-keep?retryWrites=true&w=majority";
 const port = process.env.PORT || 5000;
 
 mongoose
@@ -43,3 +43,6 @@ mongoose
   .catch((error) => console.log(error));
 
 // mongoose.set("useFindAndModify", false);
+// clipclip
+// "mongodb+srv://googlekeeep:googlekeep007@cluster0.nylpb.mongodb.net/g-keep?retryWrites=true&w=majority";
+   

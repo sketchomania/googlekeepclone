@@ -7,6 +7,7 @@ import "./App.css";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
+import DevPage from "./pages/DevPage";
 import { useState } from "react";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   };
 
   const toggleLabelMenu = () => {
-    console.log("toggleLabelMenu clicked !!!", "showLabel is: ",showLabel);
+    console.log("toggleLabelMenu clicked !!!", "showLabel is: ", showLabel);
     setShowLabel(!showLabel);
     // showLabel ? setShowLabel(false) : setShowLabel(true);
   };
@@ -46,8 +47,11 @@ function App() {
           <Route path="/" exact>
             <HomePage showLabel={showLabel} />
           </Route>
-          <Route pat="/auth">
+          <Route path="/auth" >
             <AuthPage />
+          </Route>
+          <Route path="/dev">
+            <DevPage />
           </Route>
           <Route path="*">
             <Redirect to="/" />

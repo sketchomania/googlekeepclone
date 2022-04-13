@@ -7,6 +7,7 @@ const noteMutations = {
         title: args.noteCreateInput.title,
         description: args.noteCreateInput.description,
         labels: args.noteCreateInput.labels,
+        creator: "6242270cd2fdcd84ac8b8b05",
       });
 
       const result = await note.save();
