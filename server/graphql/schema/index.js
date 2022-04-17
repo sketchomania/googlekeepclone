@@ -12,7 +12,7 @@ type Note {
  selected: Boolean!
  listMode: Boolean!
  archived: Boolean!
- movedToBin: Boolean!
+ deleted: Boolean!
  createdAt: String!
  updatedAt: String!
 }

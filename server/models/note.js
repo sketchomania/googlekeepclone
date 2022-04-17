@@ -26,7 +26,7 @@ const noteSchema = new Schema(
     selected: { type: Boolean, default: false },
     listMode: { type: Boolean, default: false },
     archived: { type: Boolean, default: false },
-    movedToBin: { type: Boolean, default: false },
+    deleted: { type: Boolean, default: false },
     // createdAt: { type: Date, default: new Date() },
     // updatedAt: { type: Date, default: new Date() },
   },
