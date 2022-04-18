@@ -22,12 +22,3 @@ const noteQueries = {
 };
 
 export default noteQueries;
-/*
-//   note: async (req,res) => {},
-
-// res.status(200).json(noteContent);
-
-catch (error) {
-  res.status(404).json({ message: error.message });
-}
-*/

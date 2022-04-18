@@ -22,13 +22,3 @@ const labelQueries = {
 };
 
 export default labelQueries;
-
-/*
-// label: async(req,res) => {},
-
-// res.status(200).json(label);
-
-catch (error) {
-  res.status(404).json({ message: error.message });
-}
-*/
