@@ -6,7 +6,7 @@ type Note {
  title: String!
  description: String!
  labels: [String!]
- Background: String
+ background: String!
  creator: User!
  pinned: Boolean!
  selected: Boolean!
