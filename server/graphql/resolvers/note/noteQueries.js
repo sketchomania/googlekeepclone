@@ -1,11 +1,12 @@
 import Note from "../../../models/note.js";
+import { transformNote } from "../merge.js";
 
 const noteQueries = {
   notes: async (req, res) => {
     try {
       const allNotes = await Note.find();
       return allNotes.map((note) => {
-        return note;
+        return transformNote(note);
       });
     } catch (err) {
       throw err;

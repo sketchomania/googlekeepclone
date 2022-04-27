@@ -1,11 +1,12 @@
 import Label from "../../../models/label.js";
+import { transformLabel } from "../merge.js";
 
 const labelQueries = {
   labels: async (req, res) => {
     try {
       const labels = await Label.find();
       return labels.map((label) => {
-        return label;
+        return transformLabel(label);
       });
     } catch (err) {
       throw err;

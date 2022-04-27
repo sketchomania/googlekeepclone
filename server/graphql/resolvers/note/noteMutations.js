@@ -1,5 +1,6 @@
 import Note from "../../../models/note.js";
 import User from "../../../models/user.js";
+import { transformNote } from "../merge.js";
 
 const noteMutations = {
   createNote: async (args) => {
@@ -12,7 +13,8 @@ const noteMutations = {
     let createdNote;
     try {
       const result = await note.save();
-      createdNote = { ...result._doc, _id: result.id };
+      createdNote = transformNote(result);
+      // createdNote = { ...result._doc, _id: result.id };
       const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
       if (!creator) {
         throw new Error("User not found.");

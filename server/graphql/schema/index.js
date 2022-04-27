@@ -78,7 +78,7 @@ type RootMutation {
  updateNote(id: ID!, noteUpdateInput: NoteUpdateInput): Note!
  deleteNote(id: ID!): Boolean!
 
- createLabel(labelCreateInput: LabelCreateInput): Label
+ createLabel(labelCreateInput: LabelCreateInput): Label!
  updateLabel(id: ID!, labelUpdateInput: LabelUpdateInput): Label!
  deleteLabel(id: ID!): Boolean!
 

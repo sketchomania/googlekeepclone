@@ -1,5 +1,6 @@
 import Label from "../../../models/label.js";
 import User from "../../../models/user.js";
+import { transformLabel } from "../merge.js";
 
 const labelMutations = {
   createLabel: async (args) => {
@@ -12,7 +13,8 @@ const labelMutations = {
     let createdLabel;
     try {
       const result = await label.save();
-      createdLabel = { ...result._doc, _id: result.id };
+      createdLabel = transformLabel(result);
+      // createdLabel = { ...result._doc, _id: result.id };
       const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
       if (!creator) {
         throw new Error("User not found.");
