@@ -1,17 +1,26 @@
 import Note from "../../../models/note.js";
+import User from "../../../models/user.js";
 
 const noteMutations = {
   createNote: async (args) => {
+    const note = new Note({
+      title: args.noteCreateInput.title,
+      description: args.noteCreateInput.description,
+      labels: args.noteCreateInput.labels,
+      creator: "6242270cd2fdcd84ac8b8b05",
+    });
+    let createdNote;
     try {
-      const note = new Note({
-        title: args.noteCreateInput.title,
-        description: args.noteCreateInput.description,
-        labels: args.noteCreateInput.labels,
-        creator: "6242270cd2fdcd84ac8b8b05",
-      });
-
       const result = await note.save();
-      return { ...result._doc, _id: result.id };
+      createdNote = { ...result._doc, _id: result.id };
+      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
+      if (!creator) {
+        throw new Error("User not found.");
+      }
+      creator.createdNotes.push(note);
+      await creator.save();
+
+      return createdNote;
     } catch (err) {
       throw err;
     }

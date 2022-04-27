@@ -28,8 +28,8 @@ type User {
  _id: ID!
  email: String!
  password: String!
- createdLabels: [Label!]
  createdNotes: [Note!]
+ createdLabels: [Label!]
  darkMode: Boolean!
 }
 

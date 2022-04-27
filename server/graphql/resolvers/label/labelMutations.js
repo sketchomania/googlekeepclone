@@ -1,17 +1,26 @@
 import Label from "../../../models/label.js";
+import User from "../../../models/user.js";
 
 const labelMutations = {
   createLabel: async (args) => {
+    const label = new Label({
+      name: args.labelCreateInput.name,
+      // assignedNotes: args.labelCreateInput.assignedNotes,
+      assignedNotes: ["61fa759e6d93584d02453450", "61bc5b3779649242df8b61f5"],
+      creator: "6242270cd2fdcd84ac8b8b05",
+    });
+    let createdLabel;
     try {
-      const label = new Label({
-        name: args.labelCreateInput.name,
-        // assignedNotes: args.labelCreateInput.assignedNotes,
-        assignedNotes: ["61fa759e6d93584d02453450", "61bc5b3779649242df8b61f5"],
-        creator: "6242270cd2fdcd84ac8b8b05",
-      });
-
       const result = await label.save();
-      return { ...result._doc, _id: result.id };
+      createdLabel = { ...result._doc, _id: result.id };
+      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
+      if (!creator) {
+        throw new Error("User not found.");
+      }
+      creator.createdLabels.push(label);
+      await creator.save();
+
+      return createdLabel;
     } catch (err) {
       throw err;
     }
