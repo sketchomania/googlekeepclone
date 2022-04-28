@@ -31,6 +31,13 @@ const labelMutations = {
   deleteLabel: async (args) => {
     try {
       await Label.findByIdAndRemove({ _id: args.id });
+      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
+      if (!creator) {
+        throw new Error("User not found");
+      }
+      creator.createdLabels.pull(args.id);
+      await creator.save();
+
       return true;
     } catch (err) {
       return false;
