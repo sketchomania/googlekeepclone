@@ -5,9 +5,9 @@ type Note {
  _id: ID!
  title: String!
  description: String!
- labels: [String!]
- background: String!
+ labels: [Label!]
  creator: User!
+ background: String!
  pinned: Boolean!
  selected: Boolean!
  listMode: Boolean!
@@ -42,7 +42,6 @@ type AuthData {
 input NoteCreateInput {
  title: String!
  description: String!
- labels: [String!]
 }
 
 input NoteUpdateInput {
