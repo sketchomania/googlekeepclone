@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
-// import { Jwt } from "jsonwebtoken";
 import jwt from "jsonwebtoken";
-import User from "../../../models/user";
+
+import User from "../../../models/user.js";
 
 const authQueries = {
   login: async ({ email, password }) => {
@@ -15,7 +15,7 @@ const authQueries = {
     }
     const token = jwt.sign(
       { userId: user.id, email: user.email },
-      "someSuperSecretKey",
+      "someextremely-longsupersecretkey",
       {
         expiresIn: "1h",
       }

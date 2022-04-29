@@ -10,19 +10,19 @@ const noteMutations = {
     const note = new Note({
       title: args.noteCreateInput.title,
       description: args.noteCreateInput.description,
-      labels: ["61d05f3104f2f5b7e6c5aa79"],
-      creator: "6242270cd2fdcd84ac8b8b05",
+      // labels: ["61d05f3104f2f5b7e6c5aa79"],
+      creator: req.userId,
     });
     let createdNote;
     try {
       const result = await note.save();
       createdNote = transformNote(result);
-      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
-      if (!creator) {
+      const noteCreator = await User.findById(req.userId);
+      if (!noteCreator) {
         throw new Error("User not found.");
       }
-      creator.createdNotes.push(note);
-      await creator.save();
+      noteCreator.createdNotes.push(note);
+      await noteCreator.save();
 
       return createdNote;
     } catch (err) {
@@ -36,12 +36,12 @@ const noteMutations = {
     }
     try {
       await Note.findByIdAndRemove({ _id: args.id });
-      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
-      if (!creator) {
+      const noteCreator = await User.findById(req.userId);
+      if (!noteCreator) {
         throw new Error("User not found.");
       }
-      creator.createdNotes.pull(args.id);
-      await creator.save();
+      noteCreator.createdNotes.pull(args.id);
+      await noteCreator.save();
 
       return true;
     } catch (err) {

@@ -3,25 +3,25 @@ import User from "../../../models/user.js";
 import { transformLabel } from "../merge.js";
 
 const labelMutations = {
-  createLabel: async (args) => {
+  createLabel: async (args, req) => {
     if (!req.isAuth) {
       throw new Error("Unauthenticated");
     }
     const label = new Label({
       name: args.labelCreateInput.name,
-      assignedNotes: ["61fa759e6d93584d02453450", "624e41c0c16f2d7a8c4a2f9a"],
-      creator: "6242270cd2fdcd84ac8b8b05",
+      // assignedNotes: ["61fa759e6d93584d02453450", "624e41c0c16f2d7a8c4a2f9a"],
+      creator: req.userId,
     });
     let createdLabel;
     try {
       const result = await label.save();
       createdLabel = transformLabel(result);
-      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
-      if (!creator) {
+      const labelCreator = await User.findById(req.userId);
+      if (!labelCreator) {
         throw new Error("User not found.");
       }
-      creator.createdLabels.push(label);
-      await creator.save();
+      labelCreator.createdLabels.push(label);
+      await labelCreator.save();
 
       return createdLabel;
     } catch (err) {
@@ -35,12 +35,12 @@ const labelMutations = {
     }
     try {
       await Label.findByIdAndRemove({ _id: args.id });
-      const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
-      if (!creator) {
+      const labelCreator = await User.findById(req.userId);
+      if (!labelCreator) {
         throw new Error("User not found");
       }
-      creator.createdLabels.pull(args.id);
-      await creator.save();
+      labelCreator.createdLabels.pull(args.id);
+      await labelCreator.save();
 
       return true;
     } catch (err) {
@@ -71,7 +71,3 @@ const labelMutations = {
 };
 
 export default labelMutations;
-/*
-  creator: "6242270cd2fdcd84ac8b8b05",
-   this part is not showing as expected inside graphql query
-*/
