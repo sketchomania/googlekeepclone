@@ -1,23 +1,27 @@
+import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import { graphqlHTTP } from "express-graphql";
-import cors from "cors";
 
-// import noteRoutes from "./routes/notes.js";
-// import labelRoutes from "./routes/labels.js";
-
+import isAuth from "./middleware/is-auth.js";
 import graphQLSchema from "./graphql/schema/index.js";
 import graphQLResolvers from "./graphql/resolvers/index.js";
 
+dotenv.config();
 const app = express();
 
-app.use(bodyParser.json({ limit: "20mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
+const HOST_USER = process.env.DB_USER;
+const HOST_PASS = process.env.DB_PASS;
+const HOST_NAME = process.env.DB_NAME;
+const PORT = process.env.PORT;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cors());
 
-// app.use("/notes", noteRoutes);
-// app.use("/labels", labelRoutes);
+app.use(isAuth);
 
 app.use(
   "/graphql",
@@ -28,9 +32,8 @@ app.use(
   })
 );
 
-const CONNECTION_URL =
-  "mongodb+srv://clipclip:Rezgs0bT5Ge7uNi4@cluster0.nylpb.mongodb.net/g-keep?retryWrites=true&w=majority";
-const port = process.env.PORT || 5000;
+const CONNECTION_URL = `mongodb+srv://${HOST_USER}:${HOST_PASS}@cluster0.nylpb.mongodb.net/${HOST_NAME}?retryWrites=true&w=majority`;
+const port = PORT || 8000;
 
 mongoose
   .connect(CONNECTION_URL, {
@@ -41,8 +44,3 @@ mongoose
     app.listen(port, () => console.log(`Server running on port: ${port}`))
   )
   .catch((error) => console.log(error));
-
-// mongoose.set("useFindAndModify", false);
-// clipclip
-// "mongodb+srv://googlekeeep:googlekeep007@cluster0.nylpb.mongodb.net/g-keep?retryWrites=true&w=majority";
-   

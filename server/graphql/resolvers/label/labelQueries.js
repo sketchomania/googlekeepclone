@@ -1,18 +1,25 @@
 import Label from "../../../models/label.js";
+import { transformLabel } from "../merge.js";
 
 const labelQueries = {
   labels: async (req, res) => {
+    // if (!req.isAuth) {
+    //   throw new Error("Unauthenticated");
+    // }
     try {
       const labels = await Label.find();
       return labels.map((label) => {
-        return label;
+        return transformLabel(label);
       });
     } catch (err) {
       throw err;
     }
   },
 
-  label: async (args) => {
+  label: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       return await Label.findById(args.id);
     } catch (err) {
@@ -22,13 +29,3 @@ const labelQueries = {
 };
 
 export default labelQueries;
-
-/*
-// label: async(req,res) => {},
-
-// res.status(200).json(label);
-
-catch (error) {
-  res.status(404).json({ message: error.message });
-}
-*/

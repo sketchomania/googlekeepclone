@@ -1,32 +1,58 @@
 import Note from "../../../models/note.js";
+import User from "../../../models/user.js";
+import { transformNote } from "../merge.js";
 
 const noteMutations = {
-  createNote: async (args) => {
+  createNote: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
+    const note = new Note({
+      title: args.noteCreateInput.title,
+      description: args.noteCreateInput.description,
+      // labels: ["61d05f3104f2f5b7e6c5aa79"],
+      creator: req.userId,
+    });
+    let createdNote;
     try {
-      const note = new Note({
-        title: args.noteCreateInput.title,
-        description: args.noteCreateInput.description,
-        labels: args.noteCreateInput.labels,
-        creator: "6242270cd2fdcd84ac8b8b05",
-      });
-
       const result = await note.save();
-      return { ...result._doc, _id: result.id };
+      createdNote = transformNote(result);
+      const noteCreator = await User.findById(req.userId);
+      if (!noteCreator) {
+        throw new Error("User not found.");
+      }
+      noteCreator.createdNotes.push(note);
+      await noteCreator.save();
+
+      return createdNote;
     } catch (err) {
       throw err;
     }
   },
 
-  deleteNote: async (args) => {
+  deleteNote: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       await Note.findByIdAndRemove({ _id: args.id });
+      const noteCreator = await User.findById(req.userId);
+      if (!noteCreator) {
+        throw new Error("User not found.");
+      }
+      noteCreator.createdNotes.pull(args.id);
+      await noteCreator.save();
+
       return true;
     } catch (err) {
       return false;
     }
   },
 
-  updateNote: async (args) => {
+  updateNote: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       return await Note.findOneAndUpdate(
         { _id: args.id },

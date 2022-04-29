@@ -18,9 +18,7 @@ const labelSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  // color: String,
   // pinned: { type: Boolean, default: false },
-  // createdAt: { type: Date, default: new Date() },
 });
 
 const Label = mongoose.model("Label", labelSchema);
