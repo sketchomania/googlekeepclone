@@ -2,7 +2,10 @@ import Note from "../../../models/note.js";
 import { transformNote } from "../merge.js";
 
 const noteQueries = {
-  notes: async (req, res) => {
+  notes: async (args, req) => {
+    // if (!req.isAuth) {
+    //   throw new Error("Unauthenticated");
+    // }
     try {
       const allNotes = await Note.find();
       return allNotes.map((note) => {
@@ -13,7 +16,10 @@ const noteQueries = {
     }
   },
 
-  note: async (args) => {
+  note: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       return await Note.findById(args.id);
     } catch (err) {

@@ -3,7 +3,10 @@ import User from "../../../models/user.js";
 import { transformNote } from "../merge.js";
 
 const noteMutations = {
-  createNote: async (args) => {
+  createNote: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     const note = new Note({
       title: args.noteCreateInput.title,
       description: args.noteCreateInput.description,
@@ -14,7 +17,6 @@ const noteMutations = {
     try {
       const result = await note.save();
       createdNote = transformNote(result);
-      // createdNote = { ...result._doc, _id: result.id };
       const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
       if (!creator) {
         throw new Error("User not found.");
@@ -28,7 +30,10 @@ const noteMutations = {
     }
   },
 
-  deleteNote: async (args) => {
+  deleteNote: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       await Note.findByIdAndRemove({ _id: args.id });
       const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
@@ -44,7 +49,10 @@ const noteMutations = {
     }
   },
 
-  updateNote: async (args) => {
+  updateNote: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       return await Note.findOneAndUpdate(
         { _id: args.id },

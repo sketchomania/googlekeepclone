@@ -4,6 +4,9 @@ import { transformLabel } from "../merge.js";
 
 const labelMutations = {
   createLabel: async (args) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     const label = new Label({
       name: args.labelCreateInput.name,
       assignedNotes: ["61fa759e6d93584d02453450", "624e41c0c16f2d7a8c4a2f9a"],
@@ -13,7 +16,6 @@ const labelMutations = {
     try {
       const result = await label.save();
       createdLabel = transformLabel(result);
-      // createdLabel = { ...result._doc, _id: result.id };
       const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
       if (!creator) {
         throw new Error("User not found.");
@@ -27,7 +29,10 @@ const labelMutations = {
     }
   },
 
-  deleteLabel: async (args) => {
+  deleteLabel: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       await Label.findByIdAndRemove({ _id: args.id });
       const creator = await User.findById("6242270cd2fdcd84ac8b8b05");
@@ -43,7 +48,10 @@ const labelMutations = {
     }
   },
 
-  updateLabel: async (args) => {
+  updateLabel: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
       return await Label.findOneAndUpdate(
         { _id: args.id },
