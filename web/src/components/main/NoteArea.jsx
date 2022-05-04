@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { getNotes } from "../../actions/notes";
+import { getNotes } from "../../actions/noteActions";
 // import classes from "./NoteArea.module.css";
 import AddNote from "./AddNote";
 import Notes from "../notes/Notes";
@@ -13,7 +13,7 @@ const MainArea = () => {
   useEffect(() => {
     dispatch(getNotes());
   }, [currentId, dispatch]);
-  
+
   return (
     <div className="grow w-full border-2 border-amber-700">
       <h4>Main Area</h4>

@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
-import notes from "./notes"; //notesSlice
-import labels from "./labels"; //labelsSlice
+import noteReducer from "./noteReducer";
+import authReducer from "./authReducer";
+import labelReducer from "./labelReducer";
 
-export default combineReducers({ notes, labels });
+export default combineReducers({ authReducer, noteReducer, labelReducer });

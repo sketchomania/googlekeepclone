@@ -11,7 +11,8 @@ const Labels = ({ setCurrentId, showLabel }) => {
       <p>Labels component</p>
       {/* {console.log(labels)} */}
       {/* {console.log(notes)} */}
-      {labels.map((label) => (
+
+      {/* {labels.map((label) => (
         <div key={label._id}>
           {console.log(label.name)}
           <Label
@@ -21,7 +22,7 @@ const Labels = ({ setCurrentId, showLabel }) => {
             showLabel={showLabel}
           />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

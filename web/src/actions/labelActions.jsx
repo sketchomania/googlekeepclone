@@ -25,7 +25,7 @@ export const updateLabel = (id, label) => async (dispatch) => {
   try {
     const { data } = await api.updateLabel(id, label);
 
-    dispatch({ type: actions.UPDATE_LABFEL, payload: data });
+    dispatch({ type: actions.UPDATE_LABEL, payload: data });
   } catch (error) {
     console.log(error);
   }

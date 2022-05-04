@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { getLabels } from "../../actions/labels";
+import { getLabels } from "../../actions/labelActions";
 // import classes from "./MainMenu.module.css";
 import AddLabel from "./AddLabel";
 import Label from "./label/Label";

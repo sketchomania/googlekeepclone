@@ -10,6 +10,10 @@ module.exports = {
     },
     extend: {
       spacing: {
+        maxWidth: {
+          "4/5": "80%",
+          "3/4": "75%",
+        },
         128: "32rem",
         144: "36rem",
       },
@@ -19,5 +23,5 @@ module.exports = {
     },
   },
   plugins: [],
-  darkMode: 'class',
+  darkMode: "class",
 };
