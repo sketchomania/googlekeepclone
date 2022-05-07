@@ -3,14 +3,19 @@ import { useSelector } from "react-redux";
 import Label from "./label/Label";
 
 const Labels = ({ setCurrentId, showLabel }) => {
-  const labels = useSelector((state) => state.labels);
-  const notes = useSelector((state) => state.notes);
+  const stateObj = useSelector((state) => state);
+  console.log(stateObj);
+  const labels = useSelector((state) => state.labelReducer.labels);
+  // console.log(labels);
+  const notes = useSelector((state) => state.noteReducer.notes);
+  // console.log(notes);
 
   return (
     <div className="border border-green-500">
       <p>Labels component</p>
-      {/* {console.log(labels)} */}
-      {/* {console.log(notes)} */}
+      {/* its working  and if it's not working just comment out the LABELs.map part and refresh */}
+      {console.log(labels)}
+      {console.log(notes)}
 
       {/* {labels.map((label) => (
         <div key={label._id}>

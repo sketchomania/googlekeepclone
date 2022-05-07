@@ -1,8 +1,8 @@
 import * as actions from "../constants/actionTypes";
 
-// const initialState = [];
-// state = initialState
-const labelReducer = (state = [], action) => {
+const initialState = [];
+
+const labelReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.FETCH_ALL_LABELS:
       return action.payload;
@@ -16,5 +16,5 @@ const labelReducer = (state = [], action) => {
       return state;
   }
 };
-//have a doupt about labels or label should  be used above
+
 export default labelReducer;

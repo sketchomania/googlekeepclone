@@ -15,7 +15,7 @@ const Notes = ({ setCurrentId }) => {
       <br />
       {/* its working  and if it's not working just comment out the notes.map part and refresh */}
       {/* {console.log(notes)} */}
-      {notes.map((note) => (
+      {/* {notes.map((note) => (
         <div key={note._id}>
           <br/>
           <p>{note._id}</p>
@@ -24,7 +24,7 @@ const Notes = ({ setCurrentId }) => {
         // console.log(note)
         // <Note key={note._id} note={note} setCurrentId={setCurrentId} />
         // <div key={note._id}>note {console.log(note._id)} {console.log(note)}</div>
-      ))}
+      ))} */}
     </div>
   );
 };

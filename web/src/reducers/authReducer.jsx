@@ -1,18 +1,29 @@
 import * as actions from "../constants/actionTypes";
 
 const initialState = {
+  authChecked: false,
+  loggedIn: false,
   isAuthenticated: null,
+  currentUser: {},
   user: null,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.AUTH_SUCCESS:
-      return action.payload;
-    case actions.AUTH_FAIL:
-      return action.payload;
+    case actions.AUTHENTICATED:
+      return {
+        authChecked: true,
+        loggedIn: true,
+        currentUser: action.payload,
+      };
+    case actions.NOT_AUTHENTICATED:
+      return {
+        authChecked: true,
+        loggedIn: false,
+        currentUser: {},
+      };
     default:
-      return initialState;
+      return state;
   }
 };
 

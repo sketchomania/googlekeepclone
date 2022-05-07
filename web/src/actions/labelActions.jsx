@@ -2,12 +2,29 @@ import * as actions from "../constants/actionTypes";
 import * as api from "../api";
 
 export const getLabels = () => async (dispatch) => {
-  try {
-    const { data } = await api.fetchLabels();
+  const body = JSON.stringify({
+    query: `query{
+      labels{
+        _id
+        name
+        assignedNotes{
+          _id
+        }
+        creator{
+          _id
+        }
+      }
+    }`,
+    variables: {},
+  });
 
-    dispatch({ type: actions.FETCH_ALL_LABELS, payload: data });
+  try {
+    const response = await api.fetchLabels(body);
+    console.log(response);
+
+    dispatch({ type: actions.FETCH_ALL_LABELS, payload: response.data.data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -30,3 +47,17 @@ export const updateLabel = (id, label) => async (dispatch) => {
     console.log(error);
   }
 };
+
+
+// query: `query{
+//   labels{
+//     _id
+//     name
+//     assignedNotes{
+//       _id
+//     }
+//     creator{
+//       _id
+//     }
+//   }
+// }`,
