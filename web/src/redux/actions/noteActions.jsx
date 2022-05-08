@@ -1,7 +1,27 @@
-import * as actions from "../constants/actionTypes";
-import * as api from "../api";
+import * as actions from "../../constants/actionTypes";
+import * as api from "../../api";
 
-export const getNotes = () => async (dispatch) => {
+const fetchNotesRequest = () => {
+  return {
+    type: actions.FETCH_ALL_NOTES_REQUEST,
+  };
+};
+
+const fetchNotesSuccess = (notes) => {
+  return {
+    type: actions.FETCH_ALL_NOTES_SUCCESS,
+    payload: notes,
+  };
+};
+
+const fetchNotesFailure = (error) => {
+  return {
+    type: actions.FETCH_ALL_NOTES_FAILURE,
+    payload: error,
+  };
+};
+
+export const fetchNotes = () => async (dispatch) => {
   const body = JSON.stringify({
     query: `query{
       notes{
@@ -28,12 +48,15 @@ export const getNotes = () => async (dispatch) => {
   });
 
   try {
+    dispatch(fetchNotesRequest());
     const response = await api.fetchNotes(body);
     console.log(response);
 
+    dispatch(fetchNotesSuccess(response.data.data));
     dispatch({ type: actions.FETCH_ALL_NOTES, payload: response.data.data });
   } catch (error) {
-    console.log(error);
+    console.log("Error: ", error);
+    dispatch(fetchNotesFailure(error));
   }
 };
 

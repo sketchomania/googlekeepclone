@@ -13,20 +13,30 @@ import { ReactComponent as Logout } from "../../icons/logout_black_24dp.svg";
 import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
 
-const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme ,toggleLabelMenu}) => {
+const AppBar = ({
+  setIsLoggedIn,
+  isLoggedIn,
+  darkMode,
+  toggleTheme,
+  toggleLabelMenu,
+}) => {
   const logo = (
     <img
       src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
       alt="logo"
     />
   );
+  const loginHandler = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
 
   // const [isMounted, setIsMounted] = useState(false);
 
   return (
     <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
-      <Menu className={`${sty1}`} onClick={toggleLabelMenu}/> {/* on click show label list  */}
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
+      {/* on click show label list  */}
+      <Link to="/" title="Google keep clone" style={{ textDecoration: "none" }}>
         <div className={classes.logo}>
           {logo}
           <h3>Keep</h3>
@@ -36,10 +46,19 @@ const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme ,toggleLabelMe
       <SearchBar />
       <nav className={classes.nav}>
         <ul>
+          <li title="Form">
+            <Link to="/form">Form</Link>
+          </li>
+          <li title="Auth">
+            <Link to="/auth">Auth</Link>
+          </li>
+        </ul>
+        <ul>
           <li>
             {/* <ThemeContext.Consumer>
               {({ changeTheme }) => ( */}
             <button
+              title="theme"
               onClick={toggleTheme}
               // onClick={() => {
               //   setDarkMode(!darkMode);
@@ -59,7 +78,7 @@ const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme ,toggleLabelMe
         </ul>
         <ul>
           <li>
-            <button onClick={toggleTheme}>
+            <button title="view" onClick={toggleTheme}>
               {darkMode ? (
                 <View className={`${sty1}`} />
               ) : (
@@ -67,7 +86,7 @@ const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme ,toggleLabelMe
               )}
             </button>
           </li>
-          <li>
+          <li title="Setting">
             <Setting className={`${sty1}`} />
           </li>
           <li>
@@ -76,15 +95,21 @@ const AppBar = ({ loginHandler, isLoggedIn, darkMode, toggleTheme ,toggleLabelMe
         </ul>
         <ul>
           <li>
-            {!isLoggedIn && (
-              <button onClick={loginHandler}>
-                {/* <Link to="/auth"> */}
-                <Login className={`${sty1}`} />
-                {/* </Link> */}
-              </button>
-            )}
-            {isLoggedIn && (
-              <button onClick={loginHandler}>
+            {!isLoggedIn ? (
+              <>
+                <button title="Login" onClick={loginHandler}>
+                  <Link to="/auth">
+                    <Login className={`${sty1}`} />
+                  </Link>
+                </button>
+                <button title="Signup" onClick={loginHandler}>
+                  <Link to="/auth">
+                    <strong>Signup</strong>
+                  </Link>
+                </button>
+              </>
+            ) : (
+              <button title="Logout" onClick={loginHandler}>
                 <Logout className={`${sty1}`} />
               </button>
             )}

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // import classes from "./AddNote.module.css";
-import { createNote, updateNote } from "../../actions/noteActions";
+import { createNote, updateNote } from "../../redux/actions/noteActions";
 
 const AddNote = ({ currentId, setCurrentId }) => {
   const [noteData, setNoteData] = useState({

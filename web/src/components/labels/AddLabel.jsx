@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { createLabel, updateLabel } from "../../actions/labelActions";
+import { createLabel, updateLabel } from "../../redux/actions/labelActions";
 
 const AddLabel = ({ currentId, setCurrentId }) => {
   const [labelData, setLabelData] = useState({

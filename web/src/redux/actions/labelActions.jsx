@@ -1,5 +1,5 @@
-import * as actions from "../constants/actionTypes";
-import * as api from "../api";
+import * as actions from "../../constants/actionTypes";
+import * as api from "../../api";
 
 export const getLabels = () => async (dispatch) => {
   const body = JSON.stringify({

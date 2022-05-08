@@ -8,10 +8,6 @@ import { useState } from "react";
 const Layout = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const loginHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
-
   return (
     <Fragment>
       <BrowserRouter>
@@ -20,8 +16,8 @@ const Layout = (props) => {
           toggleTheme={props.toggleTheme}
           darkMode={props.darkMode}
           toggleLabelMenu={props.toggleLabelMenu}
-          loginHandler
-          isLoggedIn
+          setIsLoggedIn={setIsLoggedIn}
+          isLoggedIn={isLoggedIn}
         />
         <main className="bg-white dark:bg-gray-700 m-12 w-11/12">
           {props.children}

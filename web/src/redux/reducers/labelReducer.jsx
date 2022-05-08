@@ -1,6 +1,13 @@
-import * as actions from "../constants/actionTypes";
+import * as actions from "../../constants/actionTypes";
 
-const initialState = [];
+const initialState = {
+  loading: true,
+  authChecked: false,
+  loggedIn: false,
+  isAuthenticated: null,
+  labels: [],
+  error: ``,
+};
 
 const labelReducer = (state = initialState, action) => {
   switch (action.type) {

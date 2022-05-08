@@ -1,9 +1,10 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 
 // import Icon from "./Icon";
+import "./App.css";
 import logo from "./logo.svg";
 import menu from "./icons/menu_black_24dp.svg";
-import "./App.css";
+import AuthForm from "./components/Auth/AuthForm";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
@@ -47,8 +48,11 @@ function App() {
           <Route path="/" exact>
             <HomePage showLabel={showLabel} />
           </Route>
-          <Route path="/auth" >
+          <Route path="/auth">
             <AuthPage />
+          </Route>
+          <Route path="/form">
+            <AuthForm />
           </Route>
           <Route path="/dev">
             <DevPage />

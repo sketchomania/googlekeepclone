@@ -1,13 +1,17 @@
 import { useSelector } from "react-redux";
 
+// import { fetchNotes } from "../../actions/noteActions";
 import Note from "../note/Note";
 // import classes from "./Notes.module.css";
 
 const Notes = ({ setCurrentId }) => {
   const stateObj = useSelector((state) => state);
   console.log(stateObj);
-  const  notes = useSelector((state) => state.noteReducer.notes);
+  const notes = useSelector((state) => state.noteReducer.notes);
   console.log(notes);
+
+  // const dispatch = useDispatch();
+  // dispatch(fetchNotes());
 
   return (
     <div className="flex items-center justify-center flex-wrap w-full border-2 border-cyan-500">

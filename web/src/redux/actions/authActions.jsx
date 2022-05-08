@@ -1,5 +1,5 @@
-import * as actions from "../constants/actionTypes";
-import * as api from "../api";
+import * as actions from "../../constants/actionTypes";
+import * as api from "../../api";
 
 const setTokent = (token) => {
   localStorage.setItem("token", token);

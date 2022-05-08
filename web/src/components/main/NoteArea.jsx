@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { getNotes } from "../../actions/noteActions";
+import { fetchNotes } from "../../redux/actions/noteActions";
 // import classes from "./NoteArea.module.css";
 import AddNote from "./AddNote";
 import Notes from "../notes/Notes";
@@ -11,7 +11,7 @@ const MainArea = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNotes());
+    dispatch(fetchNotes());
   }, [currentId, dispatch]);
 
   return (

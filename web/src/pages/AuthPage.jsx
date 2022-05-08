@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import AuthForm from "../components/Auth/AuthForm";
+import Signup from "./Signup";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -67,23 +68,36 @@ const AuthPage = () => {
   };
 
   return (
-    <form className="w-96 max-w-[80%] h-auto my-20 mx-auto" onSubmit={submitHandler}>
-      <div className="form-control">
-        <label className="w-full block" htmlFor="email">E-mail</label>
-        <input className="w-full block" type="email" id="email" ref={emailEl} />
-      </div>
-      <div className="form-control">
-        <label htmlFor="password">password</label>
-        <input type="password" id="password" ref={passwordEl} />
-      </div>
-      <div className="form-actions">
-        <button type="submit">Submit</button>
-        <button type="button" onClick={switchModeHandler}>
-          Switch to {isLogin ? "Sign-up" : "Login"}
-        </button>
-      </div>
-      <AuthForm />
-    </form>
+    <>
+      <form
+        className="w-96 max-w-[80%] h-auto my-20 mx-auto"
+        onSubmit={submitHandler}
+      >
+        <div className="form-control">
+          <label className="w-full block" htmlFor="email">
+            E-mail
+          </label>
+          <input
+            className="w-full block"
+            type="email"
+            id="email"
+            ref={emailEl}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="password">password</label>
+          <input type="password" id="password" ref={passwordEl} />
+        </div>
+        <div className="form-actions">
+          <button type="submit">Submit</button>
+          <button type="button" onClick={switchModeHandler}>
+            Switch to {isLogin ? "Sign-up" : "Login"}
+          </button>
+        </div>
+      </form>
+      <Signup />
+      {/* <AuthForm /> */}
+    </>
   );
 };
 
