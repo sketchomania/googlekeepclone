@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { getLabels } from "../../redux/actions/labelActions";
+import { fetchLabels } from "../../redux/actions/labelActions";
 // import classes from "./MainMenu.module.css";
 import AddLabel from "./AddLabel";
 import Label from "./label/Label";
@@ -13,7 +13,7 @@ const MainMenu = ({ showLabel }) => {
   const sty1 = showLabel ? "w-72" : "w-24";
 
   useEffect(() => {
-    dispatch(getLabels());
+    dispatch(fetchLabels());
   }, [currentId, dispatch]);
 
   return (

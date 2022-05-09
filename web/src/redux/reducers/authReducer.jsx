@@ -1,4 +1,4 @@
-import * as actions from "../../constants/actionTypes";
+import { authActions } from "../../constants/actionTypes";
 
 const initialState = {
   authChecked: false,
@@ -10,13 +10,13 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.AUTHENTICATED:
+    case authActions.AUTHENTICATED:
       return {
         authChecked: true,
         loggedIn: true,
         currentUser: action.payload,
       };
-    case actions.NOT_AUTHENTICATED:
+    case authActions.NOT_AUTHENTICATED:
       return {
         authChecked: true,
         loggedIn: false,

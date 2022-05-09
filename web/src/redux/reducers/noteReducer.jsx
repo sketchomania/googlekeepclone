@@ -1,4 +1,5 @@
 import * as actions from "../../constants/actionTypes";
+import { noteActions } from "../../constants/actionTypes";
 
 const initialState = {
   loading: true,
@@ -11,28 +12,28 @@ const initialState = {
 
 const noteReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.FETCH_ALL_NOTES_REQUEST:
+    case noteActions.FETCH_ALL_NOTES_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case actions.FETCH_ALL_NOTES_SUCCESS:
+    case noteActions.FETCH_ALL_NOTES_SUCCESS:
       return {
         loading: false,
         notes: action.payload,
         error: "",
       };
-    case actions.FETCH_ALL_NOTES_FAILURE:
+    case noteActions.FETCH_ALL_NOTES_FAILURE:
       return {
         loading: false,
         notes: [],
         error: action.payload,
       };
-    case actions.FETCH_ALL_NOTES:
+    case noteActions.FETCH_ALL_NOTES:
       return action.payload;
-    case actions.CREATE_NOTE:
+    case noteActions.CREATE_NOTE:
       return [...state, action.payload];
-    case actions.UPDATE_NOTE:
+    case noteActions.UPDATE_NOTE:
       return state.map((note) =>
         note._id === action.payload._id ? action.payload : note
       );

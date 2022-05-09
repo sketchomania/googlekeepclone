@@ -1,4 +1,4 @@
-import * as actions from "../../constants/actionTypes";
+import { authActions } from "../../constants/actionTypes";
 import * as api from "../../api";
 
 const setTokent = (token) => {
@@ -44,16 +44,18 @@ export const signupUser =
     });
 
     try {
-      // const { data } = await api.registerUser(body);
       const response = await api.registerUser(body);
       console.log(response);
 
       setToken(response.headers.get("Authorization"));
 
-      dispatch({ type: actions.REGISTER_SUCCESS, payload: response.data.data });
+      dispatch({
+        type: authActions.REGISTER_SUCCESS,
+        payload: response.data.data,
+      });
     } catch (error) {
       console.log(error);
-      dispatch({ type: actions.REGISTER_FAIL });
+      dispatch({ type: authActions.REGISTER_FAIL });
     }
   };
 
@@ -81,10 +83,13 @@ export const login =
 
       setToken(response.headers.get("Authorization"));
 
-      dispatch({ type: actions.LOGIN_SUCCESS, payload: response.data.data });
+      dispatch({
+        type: authActions.LOGIN_SUCCESS,
+        payload: response.data.data,
+      });
     } catch (error) {
       console.log(error);
-      dispatch({ type: actions.LOGIN_FAIL });
+      dispatch({ type: authActions.LOGIN_FAIL });
     }
   };
 
@@ -93,10 +98,10 @@ export const logout = () => async (dispatch) => {
     const response = await api.logoutUserFunc(body);
     console.log(response);
 
-    dispatch({ type: actions.LOGOUT_SUCCESS });
+    dispatch({ type: authActions.LOGOUT_SUCCESS });
   } catch (error) {
     console.log(error);
-    dispatch({ type: actions.LOGOUT_SUCCESS });
+    dispatch({ type: authActions.LOGOUT_SUCCESS });
   }
 };
 
@@ -116,9 +121,9 @@ export const checkAuth = () => async (dispatch) => {
       return response.data.JSON();
     }
 
-    dispatch({ type: actions.AUTHENTICATED, payload: response.data.data });
+    dispatch({ type: authActions.AUTHENTICATED, payload: response.data.data });
   } catch (error) {
-    dispatch({ type: actions.NOT_AUTHENTICATED });
+    dispatch({ type: authActions.NOT_AUTHENTICATED });
     console.log(error);
   }
 };
