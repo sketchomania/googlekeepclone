@@ -1,4 +1,4 @@
-import * as actions from "../../constants/actionTypes";
+// import * as actions from "../../constants/actionTypes";
 import { labelActions } from "../../constants/actionTypes";
 import * as api from "../../api";
 
@@ -44,11 +44,12 @@ export const fetchLabels = () => async (dispatch) => {
     const response = await api.fetchLabels(body);
     console.log(response);
 
-    dispatch(fetchLabelsSuccess(response.data.data));
-    dispatch({
-      type: labelActions.FETCH_ALL_LABELS,
-      payload: response.data.data,
-    });
+    // dispatch(fetchLabelsSuccess(response.data.data));
+    dispatch(fetchLabelsSuccess(response.data.data.labels));
+    // dispatch({
+    //   type: labelActions.FETCH_ALL_LABELS,
+    //   payload: response.data.data,
+    // });
   } catch (error) {
     console.log("Error :", error);
     dispatch(fetchLabelsFailure(error));

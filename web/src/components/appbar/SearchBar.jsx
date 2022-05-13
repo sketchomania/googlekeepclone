@@ -42,7 +42,7 @@ const SearchBar = () => {
         id="search"
         type="text"
         placeholder="search"
-        autocomplete="off"
+        autoComplete="off"
         ref={searchInputRef}
         onClick={expandHandler}
         onChange={searchHandler}

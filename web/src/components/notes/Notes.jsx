@@ -8,7 +8,9 @@ const Notes = ({ setCurrentId }) => {
   const stateObj = useSelector((state) => state);
   console.log(stateObj);
   const notes = useSelector((state) => state.noteReducer.notes);
-  console.log(notes);
+  // console.log(notes);
+  // const labels = useSelector((state) => state.labelReducer.labels);
+  // console.log(labels);
 
   // const dispatch = useDispatch();
   // dispatch(fetchNotes());
@@ -18,25 +20,32 @@ const Notes = ({ setCurrentId }) => {
       <p>Notes component</p>
       <br />
       {/* its working  and if it's not working just comment out the notes.map part and refresh */}
-      {/* {console.log(notes)} */}
-      {/* {notes.map((note) => (
+      {console.log(notes)}
+      {/* {console.log(labels)} */}
+
+      {notes.map((note) => (
         <div key={note._id}>
-          <br/>
+          <br />
           <p>{note._id}</p>
           <p>{note.title}</p>
+          <Note key={note._id} note setCurrentId={setCurrentId} />
+          {/* <div key={note._id}>
+            console.log(note)
+            <Note key={note._id} note={note} setCurrentId={setCurrentId} />
+          </div> */}
         </div>
         // console.log(note)
         // <Note key={note._id} note={note} setCurrentId={setCurrentId} />
         // <div key={note._id}>note {console.log(note._id)} {console.log(note)}</div>
-      ))} */}
+      ))}
     </div>
   );
 };
 
 export default Notes;
-// <div key={note._id}>
-// console.log(note)
-// <Note key={note._id} note={note} setCurrentId={setCurrentId} />
-// </div>
+//<div key={note._id}>
+//console.log(note)
+//<Note key={note._id} note={note} setCurrentId={setCurrentId} />
+//</div>
 
 // <div key={note._id}>note {console.log(note._id)} {console.log(note)}</div>

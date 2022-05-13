@@ -1,7 +1,7 @@
 import { authActions } from "../../constants/actionTypes";
 import * as api from "../../api";
 
-const setTokent = (token) => {
+const setToken = (token) => {
   localStorage.setItem("token", token);
   localStorage.setItem("lastLoginTime", new Date(Date.now()).getTime());
 };
