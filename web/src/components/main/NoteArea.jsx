@@ -16,7 +16,7 @@ const MainArea = () => {
 
   return (
     <div className="grow w-full border-2 border-amber-700">
-      <h4>Main Area</h4>
+      <h4>Main Area for note only</h4>
       <AddNote currentId={currentId} setCurrentId={setCurrentId} />
       <Notes setCurrentId={setCurrentId} />
     </div>

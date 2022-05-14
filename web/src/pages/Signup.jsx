@@ -41,9 +41,10 @@ const Signup = () => {
           E-mail
         </label>
         <input
-          name="email"
           type="email"
+          name="email"
           placeholder="Enter email"
+          required
           value={credential.email}
           onChange={(e) => inputchangeHandler(e)}
         />
@@ -53,16 +54,17 @@ const Signup = () => {
           password
         </label>
         <input
-          name="password"
           type="password"
+          name="password"
           placeholder="Enter password"
+          required
           value={credential.password}
           onChange={(e) => inputchangeHandler(e)}
         />
       </div>
 
       <div>
-        <input type="checkbox" />
+        <input type="checkbox" id="checkbox"/>
         <label htmlFor="checkbox">Accept all terms and conditions</label>
       </div>
 
