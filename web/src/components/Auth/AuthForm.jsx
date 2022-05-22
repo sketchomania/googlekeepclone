@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signupUser, login } from "../../redux/actions/authActions";
 
-const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true);
+const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
+  const dispatch = useDispatch();
+
+  const [isLoginMode, setIsLoginMode] = useState(false);
 
   const [credential, setCredential] = useState({
     email: "",
@@ -10,7 +13,12 @@ const AuthForm = () => {
   });
 
   const switchModeHandler = () => {
-    setIsLogin(!isLogin);
+    // setIsLoggedIn(!isLoggedIn);
+    console.log("isLoginMode was:", isLoginMode);
+    setIsLoginMode(!isLoginMode);
+  };
+  const logInfo = () => {
+    console.log("isLoginMode is now:", isLoginMode);
   };
 
   const authReducer = useSelector((state) => state.authReducer);
@@ -26,8 +34,13 @@ const AuthForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     //   dipatch action
-    console.log("Submitted");
-    console.log(credential);
+    if (isLoginMode) {
+      dispatch(login(credential));
+      console.log("User Login", credential);
+    } else if (!isLoginMode) {
+      dispatch(signupUser(credential));
+      console.log("User Sign-up", credential);
+    }
   };
 
   return (
@@ -40,7 +53,7 @@ const AuthForm = () => {
             </p>
             {/* <p className="text-3xl pt-8 text-yellow-500 font-bold">Welcome,</p> */}
             <p className="text-xl py-3 text-gray-400 font-semibold">
-              {!isLogin ? "Sign-up" : "Login"} in to continue
+              {isLoginMode ? "Login" : "Sign-up"} in to continue
             </p>
           </div>
           <form
@@ -50,7 +63,7 @@ const AuthForm = () => {
             <div className="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
               <div className="flex flex-col mb-5">
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="mb-1 text-sm font-semibold tracking-wide text-gray-600"
                 >
                   E-Mail Address:
@@ -69,7 +82,7 @@ const AuthForm = () => {
 
               <div className="flex flex-col mb-6">
                 <label
-                  for="password"
+                  htmlFor="password"
                   className="mb-1 text-sm font-semibold tracking-wide text-gray-600"
                 >
                   Password:
@@ -108,11 +121,11 @@ const AuthForm = () => {
                     className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-gray-800 border-4 appearance-none cursor-pointer"
                   />
                   <label
-                    for="toggle"
+                    htmlFor="toggle"
                     className="toggle-label block overflow-hidden h-6 rounded-full bg-yellow-500 cursor-pointer"
                   ></label>
                 </div>
-                <label for="toggle" className="text-xs text-gray-300 mt-1">
+                <label htmlFor="toggle" className="text-xs text-gray-300 mt-1">
                   remeber me
                 </label>
               </div>
@@ -122,27 +135,35 @@ const AuthForm = () => {
               </div>
             </div>
 
+            <div className="px-12">
+              <input type="checkbox" id="checkbox" />
+              <label htmlFor="checkbox">Accept all terms and conditions</label>
+            </div>
+
             <div className="w-full pt-6 px-12">
               <button
-                type="submit"
                 className="font-semibold bg-yellow-500 p-3 rounded-3xl w-full h-full hover:bg-yellow-600"
+                type="submit"
+                title={isLoginMode ? "Login" : "Create account"}
               >
                 {" "}
-                {!isLogin ? "Create account" : "Login"}
+                {isLoginMode ? "Login" : "Create account"}
               </button>
             </div>
           </form>
 
           <div className="w-full py-3 px-12">
             <p className="mx-auto text-center mt-3 text-gray-400">
-              {isLogin ? "Don't" : "Already"} have an account?{" "}
+              {isLoginMode ? "Don't" : "Already"} have an account?{" "}
               <button
                 className="text-md font-semibold text-yellow-700 hover:text-yellow-500"
                 type="button"
+                title={isLoginMode ? "Sign-up" : "Login"}
                 onClick={switchModeHandler}
               >
-                {isLogin ? "Sign-up" : "Login"}
+                {isLoginMode ? "Sign-up" : "Login"}
               </button>
+              <button onClick={logInfo}>logInfo</button>
             </p>
           </div>
         </div>

@@ -29,8 +29,9 @@ const AppBar = ({
   const loginHandler = () => {
     setIsLoggedIn(!isLoggedIn);
   };
-
-  // const [isMounted, setIsMounted] = useState(false);
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
     <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
@@ -46,25 +47,15 @@ const AppBar = ({
       <SearchBar />
       <nav className={classes.nav}>
         <ul>
-          <li title="Form">
-            <Link to="/form">Form</Link>
-          </li>
           <li title="Auth">
             <Link to="/auth">Auth</Link>
           </li>
         </ul>
         <ul>
           <li>
-            {/* <ThemeContext.Consumer>
-              {({ changeTheme }) => ( */}
             <button
               title="theme"
               onClick={toggleTheme}
-              // onClick={() => {
-              //   setDarkMode(!darkMode);
-              //   toggleTheme();
-              //   // changeTheme(darkMode ? themes.light : themes.dark);
-              // }}
             >
               {darkMode ? (
                 <Light className={`${sty1}`} />
@@ -72,8 +63,6 @@ const AppBar = ({
                 <Dark className={`${sty1}`} />
               )}
             </button>
-            {/* )}
-            </ThemeContext.Consumer> */}
           </li>
         </ul>
         <ul>
@@ -102,14 +91,9 @@ const AppBar = ({
                     <Login className={`${sty1}`} />
                   </Link>
                 </button>
-                <button title="Signup" onClick={loginHandler}>
-                  <Link to="/auth">
-                    <strong>Signup</strong>
-                  </Link>
-                </button>
               </>
             ) : (
-              <button title="Logout" onClick={loginHandler}>
+              <button title="Logout" onClick={logoutHandler}>
                 <Logout className={`${sty1}`} />
               </button>
             )}

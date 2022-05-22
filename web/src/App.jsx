@@ -13,14 +13,11 @@ import { useState } from "react";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [theme, setTheme] = useState("light");
   const [showLabel, setShowLabel] = useState(true);
 
   const toggleTheme = () => {
-    // if (darkMode) {
-    //   setTheme(theme === "light" ? "dark" : "light");
-    //   setDarkMode(theme === "light" ? false : true);
-    // }
     if (darkMode) {
       setDarkMode(false);
       setTheme("light");
@@ -43,23 +40,19 @@ function App() {
         darkMode={darkMode}
         toggleTheme={toggleTheme}
         toggleLabelMenu={toggleLabelMenu}
+        setIsLoggedIn={setIsLoggedIn}
+        isLoggedIn={isLoggedIn}
       >
         <Switch>
-          <Route path="/" exact>
-            <HomePage showLabel={showLabel} />
-          </Route>
-          <Route path="/auth">
-            <AuthPage />
-          </Route>
-          <Route path="/form">
-            <AuthForm />
-          </Route>
-          <Route path="/dev">
-            <DevPage />
-          </Route>
-          <Route path="*">
-            <Redirect to="/" />
-          </Route>
+          {isLoggedIn && <Route path="/" exact><HomePage showLabel={showLabel} /></Route>}
+          {isLoggedIn && <Route path="/auth" exact><Redirect to="/dev" /></Route>}
+
+          <Route path="/dev"><DevPage /></Route>
+
+          {!isLoggedIn && <Route path="/auth">
+            <AuthPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+          </Route>}
+          {!isLoggedIn && <Route path="*"><Redirect to="/auth" /></Route>}
         </Switch>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

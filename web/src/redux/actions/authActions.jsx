@@ -1,6 +1,26 @@
 import { authActions } from "../../constants/actionTypes";
 import * as api from "../../api";
 
+const registerUserRequest = () => {
+  return {
+    type: authActions.REGISTER_REQUEST,
+  };
+};
+
+const registerUserSuccess = (user) => {
+  return {
+    type: authActions.REGISTER_SUCCESS,
+    payload: user,
+  };
+};
+
+const registerUserFailure = (error) => {
+  return {
+    type: authActions.REGISTER_FAILURE,
+    payload: error,
+  };
+};
+
 const setToken = (token) => {
   localStorage.setItem("token", token);
   localStorage.setItem("lastLoginTime", new Date(Date.now()).getTime());
@@ -26,10 +46,7 @@ export const signupUser =
     const body = JSON.stringify({
       query: `
         mutation{ 
-          createUser(userCreateInput:{
-            email: "${email}"
-            password: "${password}"
-          }){
+          createUser(userCreateInput:{email: "${email}", password: "${password}"}){
             _id
             email
             createdNotes{
@@ -44,18 +61,20 @@ export const signupUser =
     });
 
     try {
+      dispatch(registerUserRequest());
       const response = await api.registerUser(body);
       console.log(response);
 
-      setToken(response.headers.get("Authorization"));
-
-      dispatch({
-        type: authActions.REGISTER_SUCCESS,
-        payload: response.data.data,
-      });
+      // setToken(response.headers.get("Authorization"));
+      dispatch(registerUserSuccess(response.data.data));
+      // dispatch({
+      //   type: authActions.REGISTER_SUCCESS,
+      //   payload: response.data,
+      // });
     } catch (error) {
       console.log(error);
-      dispatch({ type: authActions.REGISTER_FAIL });
+      // dispatch({ type: authActions.REGISTER_FAILURE });
+      dispatch(registerUserFailure(error));
     }
   };
 
@@ -65,10 +84,7 @@ export const login =
     const body = JSON.stringify({
       query: `
         query{ 
-          login(
-            email: "${email}",
-            password: "${password}"
-          ){
+          login(email: "${email}",password: "${password}"){
             userId
             token
             tokenExpirationTime
@@ -78,10 +94,10 @@ export const login =
     });
 
     try {
-      const response = await api.loginUserFunc(body);
+      const response = await api.loginUser(body);
       console.log(response);
 
-      setToken(response.headers.get("Authorization"));
+      // setToken(response.headers.get("Authorization"));
 
       dispatch({
         type: authActions.LOGIN_SUCCESS,
@@ -95,8 +111,8 @@ export const login =
 
 export const logout = () => async (dispatch) => {
   try {
-    const response = await api.logoutUserFunc(body);
-    console.log(response);
+    // const response = await api.logoutUserFunc(body);
+    // console.log(response);
 
     dispatch({ type: authActions.LOGOUT_SUCCESS });
   } catch (error) {
@@ -106,6 +122,8 @@ export const logout = () => async (dispatch) => {
 };
 
 export const checkAuth = () => async (dispatch) => {
+  const body = JSON.stringify({});
+
   const customHeader = {
     headers: {
       "Content-Type": "application/json",

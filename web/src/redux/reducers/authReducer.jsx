@@ -4,9 +4,10 @@ const initialState = {
   loading: true,
   authChecked: false,
   isAuthenticated: null,
-  loggedIn: false,
+  isLoggedIn: false,
   user: null,
   currentUser: {},
+  error: ``,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -23,12 +24,13 @@ const authReducer = (state = initialState, action) => {
     case authActions.AUTH_SUCCESS:
     case authActions.AUTHENTICATED:
       return {
-        loading: true,
+        loading: false,
         authChecked: true,
         isAuthenticated: true,
-        loggedIn: true,
-        currentUser: action.payload,
+        isLoggedIn: true,
         user: action.payload,
+        currentUser: action.payload,
+        error: "",
       };
     case authActions.REGISTER_FAILURE:
     case authActions.LOGIN_FAILURE:
@@ -38,9 +40,10 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         authChecked: true,
         isAuthenticated: false,
-        loggedIn: false,
-        currentUser: {},
+        isLoggedIn: false,
         user: null,
+        currentUser: {},
+        error: action.payload,
       };
     default:
       return state;
