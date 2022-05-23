@@ -66,7 +66,7 @@ export const signupUser =
       console.log(response);
 
       // setToken(response.headers.get("Authorization"));
-      dispatch(registerUserSuccess(response.data.data));
+      dispatch(registerUserSuccess(response.data));
       // dispatch({
       //   type: authActions.REGISTER_SUCCESS,
       //   payload: response.data,
@@ -105,7 +105,7 @@ export const login =
       });
     } catch (error) {
       console.log(error);
-      dispatch({ type: authActions.LOGIN_FAIL });
+      dispatch({ type: authActions.LOGIN_FAILURE });
     }
   };
 
@@ -114,6 +114,7 @@ export const logout = () => async (dispatch) => {
     // const response = await api.logoutUserFunc(body);
     // console.log(response);
 
+    // deleteToken();
     dispatch({ type: authActions.LOGOUT_SUCCESS });
   } catch (error) {
     console.log(error);
@@ -132,6 +133,7 @@ export const checkAuth = () => async (dispatch) => {
   };
 
   try {
+    dispatch({ type: authActions.AUTH_REQUEST });
     const response = api.checkAuth(body, customHeader);
     console.log(response);
 
@@ -139,9 +141,9 @@ export const checkAuth = () => async (dispatch) => {
       return response.data.JSON();
     }
 
-    dispatch({ type: authActions.AUTHENTICATED, payload: response.data.data });
+    dispatch({ type: authActions.AUTH_SUCCESS, payload: response.data.data });
   } catch (error) {
-    dispatch({ type: authActions.NOT_AUTHENTICATED });
+    dispatch({ type: authActions.AUTH_FAILURE });
     console.log(error);
   }
 };

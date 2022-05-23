@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 import { signupUser, login } from "../../redux/actions/authActions";
 
 const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
@@ -36,11 +38,12 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
     //   dipatch action
     if (isLoginMode) {
       dispatch(login(credential));
-      console.log("User Login", credential);
+      console.log("User Login:", credential);
     } else if (!isLoginMode) {
       dispatch(signupUser(credential));
-      console.log("User Sign-up", credential);
+      console.log("User Sign-up:", credential);
     }
+    <Redirect to="/" />;
   };
 
   return (

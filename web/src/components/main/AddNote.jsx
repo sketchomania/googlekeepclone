@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-
-// import Card from "../UI/Card";
-// import Button from "../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
 
-// import classes from "./AddNote.module.css";
 import { createNote, updateNote } from "../../redux/actions/noteActions";
 
 const AddNote = ({ currentId, setCurrentId }) => {
@@ -67,7 +63,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
   return (
     <>
       <div className="my-8 p-2 border border-green-400 flex items-center">
-        {/* <Card className={classes.input}> */}
         <form
           className="w-144 p-2 h-full flex border border-orange-400"
           onSubmit={submitHandler}
@@ -100,7 +95,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
                 value={noteData.description}
                 onChange={(e) => inputchangeHandler(e)}
                 // onChange={(e) => {
-                  // setNoteData({ ...noteData, description: e.target.value });
+                // setNoteData({ ...noteData, description: e.target.value });
                 // }}
               ></textarea>
             </p>
@@ -139,7 +134,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
             </p>
           </div>
         </form>
-        {/* </Card> */}
       </div>
     </>
   );

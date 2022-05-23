@@ -22,7 +22,6 @@ const authReducer = (state = initialState, action) => {
     case authActions.REGISTER_SUCCESS:
     case authActions.LOGIN_SUCCESS:
     case authActions.AUTH_SUCCESS:
-    case authActions.AUTHENTICATED:
       return {
         loading: false,
         authChecked: true,
@@ -30,12 +29,11 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: action.payload,
         currentUser: action.payload,
-        error: "",
+        error: action.payload.errors,
       };
     case authActions.REGISTER_FAILURE:
     case authActions.LOGIN_FAILURE:
     case authActions.AUTH_FAILURE:
-    case authActions.NOT_AUTHENTICATED:
       return {
         loading: false,
         authChecked: true,
@@ -43,7 +41,7 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         user: null,
         currentUser: {},
-        error: action.payload,
+        error: action.payload.error,
       };
     default:
       return state;

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { fetchNotes } from "../../redux/actions/noteActions";
-// import classes from "./NoteArea.module.css";
 import AddNote from "./AddNote";
 import Notes from "../notes/Notes";
 import Button from "../UI/Button";
@@ -34,26 +33,20 @@ const MainArea = () => {
         errorHandler();
       }
     };
-    // if (err != null) {
-      window.addEventListener("keydown", escKeyPressHandler);
-      return () => {
-        window.removeEventListener("keydown", escKeyPressHandler);
-      };
-    // }
+    window.addEventListener("keydown", escKeyPressHandler);
+    return () => {
+      window.removeEventListener("keydown", escKeyPressHandler);
+    };
   }, [currentId, dispatch]);
 
   return (
     <div className="grow w-full border-2 border-amber-700">
-      <h4>Main Area for note only</h4>
+      <h4 className="text-center">Main Area for note only</h4>
       {err && (
         <ErrorModal
-          // title={err.title}
-          // message={err.message}
-          // onConfirm={errorHandler}
-          
-          // onKeyPress={(e) => {
-          //   escKeyPressHandler(e);
-          // }}
+          title={err.title}
+          message={err.message}
+          onConfirm={errorHandler}
         />
       )}
       <Button onClick={showModal}>Show modal</Button>
