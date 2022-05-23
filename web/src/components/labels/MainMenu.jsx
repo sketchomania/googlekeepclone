@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { fetchLabels } from "../../redux/actions/labelActions";
-// import classes from "./MainMenu.module.css";
 import AddLabel from "./AddLabel";
 import Label from "./label/Label";
 import Labels from "./Labels";
 
 const MainMenu = ({ showLabel }) => {
-  const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   const sty1 = showLabel ? "w-72" : "w-24";
 
   useEffect(() => {
     dispatch(fetchLabels());
-  }, [currentId, dispatch]);
+  }, [dispatch]);
 
   return (
     <>
@@ -31,9 +29,9 @@ const MainMenu = ({ showLabel }) => {
             <h6>Labels</h6>
             <h6>Edit</h6>
           </div>
-          <AddLabel currentId={currentId} setCurrentId={setCurrentId} />
-          <Label name={"👇labels"} showLabel={showLabel} />
-          <Labels setCurrentId={setCurrentId} showLabel={showLabel} />
+          <AddLabel />
+          <Label name={"👇labels from DB"} showLabel={showLabel} />
+          <Labels showLabel={showLabel} />
           <Label name={"--------------"} showLabel={showLabel} />
           <Label name={"Default Labels Starts"} showLabel={showLabel} />
           <Label name={"1"} showLabel={showLabel} />
@@ -69,5 +67,3 @@ const MainMenu = ({ showLabel }) => {
 };
 
 export default MainMenu;
-// min-h-screen   min-height: 100vh;
-// h-screen       height: 100vh;

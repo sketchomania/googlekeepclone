@@ -2,7 +2,6 @@ import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
 import Title from "./Title";
 import Content from "./Content";
-// import classes from "./Note.module.css";
 
 const Note = (props) => {
   return (

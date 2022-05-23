@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { BrowserRouter } from "react-router-dom";
 
-// import classes from "./Layout.module.css";
 import AppBar from "../appbar/AppBar";
 
 const Layout = (props) => {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createLabel, updateLabel } from "../../redux/actions/labelActions";
 
-const AddLabel = ({ currentId, setCurrentId }) => {
+const AddLabel = ({ currentId }) => {
   const [labelData, setLabelData] = useState({
     name: "",
   });
@@ -30,7 +30,7 @@ const AddLabel = ({ currentId, setCurrentId }) => {
   };
 
   const clear = () => {
-    setCurrentId(null);
+    // setCurrentId(null);
     setLabelData({ name: "" });
   };
 

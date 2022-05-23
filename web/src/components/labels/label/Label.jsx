@@ -1,4 +1,3 @@
-// import classes from "./Label.module.css";
 import { ReactComponent as Bulb } from "../../../icons/lightbulb_black_24dp.svg";
 import { ReactComponent as Reminder } from "../../../icons/notifications_black_24dp.svg";
 import { ReactComponent as Label } from "../../../icons/label_black_24dp.svg";

@@ -10,7 +10,7 @@ import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
 import { ReactComponent as Account } from "../../icons/account_circle_black_24dp.svg";
 import { ReactComponent as Login } from "../../icons/login_black_24dp.svg";
 import { ReactComponent as Logout } from "../../icons/logout_black_24dp.svg";
-import classes from "./AppBar.module.css";
+// import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
 
 const AppBar = ({
@@ -22,6 +22,7 @@ const AppBar = ({
 }) => {
   const logo = (
     <img
+      className="h-12"
       src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
       alt="logo"
     />
@@ -35,28 +36,27 @@ const AppBar = ({
 
   return (
     <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
-      <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
+      <div className={`${container}`}>
+        <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
+      </div>
       {/* on click show label list  */}
       <Link to="/" title="Google keep clone" style={{ textDecoration: "none" }}>
-        <div className={classes.logo}>
+        <div className={`${container}`}>
           {logo}
           <h3>Keep</h3>
         </div>
       </Link>
       {/* create a component for lable menu */}
       <SearchBar />
-      <nav className={classes.nav}>
-        <ul>
+      <nav className={`${container}`}>
+        <ul className={`${ulSty}`}>
           <li title="Auth">
             <Link to="/auth">Auth</Link>
           </li>
         </ul>
-        <ul>
+        <ul className={`${ulSty}`}>
           <li>
-            <button
-              title="theme"
-              onClick={toggleTheme}
-            >
+            <button title="theme" onClick={toggleTheme}>
               {darkMode ? (
                 <Light className={`${sty1}`} />
               ) : (
@@ -65,7 +65,7 @@ const AppBar = ({
             </button>
           </li>
         </ul>
-        <ul>
+        <ul className={`${ulSty}`}>
           <li>
             <button title="view" onClick={toggleTheme}>
               {darkMode ? (
@@ -82,7 +82,7 @@ const AppBar = ({
             <Account className={`${sty1}`} />
           </li>
         </ul>
-        <ul>
+        <ul className={`${ulSty}`}>
           <li>
             {!isLoggedIn ? (
               <>
@@ -104,6 +104,8 @@ const AppBar = ({
   );
 };
 
-const sty1 = "stroke-2 p-1.5 h-10 w-10 hover:bg-gray-400 hover:rounded-full";
+const ulSty = "list-none flex m-0 p-0";
+const container = "text-base text-white flex items-center justify-center m-2";
+const sty1 = "stroke-2 p-1.5 h-11 w-11 hover:bg-gray-400 hover:rounded-full";
 
 export default AppBar;

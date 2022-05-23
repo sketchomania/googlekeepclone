@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import Label from "./label/Label";
 
-const Labels = ({ setCurrentId, showLabel }) => {
+const Labels = ({ showLabel }) => {
   // const stateObj = useSelector((state) => state);
   // console.log(stateObj);
   const labels = useSelector((state) => state.labelReducer.labels);
@@ -16,11 +16,9 @@ const Labels = ({ setCurrentId, showLabel }) => {
 
       {labels.map((label) => (
         <div key={label._id}>
-          {console.log(label.name)}
           <Label
             label={label}
             name={label.name}
-            setCurrentId={setCurrentId}
             showLabel={showLabel}
           />
         </div>

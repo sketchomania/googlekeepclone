@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import classes from "./SearchBar.module.css";
 import { ReactComponent as Search } from "../../icons/search_black_24dp.svg";
 import { ReactComponent as Close } from "../../icons/close_black_24dp.svg";
 
