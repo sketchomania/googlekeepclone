@@ -14,7 +14,7 @@ const Layout = (props) => {
           setIsLoggedIn={props.setIsLoggedIn}
           isLoggedIn={props.isLoggedIn}
         />
-        <main className="bg-white dark:bg-gray-700 m-12 w-11/12">
+        <main className="bg-white dark:bg-gray-700 w-full">
           {props.children}
         </main>
       </BrowserRouter>

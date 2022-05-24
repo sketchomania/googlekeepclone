@@ -8,7 +8,7 @@ import Labels from "./Labels";
 
 const MainMenu = ({ showLabel }) => {
   const dispatch = useDispatch();
-  const sty1 = showLabel ? "w-72" : "w-24";
+  const sty1 = showLabel ? "w-96" : "w-20";
 
   useEffect(() => {
     dispatch(fetchLabels());
@@ -17,7 +17,7 @@ const MainMenu = ({ showLabel }) => {
   return (
     <>
       <div
-        className={`${sty1} h-screen overflow-y-scroll overflow-x-hidden scroll-smooth border border-red-800`}
+        className={`${sty1} h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm border border-red-800`}
       >
         <p>Main menu (labels)</p>
         <div>

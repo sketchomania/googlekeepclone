@@ -18,18 +18,20 @@ const Notes = () => {
   // }, [dispatch]);
 
   return (
-    <div className="flex items-center justify-center flex-wrap w-full border-2 border-cyan-500">
-      <p>Notes component</p>
-      <br />
-      {/* its working  and if it's not working just comment out the notes.map part and refresh */}
-      {console.log(notes)}
+    <>
+      <p className="text-center">Notes component</p>
+      <div className="flex items-center justify-center flex-wrap w-full border-2 border-cyan-500">
+        <br />
+        {/* its working  and if it's not working just comment out the notes.map part and refresh */}
+        {console.log(notes)}
 
-      {notes.map((note) => (
-        <div key={note._id}>
-          <Note note={note} />
-        </div>
-      ))}
-    </div>
+        {notes.map((note) => (
+          <div key={note._id}>
+            <Note note={note} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

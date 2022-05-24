@@ -8,7 +8,7 @@ import { ReactComponent as Person } from "../../icons/person_add_alt_black_24dp.
 import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 
-const AtionBar = () => {
+const AtionBar = (props) => {
   return (
     <div className="flex border border-red-900 justify-between p-0.5">
       <div className="flex">
@@ -31,8 +31,11 @@ const AtionBar = () => {
           <Check className={`${sty1}`} />
         </IconHolder>
       </div>
-      <div className="border border-red-700 flex">
-        <button className="font-bold rounded-md w-16 p-0.5 hover:bg-gray-300">
+      <div className="border border-red-600 flex">
+        <button
+          className="font-bold rounded-md w-16 p-0.5 hover:bg-gray-300"
+          onClick={props.onConfirm}
+        >
           Close
         </button>
       </div>

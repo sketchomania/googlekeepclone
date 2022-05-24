@@ -43,7 +43,7 @@ const AppBar = ({
       <Link to="/" title="Google keep clone" style={{ textDecoration: "none" }}>
         <div className={`${container}`}>
           {logo}
-          <h3>Keep</h3>
+          <h3 className="font-medium text-xl">Keep</h3>
         </div>
       </Link>
       {/* create a component for lable menu */}

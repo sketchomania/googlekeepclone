@@ -39,8 +39,9 @@ const SearchBar = () => {
       <input
         className="bg-inherit w-4/5 h-6 p-0 mx-4 my-0"
         id="search"
+        name="search"
         type="text"
-        placeholder="search"
+        placeholder="Search"
         autoComplete="off"
         ref={searchInputRef}
         onClick={expandHandler}
