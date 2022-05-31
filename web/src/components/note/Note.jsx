@@ -38,6 +38,7 @@ const Note = (props) => {
       )}
       <div
         className="border max-w-2xl w-60 max-h-144 overflow-y-scroll overflow-x-hidden scroll-smooth scroll-2 scrollbar-sm m-1 p-1 rounded-2xl hover:bg-gray-200"
+        // onMouseOver={(e) => {console.log("mouse-over")}}
         onClick={() => {
           console.log("Note clicked:", props.note._id);
         }}

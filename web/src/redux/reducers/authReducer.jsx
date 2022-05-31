@@ -6,7 +6,7 @@ const initialState = {
   isAuthenticated: null,
   isLoggedIn: false,
   user: null,
-  currentUser: {},
+  token:null,
   error: ``,
 };
 
@@ -28,7 +28,7 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: true,
         isLoggedIn: true,
         user: action.payload,
-        currentUser: action.payload,
+        token: action.payload.login.token,
         error: action.payload.errors,
       };
     case authActions.REGISTER_FAILURE:
@@ -40,7 +40,7 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         isLoggedIn: false,
         user: null,
-        currentUser: {},
+        token:null,
         error: action.payload.error,
       };
     default:

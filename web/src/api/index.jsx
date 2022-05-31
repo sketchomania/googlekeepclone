@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urQl = "http://localhost:5000/graphql";
+const urQl = process.env.REACT_APP_API;
 
 const headers = {
   headers: {

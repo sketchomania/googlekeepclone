@@ -74,11 +74,11 @@ function App() {
           )}
         </Switch>
         {/* <header className="App-header"> */}
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          {/* <Icon className="icon" name="logo" /> */}
-          {/* <Icon className="icon" name="star" /> */}
-          {/* <Icon className="icon" name="unicorn" /> */}
-          {/* <img src={menu} className="App-logo" alt="logo" /> */}
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        {/* <Icon className="icon" name="logo" /> */}
+        {/* <Icon className="icon" name="star" /> */}
+        {/* <Icon className="icon" name="unicorn" /> */}
+        {/* <img src={menu} className="App-logo" alt="logo" /> */}
         {/* </header> */}
       </Layout>
     </div>
