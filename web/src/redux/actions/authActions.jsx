@@ -67,6 +67,7 @@ export const signupUser =
 
       // setToken(response.headers.get("Authorization"));
       dispatch(registerUserSuccess(response.data));
+
       // dispatch({
       //   type: authActions.REGISTER_SUCCESS,
       //   payload: response.data,
@@ -98,6 +99,8 @@ export const login =
       console.log(response);
 
       // setToken(response.headers.get("Authorization"));
+      // better approach
+      setToken(response.data.data.login.token);
 
       dispatch({
         type: authActions.LOGIN_SUCCESS,
@@ -114,16 +117,17 @@ export const logout = () => async (dispatch) => {
     // const response = await api.logoutUserFunc(body);
     // console.log(response);
 
-    // deleteToken();
+    deleteToken();
     dispatch({ type: authActions.LOGOUT_SUCCESS });
   } catch (error) {
-    console.log(error);
+    deleteToken();
     dispatch({ type: authActions.LOGOUT_SUCCESS });
+    console.log(error);
   }
 };
 
 export const checkAuth = () => async (dispatch) => {
-  const body = JSON.stringify({});
+  // const body = JSON.stringify({});
 
   const customHeader = {
     headers: {
@@ -134,7 +138,8 @@ export const checkAuth = () => async (dispatch) => {
 
   try {
     dispatch({ type: authActions.AUTH_REQUEST });
-    const response = api.checkAuth(body, customHeader);
+    // const response = api.checkAuth(body, customHeader);
+    const response = api.checkAuth(customHeader);
     console.log(response);
 
     if (response.ok) {

@@ -19,5 +19,5 @@ export const updateLabel = (body) => axios.post(urQl, body, headers);
 
 export const registerUser = (body) => axios.post(urQl, body, headers);
 export const loginUser = (body) => axios.post(urQl, body, headers);
-export const checkAuth = (body, customHeader) =>
-  axios.post(urQl, body, customHeader);
+// export const checkAuth = (body, customHeader) => axios.post(urQl, body, customHeader);
+export const checkAuth = (customHeader) => axios.post(urQl, customHeader);

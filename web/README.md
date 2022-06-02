@@ -2,12 +2,22 @@
 
 ## Welcome to Google keep clone project
 
-## Fronted with React and Tailwind
+## Tech Stack
 
-## Redux managed workflow
+- React
+- Tailwind
+- Redux managed workflow
+
+## Features
+
+- Login & Signup
+- create & update Note
+- User Authentcation with jwt
 
 ### TODO next
 
-- add a modal to display note
-- add dotenv to the fronted
+- styling note card and model
+- note color backdrop
+- note add label backdrop
+- add a repolink to auth form or about page
 - merge to main

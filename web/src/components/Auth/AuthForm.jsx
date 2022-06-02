@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { signupUser, login } from "../../redux/actions/authActions";
@@ -23,8 +23,9 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
     console.log("isLoginMode is now:", isLoginMode);
   };
 
-  const authReducer = useSelector((state) => state.authReducer);
-  console.log(authReducer);
+  // don't need authReducer here
+  // const authReducer = useSelector((state) => state.authReducer);
+  // console.log(authReducer);
 
   const inputchangeHandler = (e) => {
     setCredential((prevState) => ({

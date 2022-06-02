@@ -1,4 +1,7 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { logout } from "../../redux/actions/authActions";
 // import { ThemeContext, themes } from "../../context/ThemeContext";
 
 import { ReactComponent as Menu } from "../../icons/menu_black_24dp.svg";
@@ -20,6 +23,7 @@ const AppBar = ({
   toggleTheme,
   toggleLabelMenu,
 }) => {
+  const dispatch = useDispatch();
   const logo = (
     <img
       className="h-12"
@@ -31,6 +35,10 @@ const AppBar = ({
     setIsLoggedIn(!isLoggedIn);
   };
   const logoutHandler = () => {
+    dispatch(logout());
+    // <Redirect to="/auth" />;
+
+    // not needed setIsLoggedIn(false);
     setIsLoggedIn(false);
   };
 
@@ -50,8 +58,8 @@ const AppBar = ({
       <SearchBar />
       <nav className={`${container}`}>
         <ul className={`${ulSty}`}>
-          <li title="Auth">
-            <Link to="/auth">Auth</Link>
+          <li title="Dev">
+            <Link to="/dev">Dev</Link>
           </li>
         </ul>
         <ul className={`${ulSty}`}>
