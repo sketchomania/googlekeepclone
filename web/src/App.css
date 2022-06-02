@@ -15,7 +15,7 @@
 
 .App-header {
   margin-top: 5rem;
-  background-color: #85aaf3;
+  background-color: #b8ad1c;
   min-height: auto;
   display: flex;
   flex-direction: row;
@@ -25,10 +25,6 @@
   font-size: calc(10px + 2vmin);
   color: rgb(220, 190, 94);
   border: 2px solid #147900;
-}
-
-.App-link {
-  color: #147900;
 }
 
 @keyframes App-logo-spin {

@@ -15,7 +15,7 @@ const authQueries = {
     }
     const token = jwt.sign(
       { userId: user.id, email: user.email },
-      "someextremely-longsupersecretkey",
+      process.env.JWT_SECRET,
       {
         expiresIn: "1h",
       }

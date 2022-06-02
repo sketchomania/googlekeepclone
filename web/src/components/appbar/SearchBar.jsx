@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import classes from "./SearchBar.module.css";
 import { ReactComponent as Search } from "../../icons/search_black_24dp.svg";
 import { ReactComponent as Close } from "../../icons/close_black_24dp.svg";
 
@@ -40,9 +39,10 @@ const SearchBar = () => {
       <input
         className="bg-inherit w-4/5 h-6 p-0 mx-4 my-0"
         id="search"
+        name="search"
         type="text"
-        placeholder="search"
-        autocomplete="off"
+        placeholder="Search"
+        autoComplete="off"
         ref={searchInputRef}
         onClick={expandHandler}
         onChange={searchHandler}

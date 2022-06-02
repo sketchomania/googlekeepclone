@@ -13,7 +13,7 @@ export default (req, res, next) => {
   }
   let decodedToken;
   try {
-    decodedToken = jwt.verify(token, "someextremely-longsupersecretkey");
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
   } catch (err) {
     req.isAuth = false;
     return next();

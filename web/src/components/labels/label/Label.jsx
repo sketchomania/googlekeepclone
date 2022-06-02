@@ -1,4 +1,3 @@
-// import classes from "./Label.module.css";
 import { ReactComponent as Bulb } from "../../../icons/lightbulb_black_24dp.svg";
 import { ReactComponent as Reminder } from "../../../icons/notifications_black_24dp.svg";
 import { ReactComponent as Label } from "../../../icons/label_black_24dp.svg";
@@ -7,10 +6,10 @@ import { ReactComponent as Archive } from "../../../icons/archive_black_24dp.svg
 import { ReactComponent as Bin } from "../../../icons/bin_black_24dp.svg";
 
 // const label = (props, { label, setCurrnetId }) => {
-const label = ({ label,name, setCurrnetId,showLabel }) => {
+const label = (props) => {
   return (
     <>
-      <div className="flex items-center m-2 ml-0 p-1 bg-gray-200 rounded-r-3xl">
+      <div className="flex items-center p-1 hover:bg-gray-200 rounded-r-3xl">
         <div className={`${sty2}`}>
           {/* {props.name === "Archive" ? (
             <Archive className={`${sty1}`} />
@@ -20,7 +19,7 @@ const label = ({ label,name, setCurrnetId,showLabel }) => {
           <Label className={`${sty1}`} />
         </div>
         {/* {console.log(label)} */}
-        {showLabel &&<div><p>{name}</p></div>}
+        {props.showLabel &&<div><p>{props.name}</p></div>}
         {/* <p>{props.name ? props.name : "from database"}</p> */}
       </div>
     </>

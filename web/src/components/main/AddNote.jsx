@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-
-// import Card from "../UI/Card";
-// import Button from "../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
 
-// import classes from "./AddNote.module.css";
-import { createNote, updateNote } from "../../actions/notes";
+import { createNote, updateNote } from "../../redux/actions/noteActions";
 
 const AddNote = ({ currentId, setCurrentId }) => {
   const [noteData, setNoteData] = useState({
@@ -57,10 +53,16 @@ const AddNote = ({ currentId, setCurrentId }) => {
     });
   };
 
+  const inputchangeHandler = (e) => {
+    setNoteData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <>
       <div className="my-8 p-2 border border-green-400 flex items-center">
-        {/* <Card className={classes.input}> */}
         <form
           className="w-144 p-2 h-full flex border border-orange-400"
           onSubmit={submitHandler}
@@ -75,34 +77,41 @@ const AddNote = ({ currentId, setCurrentId }) => {
                   type="text"
                   placeholder="Title"
                   value={noteData.title}
-                  onChange={(e) => {
-                    setNoteData({ ...noteData, title: e.target.value });
-                  }}
+                  onChange={(e) => inputchangeHandler(e)}
+                  // onChange={(e) => {
+                  //   setNoteData({ ...noteData, title: e.target.value });
+                  // }}
                 ></textarea>
               </p>
             )}
             <p className={`${para}`}>
               <textarea
                 className={`${text}`}
-                name="note-content"
+                id="description"
+                name="description"
+                type="description"
                 placeholder="Take a note..."
                 onClick={expandHandler}
                 value={noteData.description}
-                onChange={(e) => {
-                  setNoteData({ ...noteData, description: e.target.value });
-                }}
+                onChange={(e) => inputchangeHandler(e)}
+                // onChange={(e) => {
+                // setNoteData({ ...noteData, description: e.target.value });
+                // }}
               ></textarea>
             </p>
             {isExpanded && (
               <p className={`${para}`}>
                 <textarea
                   className={`${text}`}
-                  name="note-labels"
+                  id="labels"
+                  name="labels"
+                  type="text"
                   placeholder="Note labels..."
                   value={noteData.labels}
-                  onChange={(e) => {
-                    setNoteData({ ...noteData, labels: e.target.value });
-                  }}
+                  onChange={(e) => inputchangeHandler(e)}
+                  // onChange={(e) => {
+                  //   setNoteData({ ...noteData, labels: e.target.value });
+                  // }}
                 ></textarea>
               </p>
             )}
@@ -111,6 +120,9 @@ const AddNote = ({ currentId, setCurrentId }) => {
             <button
               className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
               type="submit"
+              onClick={() => {
+                console.log(noteData);
+              }}
             >
               Done
             </button>
@@ -122,7 +134,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
             </p>
           </div>
         </form>
-        {/* </Card> */}
       </div>
     </>
   );

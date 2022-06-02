@@ -1,24 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { getNotes } from "../../actions/notes";
-// import classes from "./NoteArea.module.css";
+import { fetchNotes } from "../../redux/actions/noteActions";
 import AddNote from "./AddNote";
 import Notes from "../notes/Notes";
 
 const MainArea = () => {
-  const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNotes());
-  }, [currentId, dispatch]);
-  
+    dispatch(fetchNotes());
+  }, [dispatch]);
+
   return (
-    <div className="grow w-full border-2 border-amber-700">
-      <h4>Main Area</h4>
-      <AddNote currentId={currentId} setCurrentId={setCurrentId} />
-      <Notes setCurrentId={setCurrentId} />
+    <div className="grow w-full border border-red-800 h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm">
+      <h4 className="text-center">Main Area for note only</h4>
+      <AddNote />
+      <Notes />
     </div>
   );
 };

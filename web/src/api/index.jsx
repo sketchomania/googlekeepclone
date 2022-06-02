@@ -1,12 +1,23 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/notes";
-const url2 = "http://localhost:5000/labels";
+const urQl = process.env.REACT_APP_API;
 
-export const fetchNotes = () => axios.get(url);
-export const createNote = (newNote) => axios.post(url, newNote);
-export const updateNote = (id, updatedNote) => axios.patch(`${url}/${id}`, updatedNote);
+const headers = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
-export const fetchLabels = () => axios.get(url2);
-export const createLabel = (newLabel) => axios.post(url2, newLabel);
-export const updateLabel = (id, updatedLabel) => axios.patch(`${url2}/${id}`, updatedLabel);
+export const fetchNotes = (body) => axios.post(urQl, body, headers);
+export const createNote = (body) => axios.post(urQl, body, headers);
+export const updateNote = (id, updatedNote) =>
+  axios.patch(`${urQl}/${id}`, updatedNote);
+
+export const fetchLabels = (body) => axios.post(urQl, body, headers);
+export const createLabel = (body) => axios.post(urQl, body, headers);
+export const updateLabel = (body) => axios.post(urQl, body, headers);
+
+export const registerUser = (body) => axios.post(urQl, body, headers);
+export const loginUser = (body) => axios.post(urQl, body, headers);
+// export const checkAuth = (body, customHeader) => axios.post(urQl, body, customHeader);
+export const checkAuth = (customHeader) => axios.post(urQl, customHeader);
