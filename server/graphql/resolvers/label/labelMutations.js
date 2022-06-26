@@ -9,7 +9,6 @@ const labelMutations = {
     }
     const label = new Label({
       name: args.labelCreateInput.name,
-      // assignedNotes: ["61fa759e6d93584d02453450", "624e41c0c16f2d7a8c4a2f9a"],
       creator: req.userId,
     });
     let createdLabel;

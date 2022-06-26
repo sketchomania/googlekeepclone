@@ -10,7 +10,6 @@ const noteMutations = {
     const note = new Note({
       title: args.noteCreateInput.title,
       description: args.noteCreateInput.description,
-      // labels: ["61d05f3104f2f5b7e6c5aa79"],
       creator: req.userId,
     });
     let createdNote;

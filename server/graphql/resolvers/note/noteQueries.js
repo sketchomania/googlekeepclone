@@ -1,8 +1,10 @@
+import Label from "../../../models/label.js";
 import Note from "../../../models/note.js";
+import User from "../../../models/user.js";
 import { transformNote } from "../merge.js";
 
 const noteQueries = {
-  notes: async (args, req) => {
+  notes: async () => {
     // if (!req.isAuth) {
     //   throw new Error("Unauthenticated");
     // }

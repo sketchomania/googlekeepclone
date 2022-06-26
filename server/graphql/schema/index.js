@@ -34,7 +34,7 @@ type User {
 }
 
 type AuthData {
- userId: ID!
+ user: User!
  token: String!
  tokenExpirationTime: Int!
 }
@@ -81,7 +81,7 @@ type RootMutation {
  updateLabel(id: ID!, labelUpdateInput: LabelUpdateInput): Label!
  deleteLabel(id: ID!): Boolean!
 
- createUser(userCreateInput: UserCreateInput): User
+ createUser(userCreateInput: UserCreateInput): AuthData!
 }
 
 schema {
@@ -91,3 +91,5 @@ schema {
 `);
 
 export default graphQLSchema;
+
+// user name add later on 
