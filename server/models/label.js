@@ -18,7 +18,6 @@ const labelSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  // pinned: { type: Boolean, default: false },
 });
 
 const Label = mongoose.model("Label", labelSchema);

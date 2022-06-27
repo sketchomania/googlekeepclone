@@ -41,6 +41,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() =>
-    app.listen(port, () => console.log(`Server running on port: ${port}`))
+    app.listen(port, () =>
+      console.log(`🚀 Server running at http://localhost:${port}/graphql`)
+    )
   )
   .catch((error) => console.log(error));
