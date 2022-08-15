@@ -26,7 +26,7 @@ const Note = (props) => {
 
   return (
     <>
-      {creating && <Backdrop />}
+      {creating && <Backdrop onCancel={modalCancelHandler} />}
       {creating && (
         <NoteModal
           note={props.note}
@@ -37,34 +37,46 @@ const Note = (props) => {
         </NoteModal>
       )}
       <div
-        className="border max-w-2xl w-60 max-h-144 overflow-y-scroll overflow-x-hidden scroll-smooth scroll-2 scrollbar-sm m-1 p-1 rounded-2xl hover:bg-gray-200"
+        className={`border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
+         overflow-x-hidden overflow-y-hidden`}
+        // className={
+        //   `border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
+        //  overflow-x-hidden ${
+        //    creating
+        //      ? `overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm`
+        //      : `overflow-y-hidden `
+        //  } `
+        // }
+
         // onMouseOver={(e) => {console.log("mouse-over")}}
-        onClick={() => {
-          console.log("Note clicked:", props.note._id);
-        }}
+        // onClick={() => {
+        //   console.log("Note clicked:", props.note._id);
+        // }}
+        onClick={startCreateEventHandler}
       >
-        <Button className="" onClick={startCreateEventHandler}>
+        {/* <Button
+          className=""
+          // onClick={startCreateEventHandler}
+        >
           show note
-        </Button>
-        <div className="border border-red-900 p-1.5">
+        </Button> */}
+        <div className="border border-red-900 p-1">
           {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
           <Title title={props.note.title} />
           <Content description={props.note.description} />
-          <p>{`ID: ${props.note._id}`}</p>
-          <p>{`Archived: ${props.note.Archived}`}</p>
-          <p>{`Background: ${props.note.background}`}</p>
-          <p>{`Deleted: ${props.note.deleted}`}</p>
-          <p>{`ListMode: ${props.note.listMode}`}</p>
-          <p>{`Pinned: ${props.note.pinned}`}</p>
-          <p>{`Selected: ${props.note.selected}`}</p>
-          <p>{`Created at: ${props.note.createdAt}`}</p>
-          <p>{`Updated at: ${props.note.updatedAt}`}</p>
-          <p>{`Creator: ${props.note.creator._id}`}</p>
-        </div>
-        <div className="">
+          <>
+            <p>{`ID: ${props.note._id}`}</p>
+            <p>{`Archived: ${props.note.Archived}`}</p>
+            <p>{`Background: ${props.note.background}`}</p>
+            <p>{`Deleted: ${props.note.deleted}`}</p>
+            <p>{`ListMode: ${props.note.listMode}`}</p>
+            <p>{`Pinned: ${props.note.pinned}`}</p>
+            <p>{`Selected: ${props.note.selected}`}</p>
+            <p>{`Created at: ${props.note.createdAt}`}</p>
+            <p>{`Updated at: ${props.note.updatedAt}`}</p>
+            <p>{`Creator: ${props.note.creator._id}`}</p>
+          </>
           <LabelBar labels={props.note.labels} />
-        </div>
-        <div className="">
           <ActionBar />
         </div>
       </div>

@@ -48,7 +48,7 @@ const AtionBar = (props) => {
 };
 
 const sty1 =
-  "stroke-2 p-1.5 h-8 w-8 border border-green-400 hover:bg-gray-300 hover:rounded-full";
-const sty2 = "px-2";
-
+  "stroke-2 p-1.5 h-8 w-8 hover:bg-gray-300 hover:rounded-full";
+  // border border-green-400
+const sty2 = "";
 export default AtionBar;

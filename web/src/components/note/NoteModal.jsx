@@ -94,9 +94,12 @@ const NoteModal = (props) => {
     <>
       <div className="fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full">
         <div
-          className="top-16 mx-auto relative bg-white shadow-3xl max-w-2xl w-144 h-auto m-1 p-1 rounded-2xl border border-indigo-600 dark:bg-gray-500"
+          className={`top-16 mx-auto relative bg-white shadow-3xl max-w-2xl w-144 
+          max-h-144 h-auto m-1 p-1 rounded-2xl border border-indigo-600 dark:bg-gray-500 
+          overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm
+          `}
           onClick={() => {
-            // console.log("NoteModaal clicked");
+            console.log("NoteModaal clicked");
           }}
         >
           <Button onClick={props.onCancel}>Cancel</Button>

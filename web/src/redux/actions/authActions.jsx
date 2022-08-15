@@ -47,15 +47,19 @@ export const signupUser =
       query: `
         mutation{ 
           createUser(userCreateInput:{email: "${email}", password: "${password}"}){
-            _id
-            email
-            createdNotes{
+            user{
               _id
+              email
+              password
+              createdNotes{
+                _id
+              }
+              createdLabels{
+                _id
+              }
             }
-            createdLabels{
-              _id
-            }
-            darkMode
+            token
+            tokenExpirationTime
           }
         }`,
     });
@@ -86,7 +90,17 @@ export const login =
       query: `
         query{ 
           login(email: "${email}",password: "${password}"){
-            userId
+            user{
+              _id
+              email
+              darkMode
+              createdNotes{
+                _id
+              }
+              createdLabels{
+                _id
+              }
+            }
             token
             tokenExpirationTime
           }
@@ -98,8 +112,6 @@ export const login =
       const response = await api.loginUser(body);
       console.log(response);
 
-      // setToken(response.headers.get("Authorization"));
-      // better approach
       setToken(response.data.data.login.token);
 
       dispatch({
