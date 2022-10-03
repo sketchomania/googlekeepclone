@@ -3,11 +3,11 @@ import { transformLabel } from "../merge.js";
 
 const labelQueries = {
   labels: async (req, res) => {
-    // if (!req.isAuth) {
-    //   throw new Error("Unauthenticated");
-    // }
+    if (!req.isAuth) {
+      throw new Error("Unauthenticated");
+    }
     try {
-      const labels = await Label.find();
+      const labels = await Label.find({ creator: req.userId });
       return labels.map((label) => {
         return transformLabel(label);
       });

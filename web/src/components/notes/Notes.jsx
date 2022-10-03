@@ -20,7 +20,7 @@ const Notes = () => {
   return (
     <>
       <p className="text-center">Notes component</p>
-      <div className="flex items-center justify-center flex-wrap w-full border-2 border-cyan-500">
+      <div className="flex items-center justify-center flex-wrap w-full border-1 border-cyan-500">
         <br />
         {/* its working  and if it's not working just comment out the notes.map part and refresh */}
         {console.log(notes)}

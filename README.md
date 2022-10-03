@@ -68,13 +68,16 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 # TODO
 
-## Priority
+## 📌 Priority
 
-- show data related to user only
+- ⭕CURR⭕ add note from frontend
+- ⭕ able to add data from frontend 
+- show data related to user only (almost done, got one error)
+- able to create note and label from frontend
 - edit note and save
-- CRUD label
-- show note modal when clicked on it (anywhere)
-- note modal close behavior
+- CRUD label and note
+- note modal close when clicked outside note modal (behavior)
+- docker integration
 
 ## documenting
 
@@ -136,6 +139,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 - { done }
   - show label when clicked on it
   - show label and notes from DB
+  - show note modal when clicked on it (anywhere)
 
 ## server related
 

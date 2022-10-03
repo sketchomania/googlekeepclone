@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import IconHolder from "../UI/IconHolder";
+import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg";
 import { createNote, updateNote } from "../../redux/actions/noteActions";
 
 const AddNote = ({ currentId, setCurrentId }) => {
@@ -31,7 +33,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Submit clicked");
+    console.log("🟢 Submit clicked");
 
     if (currentId) {
       dispatch(updateNote(currentId, noteData));
@@ -62,9 +64,9 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   return (
     <>
-      <div className="my-8 p-2 border border-green-400 flex items-center">
+      <div className="my-8 p-2 border border-green-400 flex items-center justify-center">
         <form
-          className="w-144 p-2 h-full flex border border-orange-400"
+          className="w-144 p-2 h-full flex border rounded-md "
           onSubmit={submitHandler}
         >
           <div className="flex-col w-full">
@@ -133,6 +135,9 @@ const AddNote = ({ currentId, setCurrentId }) => {
               Close
             </p>
           </div>
+          <IconHolder>
+            <CheckBox className="stroke-2 p-1.5 h-8 w-8 hover:bg-gray-300 hover:rounded-full" />
+          </IconHolder>
         </form>
       </div>
     </>
