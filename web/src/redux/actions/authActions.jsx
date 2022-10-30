@@ -110,7 +110,7 @@ export const login =
 
     try {
       const response = await api.loginUser(body);
-      console.log(response);
+      console.log("response (authActions)", response);
 
       setToken(response.data.data.login.token);
 

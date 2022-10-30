@@ -67,7 +67,7 @@ export const fetchNotes = () => async (dispatch) => {
 
 export const createNote = (note) => async (dispatch) => {
   try {
-    const { data } = await api.createNote(note);
+    const  data  = await api.createNote(note);
 
     dispatch({ type: noteActions.CREATE_NOTE, payload: data });
   } catch (error) {

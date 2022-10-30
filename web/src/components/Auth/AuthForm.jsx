@@ -15,12 +15,8 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
   });
 
   const switchModeHandler = () => {
-    // setIsLoggedIn(!isLoggedIn);
-    console.log("isLoginMode was:", isLoginMode);
     setIsLoginMode(!isLoginMode);
-  };
-  const logInfo = () => {
-    console.log("isLoginMode is now:", isLoginMode);
+    console.log("isLoginMode:", !isLoginMode);
   };
 
   // don't need authReducer here
@@ -167,7 +163,6 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
               >
                 {isLoginMode ? "Sign-up" : "Login"}
               </button>
-              <button onClick={logInfo}>logInfo</button>
             </p>
           </div>
         </div>
