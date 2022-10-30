@@ -1,19 +1,21 @@
+import { useContext } from "react";
 import { authActions } from "../../constants/actionTypes";
 import * as api from "../../api";
+import AuthContext from "../../context/AuthContext";
+
+
 
 const registerUserRequest = () => {
   return {
     type: authActions.REGISTER_REQUEST,
   };
 };
-
 const registerUserSuccess = (user) => {
   return {
     type: authActions.REGISTER_SUCCESS,
     payload: user,
   };
 };
-
 const registerUserFailure = (error) => {
   return {
     type: authActions.REGISTER_FAILURE,
@@ -31,7 +33,7 @@ const deleteToken = () => {
   localStorage.removeItem("lastLoginTime");
 };
 
-export const getToekn = () => {
+export const getToken = () => {
   const now = new Date(Date.now()).getTime();
   const timeAllowed = 1000 * 60 * 30;
   const timeSinceLastLogin = now - localStorage.getTime("lastLoginTime");
@@ -83,13 +85,12 @@ export const signupUser =
     }
   };
 
-export const login =
-  ({ email, password }) =>
-  async (dispatch) => {
-    const body = JSON.stringify({
-      query: `
-        query{ 
-          login(email: "${email}",password: "${password}"){
+export const login = (credential) => async (dispatch) => {
+  // const authContext = useContext(AuthContext);
+  const body = JSON.stringify({
+    query: `
+        query Login($email: String!, $password: String!) {
+          login(email: $email, password: $password) {
             user{
               _id
               email
@@ -106,23 +107,36 @@ export const login =
           }
         }
       `,
-    });
+    variables: {
+      email: credential.email,
+      password: credential.password,
+    },
+  });
 
-    try {
-      const response = await api.loginUser(body);
-      console.log("response (authActions)", response);
+  try {
+    const response = await api.loginUser(body);
+    console.log("response (authActions)", response);
 
-      setToken(response.data.data.login.token);
+    const responseData = response.data.data;
 
-      dispatch({
-        type: authActions.LOGIN_SUCCESS,
-        payload: response.data.data,
-      });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: authActions.LOGIN_FAILURE });
+    if (responseData.token) {
+      setToken(responseData.token);
+      // authContext.login(
+      //   responseData.token,
+      //   responseData.user._id,
+      //   responseData.tokenExpirationTime
+      // );
     }
-  };
+
+    dispatch({
+      type: authActions.LOGIN_SUCCESS,
+      payload: responseData,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: authActions.LOGIN_FAILURE });
+  }
+};
 
 export const logout = () => async (dispatch) => {
   try {
@@ -144,7 +158,7 @@ export const checkAuth = () => async (dispatch) => {
   const customHeader = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: getToekn(),
+      Authorization: getToken(),
     },
   };
 

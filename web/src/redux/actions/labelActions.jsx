@@ -42,14 +42,9 @@ export const fetchLabels = () => async (dispatch) => {
   try {
     dispatch(fetchLabelsRequest());
     const response = await api.fetchLabels(body);
-    console.log(response);
+    console.log("fetchLabels: ",response);
 
-    // dispatch(fetchLabelsSuccess(response.data.data));
     dispatch(fetchLabelsSuccess(response.data.data.labels));
-    // dispatch({
-    //   type: labelActions.FETCH_ALL_LABELS,
-    //   payload: response.data.data,
-    // });
   } catch (error) {
     console.log("Error :", error);
     dispatch(fetchLabelsFailure(error));

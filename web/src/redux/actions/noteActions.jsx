@@ -51,7 +51,7 @@ export const fetchNotes = () => async (dispatch) => {
   try {
     dispatch(fetchNotesRequest());
     const response = await api.fetchNotes(body);
-    console.log(response);
+    console.log("fetchNotes: ",response);
 
     // dispatch(fetchNotesSuccess(response.data.data));
     dispatch(fetchNotesSuccess(response.data.data.notes));
@@ -66,12 +66,38 @@ export const fetchNotes = () => async (dispatch) => {
 };
 
 export const createNote = (note) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation CreateNote($title: String!, $description: String!) {
+        createNote(noteCreateInput: {title: $title, description: $description}) {
+          _id
+          title
+          description
+          background
+          pinned
+          selected
+          listMode
+          archived
+          deleted
+          createdAt
+          updatedAt
+        }
+      }
+    `,
+    variables: {
+      title: note.title,
+      description: note.description,
+      color: note.color,
+      isPinned: note.isPinned,
+    },
+  };
+
   try {
-    const  data  = await api.createNote(note);
+    const data = await api.createNote(reqBody);
 
     dispatch({ type: noteActions.CREATE_NOTE, payload: data });
   } catch (error) {
-    console.log(error);
+    console.log("Error: ", error);
   }
 };
 
