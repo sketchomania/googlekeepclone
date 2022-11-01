@@ -1,8 +1,14 @@
 import axios from "axios";
+// import { useSelector } from "react-redux";
+import { getToken } from "../redux/actions/authActions";
 
 // const urQl = process.env.REACT_APP_API;
 const urQl = "http://localhost:5000/graphql";
-const token = "token_of_user";
+const token = localStorage.getItem("token");
+console.log("token from localStorage (api page) :", token);
+// const token = getToken();
+// console.log("token from getToken() (api page) :", token);
+// const auth = useSelector((state) => state.authReducer);
 
 const headers = {
   headers: {
@@ -30,5 +36,4 @@ export const updateLabel = (body) => axios.post(urQl, body, headers);
 export const registerUser = (body) => axios.post(urQl, body, header2);
 export const loginUser = (body) => axios.post(urQl, body, header2);
 // export const checkAuth = (body, customHeader) => axios.post(urQl, body, customHeader);
-export const checkAuth = (customHeader) => axios.post(urQl, customHeader);
-
+// export const checkAuth = (customHeader) => axios.post(urQl, customHeader);

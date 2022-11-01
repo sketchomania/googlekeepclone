@@ -1,9 +1,5 @@
-import { useContext } from "react";
 import { authActions } from "../../constants/actionTypes";
 import * as api from "../../api";
-import AuthContext from "../../context/AuthContext";
-
-
 
 const registerUserRequest = () => {
   return {
@@ -39,6 +35,8 @@ export const getToken = () => {
   const timeSinceLastLogin = now - localStorage.getTime("lastLoginTime");
   if (timeSinceLastLogin < timeAllowed) {
     return localStorage.getItem("token");
+  } else {
+    return null;
   }
 };
 
@@ -86,7 +84,6 @@ export const signupUser =
   };
 
 export const login = (credential) => async (dispatch) => {
-  // const authContext = useContext(AuthContext);
   const body = JSON.stringify({
     query: `
         query Login($email: String!, $password: String!) {
@@ -115,17 +112,11 @@ export const login = (credential) => async (dispatch) => {
 
   try {
     const response = await api.loginUser(body);
-    console.log("response (authActions)", response);
-
-    const responseData = response.data.data;
+    const responseData = response.data.data.login;
 
     if (responseData.token) {
       setToken(responseData.token);
-      // authContext.login(
-      //   responseData.token,
-      //   responseData.user._id,
-      //   responseData.tokenExpirationTime
-      // );
+      console.log("token (authActions):", responseData);
     }
 
     dispatch({
@@ -152,29 +143,29 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const checkAuth = () => async (dispatch) => {
-  // const body = JSON.stringify({});
+// export const checkAuth = () => async (dispatch) => {
+//   // const body = JSON.stringify({});
 
-  const customHeader = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: getToken(),
-    },
-  };
+//   const customHeader = {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: getToken(),
+//     },
+//   };
 
-  try {
-    dispatch({ type: authActions.AUTH_REQUEST });
-    // const response = api.checkAuth(body, customHeader);
-    const response = api.checkAuth(customHeader);
-    console.log(response);
+//   try {
+//     dispatch({ type: authActions.AUTH_REQUEST });
+//     // const response = api.checkAuth(body, customHeader);
+//     const response = api.checkAuth(customHeader);
+//     console.log(response);
 
-    if (response.ok) {
-      return response.data.JSON();
-    }
+//     if (response.ok) {
+//       return response.data.JSON();
+//     }
 
-    dispatch({ type: authActions.AUTH_SUCCESS, payload: response.data.data });
-  } catch (error) {
-    dispatch({ type: authActions.AUTH_FAILURE });
-    console.log(error);
-  }
-};
+//     dispatch({ type: authActions.AUTH_SUCCESS, payload: response.data.data });
+//   } catch (error) {
+//     dispatch({ type: authActions.AUTH_FAILURE });
+//     console.log(error);
+//   }
+// };

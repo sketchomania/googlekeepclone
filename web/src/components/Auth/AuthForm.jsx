@@ -5,23 +5,18 @@ import { Redirect } from "react-router-dom";
 import { signupUser, login } from "../../redux/actions/authActions";
 
 const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
-  const dispatch = useDispatch();
-
   const [isLoginMode, setIsLoginMode] = useState(false);
-
   const [credential, setCredential] = useState({
     email: "",
     password: "",
   });
-
+    
+  const dispatch = useDispatch();
+  
   const switchModeHandler = () => {
     setIsLoginMode(!isLoginMode);
     console.log("isLoginMode:", !isLoginMode);
   };
-
-  // don't need authReducer here
-  // const authReducer = useSelector((state) => state.authReducer);
-  // console.log(authReducer);
 
   const inputchangeHandler = (e) => {
     setCredential((prevState) => ({
