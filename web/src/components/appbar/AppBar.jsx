@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { logout } from "../../redux/actions/authActions";
@@ -23,6 +23,8 @@ const AppBar = ({
   toggleTheme,
   toggleLabelMenu,
 }) => {
+  const auth = useSelector((state) => state.authReducer);
+
   const dispatch = useDispatch();
   const logo = (
     <img
@@ -43,72 +45,79 @@ const AppBar = ({
   };
 
   return (
-    <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
-      <div className={`${container}`}>
-        <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
-      </div>
-      {/* on click show label list  */}
-      <Link to="/" title="Google keep clone" style={{ textDecoration: "none" }}>
+    <>
+      <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
         <div className={`${container}`}>
-          {logo}
-          <h3 className="font-medium text-xl">Keep</h3>
+          <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
         </div>
-      </Link>
-      {/* create a component for lable menu */}
-      <SearchBar />
-      <nav className={`${container}`}>
-        <ul className={`${ulSty}`}>
-          <li title="Dev">
-            <Link to="/dev">Dev</Link>
-          </li>
-        </ul>
-        <ul className={`${ulSty}`}>
-          <li>
-            <button title="theme" onClick={toggleTheme}>
-              {darkMode ? (
-                <Light className={`${sty1}`} />
-              ) : (
-                <Dark className={`${sty1}`} />
-              )}
-            </button>
-          </li>
-        </ul>
-        <ul className={`${ulSty}`}>
-          <li>
-            <button title="view" onClick={toggleTheme}>
-              {darkMode ? (
-                <View className={`${sty1}`} />
-              ) : (
-                <Grid className={`${sty1}`} />
-              )}
-            </button>
-          </li>
-          <li title="Setting">
-            <Setting className={`${sty1}`} />
-          </li>
-          <li>
-            <Account className={`${sty1}`} />
-          </li>
-        </ul>
-        <ul className={`${ulSty}`}>
-          <li>
-            {!isLoggedIn ? (
-              <>
-                <button title="Login" onClick={loginHandler}>
-                  <Link to="/auth">
-                    <Login className={`${sty1}`} />
-                  </Link>
-                </button>
-              </>
-            ) : (
-              <button title="Logout" onClick={logoutHandler}>
-                <Logout className={`${sty1}`} />
+        {/* on click show label list  */}
+        <Link
+          to="/"
+          title="Google keep clone"
+          style={{ textDecoration: "none" }}
+        >
+          <div className={`${container}`}>
+            {logo}
+            <h3 className="font-medium text-xl">Keep</h3>
+          </div>
+        </Link>
+        {/* create a component for lable menu */}
+        <SearchBar />
+        <nav className={`${container}`}>
+          <ul className={`${ulSty}`}>
+            <li title="Dev">
+              <Link to="/dev">Dev</Link>
+            </li>
+          </ul>
+          <ul className={`${ulSty}`}>
+            <li>
+              <button title="theme" onClick={toggleTheme}>
+                {darkMode ? (
+                  <Light className={`${sty1}`} />
+                ) : (
+                  <Dark className={`${sty1}`} />
+                )}
               </button>
-            )}
-          </li>
-        </ul>
-      </nav>
-    </header>
+            </li>
+          </ul>
+          <ul className={`${ulSty}`}>
+            <li>
+              <button title="view" onClick={toggleTheme}>
+                {darkMode ? (
+                  <View className={`${sty1}`} />
+                ) : (
+                  <Grid className={`${sty1}`} />
+                )}
+              </button>
+            </li>
+            <li title="Setting">
+              <Setting className={`${sty1}`} />
+            </li>
+            <li>
+              <Account className={`${sty1}`} />
+            </li>
+          </ul>
+          <ul className={`${ulSty}`}>
+            <li>
+              {/* {!isLoggedIn ? ( */}
+              {!auth.token ? (
+                <>
+                  <button title="Login" onClick={loginHandler}>
+                    <Link to="/auth">
+                      <Login className={`${sty1}`} />
+                    </Link>
+                  </button>
+                </>
+              ) : (
+                <button title="Logout" onClick={logoutHandler}>
+                  <Logout className={`${sty1}`} />
+                </button>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </>
   );
 };
 

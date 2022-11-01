@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// import { Navigate, useNavigate } from "react-router-dom";
 
 import { signupUser, login } from "../../redux/actions/authActions";
 
@@ -10,9 +10,11 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
     email: "",
     password: "",
   });
-    
+
+  // const auth = useSelector((state) => state.authReducer);
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const switchModeHandler = () => {
     setIsLoginMode(!isLoginMode);
     console.log("isLoginMode:", !isLoginMode);
@@ -35,11 +37,13 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
       dispatch(signupUser(credential));
       console.log("User Sign-up:", credential);
     }
-    <Redirect to="/" />;
+    // navigate("/");
+    // <Navigate to="/" replace={true} />;
   };
 
   return (
     <>
+      {/* {auth.token && <Navigate to="/" replace={true} />} */}
       <div className="h-screen w-full">
         <div className="bg-gray-800 h-screen mx-auto max-w-md">
           <div className="pt-8 pb-2 px-12">
