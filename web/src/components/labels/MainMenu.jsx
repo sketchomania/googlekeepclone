@@ -32,28 +32,30 @@ const MainMenu = ({ showLabel }) => {
           <AddLabel />
           <Label name={"👇labels from DB"} showLabel={showLabel} />
           <Labels showLabel={showLabel} />
-          <Label name={"--------------"} showLabel={showLabel} />
-          <Label name={"Default Labels Starts"} showLabel={showLabel} />
-          <Label name={"1"} showLabel={showLabel} />
-          <Label name={"2"} showLabel={showLabel} />
-          <Label name={"3"} showLabel={showLabel} />
-          <Label name={"4"} showLabel={showLabel} />
-          <Label name={"5"} showLabel={showLabel} />
-          <Label name={"6"} showLabel={showLabel} />
-          <Label name={"7"} showLabel={showLabel} />
-          <Label name={"8"} showLabel={showLabel} />
-          <Label name={"9"} showLabel={showLabel} />
-          <Label name={"10"} showLabel={showLabel} />
-          <Label name={"11"} showLabel={showLabel} />
-          <Label name={"12"} showLabel={showLabel} />
-          <Label name={"13"} showLabel={showLabel} />
-          <Label name={"14"} showLabel={showLabel} />
-          <Label name={"15"} showLabel={showLabel} />
-          <Label name={"16"} showLabel={showLabel} />
-          <Label name={"17"} showLabel={showLabel} />
-          <Label name={"18"} showLabel={showLabel} />
-          <Label name={"Default Labels Ends"} showLabel={showLabel} />
-          <Label name={"--------------"} showLabel={showLabel} />
+          {/* <>
+            <Label name={"--------------"} showLabel={showLabel} />
+            <Label name={"Default Labels Starts"} showLabel={showLabel} />
+            <Label name={"1"} showLabel={showLabel} />
+            <Label name={"2"} showLabel={showLabel} />
+            <Label name={"3"} showLabel={showLabel} />
+            <Label name={"4"} showLabel={showLabel} />
+            <Label name={"5"} showLabel={showLabel} />
+            <Label name={"6"} showLabel={showLabel} />
+            <Label name={"7"} showLabel={showLabel} />
+            <Label name={"8"} showLabel={showLabel} />
+            <Label name={"9"} showLabel={showLabel} />
+            <Label name={"10"} showLabel={showLabel} />
+            <Label name={"11"} showLabel={showLabel} />
+            <Label name={"12"} showLabel={showLabel} />
+            <Label name={"13"} showLabel={showLabel} />
+            <Label name={"14"} showLabel={showLabel} />
+            <Label name={"15"} showLabel={showLabel} />
+            <Label name={"16"} showLabel={showLabel} />
+            <Label name={"17"} showLabel={showLabel} />
+            <Label name={"18"} showLabel={showLabel} />
+            <Label name={"Default Labels Ends"} showLabel={showLabel} />
+            <Label name={"--------------"} showLabel={showLabel} />
+          </> */}
         </div>
         <div>
           <Label name={"Archive"} showLabel={showLabel} />

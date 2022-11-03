@@ -19,13 +19,14 @@ const AddLabel = ({ currentId }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Label Submit Clicked");
-
+    
     if (currentId) {
       dispatch(updateLabel(currentId, labelData));
     } else {
       dispatch(createLabel(labelData));
     }
+    
+    console.log("Label Submit Clicked", labelData, labelData.name);
     clear();
   };
 

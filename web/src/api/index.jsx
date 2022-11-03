@@ -1,13 +1,14 @@
 import axios from "axios";
 // import { useSelector } from "react-redux";
-import { getToken } from "../redux/actions/authActions";
+// import { getToken } from "../redux/actions/authActions";
 
 // const urQl = process.env.REACT_APP_API;
 const urQl = "http://localhost:5000/graphql";
 const token = localStorage.getItem("token");
+// if not auth then delete token
 console.log("token from localStorage (api page) :", token);
-// const token = getToken();
-// console.log("token from getToken() (api page) :", token);
+// const toke = getToken();
+// console.log("token from getToken() (api page) :", toke);
 // const auth = useSelector((state) => state.authReducer);
 
 const headers = {

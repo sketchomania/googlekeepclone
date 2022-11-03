@@ -51,14 +51,9 @@ export const fetchNotes = () => async (dispatch) => {
   try {
     dispatch(fetchNotesRequest());
     const response = await api.fetchNotes(body);
-    console.log("fetchNotes: ",response);
+    console.log("fetchNotes called (response) && (response.data.data.notes)is set to noteReducer.notes ✅");
 
-    // dispatch(fetchNotesSuccess(response.data.data));
     dispatch(fetchNotesSuccess(response.data.data.notes));
-    // dispatch({
-    //   type: noteActions.FETCH_ALL_NOTES,
-    //   payload: response.data.data,
-    // });
   } catch (error) {
     console.log("Error: ", error);
     dispatch(fetchNotesFailure(error));

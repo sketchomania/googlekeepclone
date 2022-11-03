@@ -42,7 +42,7 @@ export const fetchLabels = () => async (dispatch) => {
   try {
     dispatch(fetchLabelsRequest());
     const response = await api.fetchLabels(body);
-    console.log("fetchLabels: ",response);
+    console.log("fetchLabels called (response): && (response.data.data.labels) is set to labelReducer.labels ✅");
 
     dispatch(fetchLabelsSuccess(response.data.data.labels));
   } catch (error) {
@@ -52,8 +52,24 @@ export const fetchLabels = () => async (dispatch) => {
 };
 
 export const createLabel = (label) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation CreateLabel($name: String!) {
+        createLabel(labelCreateInput: {name: $name}) {
+          _id
+          name
+          assignedNotes{
+            _id
+          }
+        }
+      }`,
+    variables: {
+      name: label.name,
+    },
+  };
+
   try {
-    const { data } = await api.createLabel(label);
+    const data = await api.createLabel(reqBody);
 
     dispatch({ type: labelActions.CREATE_LABEL, payload: data });
   } catch (error) {
