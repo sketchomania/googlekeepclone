@@ -33,6 +33,7 @@ export const updateNote = (id, updatedNote) =>
 export const fetchLabels = (body) => axios.post(urQl, body, headers);
 export const createLabel = (body) => axios.post(urQl, body, headers);
 export const updateLabel = (body) => axios.post(urQl, body, headers);
+export const deleteLabel = (body) => axios.post(urQl, body, headers);
 
 export const registerUser = (body) => axios.post(urQl, body, header2);
 export const loginUser = (body) => axios.post(urQl, body, header2);

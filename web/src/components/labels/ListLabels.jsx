@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import Label from "./label/Label";
 
-const Labels = ({ showLabel }) => {
+const ListLabels = ({ showLabel }) => {
   // const stateObj = useSelector((state) => state);
   // console.log(stateObj);
   const labels = useSelector((state) => state.labelReducer.labels);
@@ -10,7 +10,7 @@ const Labels = ({ showLabel }) => {
 
   return (
     <div className="border border-green-500">
-      <p>Labels component</p>
+      <p>ListLabels component</p>
       {/* its working  and if it's not working just comment out the LABELs.map part and refresh */}
       {console.log(labels)}
 
@@ -27,4 +27,4 @@ const Labels = ({ showLabel }) => {
   );
 };
 
-export default Labels;
+export default ListLabels;

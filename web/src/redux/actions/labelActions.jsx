@@ -42,7 +42,9 @@ export const fetchLabels = () => async (dispatch) => {
   try {
     dispatch(fetchLabelsRequest());
     const response = await api.fetchLabels(body);
-    console.log("fetchLabels called (response): && (response.data.data.labels) is set to labelReducer.labels ✅");
+    console.log(
+      "fetchLabels called (response): && (response.data.data.labels) is set to labelReducer.labels ✅"
+    );
 
     dispatch(fetchLabelsSuccess(response.data.data.labels));
   } catch (error) {
@@ -83,6 +85,28 @@ export const updateLabel = (id, label) => async (dispatch) => {
 
     dispatch({ type: labelActions.UPDATE_LABEL, payload: data });
   } catch (error) {
-    console.log(error);
+    console.log("Error: ", error);
+  }
+};
+
+export const deleteLabel = (labelId) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation DeleteLabel($id: ID!) {
+        deleteLabel(labelId: $id) {
+          _id
+          name
+        }
+      }`,
+    variables: {
+      id: labelId,
+    },
+  };
+  try {
+    const response = await api.deleteLabel(reqBody);
+
+    dispatch({ type: labelActions.DELETE_LABEL, payload: response });
+  } catch (error) {
+    console.log("Delete Label Errror: ", error);
   }
 };

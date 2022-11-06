@@ -69,7 +69,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- able to create ✅ note and label from frontend (CRUD)
+- note and label from frontend (CRUD)
 - edit and save feature
 - note modal close when clicked outside note modal (behavior)
 - docker integration
@@ -138,3 +138,4 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - ✅ user, notes and labels deeply nested resolvers
   - ✅ user, notes and labels shcema
   - ✅ send data related to user only
+  - ✅ create note and label

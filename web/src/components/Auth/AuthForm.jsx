@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { Navigate, useNavigate } from "react-router-dom";
 
 import { signupUser, login } from "../../redux/actions/authActions";
@@ -130,7 +130,7 @@ const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
               </div>
 
               <div className="bg mt-1 text-xs text-gray-300">
-                <a href="">forget password?</a>
+                <a href="forget password">forget password?</a>
               </div>
             </div>
 
