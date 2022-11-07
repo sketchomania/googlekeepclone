@@ -37,7 +37,7 @@ const Note = (props) => {
         </NoteModal>
       )}
       <div
-        className={`border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
+        className={`border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl shadow-md hover:shadow-gray-400 
          overflow-x-hidden overflow-y-hidden`}
         // className={
         //   `border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200

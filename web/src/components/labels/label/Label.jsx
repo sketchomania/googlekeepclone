@@ -9,7 +9,7 @@ import { ReactComponent as Bin } from "../../../icons/bin_black_24dp.svg";
 const label = (props) => {
   return (
     <>
-      <div className="flex items-center p-1 hover:bg-gray-200 rounded-r-3xl">
+      <div className="flex items-center p-1 hover:bg-gray-200 rounded-r-3xl cursor-pointer">
         <div className={`${sty2}`}>
           {/* {props.name === "Archive" ? (
             <Archive className={`${sty1}`} />
@@ -26,7 +26,7 @@ const label = (props) => {
   );
 };
 
-const sty1 = "stroke-2 p-1.5 h-10 w-10 hover:bg-gray-300 hover:rounded-full";
+const sty1 = "stroke-2 fill-gray-500 p-2.5 h-11 w-11  mx-2";
 const sty2 = "px-2";
 
 export default label;
