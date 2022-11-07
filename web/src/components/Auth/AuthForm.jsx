@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { signupUser, login } from "../../redux/actions/authActions";
 
-const AuthForm = ({ setIsLoggedIn, isLoggedIn }) => {
+const AuthForm = () => {
   const [isLoginMode, setIsLoginMode] = useState(false);
   const [credential, setCredential] = useState({
     email: "",

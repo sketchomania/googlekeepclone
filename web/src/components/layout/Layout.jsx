@@ -11,8 +11,6 @@ const Layout = (props) => {
         toggleTheme={props.toggleTheme}
         darkMode={props.darkMode}
         toggleLabelMenu={props.toggleLabelMenu}
-        setIsLoggedIn={props.setIsLoggedIn}
-        isLoggedIn={props.isLoggedIn}
       />
       <main className="bg-white dark:bg-gray-700 w-full">{props.children}</main>
       {/* </BrowserRouter> */}

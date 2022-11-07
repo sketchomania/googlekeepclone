@@ -11,18 +11,10 @@ import { ReactComponent as View } from "../../icons/view_agenda_black_24dp.svg";
 import { ReactComponent as Grid } from "../../icons/grid_view_black_24dp.svg";
 import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
 import { ReactComponent as Account } from "../../icons/account_circle_black_24dp.svg";
-import { ReactComponent as Login } from "../../icons/login_black_24dp.svg";
 import { ReactComponent as Logout } from "../../icons/logout_black_24dp.svg";
-// import classes from "./AppBar.module.css";
 import SearchBar from "./SearchBar";
 
-const AppBar = ({
-  setIsLoggedIn,
-  isLoggedIn,
-  darkMode,
-  toggleTheme,
-  toggleLabelMenu,
-}) => {
+const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
   const auth = useSelector((state) => state.authReducer);
 
   const dispatch = useDispatch();
@@ -33,20 +25,15 @@ const AppBar = ({
       alt="logo"
     />
   );
-  const loginHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+
   const logoutHandler = () => {
     dispatch(logout());
     // <Redirect to="/auth" />;
-
-    // not needed setIsLoggedIn(false);
-    setIsLoggedIn(false);
   };
 
   return (
     <>
-      <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between bg-green-300">
+      <header className="max-w-full h-16 flex py-0 px-1 items-center justify-between ">
         <div className={`${container}`}>
           <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
         </div>
@@ -99,16 +86,7 @@ const AppBar = ({
           </ul>
           <ul className={`${ulSty}`}>
             <li>
-              {/* {!isLoggedIn ? ( */}
-              {!auth.token ? (
-                <>
-                  <button title="Login" onClick={loginHandler}>
-                    <Link to="/auth">
-                      <Login className={`${sty1}`} />
-                    </Link>
-                  </button>
-                </>
-              ) : (
+              {auth.token && (
                 <button title="Logout" onClick={logoutHandler}>
                   <Logout className={`${sty1}`} />
                 </button>
