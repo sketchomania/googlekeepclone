@@ -37,7 +37,6 @@ function App() {
     setShowLabel(!showLabel);
   };
 
-  // {`App ${theme}`}
   return (
     <BrowserRouter>
       <Fragment>

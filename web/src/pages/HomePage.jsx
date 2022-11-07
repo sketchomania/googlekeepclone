@@ -4,11 +4,8 @@ import NoteArea from "../components/main/NoteArea";
 const HomePage = (props) => {
   return (
     <>
-      <h1 className="border border-orange-500 mb-1 text-center">Home page component 👇</h1>
-      <div className="flex flex-row w-full border border-violet-700 p-1">
-        <MainMenu
-          showLabel={props.showLabel}
-        />
+      <div className="flex flex-row w-full border border-violet-700 p-1 mt-16">
+        <MainMenu showLabel={props.showLabel} />
         <NoteArea />
       </div>
     </>

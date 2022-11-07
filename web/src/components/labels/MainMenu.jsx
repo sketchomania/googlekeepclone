@@ -32,7 +32,15 @@ const MainMenu = ({ showLabel }) => {
           <AddLabel />
           <Label name={"👇labels from DB"} showLabel={showLabel} />
           <ListLabels showLabel={showLabel} />
-          {/* <>
+          <>
+            <Label name={"Archive"} showLabel={showLabel} />
+            <Label name={"Deleted"} showLabel={showLabel} />
+            <Label name={"Settings"} showLabel={showLabel} />
+            <Label name={"Help & feedback"} showLabel={showLabel} />
+          </>
+        </div>
+        <div>
+          <>
             <Label name={"--------------"} showLabel={showLabel} />
             <Label name={"Default ListLabels Starts"} showLabel={showLabel} />
             <Label name={"1"} showLabel={showLabel} />
@@ -55,13 +63,7 @@ const MainMenu = ({ showLabel }) => {
             <Label name={"18"} showLabel={showLabel} />
             <Label name={"Default ListLabels Ends"} showLabel={showLabel} />
             <Label name={"--------------"} showLabel={showLabel} />
-          </> */}
-        </div>
-        <div>
-          <Label name={"Archive"} showLabel={showLabel} />
-          <Label name={"Deleted"} showLabel={showLabel} />
-          <Label name={"Settings"} showLabel={showLabel} />
-          <Label name={"Help & feedback"} showLabel={showLabel} />
+          </>
         </div>
       </div>
     </>
