@@ -6,14 +6,12 @@ const registerUserRequest = () => {
     type: authActions.REGISTER_REQUEST,
   };
 };
-
 const registerUserSuccess = (user) => {
   return {
     type: authActions.REGISTER_SUCCESS,
     payload: user,
   };
 };
-
 const registerUserFailure = (error) => {
   return {
     type: authActions.REGISTER_FAILURE,
@@ -31,12 +29,14 @@ const deleteToken = () => {
   localStorage.removeItem("lastLoginTime");
 };
 
-export const getToekn = () => {
+export const getToken = () => {
   const now = new Date(Date.now()).getTime();
   const timeAllowed = 1000 * 60 * 30;
   const timeSinceLastLogin = now - localStorage.getTime("lastLoginTime");
   if (timeSinceLastLogin < timeAllowed) {
     return localStorage.getItem("token");
+  } else {
+    return null;
   }
 };
 
@@ -83,13 +83,11 @@ export const signupUser =
     }
   };
 
-export const login =
-  ({ email, password }) =>
-  async (dispatch) => {
-    const body = JSON.stringify({
-      query: `
-        query{ 
-          login(email: "${email}",password: "${password}"){
+export const login = (credential) => async (dispatch) => {
+  const body = JSON.stringify({
+    query: `
+        query Login($email: String!, $password: String!) {
+          login(email: $email, password: $password) {
             user{
               _id
               email
@@ -106,23 +104,30 @@ export const login =
           }
         }
       `,
-    });
+    variables: {
+      email: credential.email,
+      password: credential.password,
+    },
+  });
 
-    try {
-      const response = await api.loginUser(body);
-      console.log(response);
+  try {
+    const response = await api.loginUser(body);
+    const responseData = response.data.data.login;
 
-      setToken(response.data.data.login.token);
-
-      dispatch({
-        type: authActions.LOGIN_SUCCESS,
-        payload: response.data.data,
-      });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: authActions.LOGIN_FAILURE });
+    if (responseData.token) {
+      setToken(responseData.token);
+      console.log("token (authActions):", responseData);
     }
-  };
+
+    dispatch({
+      type: authActions.LOGIN_SUCCESS,
+      payload: responseData,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: authActions.LOGIN_FAILURE });
+  }
+};
 
 export const logout = () => async (dispatch) => {
   try {
@@ -138,29 +143,29 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const checkAuth = () => async (dispatch) => {
-  // const body = JSON.stringify({});
+// export const checkAuth = () => async (dispatch) => {
+//   // const body = JSON.stringify({});
 
-  const customHeader = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: getToekn(),
-    },
-  };
+//   const customHeader = {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: getToken(),
+//     },
+//   };
 
-  try {
-    dispatch({ type: authActions.AUTH_REQUEST });
-    // const response = api.checkAuth(body, customHeader);
-    const response = api.checkAuth(customHeader);
-    console.log(response);
+//   try {
+//     dispatch({ type: authActions.AUTH_REQUEST });
+//     // const response = api.checkAuth(body, customHeader);
+//     const response = api.checkAuth(customHeader);
+//     console.log(response);
 
-    if (response.ok) {
-      return response.data.JSON();
-    }
+//     if (response.ok) {
+//       return response.data.JSON();
+//     }
 
-    dispatch({ type: authActions.AUTH_SUCCESS, payload: response.data.data });
-  } catch (error) {
-    dispatch({ type: authActions.AUTH_FAILURE });
-    console.log(error);
-  }
-};
+//     dispatch({ type: authActions.AUTH_SUCCESS, payload: response.data.data });
+//   } catch (error) {
+//     dispatch({ type: authActions.AUTH_FAILURE });
+//     console.log(error);
+//   }
+// };

@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import Note from "../note/Note";
 
 const Notes = () => {
-  const stateObj = useSelector((state) => state);
-  console.log(stateObj);
+  // const stateObj = useSelector((state) => state);
+  // console.log(stateObj);
   const notes = useSelector((state) => state.noteReducer.notes);
   // console.log(notes);
 

@@ -18,23 +18,21 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### Frontend
 
-- change the directory
+- change the directory and install all dependencies
+
   ```
-  cd client
+  cd web && npm install
   ```
-- install all dependencies
-  ```
-  npm install
-  ```
+
 - create a .env file
   ```
   touch .env
   ```
 - add the followin to ".env" file
   ```bash
-  # replace with your
-  EFSDF_KEY = DFASDF
-  EFSDF_KEY = DFASDF
+  # replace with yours
+  JWT_SECRET=jwt_sercret
+  REACT_APP_API=http://localhost:5000/graphql
   ```
 - Start the client
   ```
@@ -43,49 +41,40 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### Backend
 
-- change the directory
+- change the directory and install all dependencies
+
   ```
-  cd client
+  cd server && npm install
   ```
-- install all dependencies
-  ```
-  npm install
-  ```
+
 - create a .env file
   ```
   touch .env
   ```
 - add the followin to ".env" file
   ```bash
-  # replace with your
-  EFSDF_KEY = DFASDF
-  EFSDF_KEY = DFASDF
+  # replace with yours
+  DB_USER=mongo_user_name
+  DB_PASS=mongo_password
+  DB_NAME=data_base_name
+  JWT_SECRET=jwt_sercret
+  PORT=5000
   ```
 - Start the server
   ```
   npm start
   ```
 
-# TODO
+## 📃 TODO
 
-## 📌 Priority
+### 📌 Priority
 
-- ⭕CURR⭕ add note from frontend
-- ⭕ able to add data from frontend 
-- show data related to user only (almost done, got one error)
-- able to create note and label from frontend
-- edit note and save
-- CRUD label and note
+- note and label from frontend (CRUD)
+- edit and save feature
 - note modal close when clicked outside note modal (behavior)
 - docker integration
 
-## documenting
-
-- { todo }
-  - document every task todo or done
-- { done }
-
-## web related
+### Web
 
 - { todo }
   - add central asset source
@@ -127,24 +116,26 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - change view from grid to box may be
   - dark mode is not satishfying
 
-## server related
+### Server
 
 - { todo }
-  - Send data only related to the user like notes and labels of logged in user only
+  - Send data only related to the user like notes and labels of logged in user only (working on it)
 
-# DONE
+## DONE
 
-## web related
+### Web
 
 - { done }
   - show label when clicked on it
   - show label and notes from DB
   - show note modal when clicked on it (anywhere)
 
-## server related
+### Server
 
 - { done }
-  - create separate branch for working with backend part
-  - send user data in authPayload form server
-  - user, notes and labels deeply nested resolvers
-  - user, notes and labels shcema
+  - ✅ create separate branch for working with backend part
+  - ✅ send user data in authPayload form server
+  - ✅ user, notes and labels deeply nested resolvers
+  - ✅ user, notes and labels shcema
+  - ✅ send data related to user only
+  - ✅ create note and label

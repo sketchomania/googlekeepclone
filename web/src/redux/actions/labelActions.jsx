@@ -42,14 +42,11 @@ export const fetchLabels = () => async (dispatch) => {
   try {
     dispatch(fetchLabelsRequest());
     const response = await api.fetchLabels(body);
-    console.log(response);
+    console.log(
+      "fetchLabels called (response): && (response.data.data.labels) is set to labelReducer.labels ✅"
+    );
 
-    // dispatch(fetchLabelsSuccess(response.data.data));
     dispatch(fetchLabelsSuccess(response.data.data.labels));
-    // dispatch({
-    //   type: labelActions.FETCH_ALL_LABELS,
-    //   payload: response.data.data,
-    // });
   } catch (error) {
     console.log("Error :", error);
     dispatch(fetchLabelsFailure(error));
@@ -57,8 +54,24 @@ export const fetchLabels = () => async (dispatch) => {
 };
 
 export const createLabel = (label) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation CreateLabel($name: String!) {
+        createLabel(labelCreateInput: {name: $name}) {
+          _id
+          name
+          assignedNotes{
+            _id
+          }
+        }
+      }`,
+    variables: {
+      name: label.name,
+    },
+  };
+
   try {
-    const { data } = await api.createLabel(label);
+    const data = await api.createLabel(reqBody);
 
     dispatch({ type: labelActions.CREATE_LABEL, payload: data });
   } catch (error) {
@@ -72,6 +85,28 @@ export const updateLabel = (id, label) => async (dispatch) => {
 
     dispatch({ type: labelActions.UPDATE_LABEL, payload: data });
   } catch (error) {
-    console.log(error);
+    console.log("Error: ", error);
+  }
+};
+
+export const deleteLabel = (labelId) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation DeleteLabel($id: ID!) {
+        deleteLabel(labelId: $id) {
+          _id
+          name
+        }
+      }`,
+    variables: {
+      id: labelId,
+    },
+  };
+  try {
+    const response = await api.deleteLabel(reqBody);
+
+    dispatch({ type: labelActions.DELETE_LABEL, payload: response });
+  } catch (error) {
+    console.log("Delete Label Errror: ", error);
   }
 };

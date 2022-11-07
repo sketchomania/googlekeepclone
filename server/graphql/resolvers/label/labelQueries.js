@@ -2,7 +2,7 @@ import Label from "../../../models/label.js";
 import { transformLabel } from "../merge.js";
 
 const labelQueries = {
-  labels: async (req, res) => {
+  labels: async (arg, req) => {
     if (!req.isAuth) {
       throw new Error("Unauthenticated");
     }
