@@ -60,7 +60,7 @@ const Note = (props) => {
         >
           show note
         </Button> */}
-        <div className="border border-red-900 p-1">
+        <div className="text-sm px-2 py-1">
           {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
           <Title title={props.note.title} />
           <Content description={props.note.description} />

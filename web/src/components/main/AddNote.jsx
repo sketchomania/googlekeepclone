@@ -66,14 +66,14 @@ const AddNote = ({ currentId, setCurrentId }) => {
     <>
       <div className="my-8 p-2 border border-green-400 flex items-center justify-center">
         <form
-          className="w-144 p-2 h-full flex border rounded-md "
+          className="w-144 p-2 h-full flex border rounded-md shadow-md shadow-gray-300"
           onSubmit={submitHandler}
         >
           <div className="flex-col w-full">
             {isExpanded && (
-              <p className="border-solid border-2 border-indigo-600">
+              <p className={`${para}`}>
                 <textarea
-                  className="w-full h-6"
+                  className={`${text}`}
                   id="title"
                   name="title"
                   type="text"
@@ -102,7 +102,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
               ></textarea>
             </p>
             {isExpanded && (
-              <p className={`${para}`}>
                 <textarea
                   className={`${text}`}
                   id="labels"
@@ -115,12 +114,11 @@ const AddNote = ({ currentId, setCurrentId }) => {
                   //   setNoteData({ ...noteData, labels: e.target.value });
                   // }}
                 ></textarea>
-              </p>
             )}
           </div>
           <div className="flex">
             <button
-              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+              className="m-1 w-16 h-6 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
               type="submit"
               onClick={() => {
                 console.log(noteData);
@@ -129,7 +127,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
               Done
             </button>
             <p
-              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+              className="m-1 w-16 h-6 items-center rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
               onClick={collapsHandler}
             >
               Close
@@ -144,7 +142,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
   );
 };
 
-const para = "border-solid border-2 border-indigo-600";
-const text = "w-full h-6";
+const para = "border outline-none";
+const text = "w-full h-6 border outline-none";
 
 export default AddNote;

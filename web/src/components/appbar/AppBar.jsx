@@ -33,7 +33,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
 
   return (
     <>
-      <header className="max-w-full h-16 flex p-1 items-center justify-between fixed top-0 left-0 right-0 bg-inherit">
+      <header className="max-w-full h-16 flex p-1 items-center justify-between fixed top-0 left-0 right-0 bg-inherit shadow-md shadow-gray-300">
         <div className={`${container}`}>
           <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
         </div>
