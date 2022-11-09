@@ -8,8 +8,8 @@ import Note from "../note/Note";
 const Notes = () => {
   // const stateObj = useSelector((state) => state);
   // console.log(stateObj);
-  const notes = useSelector((state) => state.noteReducer.notes);
-  // console.log(notes);
+  const notesData = useSelector((state) => state.noteReducer);
+  // console.log(notesData);
 
   // const dispatch = useDispatch();
 
@@ -23,9 +23,9 @@ const Notes = () => {
       <div className="flex items-center justify-center flex-wrap w-full border-1 border-cyan-500">
         <br />
         {/* its working  and if it's not working just comment out the notes.map part and refresh */}
-        {console.log(notes)}
+        {console.log("notesData: ", notesData)}
 
-        {notes.map((note) => (
+        {notesData.notes.map((note) => (
           <div key={note._id}>
             <Note note={note} />
           </div>

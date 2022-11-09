@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 // import { Navigate, useNavigate } from "react-router-dom";
 
 import { signupUser, login } from "../../redux/actions/authActions";
@@ -12,7 +13,7 @@ const AuthForm = () => {
   });
 
   // const auth = useSelector((state) => state.authReducer);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const switchModeHandler = () => {
@@ -37,7 +38,8 @@ const AuthForm = () => {
       dispatch(signupUser(credential));
       console.log("User Sign-up:", credential);
     }
-    // navigate("/");
+    navigate("/");
+    console.log("Navigations done:",);
     // <Navigate to="/" replace={true} />;
   };
 

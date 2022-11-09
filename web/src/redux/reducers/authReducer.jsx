@@ -1,14 +1,16 @@
 import { authActions } from "../../constants/actionTypes";
+import { getToken } from "../actions/authActions";
+
+const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   isLoading: true,
-  isAuthenticated: null,
   authChecked: false,
   isLoggedIn: false,
   user: null,
-  // token: null,
-  token: localStorage.getItem("token"),
-  error: ``,
+  token: getToken(),
+  // token: localStorage.getItem("token"),
+  isError: ``,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -26,12 +28,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        isAuthenticated: true,
         authChecked: true,
         isLoggedIn: true,
         user: action.payload,
         token: action.payload.login.token,
-        error: action.payload.errors,
+        isError: action.payload.errors,
       };
     // get token form locastorage as mention in initialState obeject, rather than getting token form the payload data
     case authActions.REGISTER_FAILURE:
@@ -42,12 +43,11 @@ const authReducer = (state = initialState, action) => {
       // don't need here couse we are deleting token in authActions
       return {
         isLoading: false,
-        isAuthenticated: false,
         authChecked: true,
         isLoggedIn: false,
         user: null,
         token: null,
-        error: action.payload.error,
+        isError: action.payload.error,
       };
     default:
       return state;

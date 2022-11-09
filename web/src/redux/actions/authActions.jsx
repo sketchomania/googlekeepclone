@@ -32,7 +32,7 @@ const deleteToken = () => {
 export const getToken = () => {
   const now = new Date(Date.now()).getTime();
   const timeAllowed = 1000 * 60 * 30;
-  const timeSinceLastLogin = now - localStorage.getTime("lastLoginTime");
+  const timeSinceLastLogin = now - localStorage.getItem("lastLoginTime");
   if (timeSinceLastLogin < timeAllowed) {
     return localStorage.getItem("token");
   } else {

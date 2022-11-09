@@ -1,22 +1,22 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-import "./App.css";
 
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import DevPage from "./pages/DevPage";
-import { useState } from "react";
+import "./App.css";
+import { getToken } from "./redux/actions/authActions";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [theme, setTheme] = useState("light");
   const [showLabel, setShowLabel] = useState(true);
 
-  const auth = useSelector((state) => state.authReducer);
-  console.log("auth (App.jsx): ", auth);
+  const authData = useSelector((state) => state.authReducer);
+  console.log("authData (App.jsx): ", authData);
+  const token = getToken();
 
   const toggleTheme = () => {
     if (darkMode) {
@@ -41,15 +41,8 @@ function App() {
     <BrowserRouter>
       <Fragment>
         <div className={`${theme}`}>
-          {/* <Layout
-            darkMode={darkMode}
-            toggleTheme={toggleTheme}
-            toggleLabelMenu={toggleLabelMenu}
-            setIsLoggedIn={setIsLoggedIn}
-            isLoggedIn={isLoggedIn}
-          > */}
           <Routes>
-            {auth.token && (
+            {token && (
               <Route
                 path="/"
                 exact
@@ -65,16 +58,12 @@ function App() {
               />
             )}
 
-            {!auth.token && <Route path="/auth" element={<AuthPage />} />}
+            {!token && <Route path="/auth" element={<AuthPage />} />}
 
-            {!auth.token ? (
-              <Route
-                path="*"
-                element={<Navigate to="/auth" replace={true} />}
-              />
-            ) : (
-              <Route path="*" element={<Navigate to="/" replace={true} />} />
-            )}
+            {!token && <Route path="*" element={<Navigate to="/auth" />} />}
+
+            {!!token && <Route path="*" element={<Navigate to="/" />} />}
+
             <Route path="/dev" component={DevPage} />
           </Routes>
         </div>
