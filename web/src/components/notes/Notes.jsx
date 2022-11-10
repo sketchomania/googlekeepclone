@@ -4,12 +4,16 @@ import { useSelector } from "react-redux";
 
 // import { fetchNotes } from "../../redux/actions/noteActions";
 import Note from "../note/Note";
+import Spinner from "../UI/Spinner";
 
 const Notes = () => {
   // const stateObj = useSelector((state) => state);
   // console.log(stateObj);
-  const notes = useSelector((state) => state.noteReducer.notes);
-  // console.log(notes);
+  // const notesData = useSelector((state) => state.noteReducer);
+  const { isLoading, notes, isError } = useSelector(
+    (state) => state.noteReducer
+  );
+  // console.log(notesData);
 
   // const dispatch = useDispatch();
 
@@ -17,13 +21,17 @@ const Notes = () => {
   //   dispatch(fetchNotes());
   // }, [dispatch]);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <p className="text-center">Notes component</p>
       <div className="flex items-center justify-center flex-wrap w-full border-1 border-cyan-500">
         <br />
         {/* its working  and if it's not working just comment out the notes.map part and refresh */}
-        {console.log(notes)}
+        {console.log("notesData: ", isLoading, notes, isError)}
 
         {notes.map((note) => (
           <div key={note._id}>

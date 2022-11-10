@@ -6,10 +6,10 @@ const registerUserRequest = () => {
     type: authActions.REGISTER_REQUEST,
   };
 };
-const registerUserSuccess = (user) => {
+const registerUserSuccess = (signupUserData) => {
   return {
     type: authActions.REGISTER_SUCCESS,
-    payload: user,
+    payload: signupUserData,
   };
 };
 const registerUserFailure = (error) => {
@@ -27,12 +27,13 @@ const setToken = (token) => {
 const deleteToken = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("lastLoginTime");
+  console.log("deleteToken called!!and now token is: ", getToken());
 };
 
 export const getToken = () => {
   const now = new Date(Date.now()).getTime();
   const timeAllowed = 1000 * 60 * 30;
-  const timeSinceLastLogin = now - localStorage.getTime("lastLoginTime");
+  const timeSinceLastLogin = now - localStorage.getItem("lastLoginTime");
   if (timeSinceLastLogin < timeAllowed) {
     return localStorage.getItem("token");
   } else {
@@ -67,19 +68,19 @@ export const signupUser =
     try {
       dispatch(registerUserRequest());
       const response = await api.registerUser(body);
-      console.log(response);
+      const responseData = response.data.data.createUser;
 
-      // setToken(response.headers.get("Authorization"));
-      dispatch(registerUserSuccess(response.data));
+      if (responseData.token) {
+        setToken(responseData.token);
+        console.log(
+          "rm: SingupUser called: && (response.data.data.createUser) is set to authReducer ✅"
+        );
+      }
 
-      // dispatch({
-      //   type: authActions.REGISTER_SUCCESS,
-      //   payload: response.data,
-      // });
+      dispatch(registerUserSuccess(responseData));
     } catch (error) {
-      console.log(error);
-      // dispatch({ type: authActions.REGISTER_FAILURE });
-      dispatch(registerUserFailure(error));
+      console.log("Signup error: ", error);
+      dispatch(registerUserFailure(error.response.data.errors));
     }
   };
 
@@ -116,7 +117,9 @@ export const login = (credential) => async (dispatch) => {
 
     if (responseData.token) {
       setToken(responseData.token);
-      console.log("token (authActions):", responseData);
+      console.log(
+        "rm: Login called: && (response.data.data.login) is set to authReducer ✅"
+      );
     }
 
     dispatch({
@@ -124,16 +127,16 @@ export const login = (credential) => async (dispatch) => {
       payload: responseData,
     });
   } catch (error) {
-    console.log(error);
-    dispatch({ type: authActions.LOGIN_FAILURE });
+    console.log("Login error: ", error, error.response);
+    dispatch({
+      type: authActions.LOGIN_FAILURE,
+      payload: error.response.data.errors,
+    });
   }
 };
 
 export const logout = () => async (dispatch) => {
   try {
-    // const response = await api.logoutUserFunc(body);
-    // console.log(response);
-
     deleteToken();
     dispatch({ type: authActions.LOGOUT_SUCCESS });
   } catch (error) {

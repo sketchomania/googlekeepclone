@@ -51,7 +51,9 @@ export const fetchNotes = () => async (dispatch) => {
   try {
     dispatch(fetchNotesRequest());
     const response = await api.fetchNotes(body);
-    console.log("fetchNotes called (response) && (response.data.data.notes)is set to noteReducer.notes ✅");
+    console.log(
+      "rm: fetchNotes called (response) && (response.data.data.notes)is set to noteReducer.notes ✅"
+    );
 
     dispatch(fetchNotesSuccess(response.data.data.notes));
   } catch (error) {
@@ -68,14 +70,20 @@ export const createNote = (note) => async (dispatch) => {
           _id
           title
           description
+          updatedAt
+          createdAt
+          creator{
+            _id
+          }
+          labels{
+            _id
+          }
           background
           pinned
           selected
           listMode
           archived
           deleted
-          createdAt
-          updatedAt
         }
       }
     `,
@@ -88,19 +96,24 @@ export const createNote = (note) => async (dispatch) => {
   };
 
   try {
-    const data = await api.createNote(reqBody);
+    const response = await api.createNote(reqBody);
+    console.log("Note create, response: ", response);
 
-    dispatch({ type: noteActions.CREATE_NOTE, payload: data });
+    dispatch({
+      type: noteActions.CREATE_NOTE,
+      payload: response.data.data.createNote,
+    });
   } catch (error) {
-    console.log("Error: ", error);
+    console.log("Note create error: ", error);
   }
 };
 
 export const updateNote = (id, note) => async (dispatch) => {
   try {
-    const { data } = await api.updateNote(id, note);
+    const response = await api.updateNote(id, note);
+    console.log("Note update, response: ", response);
 
-    dispatch({ type: noteActions.UPDATE_NOTE, payload: data });
+    dispatch({ type: noteActions.UPDATE_NOTE, payload: response });
   } catch (error) {
     console.log(error);
   }

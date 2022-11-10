@@ -37,7 +37,7 @@ const Note = (props) => {
         </NoteModal>
       )}
       <div
-        className={`border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
+        className={`border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl shadow-md hover:shadow-gray-400 
          overflow-x-hidden overflow-y-hidden`}
         // className={
         //   `border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
@@ -60,7 +60,7 @@ const Note = (props) => {
         >
           show note
         </Button> */}
-        <div className="border border-red-900 p-1">
+        <div className="text-sm px-2 py-1">
           {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
           <Title title={props.note.title} />
           <Content description={props.note.description} />

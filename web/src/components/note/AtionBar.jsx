@@ -11,28 +11,28 @@ import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 
 const AtionBar = (props) => {
   return (
-    <div className="flex border border-red-900 justify-between p-0.5">
+    <div className="flex border justify-between">
       <div className="flex">
         <IconHolder className={`${sty2}`}>
-          <Alert className={`${sty1}`} />
+          <Alert className={`${iconStyle}`} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <Person className={`${sty1} cursor-not-allowed`} />
+          <Person className={`${iconStyle} cursor-not-allowed`} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <Color className={`${sty1}`} />
+          <Color className={`${iconStyle}`} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <Label className={`${sty1}`} />
+          <Label className={`${iconStyle}`} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <Archive className={`${sty1}`} onClick={props.toggleArchive} />
+          <Archive className={`${iconStyle}`} onClick={props.toggleArchive} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <CheckBox className={`${sty1}`} onClick={props.toggleCheckBoxMode} />
+          <CheckBox className={`${iconStyle}`} onClick={props.toggleCheckBoxMode} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <Delete className={`${sty1}`} onClick={props.toggleDelete} />
+          <Delete className={`${iconStyle}`} onClick={props.toggleDelete} />
         </IconHolder>
       </div>
       <div className="border border-red-600 flex">
@@ -47,8 +47,7 @@ const AtionBar = (props) => {
   );
 };
 
-const sty1 =
-  "stroke-2 p-1.5 h-8 w-8 hover:bg-gray-300 hover:rounded-full";
-  // border border-green-400
+const iconStyle =
+  "stroke-2 p-2 h-8 w-8 hover:bg-gray-200 hover:rounded-full cursor-pointer";
 const sty2 = "";
 export default AtionBar;

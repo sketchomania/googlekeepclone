@@ -1,17 +1,17 @@
 import { authActions } from "../../constants/actionTypes";
 
+const token = localStorage.getItem("token");
+
 const initialState = {
-  isLoading: true,
-  isAuthenticated: null,
-  authChecked: false,
+  isLoading: false,
   isLoggedIn: false,
   user: null,
-  // token: null,
-  token: localStorage.getItem("token"),
-  error: ``,
+  token: token ? token : null,
+  isError: ``,
 };
 
 const authReducer = (state = initialState, action) => {
+  // console.log("logging actions at authReducer: ", action);
   switch (action.type) {
     case authActions.AUTH_REQUEST:
     case authActions.LOGIN_REQUEST:
@@ -26,28 +26,20 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        isAuthenticated: true,
-        authChecked: true,
         isLoggedIn: true,
-        user: action.payload,
-        token: action.payload.login.token,
-        error: action.payload.errors,
+        user: action.payload.user,
+        token: action.payload.token,
       };
-    // get token form locastorage as mention in initialState obeject, rather than getting token form the payload data
     case authActions.REGISTER_FAILURE:
     case authActions.LOGIN_FAILURE:
     case authActions.AUTH_FAILURE:
     case authActions.LOGOUT_SUCCESS:
-      // localStorage.removeItem("token");
-      // don't need here couse we are deleting token in authActions
       return {
         isLoading: false,
-        isAuthenticated: false,
-        authChecked: true,
         isLoggedIn: false,
         user: null,
         token: null,
-        error: action.payload.error,
+        isError: action.payload,
       };
     default:
       return state;

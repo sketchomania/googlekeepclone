@@ -43,7 +43,7 @@ export const fetchLabels = () => async (dispatch) => {
     dispatch(fetchLabelsRequest());
     const response = await api.fetchLabels(body);
     console.log(
-      "fetchLabels called (response): && (response.data.data.labels) is set to labelReducer.labels ✅"
+      "rm: fetchLabels called (response): && (response.data.data.labels) is set to labelReducer ✅"
     );
 
     dispatch(fetchLabelsSuccess(response.data.data.labels));
@@ -71,19 +71,24 @@ export const createLabel = (label) => async (dispatch) => {
   };
 
   try {
-    const data = await api.createLabel(reqBody);
+    const response = await api.createLabel(reqBody);
+    console.log("Label create, response: ", response);
 
-    dispatch({ type: labelActions.CREATE_LABEL, payload: data });
+    dispatch({
+      type: labelActions.CREATE_LABEL,
+      payload: response.data.data.createLabel,
+    });
   } catch (error) {
-    console.log(error.message);
+    console.log("Label create error: ", error);
   }
 };
 
 export const updateLabel = (id, label) => async (dispatch) => {
   try {
-    const { data } = await api.updateLabel(id, label);
+    const response = await api.updateLabel(id, label);
+    console.log("Label update, response: ", response);
 
-    dispatch({ type: labelActions.UPDATE_LABEL, payload: data });
+    dispatch({ type: labelActions.UPDATE_LABEL, payload: response });
   } catch (error) {
     console.log("Error: ", error);
   }

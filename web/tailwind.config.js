@@ -58,7 +58,7 @@ module.exports = {
 
           // /* Handle */
           "&::-webkit-scrollbar-thumb": {
-            background: "grey",
+            background: "lightgray",
           },
 
           // /* Handle on hover */
