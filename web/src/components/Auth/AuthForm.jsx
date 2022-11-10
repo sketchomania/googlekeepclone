@@ -30,7 +30,7 @@ const AuthForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //   dipatch action
+
     if (isLoginMode) {
       dispatch(login(credential));
       console.log("User Login:", credential);
@@ -39,8 +39,7 @@ const AuthForm = () => {
       console.log("User Sign-up:", credential);
     }
     navigate("/");
-    console.log("Navigations done:",);
-    // <Navigate to="/" replace={true} />;
+    console.log("Navigations done:");
   };
 
   return (

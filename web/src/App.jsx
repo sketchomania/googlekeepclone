@@ -7,16 +7,18 @@ import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import DevPage from "./pages/DevPage";
 import "./App.css";
-import { getToken } from "./redux/actions/authActions";
+// import { getToken } from "./redux/actions/authActions";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [theme, setTheme] = useState("light");
   const [showLabel, setShowLabel] = useState(true);
 
-  const authData = useSelector((state) => state.authReducer);
-  console.log("authData (App.jsx): ", authData);
-  const token = getToken();
+  const {  token, isLoading, isError } = useSelector(
+    (state) => state.authReducer
+  );
+  // const token = getToken();
+  console.log("authData (App.jsx) ", "token: ", token,"isLoading: ", isLoading,"isError: ", isError);
 
   const toggleTheme = () => {
     if (darkMode) {
@@ -60,6 +62,7 @@ function App() {
 
             {!token && <Route path="/auth" element={<AuthPage />} />}
 
+            {token && <Route path="/auth" element={<Navigate to="/" />}/>}
             {!token && <Route path="*" element={<Navigate to="/auth" />} />}
 
             {!!token && <Route path="*" element={<Navigate to="/" />} />}

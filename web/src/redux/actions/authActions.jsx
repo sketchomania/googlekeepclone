@@ -73,22 +73,13 @@ export const signupUser =
       if (responseData.token) {
         setToken(responseData.token);
         console.log(
-          "SingupUser called (response): && (response.data.data.createUser) is set to authReducer ✅"
+          "rm: SingupUser called: && (response.data.data.createUser) is set to authReducer ✅"
         );
       }
 
-      console.log("resgister user resoponse", response);
-
-      // setToken(response.headers.get("Authorization"));
       dispatch(registerUserSuccess(responseData));
-
-      // dispatch({
-      //   type: authActions.REGISTER_SUCCESS,
-      //   payload: response.data,
-      // });
     } catch (error) {
-      console.log("Error: ", error);
-      // dispatch({ type: authActions.REGISTER_FAILURE });
+      console.log("Signup error: ", error);
       dispatch(registerUserFailure(error.response.data.errors));
     }
   };
@@ -127,7 +118,7 @@ export const login = (credential) => async (dispatch) => {
     if (responseData.token) {
       setToken(responseData.token);
       console.log(
-        "login called (response): && (response.data.data.login) is set to authReducer ✅"
+        "rm: Login called: && (response.data.data.login) is set to authReducer ✅"
       );
     }
 
@@ -136,16 +127,16 @@ export const login = (credential) => async (dispatch) => {
       payload: responseData,
     });
   } catch (error) {
-    console.log("Error: ", error);
-    dispatch({ type: authActions.LOGIN_FAILURE, payload: error });
+    console.log("Login error: ", error, error.response);
+    dispatch({
+      type: authActions.LOGIN_FAILURE,
+      payload: error.response.data.errors,
+    });
   }
 };
 
 export const logout = () => async (dispatch) => {
   try {
-    // const response = await api.logoutUserFunc(body);
-    // console.log(response);
-
     deleteToken();
     dispatch({ type: authActions.LOGOUT_SUCCESS });
   } catch (error) {

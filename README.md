@@ -1,14 +1,37 @@
 # Welcome to Google keep clone project
 
-## Fronted with React and Tailwind
+## 🛠️ Tools and Technologies
 
-## Redux managed workflow
+### Fronted
 
-## Backend with Node, GraphQl, axios and express-graphql
+- React
+- Tailwind
+- React Router v6
 
-## Mongoose and MongoDB database
+### State Management
 
-## Installation
+- Redux
+- Redux-thunk
+
+### Backend
+
+- Node.js
+- GraphQl
+- Axios
+- express-graphql
+
+### DataBase
+
+- MongoDB Atlas
+
+## 📄 Features
+
+- React with Tailwing Css
+- Redux managed workflow
+- Graphql for fetching data
+- GraphQl Scheme
+
+## ⚙️ Installation
 
 ### Clone the repo
 
@@ -69,31 +92,32 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- note and label from frontend (CRUD)
-- edit and save feature
+- fetch notes and labels when created
+- use Cleanup functions
+- {note, label}: edit-save, delete feature
+- search
 - note modal close when clicked outside note modal (behavior)
+- deploy
+- Readme
 - docker integration
 
 ### Web
 
 - { todo }
   - add central asset source
-  - search
   - check login valid for 1 hour only
 - { note }
   - features
     - edit note
     - CRUD in label form note
-    - search note
     - pin note on the top
     - archieve note
-    - move to bin
     - copy note
+    - move to bin
     - delete forever
-  - show note modal when clicked on it (anywhere)
-  - note modal close behavior
+    - note modal close behavior
   - { Color and theme }
-    - show color and theme change card on note
+    - show color and theme change note card colors
     - add themes
 - { label }
   - show label inside note
@@ -105,30 +129,33 @@ git clone https://github.com/sketchomania/googlekeepclone.git
     - CRUD label in note
   - separate page for each label to show notes of that label
 - { design }
-  - improve design
-  - remove borders of the components
-  - make main head bar fix even when scrolling
+  - improve design & theme look
 - { mobile View }
   - check all designs for mobile view
-- { work on this later }
+- { archieve }
   - show refresh button
   - bin feature , archive also
   - change view from grid to box may be
-  - dark mode is not satishfying
+  - dark mode perfection
 
-### Server
+### 📃Server
 
 - { todo }
   - Send data only related to the user like notes and labels of logged in user only (working on it)
 
-## DONE
+## DONE 🎉🎉
 
 ### Web
 
 - { done }
-  - show label when clicked on it
-  - show label and notes from DB
-  - show note modal when clicked on it (anywhere)
+  - ✅ Show loading Spinner while loading
+  - ✅ show label when clicked on it
+  - ✅ show label and notes from DB
+  - ✅ show note modal when clicked on it (anywhere)
+  - ✅ Login issues fixed
+  - { design }
+    - remove borders of the components
+    - make main head bar fix even when scrolling
 
 ### Server
 
