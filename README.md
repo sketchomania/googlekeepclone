@@ -148,6 +148,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ push notes and labels in redux state data (when created)
   - ✅ Show loading Spinner while loading
   - ✅ show label when clicked on it
   - ✅ show label and notes from DB

@@ -1,16 +1,13 @@
-// import * as actions from "../../constants/actionTypes";
 import { labelActions } from "../../constants/actionTypes";
 
 const initialState = {
   isLoading: true,
-  // authChecked: false,
-  // loggedIn: false,
-  // isAuthenticated: null,
   labels: [],
   isError: ``,
 };
 
 const labelReducer = (state = initialState, action) => {
+  // console.log("logging actions at labelReducer: ", action);
   switch (action.type) {
     case labelActions.FETCH_ALL_LABELS_REQUEST:
       return {
@@ -25,15 +22,17 @@ const labelReducer = (state = initialState, action) => {
       };
     case labelActions.FETCH_ALL_LABELS_FAILURE:
       return {
+        ...state,
         isLoading: false,
-        labels: [],
         isError: action.payload,
       };
-    case labelActions.FETCH_ALL_LABELS:
-      return action.payload;
     case labelActions.CREATE_LABEL:
-      return [...state, action.payload];
+      return {
+        ...state,
+        labels: [action.payload, ...state.labels],
+      };
     case labelActions.UPDATE_LABEL:
+      // state.labels.map ??
       return state.map((label) =>
         label._id === action.payload._id ? action.payload : label
       );

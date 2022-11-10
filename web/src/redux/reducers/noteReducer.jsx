@@ -1,16 +1,13 @@
-// import * as actions from "../../constants/actionTypes";
 import { noteActions } from "../../constants/actionTypes";
 
 const initialState = {
   isLoading: true,
-  // authChecked: false,
-  // loggedIn: false,
-  // isAuthenticated: null,
   notes: [],
   isError: ``,
 };
 
 const noteReducer = (state = initialState, action) => {
+  // console.log("logging actions at noteReducer: ", action);
   switch (action.type) {
     case noteActions.FETCH_ALL_NOTES_REQUEST:
       return {
@@ -25,15 +22,17 @@ const noteReducer = (state = initialState, action) => {
       };
     case noteActions.FETCH_ALL_NOTES_FAILURE:
       return {
+        ...state,
         isLoading: false,
-        notes: [],
         isError: action.payload,
       };
-    case noteActions.FETCH_ALL_NOTES:
-      return action.payload;
     case noteActions.CREATE_NOTE:
-      return [...state, action.payload];
+      return {
+        ...state,
+        notes: [action.payload, ...state.notes],
+      };
     case noteActions.UPDATE_NOTE:
+      // state.notes.map ??
       return state.map((note) =>
         note._id === action.payload._id ? action.payload : note
       );

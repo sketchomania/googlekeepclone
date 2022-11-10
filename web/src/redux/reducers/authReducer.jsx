@@ -11,6 +11,7 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
+  // console.log("logging actions at authReducer: ", action);
   switch (action.type) {
     case authActions.AUTH_REQUEST:
     case authActions.LOGIN_REQUEST:
