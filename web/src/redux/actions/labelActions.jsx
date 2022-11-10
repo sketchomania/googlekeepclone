@@ -43,7 +43,7 @@ export const fetchLabels = () => async (dispatch) => {
     dispatch(fetchLabelsRequest());
     const response = await api.fetchLabels(body);
     console.log(
-      "fetchLabels called (response): && (response.data.data.labels) is set to labelReducer.labels ✅"
+      "fetchLabels called (response): && (response.data.data.labels) is set to labelReducer ✅"
     );
 
     dispatch(fetchLabelsSuccess(response.data.data.labels));

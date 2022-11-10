@@ -4,7 +4,8 @@ import { getToken } from "../actions/authActions";
 const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
+  // remove authChecked if not
   authChecked: false,
   isLoggedIn: false,
   user: null,
@@ -47,7 +48,7 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         user: null,
         token: null,
-        isError: action.payload.error,
+        isError: action.payload,
       };
     default:
       return state;

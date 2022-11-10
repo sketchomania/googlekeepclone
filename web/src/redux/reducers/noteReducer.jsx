@@ -2,12 +2,12 @@
 import { noteActions } from "../../constants/actionTypes";
 
 const initialState = {
-  loading: true,
+  isLoading: true,
   // authChecked: false,
   // loggedIn: false,
   // isAuthenticated: null,
   notes: [],
-  error: ``,
+  isError: ``,
 };
 
 const noteReducer = (state = initialState, action) => {
@@ -15,19 +15,19 @@ const noteReducer = (state = initialState, action) => {
     case noteActions.FETCH_ALL_NOTES_REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
       };
     case noteActions.FETCH_ALL_NOTES_SUCCESS:
       return {
-        loading: false,
+        isLoading: false,
         notes: action.payload,
-        error: "",
+        isError: "",
       };
     case noteActions.FETCH_ALL_NOTES_FAILURE:
       return {
-        loading: false,
+        isLoading: false,
         notes: [],
-        error: action.payload,
+        isError: action.payload,
       };
     case noteActions.FETCH_ALL_NOTES:
       return action.payload;

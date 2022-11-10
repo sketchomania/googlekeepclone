@@ -2,12 +2,12 @@
 import { labelActions } from "../../constants/actionTypes";
 
 const initialState = {
-  loading: true,
+  isLoading: true,
   // authChecked: false,
   // loggedIn: false,
   // isAuthenticated: null,
   labels: [],
-  error: ``,
+  isError: ``,
 };
 
 const labelReducer = (state = initialState, action) => {
@@ -15,19 +15,19 @@ const labelReducer = (state = initialState, action) => {
     case labelActions.FETCH_ALL_LABELS_REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
       };
     case labelActions.FETCH_ALL_LABELS_SUCCESS:
       return {
-        loading: false,
+        isLoading: false,
         labels: action.payload,
-        error: "",
+        isError: "",
       };
     case labelActions.FETCH_ALL_LABELS_FAILURE:
       return {
-        loading: false,
+        isLoading: false,
         labels: [],
-        error: action.payload,
+        isError: action.payload,
       };
     case labelActions.FETCH_ALL_LABELS:
       return action.payload;

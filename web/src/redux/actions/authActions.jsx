@@ -6,10 +6,10 @@ const registerUserRequest = () => {
     type: authActions.REGISTER_REQUEST,
   };
 };
-const registerUserSuccess = (user) => {
+const registerUserSuccess = (signupUserData) => {
   return {
     type: authActions.REGISTER_SUCCESS,
-    payload: user,
+    payload: signupUserData,
   };
 };
 const registerUserFailure = (error) => {
@@ -27,6 +27,7 @@ const setToken = (token) => {
 const deleteToken = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("lastLoginTime");
+  console.log("deleteToken called!!and now token is: ", getToken());
 };
 
 export const getToken = () => {
@@ -67,19 +68,28 @@ export const signupUser =
     try {
       dispatch(registerUserRequest());
       const response = await api.registerUser(body);
-      console.log(response);
+      const responseData = response.data.data.createUser;
+
+      if (responseData.token) {
+        setToken(responseData.token);
+        console.log(
+          "SingupUser called (response): && (response.data.data.createUser) is set to authReducer ✅"
+        );
+      }
+
+      console.log("resgister user resoponse", response);
 
       // setToken(response.headers.get("Authorization"));
-      dispatch(registerUserSuccess(response.data));
+      dispatch(registerUserSuccess(responseData));
 
       // dispatch({
       //   type: authActions.REGISTER_SUCCESS,
       //   payload: response.data,
       // });
     } catch (error) {
-      console.log(error);
+      console.log("Error: ", error);
       // dispatch({ type: authActions.REGISTER_FAILURE });
-      dispatch(registerUserFailure(error));
+      dispatch(registerUserFailure(error.response.data.errors));
     }
   };
 
@@ -116,7 +126,9 @@ export const login = (credential) => async (dispatch) => {
 
     if (responseData.token) {
       setToken(responseData.token);
-      console.log("token (authActions):", responseData);
+      console.log(
+        "login called (response): && (response.data.data.login) is set to authReducer ✅"
+      );
     }
 
     dispatch({
@@ -124,8 +136,8 @@ export const login = (credential) => async (dispatch) => {
       payload: responseData,
     });
   } catch (error) {
-    console.log(error);
-    dispatch({ type: authActions.LOGIN_FAILURE });
+    console.log("Error: ", error);
+    dispatch({ type: authActions.LOGIN_FAILURE, payload: error });
   }
 };
 
