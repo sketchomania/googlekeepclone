@@ -92,17 +92,17 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- fetch notes and labels when created
-- use Cleanup functions
-- {note, label}: edit-save, delete feature
+- {note, label}: delete feature
+- Readme
+- deploy
+- {note, label}: update, delete feature
 - search
 - note modal close when clicked outside note modal (behavior)
-- deploy
-- Readme
 - docker integration
 
 ### Web
 
+- Cleanup functions, check if it can be used ?
 - { todo }
   - add central asset source
   - check login valid for 1 hour only
@@ -129,6 +129,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
     - CRUD label in note
   - separate page for each label to show notes of that label
 - { design }
+  - add note bar design
   - improve design & theme look
 - { mobile View }
   - check all designs for mobile view

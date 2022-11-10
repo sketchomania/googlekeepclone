@@ -33,19 +33,20 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("🟢 Submit clicked");
 
     if (currentId) {
       dispatch(updateNote(currentId, noteData));
     } else {
       dispatch(createNote(noteData));
     }
+
+    console.log("Note Submit clicked: ", noteData);
     clear();
-    setExpanded(false);
+    collapsHandler();
   };
 
   const clear = () => {
-    setCurrentId(null);
+    // setCurrentId(null);
     setNoteData({
       title: "",
       description: "",
@@ -102,37 +103,39 @@ const AddNote = ({ currentId, setCurrentId }) => {
               ></textarea>
             </p>
             {isExpanded && (
-                <textarea
-                  className={`${text}`}
-                  id="labels"
-                  name="labels"
-                  type="text"
-                  placeholder="Note labels..."
-                  value={noteData.labels}
-                  onChange={(e) => inputchangeHandler(e)}
-                  // onChange={(e) => {
-                  //   setNoteData({ ...noteData, labels: e.target.value });
-                  // }}
-                ></textarea>
+              <textarea
+                className={`${text}`}
+                id="labels"
+                name="labels"
+                type="text"
+                placeholder="Note labels..."
+                value={noteData.labels}
+                onChange={(e) => inputchangeHandler(e)}
+                // onChange={(e) => {
+                //   setNoteData({ ...noteData, labels: e.target.value });
+                // }}
+              ></textarea>
             )}
           </div>
-          <div className="flex">
-            <button
-              className="m-1 w-16 h-6 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-              type="submit"
-              onClick={() => {
-                console.log(noteData);
-              }}
-            >
-              Done
-            </button>
-            <p
-              className="m-1 w-16 h-6 items-center rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-              onClick={collapsHandler}
-            >
-              Close
-            </p>
-          </div>
+          {isExpanded && (
+            <div className="flex">
+              <button
+                className="m-1 w-16 h-6 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+                type="submit"
+                onClick={() => {
+                  console.log(noteData);
+                }}
+              >
+                Done
+              </button>
+              <p
+                className="m-1 w-16 h-6 items-center rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+                onClick={collapsHandler}
+              >
+                Close
+              </p>
+            </div>
+          )}
           <IconHolder>
             <CheckBox className="stroke-2 p-1.5 h-8 w-8 hover:bg-gray-300 hover:rounded-full" />
           </IconHolder>
