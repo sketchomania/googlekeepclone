@@ -10,6 +10,8 @@ import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 
 const AtionBar = (props) => {
+  // const deleteHandler = () => {};
+
   return (
     <div className="flex border justify-between">
       <div className="flex">
@@ -29,7 +31,10 @@ const AtionBar = (props) => {
           <Archive className={`${iconStyle}`} onClick={props.toggleArchive} />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
-          <CheckBox className={`${iconStyle}`} onClick={props.toggleCheckBoxMode} />
+          <CheckBox
+            className={`${iconStyle}`}
+            onClick={props.toggleCheckBoxMode}
+          />
         </IconHolder>
         <IconHolder className={`${sty2}`}>
           <Delete className={`${iconStyle}`} onClick={props.toggleDelete} />
