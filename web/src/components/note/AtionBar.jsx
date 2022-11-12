@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import IconHolder from "../UI/IconHolder";
 import { ReactComponent as Alert } from "../../icons/add_alert_black_24dp.svg";
@@ -10,7 +10,14 @@ import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 
 const AtionBar = (props) => {
-  // const deleteHandler = () => {};
+  useEffect(() => {
+    console.log("uesEffect NoteActionBar");
+
+    return () => {
+      console.log("NoteActionBar CleanUp");
+    };
+  }, []);
+
 
   return (
     <div className="flex border justify-between">

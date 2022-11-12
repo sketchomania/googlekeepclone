@@ -119,10 +119,26 @@ export const updateNote = (id, note) => async (dispatch) => {
   }
 };
 
-export const deleteNote = (id, note) => async (dispatch) => {
+export const deleteNote = (noteId) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation DeleteNote($id: ID!) {
+        deleteNote(id: $id)
+      }`,
+    variables: {
+      id: noteId,
+    },
+  };
+
   try {
-    console.log("Delete note called");
+    const response = await api.deleteNote(reqBody);
+
+    dispatch({
+      type: noteActions.DELETE_NOTE,
+      payload: noteId,
+    });
+    console.log("Delete note called: ", response.data.data);
   } catch (error) {
-    console.log(error);
+    console.log("Delete Note Error", error);
   }
 };

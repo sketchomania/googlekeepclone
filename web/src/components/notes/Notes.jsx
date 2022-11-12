@@ -22,7 +22,7 @@ const Notes = () => {
     console.log("notesData: ", isLoading, notes, isError);
     // dispatch(fetchNotes());
     return () => {
-      console.log("notes Component useEffect");
+      console.log("notes Component cleanUp");
     };
   }, []);
 

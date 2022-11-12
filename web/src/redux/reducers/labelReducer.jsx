@@ -36,6 +36,11 @@ const labelReducer = (state = initialState, action) => {
       return state.map((label) =>
         label._id === action.payload._id ? action.payload : label
       );
+    case labelActions.DELETE_LABEL:
+      return {
+        ...state,
+        labels: state.labels.filter((item) => item._id !== action.payload),
+      };
     default:
       return state;
   }

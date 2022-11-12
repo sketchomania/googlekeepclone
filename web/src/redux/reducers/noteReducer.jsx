@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const noteReducer = (state = initialState, action) => {
-  // console.log("logging actions at noteReducer: ", action);
+  console.log("logging actions at noteReducer: ", action);
   switch (action.type) {
     case noteActions.FETCH_ALL_NOTES_REQUEST:
       return {
@@ -36,6 +36,11 @@ const noteReducer = (state = initialState, action) => {
       return state.map((note) =>
         note._id === action.payload._id ? action.payload : note
       );
+    case noteActions.DELETE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.filter((item) => item._id !== action.payload),
+      };
     default:
       return state;
   }

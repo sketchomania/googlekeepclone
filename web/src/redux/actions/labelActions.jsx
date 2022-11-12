@@ -98,10 +98,7 @@ export const deleteLabel = (labelId) => async (dispatch) => {
   const reqBody = {
     query: `
       mutation DeleteLabel($id: ID!) {
-        deleteLabel(labelId: $id) {
-          _id
-          name
-        }
+        deleteLabel(id: $id) 
       }`,
     variables: {
       id: labelId,
@@ -110,7 +107,11 @@ export const deleteLabel = (labelId) => async (dispatch) => {
   try {
     const response = await api.deleteLabel(reqBody);
 
-    dispatch({ type: labelActions.DELETE_LABEL, payload: response });
+    dispatch({
+      type: labelActions.DELETE_LABEL,
+      payload: labelId,
+    });
+    console.log("Delete label called: ", response.data.data);
   } catch (error) {
     console.log("Delete Label Errror: ", error);
   }

@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
 import Button from "../UI/Button";
+import { useDispatch } from "react-redux";
+import { deleteNote } from "../../redux/actions/noteActions";
 // import EditableDiv from "../UI/EditableDiv";
 // import { inputchangeHandler } from "../../constants/helper";
 
 const NoteModal = (props) => {
+  const dispatch = useDispatch();
+
   const [noteUpdateData, setNoteUpdateData] = useState({
     title: "",
     description: "",
@@ -80,6 +84,8 @@ const NoteModal = (props) => {
       ...noteUpdateData,
       deleted: !noteUpdateData.deleted,
     });
+    deleteHandler();
+    props.onCancel();
     console.log("deleted value was: ", noteUpdateData.deleted);
   };
 
@@ -90,6 +96,12 @@ const NoteModal = (props) => {
   //   });
   // };
 
+  const deleteHandler = () => {
+    dispatch(deleteNote(props.note._id));
+
+    console.log("delete clicked", props.note._id);
+  };
+
   return (
     <>
       <div className="fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full">
@@ -98,9 +110,9 @@ const NoteModal = (props) => {
           max-h-144 h-auto m-1 p-1 rounded-2xl border border-indigo-600 dark:bg-gray-500 
           overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm
           `}
-          onClick={() => {
-            console.log("NoteModaal clicked");
-          }}
+          // onClick={() => {
+          //   console.log("NoteModaal clicked");
+          // }}
         >
           <Button onClick={props.onCancel}>Cancel</Button>
           <Button onClick={props.onConfirm}>Confirm</Button>

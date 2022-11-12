@@ -22,6 +22,7 @@ const postApiCall = (body) => axios.post(urQl, body, headers);
 
 export const fetchNotes = (body) => postApiCall(body);
 export const createNote = (body) => postApiCall(body);
+export const deleteNote = (body) => postApiCall(body);
 // export const fetchNotes = (body) => axios.post(urQl, body, headers);
 // export const createNote = (body) => axios.post(urQl, body, headers);
 
