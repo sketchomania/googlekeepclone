@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import IconHolder from "../UI/IconHolder";
 import { ReactComponent as Alert } from "../../icons/add_alert_black_24dp.svg";
 import { ReactComponent as Delete } from "../../icons/delete_black_24dp.svg";
 import { ReactComponent as Label } from "../../icons/label_black_24dp.svg";
@@ -10,46 +9,36 @@ import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 
 const AtionBar = (props) => {
-  useEffect(() => {
-    console.log("uesEffect NoteActionBar");
+  // useEffect(() => {
+  //   console.log("....NoteActionBar uesEffect");
 
-    return () => {
-      console.log("NoteActionBar CleanUp");
-    };
-  }, []);
+  //   return () => {
+  //     console.log("...NoteActionBar CleanUp");
+  //   };
+  // }, []);
 
+  const mouseOverStyle = props.isMouseOver ? "fill-gray-500" : "fill-none";
+  const iconStyle =
+    // mouseOverStyle +
+    "stroke-2 mx-2 p-2 h-8 w-8 hover:fill-black hover:bg-gray-100 hover:rounded-full cursor-pointer";
 
   return (
-    <div className="flex border justify-between">
+    <div className="flex  justify-between my-1">
       <div className="flex">
-        <IconHolder className={`${sty2}`}>
-          <Alert className={`${iconStyle}`} />
-        </IconHolder>
-        <IconHolder className={`${sty2}`}>
-          <Person className={`${iconStyle} cursor-not-allowed`} />
-        </IconHolder>
-        <IconHolder className={`${sty2}`}>
-          <Color className={`${iconStyle}`} />
-        </IconHolder>
-        <IconHolder className={`${sty2}`}>
-          <Label className={`${iconStyle}`} />
-        </IconHolder>
-        <IconHolder className={`${sty2}`}>
-          <Archive className={`${iconStyle}`} onClick={props.toggleArchive} />
-        </IconHolder>
-        <IconHolder className={`${sty2}`}>
-          <CheckBox
-            className={`${iconStyle}`}
-            onClick={props.toggleCheckBoxMode}
-          />
-        </IconHolder>
-        <IconHolder className={`${sty2}`}>
-          <Delete className={`${iconStyle}`} onClick={props.toggleDelete} />
-        </IconHolder>
+        <Alert className={iconStyle} />
+        <Person className={`${iconStyle} cursor-not-allowed fill-gray-500`} />
+        <Color className={`${iconStyle}`} />
+        <Label className={`${iconStyle}`} />
+        <Archive className={`${iconStyle}`} onClick={props.toggleArchive} />
+        <CheckBox
+          className={`${iconStyle}`}
+          onClick={props.toggleCheckBoxMode}
+        />
+        <Delete className={`${iconStyle}`} onClick={props.toggleDelete} />
       </div>
-      <div className="border border-red-600 flex">
+      <div className="flex mr-3">
         <button
-          className="font-bold rounded-md w-16 p-0.5 hover:bg-gray-300"
+          className="font-medium text-gray-800 text-sm rounded-md w-20 hover:bg-gray-100"
           onClick={props.onConfirm}
         >
           Close
@@ -59,7 +48,4 @@ const AtionBar = (props) => {
   );
 };
 
-const iconStyle =
-  "stroke-2 p-2 h-8 w-8 hover:bg-gray-200 hover:rounded-full cursor-pointer";
-const sty2 = "";
 export default AtionBar;

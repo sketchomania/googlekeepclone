@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
@@ -11,6 +11,7 @@ import NoteModal from "./NoteModal";
 
 const Note = (props) => {
   const [creating, setCreating] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const startCreateEventHandler = () => {
     setCreating(true);
@@ -23,6 +24,27 @@ const Note = (props) => {
   const modalCancelHandler = () => {
     setCreating(false);
   };
+
+  const mouseOverHandler = () => {
+    if (!isMouseOver) {
+      // console.log("mouseOver", isMouseOver);
+      // setIsMouseOver(true);
+    }
+  };
+
+  const mouseLeaveHandler = () => {
+    // console.log("mouseLeave", isMouseOver);
+    // setIsMouseOver(false);
+  };
+
+  useEffect(() => {
+    console.log("note component Cleanup");
+
+    return () => {
+      console.log("note component Cleanup");
+      mouseLeaveHandler();
+    };
+  }, []);
 
   return (
     <>
@@ -52,6 +74,8 @@ const Note = (props) => {
         // onClick={() => {
         //   console.log("Note clicked:", props.note._id);
         // }}
+        onMouseLeave={mouseLeaveHandler}
+        onMouseMove={mouseOverHandler}
         onClick={startCreateEventHandler}
       >
         {/* <Button
@@ -62,9 +86,9 @@ const Note = (props) => {
         </Button> */}
         <div className="text-sm px-2 py-1">
           {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
-          <Title title={props.note.title} />
+          <Title title={props.note.title} isMouseOver={isMouseOver} />
           <Content description={props.note.description} />
-          <>
+          {/* <>
             <p>{`ID: ${props.note._id}`}</p>
             <p>{`Archived: ${props.note.Archived}`}</p>
             <p>{`Background: ${props.note.background}`}</p>
@@ -75,9 +99,9 @@ const Note = (props) => {
             <p>{`Created at: ${props.note.createdAt}`}</p>
             <p>{`Updated at: ${props.note.updatedAt}`}</p>
             <p>{`Creator: ${props.note.creator._id}`}</p>
-          </>
+          </> */}
           <LabelBar labels={props.note.labels} />
-          <ActionBar />
+          <ActionBar isMouseOver={isMouseOver} />
         </div>
       </div>
     </>

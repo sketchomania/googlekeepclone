@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const noteReducer = (state = initialState, action) => {
-  console.log("logging actions at noteReducer: ", action);
+  // console.log("logging actions at noteReducer: ", action);
   switch (action.type) {
     case noteActions.FETCH_ALL_NOTES_REQUEST:
       return {

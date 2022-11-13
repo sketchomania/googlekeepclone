@@ -92,17 +92,16 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- {note, label}: delete feature
 - Readme
 - deploy
-- {note, label}: update, delete feature
+- {note, label}: update feature
 - search
 - note modal close when clicked outside note modal (behavior)
 - docker integration
+- ✅ Cleanup functions, check if it can be used
 
 ### Web
 
-- Cleanup functions, check if it can be used ?
 - { todo }
   - add central asset source
   - check login valid for 1 hour only
@@ -129,7 +128,6 @@ git clone https://github.com/sketchomania/googlekeepclone.git
     - CRUD label in note
   - separate page for each label to show notes of that label
 - { design }
-  - add note bar design
   - improve design & theme look
 - { mobile View }
   - check all designs for mobile view
@@ -149,6 +147,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ {note, label}: delete feature
   - ✅ push notes and labels in redux state data (when created)
   - ✅ Show loading Spinner while loading
   - ✅ show label when clicked on it
@@ -156,8 +155,9 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - ✅ show note modal when clicked on it (anywhere)
   - ✅ Login issues fixed
   - { design }
-    - remove borders of the components
-    - make main head bar fix even when scrolling
+    - ✅ AddNote bar design Done
+    - ✅ remove borders of the components
+    - ✅ make main head bar fix even when scrolling
 
 ### Server
 
