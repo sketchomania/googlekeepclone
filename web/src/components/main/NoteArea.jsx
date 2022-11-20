@@ -13,8 +13,8 @@ const MainArea = () => {
   }, [dispatch]);
 
   return (
-    <div className="grow w-full border border-red-800 h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm">
-      <h4 className="text-center">Main Area for note only</h4>
+    <div className="grow w-full mt-16 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm">
+      {/* <h4 className="text-center">Main Area for note only</h4> */}
       <AddNote />
       <Notes />
     </div>

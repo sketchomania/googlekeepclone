@@ -17,7 +17,7 @@ const MainMenu = ({ showLabel }) => {
   return (
     <>
       <div
-        className={`${sty1} h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm border border-red-800`}
+        className={`${sty1} mt-16 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm`}
       >
         <p>Main menu (ListLabels)</p>
         <div>
