@@ -74,13 +74,13 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   const para = "flex";
   const text =
-    "px-4 py-3 placeholder-gray-600 font-medium min-w-4/5 w-full h-12 overflow-hidden resize-none outline-none";
+    "px-4 py-3 rounded-md placeholder-gray-600 font-medium min-w-4/5 w-full h-12 overflow-hidden resize-none outline-none";
 
   return (
     <>
-      <div className="my-8 p-2 border border-green-400 flex items-center justify-center">
+      <div className="p-2 border border-green-400 flex items-center justify-center">
         <form
-          className="w-144 min-h-12 flex items-center border rounded-md shadow-md shadow-gray-400"
+          className="w-144 my-6 flex items-center border rounded-md shadow-md shadow-gray-400"
           onSubmit={submitHandler}
         >
           <div className="flex-col w-full">

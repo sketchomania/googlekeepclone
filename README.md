@@ -92,8 +92,8 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- Readme
-- deploy
+- Make Readme
+- deploy the backend
 - {note, label}: update feature
 - search
 - note modal close when clicked outside note modal (behavior)
@@ -155,6 +155,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - ✅ show note modal when clicked on it (anywhere)
   - ✅ Login issues fixed
   - { design }
+    - ✅ Note component styling 
     - ✅ AddNote bar design Done
     - ✅ remove borders of the components
     - ✅ make main head bar fix even when scrolling
