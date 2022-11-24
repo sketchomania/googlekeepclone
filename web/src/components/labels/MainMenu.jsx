@@ -8,28 +8,28 @@ import ListLabels from "./ListLabels";
 
 const MainMenu = ({ showLabel }) => {
   const dispatch = useDispatch();
-  const sty1 = showLabel ? "w-96" : "w-20";
+  const sty1 = showLabel ? "w-72" : "w-20";
 
   useEffect(() => {
     dispatch(fetchLabels());
   }, [dispatch]);
-
+// ${sty1}
   return (
     <>
       <div
-        className={`${sty1} mt-16 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm`}
+        className={`${sty1} flex-none mt-16 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm`}
       >
         <p>Main menu (ListLabels)</p>
         <div>
           <Label name={"Notes"} showLabel={showLabel} />
           <Label name={"Reminder"} showLabel={showLabel} />
         </div>
-        <div className="pt-4 border-y-2 border-blue-600">
-          <div className="flex justify-between px-4 border text-xs">
+        <div className="pt-4 border-y-2 border-yellow-600">
+          {/* <div className="flex justify-between px-4 border text-xs">
             <h6>Labels</h6>
             <h6>Edit</h6>
-          </div>
-          <AddLabel />
+          </div> */}
+          {/* <AddLabel /> */}
           <Label name={"👇labels from DB"} showLabel={showLabel} />
           <ListLabels showLabel={showLabel} />
           <>

@@ -24,9 +24,7 @@ const Notes = () => {
     <>
       <div className="flex items-center justify-center flex-wrap p-2 w-full border border-cyan-500">
         {notes.map((note) => (
-          // <div key={note._id}>
             <Note note={note} key={note._id} />
-          // </div>
         ))}
       </div>
     </>

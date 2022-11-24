@@ -74,7 +74,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   const para = "flex";
   const text =
-    "px-4 py-3 rounded-md placeholder-gray-600 font-medium min-w-4/5 w-full h-12 overflow-hidden resize-none outline-none";
+    "px-4 py-3 rounded-md placeholder-gray-600 font-medium min-w-4/5 w-full h-11 overflow-hidden resize-none outline-none";
 
   return (
     <>
