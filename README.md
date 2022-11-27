@@ -93,7 +93,8 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### 📌 Priority
 
 - Make Readme
-- deploy the backend
+- note update 
+- show labels in label tab
 - {note, label}: update feature
 - search
 - note modal close when clicked outside note modal (behavior)
@@ -164,6 +165,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Server
 
 - { done }
+  - 🎉 server deployed and working
   - ✅ create separate branch for working with backend part
   - ✅ send user data in authPayload form server
   - ✅ user, notes and labels deeply nested resolvers

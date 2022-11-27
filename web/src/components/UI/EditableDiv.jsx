@@ -1,23 +1,24 @@
-const EditableDiv = (props) => {
+const EditableDiv = ({ id, inputChangeHandler, className, value }) => {
   return (
     <div
-      className={`${props.className} outline-transparent bg-transparent outline-0 border w-full`}
-      id={props.id}
-      name={props.id}
-      title={props.id}
+      className={`${className} outline-transparent bg-transparent outline-0 border w-full`}
+      id={id}
+      name={id}
+      type="text"
+      title={id}
+      // value={value}
+      onChange={(e) => inputChangeHandler(e)}
       contentEditable
       suppressContentEditableWarning={true}
-      type="text"
       role="textbox"
       inputMode="text"
       dir="ltr"
-      tabIndex={0}
+      // tabIndex={0}
       spellCheck="true"
-      //   value={props.value}
       //   onKeyUp={(e) => {console.log(e)}}
       onInput={(e) => {
         // console.log("e.target.outerText: ", e.target.outerText);
-        props.inputChangeHandler(e);
+        inputChangeHandler(e);
 
         // console.log(e.target.id, props.id);
         // props.setStateValue({ ...stateValue, title: e.target.outerText });
@@ -26,7 +27,7 @@ const EditableDiv = (props) => {
         // console.log(stateT);
       }}
     >
-      {props.children}
+      {value}
     </div>
   );
 };

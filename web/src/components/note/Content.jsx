@@ -1,12 +1,16 @@
 import React from "react";
-// import EditableDiv from "../UI/EditableDiv";
+import EditableDiv from "../UI/EditableDiv";
 
-const Content = (props) => {
+const Content = ({ description, inputChangeHandler }) => {
   return (
     <div className="px-4 pb-2">
-      <p >{props.description}</p>
-      {/* <EditableDiv id="description" inputChangeHandler={props.inputChangeHandler}>
-        {props.description}
+      {/* <p >{props.description}</p> */}
+      <EditableDiv
+        id="description"
+        inputChangeHandler={inputChangeHandler}
+        value={description}
+      />
+      {/* {description}
       </EditableDiv> */}
     </div>
   );

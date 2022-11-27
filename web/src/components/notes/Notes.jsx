@@ -22,7 +22,7 @@ const Notes = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center flex-wrap p-2 w-full border border-cyan-500">
+      <div className="flex items-center justify-center flex-wrap p-2 w-full">
         {notes.map((note) => (
             <Note note={note} key={note._id} />
         ))}

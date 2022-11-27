@@ -114,16 +114,6 @@ const NoteModal = (props) => {
           //   console.log("NoteModaal clicked");
           // }}
         >
-          <Button onClick={props.onCancel}>Cancel</Button>
-          <Button onClick={props.onConfirm}>Confirm</Button>
-          <Button
-            // contentEditable="false"
-            onClick={() => {
-              console.log(noteUpdateData);
-            }}
-          >
-            log noteUpdateData
-          </Button>
           <div className="border border-red-900 p-1.5">
             <Title
               title={props.note.title}
@@ -134,18 +124,20 @@ const NoteModal = (props) => {
               description={props.note.description}
               inputChangeHandler={inputChangeHandler}
             />
-            <p>{`ID: ${props.note._id}`}</p>
-            <p>{`Archived: ${props.note.Archived}`}</p>
-            <p>{`Background: ${props.note.background}`}</p>
-            <p>{`Deleted: ${props.note.deleted}`}</p>
-            <p>{`ListMode: ${props.note.listMode}`}</p>
-            <p>{`Pinned: ${props.note.pinned}`}</p>
-            <p>{`Selected: ${props.note.selected}`}</p>
-            <p>{`Created at: ${props.note.createdAt}`}</p>
-            <p>{`Updated at: ${props.note.updatedAt}`}</p>
-            <p>{`Creator: ${props.note.creator._id}`}</p>
+            <>
+              <p>{`ID: ${props.note._id}`}</p>
+              <p>{`Archived: ${props.note.Archived}`}</p>
+              <p>{`Background: ${props.note.background}`}</p>
+              <p>{`Deleted: ${props.note.deleted}`}</p>
+              <p>{`ListMode: ${props.note.listMode}`}</p>
+              <p>{`Pinned: ${props.note.pinned}`}</p>
+              <p>{`Selected: ${props.note.selected}`}</p>
+              <p>{`Created at: ${props.note.createdAt}`}</p>
+              <p>{`Updated at: ${props.note.updatedAt}`}</p>
+              <p>{`Creator: ${props.note.creator._id}`}</p>
+            </>
           </div>
-          <div className="">
+          <div className="border border-red-500">
             <LabelBar labels={props.note.labels} />
           </div>
           <div className="">
@@ -156,6 +148,18 @@ const NoteModal = (props) => {
               onConfirm={props.onConfirm}
             />
           </div>
+          <>
+            <Button onClick={props.onCancel}>Cancel</Button>
+            <Button onClick={props.onConfirm}>Confirm</Button>
+            <Button
+              // contentEditable="false"
+              onClick={() => {
+                console.log(noteUpdateData);
+              }}
+            >
+              log noteUpdateData
+            </Button>
+          </>
         </div>
       </div>
     </>
