@@ -9,7 +9,7 @@ import Backdrop from "../UI/Backdrop";
 import Button from "../UI/Button";
 import NoteModal from "./NoteModal";
 
-const Note = (props) => {
+const Note = ({ note }) => {
   const [creating, setCreating] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -48,10 +48,10 @@ const Note = (props) => {
 
   return (
     <>
-      {creating && <Backdrop onCancel={modalCancelHandler} />}
+      {/* {creating && <Backdrop onCancel={modalCancelHandler} />} */}
       {creating && (
         <NoteModal
-          note={props.note}
+          note={note}
           onCancel={modalCancelHandler}
           onConfirm={modalConfirmHandler}
         >
@@ -72,7 +72,7 @@ const Note = (props) => {
 
         // onMouseOver={(e) => {console.log("mouse-over")}}
         // onClick={() => {
-        //   console.log("Note clicked:", props.note._id);
+        //   console.log("Note clicked:", note._id);
         // }}
         onMouseLeave={mouseLeaveHandler}
         onMouseMove={mouseOverHandler}
@@ -87,22 +87,22 @@ const Note = (props) => {
         <div className="text-sm">
           <div>
             {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
-            <Title title={props.note.title} isMouseOver={isMouseOver} />
-            <Content description={props.note.description} />
+            <Title title={note.title} isMouseOver={isMouseOver} />
+            <Content description={note.description} />
             {/* <>
-            <p>{`ID: ${props.note._id}`}</p>
-            <p>{`Archived: ${props.note.Archived}`}</p>
-            <p>{`Background: ${props.note.background}`}</p>
-            <p>{`Deleted: ${props.note.deleted}`}</p>
-            <p>{`ListMode: ${props.note.listMode}`}</p>
-            <p>{`Pinned: ${props.note.pinned}`}</p>
-            <p>{`Selected: ${props.note.selected}`}</p>
-            <p>{`Created at: ${props.note.createdAt}`}</p>
-            <p>{`Updated at: ${props.note.updatedAt}`}</p>
-            <p>{`Creator: ${props.note.creator._id}`}</p>
+            <p>{`ID: ${note._id}`}</p>
+            <p>{`Archived: ${note.Archived}`}</p>
+            <p>{`Background: ${note.background}`}</p>
+            <p>{`Deleted: ${note.deleted}`}</p>
+            <p>{`ListMode: ${note.listMode}`}</p>
+            <p>{`Pinned: ${note.pinned}`}</p>
+            <p>{`Selected: ${note.selected}`}</p>
+            <p>{`Created at: ${note.createdAt}`}</p>
+            <p>{`Updated at: ${note.updatedAt}`}</p>
+            <p>{`Creator: ${note.creator._id}`}</p>
             </> */}
           </div>
-          <LabelBar labels={props.note.labels} />
+          <LabelBar labels={note.labels} />
           <ActionBar isMouseOver={isMouseOver} />
         </div>
       </div>

@@ -13,7 +13,7 @@ const MainMenu = ({ showLabel }) => {
   useEffect(() => {
     dispatch(fetchLabels());
   }, [dispatch]);
-// ${sty1}
+  // ${sty1}
   return (
     <>
       <div
@@ -21,8 +21,8 @@ const MainMenu = ({ showLabel }) => {
       >
         {/* <p>Main menu (ListLabels)</p> */}
         <div>
-          <Label name={"Notes"} showLabel={showLabel} />
-          <Label name={"Reminder"} showLabel={showLabel} />
+          <Label label={{ name: "Notes" }} showLabel={showLabel} />
+          <Label label={{ name: "Remainder" }} showLabel={showLabel} />
         </div>
         <div>
           <div className="flex justify-between px-4 border text-xs">
@@ -30,39 +30,39 @@ const MainMenu = ({ showLabel }) => {
             <h6>Edit</h6>
           </div>
           <AddLabel />
-          <Label name={"👇labels from DB"} showLabel={showLabel} />
+          {/* <Label name={"👇labels from DB"} showLabel={showLabel} /> */}
           <ListLabels showLabel={showLabel} />
           <>
-            <Label name={"Archive"} showLabel={showLabel} />
-            <Label name={"Deleted"} showLabel={showLabel} />
-            <Label name={"Settings"} showLabel={showLabel} />
-            <Label name={"Help & feedback"} showLabel={showLabel} />
+            <Label label={{ name: "Archive" }} showLabel={showLabel} />
+            <Label label={{ name: "Deleted" }} showLabel={showLabel} />
+            <Label label={{ name: "Settings" }} showLabel={showLabel} />
+            <Label label={{ name: "Help & feedback" }} showLabel={showLabel} />
           </>
         </div>
         {/* <div>
           <>
-            <Label name={"--------------"} showLabel={showLabel} />
-            <Label name={"Default ListLabels Starts"} showLabel={showLabel} />
-            <Label name={"1"} showLabel={showLabel} />
-            <Label name={"2"} showLabel={showLabel} />
-            <Label name={"3"} showLabel={showLabel} />
-            <Label name={"4"} showLabel={showLabel} />
-            <Label name={"5"} showLabel={showLabel} />
-            <Label name={"6"} showLabel={showLabel} />
-            <Label name={"7"} showLabel={showLabel} />
-            <Label name={"8"} showLabel={showLabel} />
-            <Label name={"9"} showLabel={showLabel} />
-            <Label name={"10"} showLabel={showLabel} />
-            <Label name={"11"} showLabel={showLabel} />
-            <Label name={"12"} showLabel={showLabel} />
-            <Label name={"13"} showLabel={showLabel} />
-            <Label name={"14"} showLabel={showLabel} />
-            <Label name={"15"} showLabel={showLabel} />
-            <Label name={"16"} showLabel={showLabel} />
-            <Label name={"17"} showLabel={showLabel} />
-            <Label name={"18"} showLabel={showLabel} />
-            <Label name={"Default ListLabels Ends"} showLabel={showLabel} />
-            <Label name={"--------------"} showLabel={showLabel} />
+            <Label label={{ name: "--------------"}} showLabel={showLabel} />
+            <Label label={{ name: "Default ListLabels Starts"}} showLabel={showLabel} />
+            <Label label={{ name: "1"}} showLabel={showLabel} />
+            <Label label={{ name: "2"}} showLabel={showLabel} />
+            <Label label={{ name: "3"}} showLabel={showLabel} />
+            <Label label={{ name: "4"}} showLabel={showLabel} />
+            <Label label={{ name: "5"}} showLabel={showLabel} />
+            <Label label={{ name: "6"}} showLabel={showLabel} />
+            <Label label={{ name: "7"}} showLabel={showLabel} />
+            <Label label={{ name: "8"}} showLabel={showLabel} />
+            <Label label={{ name: "9"}} showLabel={showLabel} />
+            <Label label={{ name: "10"}} showLabel={showLabel} />
+            <Label label={{ name: "11"}} showLabel={showLabel} />
+            <Label label={{ name: "12"}} showLabel={showLabel} />
+            <Label label={{ name: "13"}} showLabel={showLabel} />
+            <Label label={{ name: "14"}} showLabel={showLabel} />
+            <Label label={{ name: "15"}} showLabel={showLabel} />
+            <Label label={{ name: "16"}} showLabel={showLabel} />
+            <Label label={{ name: "17"}} showLabel={showLabel} />
+            <Label label={{ name: "18"}} showLabel={showLabel} />
+            <Label label={{ name: "Default ListLabels Ends"}} showLabel={showLabel} />
+            <Label label={{ name: "--------------"}} showLabel={showLabel} />
           </>
         </div> */}
       </div>

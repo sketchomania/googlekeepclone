@@ -2,7 +2,7 @@ const Backdrop = (props) => {
   return (
     <>
       <div
-        className="fixed top-0 left-0 h-screen w-full bg-black bg-opacity-75"
+        className="fixed top-0 left-0 h-screen w-full bg-zinc-800 bg-opacity-75"
         onClick={() => {
           console.log("Backdrop clicked");
         }}

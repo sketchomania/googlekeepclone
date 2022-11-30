@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Spinner from "../UI/Spinner";
-import Label from "./label/Label";
+import LabelComponent from "./label/Label";
+// import Label from "./label/Label";
 
 const ListLabels = ({ showLabel }) => {
   const stateObj = useSelector((state) => state);
@@ -26,14 +27,14 @@ const ListLabels = ({ showLabel }) => {
   }
 
   return (
-    <div className="border border-green-500">
+    <div className="border">
       <p>ListLabels component</p>
       {/* its working  and if it's not working just comment out the LABELs.map part and refresh */}
       {/* {console.log("labelData: ", isLoading, labels, isError)} */}
 
       {labels.map((label) => (
         <div key={label._id}>
-          <Label label={label} name={label.name} showLabel={showLabel} />
+          <LabelComponent label={label} showLabel={showLabel} />
         </div>
       ))}
     </div>

@@ -109,17 +109,24 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
 
   return (
     <>
-      <div className="fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full">
+      {/* <div className={`fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full`}> */}
+      <div
+        className={`fixed top-0 left-0 h-screen w-full bg-zinc-800 bg-opacity-75`}
+        onClick={() => {
+          console.log("Backdrop clicked");
+          // onCancel();
+        }}
+      >
         <div
-          className={`top-16 mx-auto relative bg-white shadow-3xl max-w-2xl w-144 
-          max-h-144 h-auto m-1 p-1 rounded-2xl border border-indigo-600 dark:bg-gray-500 
+          className={`top-16 mx-auto relative bg-white z-10 
+          max-h-144 h-auto rounded-2xl max-w-2xl w-144 m-4
           overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm
           `}
           // onClick={() => {
           //   console.log("NoteModaal clicked");
           // }}
         >
-          <div className="border border-red-900 p-1.5">
+          <div className="border">
             <Title
               title={note.title}
               togglePinNote={togglePinNote}
@@ -141,10 +148,10 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               <p>{`Updated at: ${note.updatedAt}`}</p>
               <p>{`Creator: ${note.creator._id}`}</p>
             </> */}
+            {/* <div className="border border-red-500">
+              <LabelBar labels={note.labels} />
+            </div> */}
           </div>
-          {/* <div className="border border-red-500">
-            <LabelBar labels={note.labels} />
-          </div> */}
           <div className="">
             <ActionBar
               toggleArchive={toggleArchive}
@@ -152,20 +159,20 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               toggleDelete={toggleDelete}
               onConfirm={onConfirm}
             />
+            <>
+              <Button onClick={onCancel}>Cancel</Button>
+              <Button onClick={onConfirm}>Confirm</Button>
+              <Button
+                // contentEditable="false"
+                onClick={() => {
+                  console.log(noteUpdateData);
+                }}
+              >
+                log noteUpdateData
+              </Button>
+              <Button onClick={noteUpdateHandler}>Update</Button>
+            </>
           </div>
-          <>
-            <Button onClick={onCancel}>Cancel</Button>
-            <Button onClick={onConfirm}>Confirm</Button>
-            <Button
-              // contentEditable="false"
-              onClick={() => {
-                console.log(noteUpdateData);
-              }}
-            >
-              log noteUpdateData
-            </Button>
-            <Button onClick={noteUpdateHandler}>Update</Button>
-          </>
         </div>
       </div>
     </>

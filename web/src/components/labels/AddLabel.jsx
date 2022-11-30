@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-
 import { createLabel, updateLabel } from "../../redux/actions/labelActions";
 
 const AddLabel = ({ currentId }) => {
@@ -39,7 +38,7 @@ const AddLabel = ({ currentId }) => {
     <>
       <div className="border p-2">
         <form
-          className="flex flex-col justify-center items-center overflow-hidden h-20 w-48 border border-orange-700 "
+          className="flex flex-col justify-center items-center overflow-hidden h-20 w-48 border"
           onSubmit={submitHandler}
         >
           <p>
@@ -52,7 +51,7 @@ const AddLabel = ({ currentId }) => {
               onChange={(e) => {
                 setLabelData({ ...labelData, name: e.target.value });
               }}
-              className="p-1 w-full border border-orange-700 text-sm text-gray-500"
+              className="p-1 w-full border text-sm text-gray-500"
             ></input>
           </p>
           <button
