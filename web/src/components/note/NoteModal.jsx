@@ -6,26 +6,27 @@ import Content from "./Content";
 import Title from "./Title";
 import Button from "../UI/Button";
 import { useDispatch } from "react-redux";
-import { deleteNote } from "../../redux/actions/noteActions";
+import { deleteNote, updateNote } from "../../redux/actions/noteActions";
 // import EditableDiv from "../UI/EditableDiv";
 // import { inputchangeHandler } from "../../constants/helper";
 
-const NoteModal = (props) => {
+const NoteModal = ({ note, onCancel, onConfirm }) => {
   const dispatch = useDispatch();
 
   const [noteUpdateData, setNoteUpdateData] = useState({
-    title: "",
-    description: "",
-    labels: null,
-    creator: "",
-    background: "",
-    pinned: false,
-    selected: false,
-    listMode: false,
-    archived: false,
-    deleted: false,
-    createdAt: "",
-    updatedAt: "",
+    id: note._id,
+    title: note.title,
+    description: note.description,
+    labels: note.labels,
+    creator: note.creator,
+    background: note.background,
+    pinned: note.pinned,
+    selected: note.selected,
+    listMode: note.listMode,
+    archived: note.archived,
+    deleted: note.deleted,
+    createdAt: note.createdAt,
+    updatedAt: note.updatedAt,
   });
 
   const inputChangeHandler = (e) => {
@@ -55,13 +56,13 @@ const NoteModal = (props) => {
     console.log("background value was: ", noteUpdateData.background);
   };
 
-  const toggleAddLabel = (data) => {
-    setNoteUpdateData({
-      ...noteUpdateData,
-      labels: data,
-    });
-    console.log("labels value was: ", noteUpdateData.labels);
-  };
+  // const toggleAddLabel = (data) => {
+  //   setNoteUpdateData({
+  //     ...noteUpdateData,
+  //     labels: data,
+  //   });
+  //   console.log("labels value was: ", noteUpdateData.labels);
+  // };
 
   const toggleArchive = () => {
     setNoteUpdateData({
@@ -79,16 +80,6 @@ const NoteModal = (props) => {
     console.log("listMode value was: ", noteUpdateData.listMode);
   };
 
-  const toggleDelete = () => {
-    setNoteUpdateData({
-      ...noteUpdateData,
-      deleted: !noteUpdateData.deleted,
-    });
-    deleteHandler();
-    props.onCancel();
-    console.log("deleted value was: ", noteUpdateData.deleted);
-  };
-
   // const updatedTimeHandler = () => {
   //   setNoteUpdateData({
   //     ...noteUpdateData,
@@ -96,10 +87,24 @@ const NoteModal = (props) => {
   //   });
   // };
 
-  const deleteHandler = () => {
-    dispatch(deleteNote(props.note._id));
+  const noteUpdateHandler = () => {
+    dispatch(updateNote(note._id, noteUpdateData));
+    onConfirm();
+  };
 
-    console.log("delete clicked", props.note._id);
+  const toggleDelete = () => {
+    setNoteUpdateData({
+      ...noteUpdateData,
+      deleted: !noteUpdateData.deleted,
+    });
+    deleteHandler();
+    onConfirm();
+    console.log("deleted value was: ", noteUpdateData.deleted);
+  };
+  const deleteHandler = () => {
+    dispatch(deleteNote(note._id));
+
+    console.log("deleteHandler called", note._id);
   };
 
   return (
@@ -116,41 +121,41 @@ const NoteModal = (props) => {
         >
           <div className="border border-red-900 p-1.5">
             <Title
-              title={props.note.title}
+              title={note.title}
               togglePinNote={togglePinNote}
               inputChangeHandler={inputChangeHandler}
             />
             <Content
-              description={props.note.description}
+              description={note.description}
               inputChangeHandler={inputChangeHandler}
             />
-            <>
-              <p>{`ID: ${props.note._id}`}</p>
-              <p>{`Archived: ${props.note.Archived}`}</p>
-              <p>{`Background: ${props.note.background}`}</p>
-              <p>{`Deleted: ${props.note.deleted}`}</p>
-              <p>{`ListMode: ${props.note.listMode}`}</p>
-              <p>{`Pinned: ${props.note.pinned}`}</p>
-              <p>{`Selected: ${props.note.selected}`}</p>
-              <p>{`Created at: ${props.note.createdAt}`}</p>
-              <p>{`Updated at: ${props.note.updatedAt}`}</p>
-              <p>{`Creator: ${props.note.creator._id}`}</p>
-            </>
+            {/* <>
+              <p>{`ID: ${note._id}`}</p>
+              <p>{`Archived: ${note.Archived}`}</p>
+              <p>{`Background: ${note.background}`}</p>
+              <p>{`Deleted: ${note.deleted}`}</p>
+              <p>{`ListMode: ${note.listMode}`}</p>
+              <p>{`Pinned: ${note.pinned}`}</p>
+              <p>{`Selected: ${note.selected}`}</p>
+              <p>{`Created at: ${note.createdAt}`}</p>
+              <p>{`Updated at: ${note.updatedAt}`}</p>
+              <p>{`Creator: ${note.creator._id}`}</p>
+            </> */}
           </div>
-          <div className="border border-red-500">
-            <LabelBar labels={props.note.labels} />
-          </div>
+          {/* <div className="border border-red-500">
+            <LabelBar labels={note.labels} />
+          </div> */}
           <div className="">
             <ActionBar
               toggleArchive={toggleArchive}
               toggleCheckBoxMode={toggleCheckBoxMode}
               toggleDelete={toggleDelete}
-              onConfirm={props.onConfirm}
+              onConfirm={onConfirm}
             />
           </div>
           <>
-            <Button onClick={props.onCancel}>Cancel</Button>
-            <Button onClick={props.onConfirm}>Confirm</Button>
+            <Button onClick={onCancel}>Cancel</Button>
+            <Button onClick={onConfirm}>Confirm</Button>
             <Button
               // contentEditable="false"
               onClick={() => {
@@ -159,6 +164,7 @@ const NoteModal = (props) => {
             >
               log noteUpdateData
             </Button>
+            <Button onClick={noteUpdateHandler}>Update</Button>
           </>
         </div>
       </div>

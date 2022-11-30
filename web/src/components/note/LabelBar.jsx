@@ -1,13 +1,15 @@
 import React from "react";
 
-const LabelBar = (props) => {
+const LabelBar = ({labels}) => {
   return (
     <div>
       {/* {console.log(props)} */}
-      {props.labels
-        ? props.labels.map((label) => {
-            <div key={label._id} className="flex border border-red-900  p-0.5">
-              {label._id}
+      {labels
+        ? labels.map((label) => {
+            <div key={label._id} className="flex border border-red-900  p-0.5 h-8">
+              <p>
+                {label._id}
+              </p>
             </div>;
           })
         : ""}

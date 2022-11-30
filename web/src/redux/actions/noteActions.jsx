@@ -1,6 +1,9 @@
 // import * as actions from "../../constants/actionTypes";
 import { noteActions } from "../../constants/actionTypes";
 import * as api from "../../api";
+// import { getToken } from "./authActions";
+
+// const token = getToken();
 
 const fetchNotesRequest = () => {
   return {
@@ -50,6 +53,7 @@ export const fetchNotes = () => async (dispatch) => {
 
   try {
     dispatch(fetchNotesRequest());
+    // if(token){}
     const response = await api.fetchNotes(body);
     console.log(
       "rm: fetchNotes called (response) && (response.data.data.notes)is set to noteReducer.notes ✅"
@@ -109,11 +113,44 @@ export const createNote = (note) => async (dispatch) => {
 };
 
 export const updateNote = (id, note) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation UpdateNote($id: ID!, $title: String!, $description: String!) {
+        updateNote(id: $id, noteUpdateInput: {title: $title, description: $description}) {
+          _id
+          title
+          description
+          updatedAt
+          createdAt
+          creator{
+            _id
+          }
+          labels{
+            _id
+          }
+          background
+          pinned
+          selected
+          listMode
+          archived
+          deleted
+        }
+      }
+    `,
+    variables: {
+      id: id,
+      title: note.title,
+      description: note.description,
+    },
+  };
   try {
-    const response = await api.updateNote(id, note);
+    const response = await api.updateNote(reqBody);
     console.log("Note update, response: ", response);
 
-    dispatch({ type: noteActions.UPDATE_NOTE, payload: response });
+    dispatch({
+      type: noteActions.UPDATE_NOTE,
+      payload: response.data.data.updateNote,
+    });
   } catch (error) {
     console.log(error);
   }
