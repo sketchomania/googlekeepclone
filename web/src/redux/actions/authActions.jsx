@@ -1,6 +1,18 @@
 import { authActions } from "../../constants/actionTypes";
 import * as api from "../../api";
 
+export const getToken = () => {
+  const now = new Date(Date.now()).getTime();
+  const timeAllowed = 1000 * 60 * 30;
+  const timeSinceLastLogin = now - localStorage.getItem("lastLoginTime");
+  if (timeSinceLastLogin < timeAllowed) {
+    return localStorage.getItem("token");
+  } else {
+    logout();
+    return null;
+  }
+};
+
 const registerUserRequest = () => {
   return {
     type: authActions.REGISTER_REQUEST,
@@ -20,25 +32,17 @@ const registerUserFailure = (error) => {
 };
 
 const setToken = (token) => {
+  console.log("📌📌token previously getToken(): ", getToken());
+  console.log("setToken called: ", token);
   localStorage.setItem("token", token);
   localStorage.setItem("lastLoginTime", new Date(Date.now()).getTime());
+  console.log("token now getToken(): ", getToken());
 };
 
 const deleteToken = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("lastLoginTime");
   console.log("deleteToken called!!and now token is: ", getToken());
-};
-
-export const getToken = () => {
-  const now = new Date(Date.now()).getTime();
-  const timeAllowed = 1000 * 60 * 30;
-  const timeSinceLastLogin = now - localStorage.getItem("lastLoginTime");
-  if (timeSinceLastLogin < timeAllowed) {
-    return localStorage.getItem("token");
-  } else {
-    return null;
-  }
 };
 
 export const signupUser =
@@ -145,6 +149,12 @@ export const logout = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+// const autoLogout = (timeLeft) => {
+//   setTimeout(() => {
+//     logout();
+//   }, timeLeft);
+// };
 
 // export const checkAuth = () => async (dispatch) => {
 //   // const body = JSON.stringify({});

@@ -1,6 +1,8 @@
 import { authActions } from "../../constants/actionTypes";
+import { getToken } from "../actions/authActions";
 
-const token = localStorage.getItem("token");
+// const token = localStorage.getItem("token");
+const token = getToken();
 
 const initialState = {
   isLoading: false,
