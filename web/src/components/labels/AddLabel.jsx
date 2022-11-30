@@ -37,7 +37,7 @@ const AddLabel = ({ currentId }) => {
 
   return (
     <>
-      <div className="border border-red-800 p-2">
+      <div className="border p-2">
         <form
           className="flex flex-col justify-center items-center overflow-hidden h-20 w-48 border border-orange-700 "
           onSubmit={submitHandler}
