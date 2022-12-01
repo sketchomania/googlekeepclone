@@ -29,10 +29,10 @@ const EditableDiv = ({ id, inputChangeHandler, className, value }) => {
         // value={value}
         role="textbox"
         inputMode="text"
-        contenteditable="true"
+        contentEditable
+        spellCheck="false"
         suppressContentEditableWarning={true}
         dir="ltr"
-        // spellCheck="true"
         onInput={(e) => {
           inputChangeHandler(e);
         }}
