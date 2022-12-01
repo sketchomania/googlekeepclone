@@ -39,6 +39,7 @@ export const fetchNotes = () => async (dispatch) => {
         }
         labels{
           _id
+          name
         }
         background
         pinned
@@ -81,6 +82,7 @@ export const createNote = (note) => async (dispatch) => {
           }
           labels{
             _id
+            name
           }
           background
           pinned
@@ -127,6 +129,7 @@ export const updateNote = (id, note) => async (dispatch) => {
           }
           labels{
             _id
+            name
           }
           background
           pinned

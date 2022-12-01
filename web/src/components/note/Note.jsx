@@ -61,15 +61,6 @@ const Note = ({ note }) => {
       <div
         className={`border border-gray-200 m-1 max-w-2xl w-60 max-h-144 rounded-2xl hover:shadow-md hover:shadow-gray-400 
          overflow-hidden`}
-        // className={
-        //   `border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
-        //  overflow-x-hidden ${
-        //    creating
-        //      ? `overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm`
-        //      : `overflow-y-hidden `
-        //  } `
-        // }
-
         // onMouseOver={(e) => {console.log("mouse-over")}}
         // onClick={() => {
         //   console.log("Note clicked:", note._id);
@@ -78,29 +69,11 @@ const Note = ({ note }) => {
         onMouseMove={mouseOverHandler}
         onClick={startCreateEventHandler}
       >
-        {/* <Button
-          className=""
-          // onClick={startCreateEventHandler}
-        >
-          show note
-        </Button> */}
         <div className="text-sm">
           <div>
             {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
             <Title title={note.title} isMouseOver={isMouseOver} />
             <Content description={note.description} />
-            {/* <>
-            <p>{`ID: ${note._id}`}</p>
-            <p>{`Archived: ${note.Archived}`}</p>
-            <p>{`Background: ${note.background}`}</p>
-            <p>{`Deleted: ${note.deleted}`}</p>
-            <p>{`ListMode: ${note.listMode}`}</p>
-            <p>{`Pinned: ${note.pinned}`}</p>
-            <p>{`Selected: ${note.selected}`}</p>
-            <p>{`Created at: ${note.createdAt}`}</p>
-            <p>{`Updated at: ${note.updatedAt}`}</p>
-            <p>{`Creator: ${note.creator._id}`}</p>
-            </> */}
           </div>
           <LabelBar labels={note.labels} />
           <ActionBar isMouseOver={isMouseOver} />
