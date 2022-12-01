@@ -136,7 +136,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               description={note.description}
               inputChangeHandler={inputChangeHandler}
             />
-            {note.labels.length > 0 && <LabelBar labels={note.labels} />}
+            <LabelBar labels={note.labels} edited={note.updatedAt} />
           </div>
           <div className="">
             <ActionBar

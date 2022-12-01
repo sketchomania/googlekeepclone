@@ -93,13 +93,13 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### 📌 Priority
 
 - Make Readme
-- note update 
-- show labels in label tab
-- {note, label}: update feature
+- note update
+- show all notes when clicked on a label
+- {label}: update feature
 - search
 - note modal close when clicked outside note modal (behavior)
 - docker integration
-- ✅ Cleanup functions, check if it can be used
+- Cleanup functions, check where it can be used
 
 ### Web
 
@@ -108,16 +108,15 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - check login valid for 1 hour only
 - { note }
   - features
-    - edit note
     - CRUD in label form note
     - pin note on the top
     - archieve note
     - copy note
     - move to bin
-    - delete forever
     - note modal close behavior
   - { Color and theme }
-    - show color and theme change note card colors
+    - show color change modal on note
+    - show background change modal on note
     - add themes
 - { label }
   - show label inside note
@@ -148,16 +147,18 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ {note}: show last edited time
+  - ✅ {note}: show labels in label tab
+  - ✅ {note}: update feature (edit note)
   - ✅ {note, label}: delete feature
   - ✅ push notes and labels in redux state data (when created)
   - ✅ Show loading Spinner while loading
-  - ✅ show label when clicked on it
   - ✅ show label and notes from DB
   - ✅ show note modal when clicked on it (anywhere)
   - ✅ Login issues fixed
   - { design }
     - ✅ removed extra side scroll bar
-    - ✅ Note component styling 
+    - ✅ Note component styling
     - ✅ AddNote bar design Done
     - ✅ remove borders of the components
     - ✅ make main head bar fix even when scrolling
