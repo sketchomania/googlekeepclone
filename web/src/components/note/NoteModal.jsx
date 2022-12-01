@@ -136,21 +136,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               description={note.description}
               inputChangeHandler={inputChangeHandler}
             />
-            {/* <>
-              <p>{`ID: ${note._id}`}</p>
-              <p>{`Archived: ${note.Archived}`}</p>
-              <p>{`Background: ${note.background}`}</p>
-              <p>{`Deleted: ${note.deleted}`}</p>
-              <p>{`ListMode: ${note.listMode}`}</p>
-              <p>{`Pinned: ${note.pinned}`}</p>
-              <p>{`Selected: ${note.selected}`}</p>
-              <p>{`Created at: ${note.createdAt}`}</p>
-              <p>{`Updated at: ${note.updatedAt}`}</p>
-              <p>{`Creator: ${note.creator._id}`}</p>
-            </> */}
-            {/* <div className="border border-red-500">
-              <LabelBar labels={note.labels} />
-            </div> */}
+            {note.labels.length > 0 && <LabelBar labels={note.labels} />}
           </div>
           <div className="">
             <ActionBar
@@ -163,12 +149,11 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               <Button onClick={onCancel}>Cancel</Button>
               <Button onClick={onConfirm}>Confirm</Button>
               <Button
-                // contentEditable="false"
                 onClick={() => {
                   console.log(noteUpdateData);
                 }}
               >
-                log noteUpdateData
+                log noteData
               </Button>
               <Button onClick={noteUpdateHandler}>Update</Button>
             </>
