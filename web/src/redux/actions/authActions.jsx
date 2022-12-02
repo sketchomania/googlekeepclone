@@ -83,7 +83,7 @@ export const signupUser =
 
       dispatch(registerUserSuccess(responseData));
     } catch (error) {
-      console.log("Signup error: ", error);
+      console.log("Signup error: ", error, error.response);
       dispatch(registerUserFailure(error.response.data.errors));
     }
   };
@@ -116,6 +116,9 @@ export const login = (credential) => async (dispatch) => {
   });
 
   try {
+    dispatch({
+      type: authActions.LOGIN_REQUEST,
+    });
     const response = await api.loginUser(body);
     const responseData = response.data.data.login;
 

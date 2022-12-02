@@ -21,7 +21,7 @@ const EditableDiv = ({ id, inputChangeHandler, className, value }) => {
         {value}
       </textarea> */}
       <div
-        className={`${className} whitespace-pre-wrap overflow-hidden resize-none outline-none border w-full`}
+        className={`${className} whitespace-pre-wrap overflow-hidden resize-none outline-none w-full`}
         id={id}
         name={id}
         type="text"
