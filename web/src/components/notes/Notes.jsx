@@ -12,9 +12,9 @@ const Notes = ({ showNotesByLabel }) => {
   useEffect(() => {
     console.log("notes component useEffect: ", isLoading, notes, isError);
 
-    return () => {
-      console.log("notes Component cleanUp");
-    };
+    // return () => {
+    //   console.log("notes Component cleanUp");
+    // };
   }, []);
 
   useEffect(() => {
@@ -30,30 +30,30 @@ const Notes = ({ showNotesByLabel }) => {
   }
 
   const RenderNote = ({ value }) => {
-    console.log("👇value: ", value);
     if (value === "") {
       return notes.map((note) => <Note note={note} key={note._id} />);
     } else {
-      const noteByLabelArr = notes.filter((val) =>
+      const noteByLabelArr = notes.filter((notesObj) =>
         showNotesByLabel.assignedNotes?.find(
-          (notesObj) => notesObj._id === val._id
+          (labelObj) => labelObj._id === notesObj._id
         )
       );
       return noteByLabelArr.map((note) => <Note note={note} key={note._id} />);
     }
   };
 
-  const noteByLabelArr = notes.filter((val) =>
-    showNotesByLabel.assignedNotes?.find((notesObj) => notesObj._id === val._id)
-  );
+  // const noteByLabelArr = notes.filter((val) =>
+  //   showNotesByLabel.assignedNotes?.find((notesObj) => notesObj._id === val._id)
+  // );
 
   return (
     <>
       <div className="flex items-center justify-center flex-wrap p-2 w-full">
-        {showNotesByLabel && "👇👇"}
-        <p>{JSON.stringify("nn" + showNotesByLabel)}</p>
-        <RenderNote value={showNotesByLabel} />
+        {/* {showNotesByLabel && "👇👇"} */}
+        {/* <p>{JSON.stringify("nn" + showNotesByLabel)}</p> */}
+
         {/* <p>{JSON.stringify(noteByLabelArr)}</p> */}
+        <RenderNote value={showNotesByLabel} />
         {/* {noteByLabelArr.map((note) => (
           <Note note={note} key={note._id} />
         ))} */}

@@ -18,7 +18,7 @@ const LabelComponent = ({ label, showLabel, setShowNotesByLabel }) => {
   // });
 
   const handleClick = () => {
-    // console.log(label);
+    console.log(label);
     setShowNotesByLabel(label);
     // error because of static label values
   };

@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
-import DevPage from "./pages/DevPage";
 import "./App.css";
 import Spinner from "./components/UI/Spinner";
 // import { getToken } from "./redux/actions/authActions";
@@ -87,8 +86,6 @@ function App() {
             {!token && <Route path="*" element={<Navigate to="/auth" />} />}
 
             {!!token && <Route path="*" element={<Navigate to="/" />} />}
-
-            <Route path="/dev" component={DevPage} />
           </Routes>
         </div>
       </Fragment>

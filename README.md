@@ -93,8 +93,6 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### 📌 Priority
 
 - Make Readme
-- note update
-- show all notes when clicked on a label
 - {label}: update feature
 - search
 - note modal close when clicked outside note modal (behavior)
@@ -147,6 +145,8 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ show all notes of a label, when clicked on it
+  - ✅ Auth form stylings
   - ✅ {note}: show last edited time
   - ✅ {note}: show labels in label tab
   - ✅ {note}: update feature (edit note)
