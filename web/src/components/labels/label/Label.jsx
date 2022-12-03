@@ -6,15 +6,28 @@ import { ReactComponent as Archive } from "../../../icons/archive_black_24dp.svg
 import { ReactComponent as Bin } from "../../../icons/bin_black_24dp.svg";
 
 // const label = (props, { label, setCurrnetId }) => {
-const LabelComponent = ({ label, showLabel }) => {
+const LabelComponent = ({ label, showLabel, setShowNotesByLabel }) => {
+  // if icon is passed as props, show icon else show default icon
   const iconStyle = "fill-gray-600 h-11 w-11 p-2.5";
   const round = showLabel ? "rounded-r-3xl" : "rounded-3xl";
+
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("label component cleanup: ");
+  //   };
+  // });
+
+  const handleClick = () => {
+    // console.log(label);
+    setShowNotesByLabel(label);
+    // error because of static label values
+  };
 
   return (
     <>
       <div
         className={`${round} pl-4 h-12 flex items-center hover:bg-gray-100 cursor-pointer`}
-        onClick={() => console.log(label)}
+        onClick={handleClick}
       >
         <div>
           {/* {props.name === "Archive" ? (

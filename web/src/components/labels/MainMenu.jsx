@@ -6,7 +6,7 @@ import AddLabel from "./AddLabel";
 import Label from "./label/Label";
 import ListLabels from "./ListLabels";
 
-const MainMenu = ({ showLabel }) => {
+const MainMenu = ({ showLabel, setShowNotesByLabel }) => {
   const dispatch = useDispatch();
   const sty1 = showLabel ? "w-72" : "w-20";
 
@@ -19,8 +19,11 @@ const MainMenu = ({ showLabel }) => {
       <div
         className={`${sty1} flex-none mt-16 pt-2 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm`}
       >
-        {/* <p>Main menu (ListLabels)</p> */}
-        <div>
+        <div
+          onClick={() => {
+            setShowNotesByLabel("");
+          }}
+        >
           <Label label={{ name: "Notes" }} showLabel={showLabel} />
           <Label label={{ name: "Remainder" }} showLabel={showLabel} />
         </div>
@@ -30,8 +33,10 @@ const MainMenu = ({ showLabel }) => {
             <h6>Edit</h6>
           </div>
           <AddLabel />
-          {/* <Label name={"👇labels from DB"} showLabel={showLabel} /> */}
-          <ListLabels showLabel={showLabel} />
+          <ListLabels
+            showLabel={showLabel}
+            setShowNotesByLabel={setShowNotesByLabel}
+          />
           <>
             <Label label={{ name: "Archive" }} showLabel={showLabel} />
             <Label label={{ name: "Deleted" }} showLabel={showLabel} />

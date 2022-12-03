@@ -73,6 +73,7 @@ const Note = ({ note }) => {
           <div>
             {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
             <Title title={note.title} isMouseOver={isMouseOver} />
+            <p>{note.labels.length}</p>
             <Content description={note.description} />
           </div>
           <LabelBar labels={note.labels} />
