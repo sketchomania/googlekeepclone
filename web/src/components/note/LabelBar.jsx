@@ -1,17 +1,19 @@
 import React from "react";
 
-const LabelBar = (props) => {
+const LabelBar = ({ labels, edited }) => {
   return (
-    <div>
-      {/* {console.log(props)} */}
-      {props.labels
-        ? props.labels.map((label) => {
-            <div key={label._id} className="flex border border-red-900  p-0.5">
-              {label._id}
-            </div>;
-          })
-        : ""}
-      {/* <div className="flex border border-red-900  p-0.5">{props.labels}</div> */}
+    <div className="flex flex-wrap px-2.5 py-1 text-xs">
+      {labels &&
+        labels.map((label) => (
+          <div
+            className={`flex items-center justify-center  border bg-zinc-200 
+            px-1 py-0.5 m-0.5 rounded-xl`}
+            key={label._id}
+          >
+            <p>{label.name}</p>
+          </div>
+        ))}
+      {edited && <p>{`Edited ${new Date(edited).toDateString().slice(4)}`}</p>}
     </div>
   );
 };

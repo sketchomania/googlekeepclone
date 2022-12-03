@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import IconHolder from "../UI/IconHolder";
 import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg";
+import { ReactComponent as Pin } from "../../icons/push_pin_black_filled_24dp.svg";
 import { createNote, updateNote } from "../../redux/actions/noteActions";
+import ActionBar from "../note/AtionBar";
+import styles from "../../constants/Styles";
 
 const AddNote = ({ currentId, setCurrentId }) => {
   const [noteData, setNoteData] = useState({
@@ -26,10 +29,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
   const collapsHandler = () => {
     setExpanded(false);
   };
-
-  useEffect(() => {
-    if (note) setNoteData(note);
-  }, [note]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -63,89 +62,99 @@ const AddNote = ({ currentId, setCurrentId }) => {
     }));
   };
 
+  useEffect(() => {
+    if (note) setNoteData(note);
+    console.log("AppBar useEffect: ", note);
+
+    return () => {
+      clear();
+      console.log("AppBar cleanUp: ", note);
+    };
+  }, [note]);
+
+  const para = "flex";
+  const text =
+    "px-4 py-3 rounded-md placeholder-gray-600 font-medium min-w-4/5 w-full h-11 overflow-hidden resize-none outline-none";
+
   return (
     <>
-      <div className="my-8 p-2 border border-green-400 flex items-center justify-center">
+      <div className="p-2 border border-green-400 flex items-center justify-center">
         <form
-          className="w-144 p-2 h-full flex border rounded-md shadow-md shadow-gray-300"
+          className="w-144 my-6 flex items-center border rounded-md shadow-md shadow-gray-400"
           onSubmit={submitHandler}
         >
           <div className="flex-col w-full">
             {isExpanded && (
-              <p className={`${para}`}>
+              <div className="flex">
+                <p className={`${para} w-full`}>
+                  <textarea
+                    className={`${text}`}
+                    id="title"
+                    name="title"
+                    type="text"
+                    placeholder="Title"
+                    value={noteData.title}
+                    onChange={(e) => inputchangeHandler(e)}
+                    // onChange={(e) => {
+                    //   setNoteData({ ...noteData, title: e.target.value });
+                    // }}
+                  ></textarea>
+                </p>
+                <IconHolder>
+                  <Pin className={styles.iconStyleBig} />
+                </IconHolder>
+              </div>
+            )}
+            <div className="flex">
+              <p className={`${para} w-full`}>
                 <textarea
-                  className={`${text}`}
-                  id="title"
-                  name="title"
-                  type="text"
-                  placeholder="Title"
-                  value={noteData.title}
+                  className={`${text} text-sm`}
+                  id="description"
+                  name="description"
+                  type="description"
+                  placeholder="Take a note..."
+                  onClick={expandHandler}
+                  value={noteData.description}
                   onChange={(e) => inputchangeHandler(e)}
                   // onChange={(e) => {
-                  //   setNoteData({ ...noteData, title: e.target.value });
+                  // setNoteData({ ...noteData, description: e.target.value });
                   // }}
                 ></textarea>
               </p>
-            )}
-            <p className={`${para}`}>
-              <textarea
-                className={`${text}`}
-                id="description"
-                name="description"
-                type="description"
-                placeholder="Take a note..."
-                onClick={expandHandler}
-                value={noteData.description}
-                onChange={(e) => inputchangeHandler(e)}
-                // onChange={(e) => {
-                // setNoteData({ ...noteData, description: e.target.value });
-                // }}
-              ></textarea>
-            </p>
+              {!isExpanded && (
+                <>
+                  <IconHolder>
+                    <CheckBox className={styles.iconStyleBig} />
+                  </IconHolder>
+                  <IconHolder>
+                    <CheckBox className={styles.iconStyleBig} />
+                  </IconHolder>
+                  <IconHolder>
+                    <CheckBox className={styles.iconStyleBig} />
+                  </IconHolder>
+                </>
+              )}
+            </div>
             {isExpanded && (
-              <textarea
-                className={`${text}`}
-                id="labels"
-                name="labels"
-                type="text"
-                placeholder="Note labels..."
-                value={noteData.labels}
-                onChange={(e) => inputchangeHandler(e)}
-                // onChange={(e) => {
-                //   setNoteData({ ...noteData, labels: e.target.value });
-                // }}
-              ></textarea>
+              <>
+                <button
+                  className="w-16 h-6 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+                  type="submit"
+                  onClick={() => {
+                    console.log(noteData);
+                  }}
+                >
+                  Done
+                </button>
+
+                <ActionBar onConfirm={collapsHandler} />
+              </>
             )}
           </div>
-          {isExpanded && (
-            <div className="flex">
-              <button
-                className="m-1 w-16 h-6 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-                type="submit"
-                onClick={() => {
-                  console.log(noteData);
-                }}
-              >
-                Done
-              </button>
-              <p
-                className="m-1 w-16 h-6 items-center rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-                onClick={collapsHandler}
-              >
-                Close
-              </p>
-            </div>
-          )}
-          <IconHolder>
-            <CheckBox className="stroke-2 p-1.5 h-8 w-8 hover:bg-gray-300 hover:rounded-full" />
-          </IconHolder>
         </form>
       </div>
     </>
   );
 };
-
-const para = "border outline-none";
-const text = "w-full h-6 border outline-none";
 
 export default AddNote;

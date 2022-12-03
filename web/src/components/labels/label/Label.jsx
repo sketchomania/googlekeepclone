@@ -6,27 +6,43 @@ import { ReactComponent as Archive } from "../../../icons/archive_black_24dp.svg
 import { ReactComponent as Bin } from "../../../icons/bin_black_24dp.svg";
 
 // const label = (props, { label, setCurrnetId }) => {
-const label = (props) => {
+const LabelComponent = ({ label, showLabel, setShowNotesByLabel }) => {
+  // if icon is passed as props, show icon else show default icon
+  const iconStyle = "fill-gray-600 h-11 w-11 p-2.5";
+  const round = showLabel ? "rounded-r-3xl" : "rounded-3xl";
+
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("label component cleanup: ");
+  //   };
+  // });
+
+  const handleClick = () => {
+    // console.log(label);
+    setShowNotesByLabel(label);
+    // error because of static label values
+  };
+
   return (
     <>
-      <div className="flex items-center p-1 hover:bg-gray-200 rounded-r-3xl cursor-pointer">
-        <div className={`${sty2}`}>
+      <div
+        className={`${round} pl-4 h-12 flex items-center hover:bg-gray-100 cursor-pointer`}
+        onClick={handleClick}
+      >
+        <div>
           {/* {props.name === "Archive" ? (
-            <Archive className={`${sty1}`} />
+            <Archive className={`${iconStyle}`} />
             ) : (
-              <Label className={`${sty1}`} />
+              <Label className={`${iconStyle}`} />
             )} */}
-          <Label className={`${sty1}`} />
+          <Label className={`${iconStyle}`} />
         </div>
-        {/* {console.log(label)} */}
-        {props.showLabel &&<div><p>{props.name}</p></div>}
-        {/* <p>{props.name ? props.name : "from database"}</p> */}
+        {showLabel && (
+          <p className="ml-5 text-gray-800 font-medium">{label.name}</p>
+        )}
       </div>
     </>
   );
 };
 
-const sty1 = "stroke-2 fill-gray-500 p-2.5 h-11 w-11  mx-2";
-const sty2 = "px-2";
-
-export default label;
+export default LabelComponent;

@@ -1,33 +1,45 @@
-const EditableDiv = (props) => {
+const EditableDiv = ({ id, inputChangeHandler, className, value }) => {
   return (
-    <div
-      className={`${props.className} outline-transparent bg-transparent outline-0 border w-full`}
-      id={props.id}
-      name={props.id}
-      title={props.id}
-      contentEditable
-      suppressContentEditableWarning={true}
-      type="text"
-      role="textbox"
-      inputMode="text"
-      dir="ltr"
-      tabIndex={0}
-      spellCheck="true"
-      //   value={props.value}
-      //   onKeyUp={(e) => {console.log(e)}}
-      onInput={(e) => {
-        // console.log("e.target.outerText: ", e.target.outerText);
-        props.inputChangeHandler(e);
-
-        // console.log(e.target.id, props.id);
-        // props.setStateValue({ ...stateValue, title: e.target.outerText });
-        // console.log(stateValue);
-        // setStateT({ ...stateT, desc: e.currentTarget.textContent });
-        // console.log(stateT);
-      }}
-    >
-      {props.children}
-    </div>
+    <>
+      {/* <textarea
+        className={`${className} overflow-hidden resize-y outline-none border w-full`}
+        id={id}
+        name={id}
+        // value={value}
+        // rows={5}
+        type="text"
+        inputMode="text"
+        onInput={(e) => {
+          console.log(e);
+          // console.log(e.target.name);
+          inputChangeHandler(e);
+        }}
+        // onChange={(e) => {
+        //   console.log(e.target.value);
+        // }}
+      >
+        {value}
+      </textarea> */}
+      <div
+        className={`${className} whitespace-pre-wrap overflow-hidden resize-none outline-none w-full`}
+        id={id}
+        name={id}
+        type="text"
+        title={id}
+        // value={value}
+        role="textbox"
+        inputMode="text"
+        contentEditable
+        spellCheck="false"
+        suppressContentEditableWarning={true}
+        dir="ltr"
+        onInput={(e) => {
+          inputChangeHandler(e);
+        }}
+      >
+        {value}
+      </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
@@ -9,8 +9,9 @@ import Backdrop from "../UI/Backdrop";
 import Button from "../UI/Button";
 import NoteModal from "./NoteModal";
 
-const Note = (props) => {
+const Note = ({ note }) => {
   const [creating, setCreating] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const startCreateEventHandler = () => {
     setCreating(true);
@@ -24,12 +25,33 @@ const Note = (props) => {
     setCreating(false);
   };
 
+  const mouseOverHandler = () => {
+    if (!isMouseOver) {
+      // console.log("mouseOver", isMouseOver);
+      // setIsMouseOver(true);
+    }
+  };
+
+  const mouseLeaveHandler = () => {
+    // console.log("mouseLeave", isMouseOver);
+    // setIsMouseOver(false);
+  };
+
+  useEffect(() => {
+    console.log("note component Cleanup");
+
+    return () => {
+      console.log("note component Cleanup");
+      mouseLeaveHandler();
+    };
+  }, []);
+
   return (
     <>
-      {creating && <Backdrop onCancel={modalCancelHandler} />}
+      {/* {creating && <Backdrop onCancel={modalCancelHandler} />} */}
       {creating && (
         <NoteModal
-          note={props.note}
+          note={note}
           onCancel={modalCancelHandler}
           onConfirm={modalConfirmHandler}
         >
@@ -37,47 +59,25 @@ const Note = (props) => {
         </NoteModal>
       )}
       <div
-        className={`border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl shadow-md hover:shadow-gray-400 
-         overflow-x-hidden overflow-y-hidden`}
-        // className={
-        //   `border max-w-2xl w-60 max-h-144 m-1.5 p-2 rounded-2xl hover:bg-gray-200
-        //  overflow-x-hidden ${
-        //    creating
-        //      ? `overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm`
-        //      : `overflow-y-hidden `
-        //  } `
-        // }
-
+        className={`border border-gray-200 m-1 max-w-2xl w-60 max-h-144 rounded-2xl hover:shadow-md hover:shadow-gray-400 
+         overflow-hidden`}
         // onMouseOver={(e) => {console.log("mouse-over")}}
         // onClick={() => {
-        //   console.log("Note clicked:", props.note._id);
+        //   console.log("Note clicked:", note._id);
         // }}
+        onMouseLeave={mouseLeaveHandler}
+        onMouseMove={mouseOverHandler}
         onClick={startCreateEventHandler}
       >
-        {/* <Button
-          className=""
-          // onClick={startCreateEventHandler}
-        >
-          show note
-        </Button> */}
-        <div className="text-sm px-2 py-1">
-          {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
-          <Title title={props.note.title} />
-          <Content description={props.note.description} />
-          <>
-            <p>{`ID: ${props.note._id}`}</p>
-            <p>{`Archived: ${props.note.Archived}`}</p>
-            <p>{`Background: ${props.note.background}`}</p>
-            <p>{`Deleted: ${props.note.deleted}`}</p>
-            <p>{`ListMode: ${props.note.listMode}`}</p>
-            <p>{`Pinned: ${props.note.pinned}`}</p>
-            <p>{`Selected: ${props.note.selected}`}</p>
-            <p>{`Created at: ${props.note.createdAt}`}</p>
-            <p>{`Updated at: ${props.note.updatedAt}`}</p>
-            <p>{`Creator: ${props.note.creator._id}`}</p>
-          </>
-          <LabelBar labels={props.note.labels} />
-          <ActionBar />
+        <div className="text-sm">
+          <div>
+            {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
+            <Title title={note.title} isMouseOver={isMouseOver} />
+            <p>{note.labels.length}</p>
+            <Content description={note.description} />
+          </div>
+          <LabelBar labels={note.labels} />
+          <ActionBar isMouseOver={isMouseOver} />
         </div>
       </div>
     </>

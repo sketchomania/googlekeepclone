@@ -3,6 +3,7 @@ import { ReactComponent as Search } from "../../icons/search_black_24dp.svg";
 import { ReactComponent as Close } from "../../icons/close_black_24dp.svg";
 
 const SearchBar = () => {
+  // remove useRef
   const searchInputRef = useRef();
   const [isExpanded, setExpanded] = useState(false);
 
@@ -37,7 +38,7 @@ const SearchBar = () => {
         />
       </label>
       <input
-        className="bg-inherit w-4/5 h-7 my-0 outline-none"
+        className="bg-inherit min-w-4/5 w-full h-7 my-0 outline-none"
         id="search"
         name="search"
         type="text"

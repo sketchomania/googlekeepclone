@@ -1,27 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
 import Button from "../UI/Button";
+import { useDispatch } from "react-redux";
+import { deleteNote, updateNote } from "../../redux/actions/noteActions";
 // import EditableDiv from "../UI/EditableDiv";
 // import { inputchangeHandler } from "../../constants/helper";
 
-const NoteModal = (props) => {
+const NoteModal = ({ note, onCancel, onConfirm }) => {
+  const dispatch = useDispatch();
+
   const [noteUpdateData, setNoteUpdateData] = useState({
-    title: "",
-    description: "",
-    labels: null,
-    creator: "",
-    background: "",
-    pinned: false,
-    selected: false,
-    listMode: false,
-    archived: false,
-    deleted: false,
-    createdAt: "",
-    updatedAt: "",
+    id: note._id,
+    title: note.title,
+    description: note.description,
+    labels: note.labels,
+    creator: note.creator,
+    background: note.background,
+    pinned: note.pinned,
+    selected: note.selected,
+    listMode: note.listMode,
+    archived: note.archived,
+    deleted: note.deleted,
+    createdAt: note.createdAt,
+    updatedAt: note.updatedAt,
   });
 
   const inputChangeHandler = (e) => {
@@ -51,13 +56,13 @@ const NoteModal = (props) => {
     console.log("background value was: ", noteUpdateData.background);
   };
 
-  const toggleAddLabel = (data) => {
-    setNoteUpdateData({
-      ...noteUpdateData,
-      labels: data,
-    });
-    console.log("labels value was: ", noteUpdateData.labels);
-  };
+  // const toggleAddLabel = (data) => {
+  //   setNoteUpdateData({
+  //     ...noteUpdateData,
+  //     labels: data,
+  //   });
+  //   console.log("labels value was: ", noteUpdateData.labels);
+  // };
 
   const toggleArchive = () => {
     setNoteUpdateData({
@@ -75,14 +80,6 @@ const NoteModal = (props) => {
     console.log("listMode value was: ", noteUpdateData.listMode);
   };
 
-  const toggleDelete = () => {
-    setNoteUpdateData({
-      ...noteUpdateData,
-      deleted: !noteUpdateData.deleted,
-    });
-    console.log("deleted value was: ", noteUpdateData.deleted);
-  };
-
   // const updatedTimeHandler = () => {
   //   setNoteUpdateData({
   //     ...noteUpdateData,
@@ -90,59 +87,76 @@ const NoteModal = (props) => {
   //   });
   // };
 
+  const noteUpdateHandler = () => {
+    dispatch(updateNote(note._id, noteUpdateData));
+    onConfirm();
+  };
+
+  const toggleDelete = () => {
+    setNoteUpdateData({
+      ...noteUpdateData,
+      deleted: !noteUpdateData.deleted,
+    });
+    deleteHandler();
+    onConfirm();
+    console.log("deleted value was: ", noteUpdateData.deleted);
+  };
+  const deleteHandler = () => {
+    dispatch(deleteNote(note._id));
+
+    console.log("deleteHandler called", note._id);
+  };
+
   return (
     <>
-      <div className="fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full">
+      {/* <div className={`fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full`}> */}
+      <div
+        className={`fixed top-0 left-0 h-screen w-full bg-zinc-800 bg-opacity-75`}
+        onClick={() => {
+          console.log("Backdrop clicked");
+          // onCancel();
+        }}
+      >
         <div
-          className={`top-16 mx-auto relative bg-white shadow-3xl max-w-2xl w-144 
-          max-h-144 h-auto m-1 p-1 rounded-2xl border border-indigo-600 dark:bg-gray-500 
+          className={`top-16 mx-auto relative bg-white z-10 
+          max-h-144 h-auto rounded-2xl max-w-2xl w-144 m-4
           overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm
           `}
-          onClick={() => {
-            console.log("NoteModaal clicked");
-          }}
+          // onClick={() => {
+          //   console.log("NoteModaal clicked");
+          // }}
         >
-          <Button onClick={props.onCancel}>Cancel</Button>
-          <Button onClick={props.onConfirm}>Confirm</Button>
-          <Button
-            // contentEditable="false"
-            onClick={() => {
-              console.log(noteUpdateData);
-            }}
-          >
-            log noteUpdateData
-          </Button>
-          <div className="border border-red-900 p-1.5">
+          <div className="border">
             <Title
-              title={props.note.title}
+              title={note.title}
               togglePinNote={togglePinNote}
               inputChangeHandler={inputChangeHandler}
             />
             <Content
-              description={props.note.description}
+              description={note.description}
               inputChangeHandler={inputChangeHandler}
             />
-            <p>{`ID: ${props.note._id}`}</p>
-            <p>{`Archived: ${props.note.Archived}`}</p>
-            <p>{`Background: ${props.note.background}`}</p>
-            <p>{`Deleted: ${props.note.deleted}`}</p>
-            <p>{`ListMode: ${props.note.listMode}`}</p>
-            <p>{`Pinned: ${props.note.pinned}`}</p>
-            <p>{`Selected: ${props.note.selected}`}</p>
-            <p>{`Created at: ${props.note.createdAt}`}</p>
-            <p>{`Updated at: ${props.note.updatedAt}`}</p>
-            <p>{`Creator: ${props.note.creator._id}`}</p>
-          </div>
-          <div className="">
-            <LabelBar labels={props.note.labels} />
+            <LabelBar labels={note.labels} edited={note.updatedAt} />
           </div>
           <div className="">
             <ActionBar
               toggleArchive={toggleArchive}
               toggleCheckBoxMode={toggleCheckBoxMode}
               toggleDelete={toggleDelete}
-              onConfirm={props.onConfirm}
+              onConfirm={onConfirm}
             />
+            <>
+              <Button onClick={onCancel}>Cancel</Button>
+              <Button onClick={onConfirm}>Confirm</Button>
+              <Button
+                onClick={() => {
+                  console.log(noteUpdateData);
+                }}
+              >
+                log noteData
+              </Button>
+              <Button onClick={noteUpdateHandler}>Update</Button>
+            </>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
 import { ReactComponent as Account } from "../../icons/account_circle_black_24dp.svg";
 import { ReactComponent as Logout } from "../../icons/logout_black_24dp.svg";
 import SearchBar from "./SearchBar";
+import styles from "../../constants/Styles";
 
 const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
   const auth = useSelector((state) => state.authReducer);
@@ -31,11 +32,18 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
     // <Redirect to="/auth" />;
   };
 
+  const ulSty = "list-none flex m-0 p-0";
+  const container = "text-base text-white flex items-center justify-center m-2";
+
   return (
     <>
       <header className="max-w-full h-16 flex p-1 items-center justify-between fixed top-0 left-0 right-0 bg-inherit shadow-md shadow-gray-300">
         <div className={`${container}`}>
-          <Menu title="Menu" className={`${sty1}`} onClick={toggleLabelMenu} />{" "}
+          <Menu
+            title="Main menu"
+            className={styles.iconStyleBig}
+            onClick={toggleLabelMenu}
+          />{" "}
         </div>
         {/* on click show label list  */}
         <Link
@@ -60,9 +68,9 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
             <li>
               <button title="theme" onClick={toggleTheme}>
                 {darkMode ? (
-                  <Light className={`${sty1}`} />
+                  <Light className={styles.iconStyleBig} />
                 ) : (
-                  <Dark className={`${sty1}`} />
+                  <Dark className={styles.iconStyleBig} />
                 )}
               </button>
             </li>
@@ -71,24 +79,24 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
             <li>
               <button title="view" onClick={toggleTheme}>
                 {darkMode ? (
-                  <View className={`${sty1}`} />
+                  <View className={styles.iconStyleBig} />
                 ) : (
-                  <Grid className={`${sty1}`} />
+                  <Grid className={styles.iconStyleBig} />
                 )}
               </button>
             </li>
             <li title="Setting">
-              <Setting className={`${sty1}`} />
+              <Setting className={styles.iconStyleBig} />
             </li>
             <li>
-              <Account className={`${sty1}`} />
+              <Account className={styles.iconStyleBig} />
             </li>
           </ul>
           <ul className={`${ulSty}`}>
             <li>
               {auth.token && (
                 <button title="Logout" onClick={logoutHandler}>
-                  <Logout className={`${sty1}`} />
+                  <Logout className={styles.iconStyleBig} />
                 </button>
               )}
             </li>
@@ -98,9 +106,5 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
     </>
   );
 };
-
-const ulSty = "list-none flex m-0 p-0";
-const container = "text-base text-white flex items-center justify-center m-2";
-const sty1 = "stroke-2 fill-gray-500 p-2.5 h-11 w-11 hover:bg-gray-200 hover:fill-black hover:rounded-full cursor-pointer";
 
 export default AppBar;

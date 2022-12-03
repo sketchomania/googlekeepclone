@@ -2,17 +2,22 @@ import React from "react";
 import { ReactComponent as Pin } from "../../icons/push_pin_black_filled_24dp.svg";
 import EditableDiv from "../UI/EditableDiv";
 
-const Title = (props) => {
+const Title = ({ togglePinNote, title, inputChangeHandler }) => {
   return (
-    <div className="flex text-base font-semibold items-center justify-between">
-      {/* <h3 className="font-bold text-xl text-gray-800">{props.title}</h3> */}
-      <EditableDiv id="title" inputChangeHandler={props.inputChangeHandler}>
-        {props.title}
-      </EditableDiv>
+    <div className="px-4 pt-3 flex text-base font-semibold items-center justify-between">
+      {/* <h3 className="font-bold text-xl text-gray-800" id="title">{props.title}</h3> */}
+      {/* <p id="title">{title}</p> */}
+      <EditableDiv
+        id="title"
+        inputChangeHandler={inputChangeHandler}
+        value={title}
+      />
+      {/* {title}
+      </EditableDiv> */}
       <span>
         <Pin
-          className=" stroke-2 p-1.5 h-9 w-9 hover:bg-gray-200 hover:rounded-full cursor-pointer"
-          onClick={props.togglePinNote}
+          className="p-1 h-7 w-7 hover:bg-gray-100 hover:rounded-full cursor-pointer"
+          onClick={togglePinNote}
         />
       </span>
     </div>

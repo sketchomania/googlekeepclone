@@ -1,29 +1,40 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Spinner from "../UI/Spinner";
-import Label from "./label/Label";
+import LabelComponent from "./label/Label";
+// import Label from "./label/Label";
 
-const ListLabels = ({ showLabel }) => {
+const ListLabels = ({ showLabel, setShowNotesByLabel }) => {
   const stateObj = useSelector((state) => state);
-  console.log(stateObj);
   // const labelData = useSelector((state) => state.labelReducer);
   const { isLoading, labels, isError } = useSelector(
     (state) => state.labelReducer
   );
   // console.log(labelData);
 
+  useEffect(() => {
+    console.log("listLabels page useEffect");
+    console.log(stateObj);
+    console.log("labelData: ", isLoading, labels, isError);
+
+    return () => {
+      console.log("listLabels page cleanup");
+    };
+  }, []);
+
   if (isLoading) {
     return <Spinner />;
   }
 
   return (
-    <div className="border border-green-500">
-      <p>ListLabels component</p>
-      {/* its working  and if it's not working just comment out the LABELs.map part and refresh */}
-      {console.log("labelData: ", isLoading, labels, isError)}
-
+    <div className="border">
       {labels.map((label) => (
         <div key={label._id}>
-          <Label label={label} name={label.name} showLabel={showLabel} />
+          <LabelComponent
+            label={label}
+            showLabel={showLabel}
+            setShowNotesByLabel={setShowNotesByLabel}
+          />
         </div>
       ))}
     </div>
