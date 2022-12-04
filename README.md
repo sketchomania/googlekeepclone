@@ -88,13 +88,20 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   npm start
   ```
 
+## Contribution
+
+### Features
+
+- onclick of `Esc` button modal should close
+
 ## 📃 TODO
 
 ### 📌 Priority
 
 - Make Readme
-- {label}: update feature
-- search
+- {label}: Edit/update feature (Modal)
+- Google keep logo
+- search note, label
 - note modal close when clicked outside note modal (behavior)
 - docker integration
 - Cleanup functions, check where it can be used
@@ -145,6 +152,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ show modal for CRUD Labels
   - ✅ show all notes of a label, when clicked on it
   - ✅ Auth form stylings
   - ✅ {note}: show last edited time
@@ -166,6 +174,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Server
 
 - { done }
+
   - 🎉 server deployed and working
   - ✅ create separate branch for working with backend part
   - ✅ send user data in authPayload form server
@@ -173,3 +182,6 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - ✅ user, notes and labels shcema
   - ✅ send data related to user only
   - ✅ create note and label
+
+- https://giphy.com/gifs/socializeagency-illustration-rocket-flipbook-ii8uedZgeKlIKJq1Rz
+- https://giphy.com/gifs/coming-soon-14ko1wkUS2thu

@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createLabel, updateLabel } from "../../redux/actions/labelActions";
+import {
+  createLabel,
+  updateLabel,
+  deleteLabel,
+} from "../../redux/actions/labelActions";
+import Spinner from "../UI/Spinner";
+import LabelComponent from "./label/Label";
 
-const AddLabel = ({ currentId }) => {
+const AddLabel = ({ currentId, onCancel }) => {
+  const dispatch = useDispatch();
   const [labelData, setLabelData] = useState({
     name: "",
   });
-  const label = useSelector((state) =>
-    currentId ? state.label.find((l) => l._id === currentId) : null
+  const { isLoading, labels, isError } = useSelector(
+    (state) => state.labelReducer
   );
-  const dispatch = useDispatch();
+  // const label = useSelector((state) =>
+  //   currentId ? state.label.find((l) => l._id === currentId) : null
+  // );
 
-  useEffect(() => {
-    if (label) setLabelData(label);
-  }, [label]);
+  // useEffect(() => {
+  //   if (label) setLabelData(label);
+  // }, [label]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+
     if (currentId) {
       dispatch(updateLabel(currentId, labelData));
     } else {
       dispatch(createLabel(labelData));
     }
-    
-    console.log("Label Submit Clicked", labelData, labelData.name);
+
+    console.log("Label Submit Clicked", labelData);
     clear();
   };
 
@@ -36,30 +45,50 @@ const AddLabel = ({ currentId }) => {
 
   return (
     <>
-      <div className="border p-2">
+      <div className="relative w-72 mx-auto bg-white">
         <form
-          className="flex flex-col justify-center items-center overflow-hidden h-20 w-48 border"
+          className="flex flex-col overflow-hidden h-128 w-72 border"
           onSubmit={submitHandler}
         >
-          <p>
+          <div className="p-4 mb-10 overflow-y-scroll scroll-smooth scrollbar-sm">
+            <h3 className="font-medium">{"Edit labels"}</h3>
             <input
               id="label"
               name="label"
               type="text"
-              placeholder="Add Label . . ."
+              placeholder="Create new label"
               value={labelData.name}
               onChange={(e) => {
                 setLabelData({ ...labelData, name: e.target.value });
               }}
               className="p-1 w-full border text-sm text-gray-500"
             ></input>
-          </p>
-          <button
-            className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-            type="submit"
+
+            {isLoading && <Spinner />}
+            {labels.map((label) => (
+              <div key={label._id}>
+                {/* <p>{label.name}</p> */}
+                <LabelComponent label={label} showLabel={true} />
+              </div>
+            ))}
+          </div>
+
+          <div
+            className={`flex flex-row-reverse p-2.5 absolute border-t bottom-0 right-0 w-full h-14 bg-white`}
           >
-            Add
-          </button>
+            <button
+              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+              type="submit"
+            >
+              Create
+            </button>
+            <button
+              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
+              onClick={onCancel}
+            >
+              Done
+            </button>
+          </div>
         </form>
       </div>
     </>

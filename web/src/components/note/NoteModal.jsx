@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
@@ -7,7 +7,7 @@ import Title from "./Title";
 import Button from "../UI/Button";
 import { useDispatch } from "react-redux";
 import { deleteNote, updateNote } from "../../redux/actions/noteActions";
-// import EditableDiv from "../UI/EditableDiv";
+import styles from "../../constants/Styles";
 // import { inputchangeHandler } from "../../constants/helper";
 
 const NoteModal = ({ note, onCancel, onConfirm }) => {
@@ -111,7 +111,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
     <>
       {/* <div className={`fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full`}> */}
       <div
-        className={`fixed top-0 left-0 h-screen w-full bg-zinc-800 bg-opacity-75`}
+        className={styles.backdropStyle}
         onClick={() => {
           console.log("Backdrop clicked");
           // onCancel();
