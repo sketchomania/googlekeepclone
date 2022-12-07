@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { logout } from "../../redux/actions/authActions";
-// import { ThemeContext, themes } from "../../context/ThemeContext";
 
 import { ReactComponent as Menu } from "../../icons/menu_black_24dp.svg";
 import { ReactComponent as Light } from "../../icons/light_mode_black_24dp.svg";
@@ -21,7 +20,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
   const dispatch = useDispatch();
   const logo = (
     <img
-      className="h-12"
+      className="h-10"
       src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
       alt="logo"
     />
@@ -33,7 +32,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
   };
 
   const ulSty = "list-none flex m-0 p-0";
-  const container = "text-base text-white flex items-center justify-center m-2";
+  const container = "flex items-center justify-center m-2";
 
   return (
     <>
@@ -45,25 +44,20 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
             onClick={toggleLabelMenu}
           />{" "}
         </div>
-        {/* on click show label list  */}
-        <Link
-          to="/"
-          title="Google keep clone"
-          style={{ textDecoration: "none" }}
-        >
-          <div className={`${container}`}>
-            {logo}
-            <h3 className="font-medium text-xl">Keep</h3>
-          </div>
-        </Link>
-        {/* create a component for lable menu */}
+        <>
+          <Link
+            to="/"
+            title="Google keep clone"
+            style={{ textDecoration: "none" }}
+          >
+            <div className={`${container} ml-0`}>
+              <div>{logo}</div>
+              <h3 className="font-medium text-xl text-zinc-500 ml-2 scale-110">{"Keep"}</h3>
+            </div>
+          </Link>
+        </>
         <SearchBar />
         <nav className={`${container}`}>
-          <ul className={`${ulSty}`}>
-            <li title="Dev">
-              <Link to="/dev">Dev</Link>
-            </li>
-          </ul>
           <ul className={`${ulSty}`}>
             <li>
               <button title="theme" onClick={toggleTheme}>
