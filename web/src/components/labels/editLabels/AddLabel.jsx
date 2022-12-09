@@ -6,9 +6,7 @@ import {
   updateLabel,
   deleteLabel,
 } from "../../../redux/actions/labelActions";
-import LabelComponent from "../label/Label";
 import LabelUnit from "./LabelUnit";
-
 import Spinner from "../../UI/Spinner";
 import { ReactComponent as CloseIcon } from "../../../icons/close_black_24dp.svg";
 import { ReactComponent as DoneIcon } from "../../../icons/done_black_24dp.svg";
@@ -35,13 +33,15 @@ const AddLabel = ({ currentId, onCancel }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (currentId) {
-      dispatch(updateLabel(currentId, labelData));
-    } else {
-      dispatch(createLabel(labelData));
-    }
+    if (!(labelData.name.trim() === "")) {
+      if (currentId) {
+        dispatch(updateLabel(currentId, labelData));
+      } else {
+        dispatch(createLabel(labelData));
+      }
 
-    console.log("Label Submit Clicked", labelData);
+      console.log("Label Submit Clicked", labelData);
+    }
     clear();
   };
 
@@ -58,9 +58,15 @@ const AddLabel = ({ currentId, onCancel }) => {
           onSubmit={submitHandler}
         >
           <div className="p-4 mb-10 overflow-y-scroll scroll-smooth scrollbar-sm">
-            <h3 className="font-medium h-6 flex items-center">{"Edit labels"}</h3>
+            <h3 className="font-medium h-6 flex items-center">
+              {"Edit labels"}
+            </h3>
             <div className="flex justify-between h-11 items-center">
-              <div className={`${iconContainer}`} title="Cancel">
+              <div
+                className={`${iconContainer}`}
+                title="Cancel"
+                onClick={clear}
+              >
                 <CloseIcon className="fill-zinc-500 hover:fill-black scale-75" />
               </div>
               <input
@@ -74,7 +80,11 @@ const AddLabel = ({ currentId, onCancel }) => {
                 }}
                 className="px-3 w-52 text-sm text-gray-500 outline-none"
               />
-              <div className={`${iconContainer}`} title="Create label">
+              <div
+                className={`${iconContainer}`}
+                title="Create label"
+                onClick={submitHandler}
+              >
                 <DoneIcon className="scale-75" />
               </div>
             </div>
@@ -82,8 +92,6 @@ const AddLabel = ({ currentId, onCancel }) => {
             {isLoading && <Spinner />}
             {labels.map((label) => (
               <div key={label._id}>
-                {/* <p>{label.name}</p> */}
-                {/* <LabelComponent label={label} showLabel={true} /> */}
                 <LabelUnit label={label} />
               </div>
             ))}

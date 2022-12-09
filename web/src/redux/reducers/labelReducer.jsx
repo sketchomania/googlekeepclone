@@ -32,10 +32,16 @@ const labelReducer = (state = initialState, action) => {
         labels: [action.payload, ...state.labels],
       };
     case labelActions.UPDATE_LABEL:
+      return {
+        ...state,
+        labels: state.labels.map((label) => 
+          label._id === action.payload._id ? action.payload : label
+        )
+      }
       // state.labels.map ??
-      return state.map((label) =>
-        label._id === action.payload._id ? action.payload : label
-      );
+      // return state.map((label) =>
+      //   label._id === action.payload._id ? action.payload : label
+      // );
     case labelActions.DELETE_LABEL:
       return {
         ...state,

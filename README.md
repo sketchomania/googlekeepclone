@@ -99,8 +99,6 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### 📌 Priority
 
 - Make Readme
-- {label}: Edit/update feature (Modal)
-- Google keep logo
 - search note, label
 - note modal close when clicked outside note modal (behavior)
 - docker integration
@@ -152,7 +150,9 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
-  - ✅ show modal for CRUD Labels
+  - ✅ {label}: Edit/update, delete feature (Modal)
+  - ✅ Google keep logo
+  - ✅ {label}: show modal for CRUD Labels
   - ✅ show all notes of a label, when clicked on it
   - ✅ Auth form stylings
   - ✅ {note}: show last edited time

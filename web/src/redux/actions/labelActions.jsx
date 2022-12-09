@@ -84,11 +84,34 @@ export const createLabel = (label) => async (dispatch) => {
 };
 
 export const updateLabel = (id, label) => async (dispatch) => {
+  const reqBody = {
+    query: `
+      mutation UpdateLabel($id: ID!, $name: String!) {
+        updateLabel(id: $id, labelUpdateInput: {name: $name}) {
+          _id
+          name
+          assignedNotes{
+            _id
+          }
+          creator{
+            _id
+          }
+        }
+      }
+    `,
+    variables: {
+      id: id,
+      name: label.name,
+    },
+  };
   try {
-    const response = await api.updateLabel(id, label);
+    const response = await api.updateLabel(reqBody);
     console.log("Label update, response: ", response);
 
-    dispatch({ type: labelActions.UPDATE_LABEL, payload: response });
+    dispatch({
+      type: labelActions.UPDATE_LABEL,
+      payload: response.data.data.updateLabel,
+    });
   } catch (error) {
     console.log("Error: ", error);
   }
