@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import Spinner from "../UI/Spinner";
-import EditLabelModal from "./EditLabelModal";
+import EditLabelModal from "./editLabels/EditLabelModal";
 import LabelComponent from "./label/Label";
 
 const ListLabels = ({ showLabel, setShowNotesByLabel }) => {

@@ -5,9 +5,13 @@ import {
   createLabel,
   updateLabel,
   deleteLabel,
-} from "../../redux/actions/labelActions";
-import Spinner from "../UI/Spinner";
-import LabelComponent from "./label/Label";
+} from "../../../redux/actions/labelActions";
+import LabelComponent from "../label/Label";
+import LabelUnit from "./LabelUnit";
+
+import Spinner from "../../UI/Spinner";
+import { ReactComponent as CloseIcon } from "../../../icons/close_black_24dp.svg";
+import { ReactComponent as DoneIcon } from "../../../icons/done_black_24dp.svg";
 
 const AddLabel = ({ currentId, onCancel }) => {
   const dispatch = useDispatch();
@@ -17,6 +21,9 @@ const AddLabel = ({ currentId, onCancel }) => {
   const { isLoading, labels, isError } = useSelector(
     (state) => state.labelReducer
   );
+
+  const iconContainer =
+    "p-0.5 rounded-full flex items-center justify-center fill-zinc-500 hover:fill-black hover:bg-zinc-200 cursor-pointer";
   // const label = useSelector((state) =>
   //   currentId ? state.label.find((l) => l._id === currentId) : null
   // );
@@ -45,30 +52,39 @@ const AddLabel = ({ currentId, onCancel }) => {
 
   return (
     <>
-      <div className="relative w-72 mx-auto bg-white">
+      <div className="relative max-w-min mx-auto bg-white">
         <form
-          className="flex flex-col overflow-hidden h-128 w-72 border"
+          className="flex flex-col overflow-hidden h-128 border"
           onSubmit={submitHandler}
         >
           <div className="p-4 mb-10 overflow-y-scroll scroll-smooth scrollbar-sm">
-            <h3 className="font-medium">{"Edit labels"}</h3>
-            <input
-              id="label"
-              name="label"
-              type="text"
-              placeholder="Create new label"
-              value={labelData.name}
-              onChange={(e) => {
-                setLabelData({ ...labelData, name: e.target.value });
-              }}
-              className="p-1 w-full border text-sm text-gray-500"
-            ></input>
+            <h3 className="font-medium h-6 flex items-center">{"Edit labels"}</h3>
+            <div className="flex justify-between h-11 items-center">
+              <div className={`${iconContainer}`} title="Cancel">
+                <CloseIcon className="fill-zinc-500 hover:fill-black scale-75" />
+              </div>
+              <input
+                id="label"
+                name="label"
+                type="text"
+                placeholder="Create new label"
+                value={labelData.name}
+                onChange={(e) => {
+                  setLabelData({ ...labelData, name: e.target.value });
+                }}
+                className="px-3 w-52 text-sm text-gray-500 outline-none"
+              />
+              <div className={`${iconContainer}`} title="Create label">
+                <DoneIcon className="scale-75" />
+              </div>
+            </div>
 
             {isLoading && <Spinner />}
             {labels.map((label) => (
               <div key={label._id}>
                 {/* <p>{label.name}</p> */}
-                <LabelComponent label={label} showLabel={true} />
+                {/* <LabelComponent label={label} showLabel={true} /> */}
+                <LabelUnit label={label} />
               </div>
             ))}
           </div>
