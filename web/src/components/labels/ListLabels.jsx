@@ -27,23 +27,23 @@ const ListLabels = ({ showLabel, setShowNotesByLabel }) => {
     };
   }, []);
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   return (
     <div className="border">
-      <>
-        {labels.map((label) => (
-          <div key={label._id}>
-            <LabelComponent
-              label={label}
-              showLabel={showLabel}
-              setShowNotesByLabel={setShowNotesByLabel}
-            />
-          </div>
-        ))}
-      </>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {labels.map((label) => (
+            <div key={label._id}>
+              <LabelComponent
+                label={label}
+                showLabel={showLabel}
+                setShowNotesByLabel={setShowNotesByLabel}
+              />
+            </div>
+          ))}
+        </>
+      )}
       <>
         {showEditLabel && (
           <EditLabelModal labels={labels} onCancel={modalCancelHandler} />

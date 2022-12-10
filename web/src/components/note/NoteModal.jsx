@@ -137,15 +137,14 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               inputChangeHandler={inputChangeHandler}
             />
             <LabelBar labels={note.labels} edited={note.updatedAt} />
-          </div>
-          <div className="">
             <ActionBar
               toggleArchive={toggleArchive}
               toggleCheckBoxMode={toggleCheckBoxMode}
               toggleDelete={toggleDelete}
               onConfirm={onConfirm}
             />
-            <>
+          </div>
+          <div className="flex">
               <Button onClick={onCancel}>Cancel</Button>
               <Button onClick={onConfirm}>Confirm</Button>
               <Button
@@ -156,7 +155,6 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
                 log noteData
               </Button>
               <Button onClick={noteUpdateHandler}>Update</Button>
-            </>
           </div>
         </div>
       </div>

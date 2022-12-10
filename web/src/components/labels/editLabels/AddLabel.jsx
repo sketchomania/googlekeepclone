@@ -8,6 +8,7 @@ import {
 } from "../../../redux/actions/labelActions";
 import LabelUnit from "./LabelUnit";
 import Spinner from "../../UI/Spinner";
+import Button from "../../UI/Button";
 import { ReactComponent as CloseIcon } from "../../../icons/close_black_24dp.svg";
 import { ReactComponent as DoneIcon } from "../../../icons/done_black_24dp.svg";
 
@@ -100,18 +101,8 @@ const AddLabel = ({ currentId, onCancel }) => {
           <div
             className={`flex flex-row-reverse p-2.5 absolute border-t bottom-0 right-0 w-full h-14 bg-white`}
           >
-            <button
-              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-              type="submit"
-            >
-              Create
-            </button>
-            <button
-              className="m-1 w-16 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-              onClick={onCancel}
-            >
-              Done
-            </button>
+            <Button type="submit">Create</Button>
+            <Button onClick={onCancel}>Done</Button>
           </div>
         </form>
       </div>

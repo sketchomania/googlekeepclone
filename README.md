@@ -90,6 +90,8 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ## Contribution
 
+- note modal close when clicked outside note modal (behavior)
+
 ### Features
 
 - onclick of `Esc` button modal should close
@@ -100,14 +102,13 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 - Make Readme
 - search note, label
-- note modal close when clicked outside note modal (behavior)
 - docker integration
 - Cleanup functions, check where it can be used
 
 ### Web
 
 - { todo }
-  - add central asset source
+  - show label name on appBar when viewing particular label
   - check login valid for 1 hour only
 - { note }
   - features
@@ -120,25 +121,19 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - { Color and theme }
     - show color change modal on note
     - show background change modal on note
-    - add themes
-- { label }
-  - show label inside note
-  - create new label
-  - bin label
-  - archive label
-  - CRUD
-    - CRUD for label from side bar
-    - CRUD label in note
-  - separate page for each label to show notes of that label
+    - add themes for notes
+  - { label }
 - { design }
   - improve design & theme look
 - { mobile View }
   - check all designs for mobile view
 - { archieve }
+  - note modal close when clicked outside note modal (behavior)
   - show refresh button
-  - bin feature , archive also
-  - change view from grid to box may be
+  - bin feature , archive feature
+  - change view from grid to box
   - dark mode perfection
+  - add central asset source for svg (not working)
 
 ### 📃Server
 
@@ -151,10 +146,13 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 - { done }
   - ✅ {label}: Edit/update, delete feature (Modal)
+    - CRUD for label from side bar
   - ✅ Google keep logo
   - ✅ {label}: show modal for CRUD Labels
   - ✅ show all notes of a label, when clicked on it
+    - separate page for each label to show notes of that label
   - ✅ Auth form stylings
+  - ✅ {note}: show label inside note
   - ✅ {note}: show last edited time
   - ✅ {note}: show labels in label tab
   - ✅ {note}: update feature (edit note)
