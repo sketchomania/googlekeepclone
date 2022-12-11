@@ -1,10 +1,13 @@
 import React from "react";
-import { ReactComponent as Pin } from "../../icons/push_pin_black_filled_24dp.svg";
-import EditableDiv from "../UI/EditableDiv";
 
-const Title = ({ togglePinNote, title, inputChangeHandler }) => {
+import EditableDiv from "../UI/EditableDiv";
+import { ReactComponent as Pin } from "../../icons/push_pin_black_24dp.svg";
+import { ReactComponent as PinFilled } from "../../icons/push_pin_black_filled_24dp.svg";
+
+const Title = ({ togglePinNote, pinned, title, inputChangeHandler }) => {
+  const iconStyle = `hover:bg-zinc-100 hover:rounded-full cursor-pointer`;
   return (
-    <div className="px-4 pt-3 flex text-base font-semibold items-center justify-between">
+    <div className="px-4 pt-3 flex text-base font-semibold  justify-between">
       {/* <h3 className="font-bold text-xl text-gray-800" id="title">{props.title}</h3> */}
       {/* <p id="title">{title}</p> */}
       <EditableDiv
@@ -14,11 +17,12 @@ const Title = ({ togglePinNote, title, inputChangeHandler }) => {
       />
       {/* {title}
       </EditableDiv> */}
-      <span>
-        <Pin
-          className="p-1 h-7 w-7 hover:bg-gray-100 hover:rounded-full cursor-pointer"
-          onClick={togglePinNote}
-        />
+      <span onClick={togglePinNote}>
+        {pinned ? (
+          <PinFilled title="Unpin note" className={`${iconStyle}`} />
+        ) : (
+          <Pin title="Pin note" className={`${iconStyle}`} />
+        )}
       </span>
     </div>
   );

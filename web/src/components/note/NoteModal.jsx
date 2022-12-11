@@ -131,6 +131,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
               title={note.title}
               togglePinNote={togglePinNote}
               inputChangeHandler={inputChangeHandler}
+              pinned={noteUpdateData.pinned}
             />
             <Content
               description={note.description}

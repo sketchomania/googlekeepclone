@@ -100,6 +100,8 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
+- Appbar icons and functionality,
+- appBar show label name
 - Make Readme
 - search note, label
 - docker integration
@@ -108,6 +110,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { todo }
+  - {Color} show color change modal on note
   - show label name on appBar when viewing particular label
   - check login valid for 1 hour only
 - { note }
@@ -145,6 +148,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ loading spinner UI improvement
   - ✅ {label}: Edit/update, delete feature (Modal)
     - CRUD for label from side bar
   - ✅ Google keep logo

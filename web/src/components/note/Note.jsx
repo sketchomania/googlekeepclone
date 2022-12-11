@@ -4,9 +4,9 @@ import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
+import { ReactComponent as CheckFilled } from "../../icons/check_circle_filled_black_24dp.svg";
 
 import Backdrop from "../UI/Backdrop";
-import Button from "../UI/Button";
 import NoteModal from "./NoteModal";
 
 const Note = ({ note }) => {
@@ -69,6 +69,7 @@ const Note = ({ note }) => {
         onMouseMove={mouseOverHandler}
         onClick={startCreateEventHandler}
       >
+        {/* <CheckFilled /> */}
         <div className="text-sm">
           <div>
             {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
