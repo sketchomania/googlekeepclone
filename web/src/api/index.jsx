@@ -8,7 +8,7 @@ const urQl = process.env.REACT_APP_API;
 // console.log("token from localStorage (api page) :", token, "urQl: ", urQl);
 
 // axios.defaults.baseURL = process.env.REACT_APP_API;
-axios.defaults.timeout = 15000; // check working of this
+axios.defaults.timeout = 30000; 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // const headers = {

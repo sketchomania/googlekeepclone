@@ -23,13 +23,13 @@ const SearchBar = () => {
     console.log(searchInputRef.current.value);
     const searchedTerm = searchInputRef.current.value;
     console.log(searchedTerm);
-    // filtering, validity , search_part -> logic
+    // filtering, validity, search_part -> logic
   };
 
   return (
     <form
       onSubmit={fromSubmitHandler}
-      className="relative flex w-6/12 h-12 p-0.5 px-2 mx-auto rounded-lg justify-between items-center bg-gray-100 dark:bg-zinc-500"
+      className="flex w-6/12 h-12 p-0.5 px-2 rounded-lg justify-between items-center bg-gray-100 dark:bg-zinc-500"
     >
       <label>
         <Search
