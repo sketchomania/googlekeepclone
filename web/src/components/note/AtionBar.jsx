@@ -6,6 +6,7 @@ import { ReactComponent as Label } from "../../icons/label_black_24dp.svg";
 import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg";
 import { ReactComponent as Person } from "../../icons/person_add_alt_black_24dp.svg";
 import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
+import { ReactComponent as Unarchive } from "../../icons/unarchive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 import Button from "../UI/Button";
 
@@ -22,15 +23,19 @@ const AtionBar = (props) => {
   const mouseOverStyle = props.isMouseOver ? "fill-gray-500" : "fill-none";
   const iconStyle =
     // mouseOverStyle +
-    "stroke-2 mx-2 p-2 h-8 w-8 hover:fill-black hover:bg-gray-100 hover:rounded-full cursor-pointer";
+    "mx-2 p-2 h-8 w-8 fill-zinc-700 hover:fill-black hover:bg-gray-100 rounded-full cursor-pointer hover:bg-zinc-700 hover:bg-opacity-10";
 
   return (
     <div className="flex items-center justify-between my-1">
       <div className="flex">
-        <Alert className={iconStyle} />
-        <Person className={`${iconStyle} cursor-not-allowed fill-gray-500`} />
+        <Alert title="Remind me" className={iconStyle} />
+        <Person
+          title="Collaborator"
+          className={`${iconStyle} cursor-not-allowed fill-gray-500`}
+        />
         <li className="list-none relative z-0">
           <Color
+            title="Background options"
             className={`${iconStyle}`}
             onClick={() => {
               console.log("color Backdrop chilcked");
@@ -204,13 +209,30 @@ const AtionBar = (props) => {
             </>
           )}
         </li>
-        <Label className={`${iconStyle}`} />
-        <Archive className={`${iconStyle}`} onClick={props.toggleArchive} />
+        <Label title="Edit Labels" className={`${iconStyle}`} />
+        {props.archived ? (
+          <Unarchive
+            title={"Unarchive"}
+            className={`${iconStyle}`}
+            onClick={props.toggleArchive}
+          />
+        ) : (
+          <Archive
+            title={"Archive"}
+            className={`${iconStyle}`}
+            onClick={props.toggleArchive}
+          />
+        )}
         <CheckBox
+          title="Checkbox mode"
           className={`${iconStyle}`}
           onClick={props.toggleCheckBoxMode}
         />
-        <Delete className={`${iconStyle}`} onClick={props.toggleDelete} />
+        <Delete
+          title="Delete Note"
+          className={`${iconStyle}`}
+          onClick={props.toggleDelete}
+        />
       </div>
       <div className="flex mr-3">
         {/* <button

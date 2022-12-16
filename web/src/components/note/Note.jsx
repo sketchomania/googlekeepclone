@@ -54,12 +54,10 @@ const Note = ({ note }) => {
           note={note}
           onCancel={modalCancelHandler}
           onConfirm={modalConfirmHandler}
-        >
-          <p>note modal</p>
-        </NoteModal>
+        />
       )}
       <div
-        className={`border border-gray-200 m-1 max-w-2xl w-60 max-h-144 rounded-2xl hover:shadow-md hover:shadow-gray-400 
+        className={`${note.background} border border-gray-200 m-1 max-w-2xl w-60 max-h-144 rounded-2xl hover:shadow-md hover:shadow-gray-400 
          overflow-hidden`}
         // onMouseOver={(e) => {console.log("mouse-over")}}
         // onClick={() => {

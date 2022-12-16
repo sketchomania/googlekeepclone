@@ -102,6 +102,12 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 - Appbar icons and functionality,
 - appBar show label name
+- show icons of label archive, edit 
+- show label and action bar on note component
+- pin/unpin note
+- archive/unarchive note
+- move note to the bin 
+- make copy of the note 
 - Make Readme
 - search note, label
 - docker integration
@@ -168,6 +174,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
   - ✅ show note modal when clicked on it (anywhere)
   - ✅ Login issues fixed
   - { design }
+    - ✅ note icons trasparent background
     - ✅ removed extra side scroll bar
     - ✅ Note component styling
     - ✅ AddNote bar design Done

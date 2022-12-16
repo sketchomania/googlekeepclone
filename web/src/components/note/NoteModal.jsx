@@ -49,12 +49,13 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
     console.log("pinned value was: ", noteUpdateData.pinned);
   };
 
-  const toggleBackgroundChange = (data) => {
+  const toggleBackgroundChange = (color) => {
     setNoteUpdateData({
       ...noteUpdateData,
-      background: data,
+      background: color,
     });
     console.log("background value was: ", noteUpdateData.background);
+    // dispatch(updateNote(note._id, noteUpdateData));
   };
 
   // const toggleAddLabel = (data) => {
@@ -88,11 +89,6 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
   //   });
   // };
 
-  const noteUpdateHandler = () => {
-    dispatch(updateNote(note._id, noteUpdateData));
-    onConfirm();
-  };
-
   const toggleDelete = () => {
     setNoteUpdateData({
       ...noteUpdateData,
@@ -104,17 +100,13 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
   };
   const deleteHandler = () => {
     dispatch(deleteNote(note._id));
-
+    
     console.log("deleteHandler called", note._id);
   };
-
-  const noteBackgrounchange = (color) => {
-    setNoteUpdateData({
-      ...noteUpdateData,
-      background: color,
-    });
-    console.log("background", noteUpdateData.background);
-    // dispatch(updateNote(note._id, noteUpdateData));
+  
+  const noteUpdateHandler = () => {
+    dispatch(updateNote(note._id, noteUpdateData));
+    onConfirm();
   };
 
   return (
@@ -155,8 +147,9 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
             toggleArchive={toggleArchive}
             toggleCheckBoxMode={toggleCheckBoxMode}
             toggleDelete={toggleDelete}
+            noteBackgrounchange={toggleBackgroundChange}
+            archived={noteUpdateData.archived}
             onConfirm={onConfirm}
-            noteBackgrounchange={noteBackgrounchange}
           />
         </div>
         <div className="flex border-t">
