@@ -78,7 +78,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
 
   return (
     <>
-      <div className="p-2 border border-green-400 flex items-center justify-center">
+      <div className="p-2 flex items-center justify-center">
         <form
           className="w-144 my-6 flex items-center border rounded-md shadow-md shadow-gray-400"
           onSubmit={submitHandler}

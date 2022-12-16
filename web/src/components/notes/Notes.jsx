@@ -48,18 +48,8 @@ const Notes = ({ showNotesByLabel }) => {
 
   return (
     <>
-      <div className="flex items-center justify-center flex-wrap p-2 w-full">
-        {/* {showNotesByLabel && "👇👇"} */}
-        {/* <p>{JSON.stringify("nn" + showNotesByLabel)}</p> */}
-
-        {/* <p>{JSON.stringify(noteByLabelArr)}</p> */}
+      <div className="flex items-center border-t justify-center flex-wrap p-2 w-full">
         <RenderNote value={showNotesByLabel} />
-        {/* {noteByLabelArr.map((note) => (
-          <Note note={note} key={note._id} />
-        ))} */}
-        {/* {notes.map((note) => (
-          <Note note={note} key={note._id} />
-        ))} */}
       </div>
     </>
   );

@@ -100,14 +100,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- Appbar icons and functionality,
 - appBar show label name
-- show icons of label archive, edit 
-- show label and action bar on note component
-- pin/unpin note
-- archive/unarchive note
-- move note to the bin 
-- make copy of the note 
 - Make Readme
 - search note, label
 - docker integration
@@ -155,6 +148,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 - { done }
   - ✅ show note color change modal
+  - ✅ Appbar icons and functionality,
   - ✅ loading spinner UI improvement
   - ✅ {label}: Edit/update, delete feature (Modal)
     - CRUD for label from side bar

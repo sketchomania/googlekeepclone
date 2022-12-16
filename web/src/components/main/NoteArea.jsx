@@ -14,7 +14,6 @@ const NoteArea = ({ showNotesByLabel }) => {
 
   return (
     <div className="grow w-full mt-16 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm">
-      {/* <h4 className="text-center">Main Area for note only</h4> */}
       <AddNote />
       <Notes showNotesByLabel={showNotesByLabel} />
     </div>

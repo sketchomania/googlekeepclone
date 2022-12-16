@@ -53,59 +53,51 @@ const AddLabel = ({ currentId, onCancel }) => {
 
   return (
     <>
-      <div className="relative max-w-min mx-auto bg-white">
-        <form
-          className="flex flex-col overflow-hidden h-128 border"
-          onSubmit={submitHandler}
-        >
-          <div className="p-4 mb-10 overflow-y-scroll scroll-smooth scrollbar-sm">
-            <h3 className="font-medium h-6 flex items-center">
-              {"Edit labels"}
-            </h3>
-            <div className="flex justify-between h-11 items-center">
-              <div
-                className={`${iconContainer}`}
-                title="Cancel"
-                onClick={clear}
-              >
-                <CloseIcon className="fill-zinc-500 hover:fill-black scale-75" />
-              </div>
-              <input
-                id="label"
-                name="label"
-                type="text"
-                placeholder="Create new label"
-                value={labelData.name}
-                onChange={(e) => {
-                  setLabelData({ ...labelData, name: e.target.value });
-                }}
-                className="px-3 w-52 text-sm text-gray-500 outline-none"
-              />
-              <div
-                className={`${iconContainer}`}
-                title="Create label"
-                onClick={submitHandler}
-              >
-                <DoneIcon className="scale-75" />
-              </div>
+      <form
+        className="flex flex-col overflow-hidden h-128 border relative z-10 max-w-min bg-white rounded-md"
+        onSubmit={submitHandler}
+      >
+        <div className="p-4 mb-10 overflow-y-scroll scroll-smooth scrollbar-sm">
+          <h3 className="font-medium h-6 flex items-center">{"Edit labels"}</h3>
+          <div className="flex justify-between h-11 items-center">
+            <div className={`${iconContainer}`} title="Cancel" onClick={clear}>
+              <CloseIcon className="fill-zinc-500 hover:fill-black scale-75" />
             </div>
-
-            {isLoading && <Spinner />}
-            {labels.map((label) => (
-              <div key={label._id}>
-                <LabelUnit label={label} />
-              </div>
-            ))}
+            <input
+              id="label"
+              name="label"
+              type="text"
+              placeholder="Create new label"
+              value={labelData.name}
+              onChange={(e) => {
+                setLabelData({ ...labelData, name: e.target.value });
+              }}
+              className="px-3 w-52 text-sm text-gray-500 outline-none"
+            />
+            <div
+              className={`${iconContainer}`}
+              title="Create label"
+              onClick={submitHandler}
+            >
+              <DoneIcon className="scale-75" />
+            </div>
           </div>
 
-          <div
-            className={`flex flex-row-reverse p-2.5 absolute border-t bottom-0 right-0 w-full h-14 bg-white`}
-          >
-            <Button type="submit">Create</Button>
-            <Button onClick={onCancel}>Done</Button>
-          </div>
-        </form>
-      </div>
+          {isLoading && <Spinner />}
+          {labels.map((label) => (
+            <div key={label._id}>
+              <LabelUnit label={label} />
+            </div>
+          ))}
+        </div>
+
+        <div
+          className={`flex flex-row-reverse p-2.5 absolute border-t bottom-0 right-0 w-full h-14 bg-white`}
+        >
+          <Button type="submit">Create</Button>
+          <Button onClick={onCancel}>Done</Button>
+        </div>
+      </form>
     </>
   );
 };

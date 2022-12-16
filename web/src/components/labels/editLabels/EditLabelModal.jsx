@@ -5,13 +5,14 @@ import AddLabel from "./AddLabel";
 
 const EditLabelModal = ({ onCancel }) => {
   return (
-    <div
-      className={`${styles.backdropStyle}  pt-36`}
-      onClick={() => {
-        console.log("Edit Label Backdrop clicked");
-        // onCancel();
-      }}
-    >
+    <div className={`${styles.backdropContainer}`}>
+      <div
+        className={`${styles.backdropStyle}  pt-36`}
+        onClick={() => {
+          console.log("Edit Label Backdrop clicked");
+          onCancel();
+        }}
+      ></div>
       <AddLabel onCancel={onCancel} />
     </div>
   );

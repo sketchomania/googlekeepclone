@@ -13,7 +13,7 @@ const LabelComponent = ({ label, showLabel, setShowNotesByLabel }) => {
   return (
     <>
       <div
-        className={`${round} pl-4 h-12 flex items-center hover:bg-gray-100 cursor-pointer`}
+        className={`${round} pl-4 h-12 flex items-center hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer`}
         onClick={handleClick}
       >
         <div>
