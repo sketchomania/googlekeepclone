@@ -148,6 +148,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ show note color change modal
   - ✅ loading spinner UI improvement
   - ✅ {label}: Edit/update, delete feature (Modal)
     - CRUD for label from side bar

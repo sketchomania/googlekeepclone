@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { deleteNote, updateNote } from "../../redux/actions/noteActions";
 
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
 import Button from "../UI/Button";
-import { useDispatch } from "react-redux";
-import { deleteNote, updateNote } from "../../redux/actions/noteActions";
 import styles from "../../constants/Styles";
 // import { inputchangeHandler } from "../../constants/helper";
 
@@ -19,7 +20,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
     description: note.description,
     labels: note.labels,
     creator: note.creator,
-    background: note.background,
+    background: "bg-white",
     pinned: note.pinned,
     selected: note.selected,
     listMode: note.listMode,
@@ -107,59 +108,71 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
     console.log("deleteHandler called", note._id);
   };
 
+  const noteBackgrounchange = (color) => {
+    setNoteUpdateData({
+      ...noteUpdateData,
+      background: color,
+    });
+    console.log("background", noteUpdateData.background);
+    // dispatch(updateNote(note._id, noteUpdateData));
+  };
+
   return (
-    <>
-      {/* <div className={`fixed top-0 right-0 left-0 z-50 h-screen md:inset-0 w-full md:h-full`}> */}
+    <div className={`${styles.backdropContainer}`}>
       <div
         className={styles.backdropStyle}
         onClick={() => {
-          console.log("Backdrop clicked");
-          // onCancel();
+          console.log("Note Modal clicked");
+          onCancel();
         }}
-      >
-        <div
-          className={`top-16 mx-auto relative bg-white z-10 
-          max-h-144 h-auto rounded-2xl max-w-2xl w-144 m-4
-          overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm
+      ></div>
+      <div
+        className={`absolute top-16 ${noteUpdateData.background} z-10 
+          h-max rounded-lg max-w-2xl w-144
+          scroll-smooth scroll-2 scrollbar-sm 
           `}
-          // onClick={() => {
-          //   console.log("NoteModaal clicked");
-          // }}
-        >
-          <div className="border">
-            <Title
-              title={note.title}
-              togglePinNote={togglePinNote}
-              inputChangeHandler={inputChangeHandler}
-              pinned={noteUpdateData.pinned}
-            />
-            <Content
-              description={note.description}
-              inputChangeHandler={inputChangeHandler}
-            />
-            <LabelBar labels={note.labels} edited={note.updatedAt} />
-            <ActionBar
-              toggleArchive={toggleArchive}
-              toggleCheckBoxMode={toggleCheckBoxMode}
-              toggleDelete={toggleDelete}
-              onConfirm={onConfirm}
-            />
-          </div>
-          <div className="flex">
-              <Button onClick={onCancel}>Cancel</Button>
-              <Button onClick={onConfirm}>Confirm</Button>
-              <Button
-                onClick={() => {
-                  console.log(noteUpdateData);
-                }}
-              >
-                log noteData
-              </Button>
-              <Button onClick={noteUpdateHandler}>Update</Button>
-          </div>
+        // className={`top-16 mx-auto relative bg-white z-10
+        // max-h-144 h-auto rounded-2xl max-w-2xl w-144 m-4
+        // overflow-y-scroll scroll-smooth scroll-2 scrollbar-sm
+        // `}
+        // onClick={() => {
+        //   console.log("NoteModaal clicked");
+        // }}
+      >
+        <div className="overflow-visible">
+          <Title
+            title={note.title}
+            togglePinNote={togglePinNote}
+            inputChangeHandler={inputChangeHandler}
+            pinned={noteUpdateData.pinned}
+          />
+          <Content
+            description={note.description}
+            inputChangeHandler={inputChangeHandler}
+          />
+          <LabelBar labels={note.labels} edited={note.updatedAt} />
+          <ActionBar
+            toggleArchive={toggleArchive}
+            toggleCheckBoxMode={toggleCheckBoxMode}
+            toggleDelete={toggleDelete}
+            onConfirm={onConfirm}
+            noteBackgrounchange={noteBackgrounchange}
+          />
+        </div>
+        <div className="flex border-t">
+          <Button onClick={onCancel}>Cancel</Button>
+          <Button onClick={onConfirm}>Confirm</Button>
+          <Button
+            onClick={() => {
+              console.log(noteUpdateData);
+            }}
+          >
+            log noteData
+          </Button>
+          <Button onClick={noteUpdateHandler}>Update</Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
