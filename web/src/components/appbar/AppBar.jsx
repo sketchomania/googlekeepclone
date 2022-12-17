@@ -7,7 +7,7 @@ import { fetchLabels } from "../../redux/actions/labelActions";
 import { fetchNotes } from "../../redux/actions/noteActions";
 
 import SearchBar from "./SearchBar";
-import styles from "../../constants/Styles";
+import Styles from "../../constants/Styles";
 import Spinner from "../UI/Spinner";
 
 import { ReactComponent as Menu } from "../../icons/menu_black_24dp.svg";
@@ -58,7 +58,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
           <div>
             <Menu
               title="Main menu"
-              className={styles.iconStyleBig}
+              className={Styles.iconStyleBig}
               onClick={toggleLabelMenu}
             />
           </div>
@@ -80,7 +80,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
         <SearchBar />
         <div className={`${container}`}>
           <ul className={`${ulSty}`}>
-            <li className={`${styles.iconStyleBig}`}>
+            <li className={`${Styles.iconStyleBig}`}>
               {labelLoading || noteLoading ? (
                 <div className="scale-75">
                   <Spinner title="loading" />
@@ -91,22 +91,22 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
             </li>
             {/* <li title="theme" onClick={toggleTheme}>
               {darkMode ? (
-                <Light className={styles.iconStyleBig} />
+                <Light className={Styles.iconStyleBig} />
               ) : (
-                <Dark className={styles.iconStyleBig} />
+                <Dark className={Styles.iconStyleBig} />
               )}
             </li> */}
             <li title="view" onClick={toggleTheme}>
               {darkMode ? (
-                <Grid className={styles.iconStyleBig} />
+                <Grid className={Styles.iconStyleBig} />
               ) : (
-                <View className={styles.iconStyleBig} />
+                <View className={Styles.iconStyleBig} />
               )}
             </li>
             <li className="relative">
               <Setting
                 title="Setting"
-                className={`${styles.iconStyleBig}`}
+                className={`${Styles.iconStyleBig}`}
                 onClick={() => {
                   console.log("user Backdrop chilcked");
                   setShowSettingCard(true);
@@ -157,14 +157,14 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
         <div className={`${container} mr-4`}>
           <ul className={`${ulSty}`}>
             <li>
-              <Github title="Github" className={`${styles.iconStyleBig}`} />
+              <Github title="Github" className={`${Styles.iconStyleBig}`} />
             </li>
 
             <li className="relative" title={`User`}>
               {auth.token && (
                 <Account
                   // title={auth ? auth.user.email : "User"}
-                  className={`${styles.iconStyleBig}`}
+                  className={`${Styles.iconStyleBig}`}
                   onClick={() => {
                     setShowUserCard(true);
                     // console.log("👤: ", auth);
@@ -206,7 +206,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                     {/* <Logout
                       title="Logout"
                       onClick={logoutHandler}
-                      className={styles.iconStyleBig}
+                      className={Styles.iconStyleBig}
                     /> */}
                     <h3
                       title="Logout"

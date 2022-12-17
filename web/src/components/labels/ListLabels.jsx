@@ -5,10 +5,20 @@ import Spinner from "../UI/Spinner";
 import EditLabelModal from "./editLabels/EditLabelModal";
 import LabelComponent from "./label/Label";
 
+import { ReactComponent as Lightbulb } from "../../icons/lightbulb_black_24dp.svg";
+import { ReactComponent as Reminder } from "../../icons/notifications_black_24dp.svg";
+import { ReactComponent as Edit } from "../../icons/edit_black_24dp.svg";
+import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
+import { ReactComponent as Bin } from "../../icons/bin_black_24dp.svg";
+import Styles from "../../constants/Styles";
+
 const ListLabels = ({ showLabel, setShowNotesByLabel }) => {
-  const { isLoading, labels, isError } = useSelector(
-    (state) => state.labelReducer
-  );
+  const iconStyle = "fill-gray-600 h-11 w-11 p-2.5";
+  const round = showLabel ? "rounded-r-3xl" : "rounded-3xl";
+  const defaultLabelStyle = `${round} pl-4 h-12 flex items-center hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer`;
+  const defaultLabelNameStyle = "scale-90 ml-5 text-gray-800 font-medium";
+
+  const { isLoading, labels, isError } = useSelector((state) => state.labelReducer);
   const [showEditLabel, setShowEditLabel] = useState(false);
 
   const startCreateEventHandler = () => {
@@ -28,7 +38,33 @@ const ListLabels = ({ showLabel, setShowNotesByLabel }) => {
   }, []);
 
   return (
-    <div className="border">
+    <div>
+      <>
+        <div
+          className={`${round} ${Styles.LabelContainerStyle}`}
+          onClick={() => {
+            setShowNotesByLabel("");
+          }}
+        >
+          <div>
+            <Lightbulb className={`${iconStyle}`} />
+          </div>
+          {showLabel && <p className={Styles.labelNameStyles}>{"Notes"}</p>}
+        </div>
+
+        <div
+          className={`${round} ${Styles.LabelContainerStyle}`}
+          onClick={() => {
+            setShowNotesByLabel("");
+          }}
+        >
+          <div>
+            <Reminder className={`${iconStyle}`} />
+          </div>
+          {showLabel && <p className={Styles.labelNameStyles}>{"Reminder"}</p>}
+        </div>
+      </>
+
       {isLoading ? (
         <Spinner />
       ) : (
@@ -45,16 +81,25 @@ const ListLabels = ({ showLabel, setShowNotesByLabel }) => {
         </>
       )}
       <>
-        {showEditLabel && (
-          <EditLabelModal labels={labels} onCancel={modalCancelHandler} />
-        )}
-        <div
-          className={`rounded-r-3xl pl-4 h-12 flex items-center hover:bg-gray-100 cursor-pointer`}
-          onClick={startCreateEventHandler}
-        >
-          {showLabel && (
-            <p className="ml-5 text-gray-800 font-medium">{`Edit labels`}</p>
-          )}
+        {showEditLabel && <EditLabelModal labels={labels} onCancel={modalCancelHandler} />}
+        <div className={`${round} ${Styles.LabelContainerStyle}`} onClick={startCreateEventHandler}>
+          <Edit className={`${iconStyle}`} />
+          {showLabel && <p className={Styles.labelNameStyles}>{"Edit labels"}</p>}
+        </div>
+      </>
+
+      <>
+        <div className={`${round} ${Styles.LabelContainerStyle}`}>
+          <div>
+            <Archive className={`${iconStyle}`} />
+          </div>
+          {showLabel && <p className={Styles.labelNameStyles}>{"Archive"}</p>}
+        </div>
+        <div className={`${round} ${Styles.LabelContainerStyle}`}>
+          <div>
+            <Bin className={`${iconStyle}`} />
+          </div>
+          {showLabel && <p className={Styles.labelNameStyles}>{"Bin"}</p>}
         </div>
       </>
     </div>

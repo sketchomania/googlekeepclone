@@ -6,7 +6,7 @@ import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg
 import { ReactComponent as Pin } from "../../icons/push_pin_black_filled_24dp.svg";
 import { createNote, updateNote } from "../../redux/actions/noteActions";
 import ActionBar from "../note/AtionBar";
-import styles from "../../constants/Styles";
+import Styles from "../../constants/Styles";
 
 const AddNote = ({ currentId, setCurrentId }) => {
   const [noteData, setNoteData] = useState({
@@ -101,7 +101,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
                   ></textarea>
                 </p>
                 <IconHolder>
-                  <Pin className={styles.iconStyleBig} />
+                  <Pin className={Styles.iconStyleBig} />
                 </IconHolder>
               </div>
             )}
@@ -124,13 +124,13 @@ const AddNote = ({ currentId, setCurrentId }) => {
               {!isExpanded && (
                 <>
                   <IconHolder>
-                    <CheckBox className={styles.iconStyleBig} />
+                    <CheckBox className={Styles.iconStyleBig} />
                   </IconHolder>
                   <IconHolder>
-                    <CheckBox className={styles.iconStyleBig} />
+                    <CheckBox className={Styles.iconStyleBig} />
                   </IconHolder>
                   <IconHolder>
-                    <CheckBox className={styles.iconStyleBig} />
+                    <CheckBox className={Styles.iconStyleBig} />
                   </IconHolder>
                 </>
               )}

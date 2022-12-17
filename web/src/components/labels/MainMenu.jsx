@@ -18,25 +18,11 @@ const MainMenu = ({ showLabel, setShowNotesByLabel }) => {
       <div
         className={`${sty1} flex-none mt-16 pt-2 overflow-y-scroll overflow-x-hidden scroll-smooth scrollbar-sm`}
       >
-        <div
-          onClick={() => {
-            setShowNotesByLabel("");
-          }}
-        >
-          <Label label={{ name: "Notes" }} showLabel={showLabel} />
-          <Label label={{ name: "Reminder" }} showLabel={showLabel} />
-        </div>
         <>
-          <ListLabels
-            showLabel={showLabel}
-            setShowNotesByLabel={setShowNotesByLabel}
-          />
+          <ListLabels showLabel={showLabel} setShowNotesByLabel={setShowNotesByLabel} />
         </>
-        <>
-          <Label label={{ name: "Archive" }} showLabel={showLabel} />
-          <Label label={{ name: "Bin" }} showLabel={showLabel} />
-        </>
-        <div className="border h-16 text-xs flex flex-col items-center justify-center">
+
+        <div className="border py-4 text-xs flex flex-col items-center justify-center">
           <p>{"Open-source licences"}</p>
           <p>{"Made by Vaibhav Kushwaha"}</p>
         </div>

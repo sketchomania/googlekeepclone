@@ -1,3 +1,4 @@
+import Styles from "../../../constants/Styles";
 import { ReactComponent as Label } from "../../../icons/label_black_24dp.svg";
 
 const LabelComponent = ({ label, showLabel, setShowNotesByLabel }) => {
@@ -13,14 +14,14 @@ const LabelComponent = ({ label, showLabel, setShowNotesByLabel }) => {
   return (
     <>
       <div
-        className={`${round} pl-4 h-12 flex items-center hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer`}
+        className={`${round} ${Styles.LabelContainerStyle}`}
         onClick={handleClick}
       >
         <div>
           <Label className={`${iconStyle}`} />
         </div>
         {showLabel && (
-          <p className="scale-90 ml-5 text-gray-800 font-medium">{label.name}</p>
+          <p className={Styles.labelNameStyles}>{label.name}</p>
         )}
       </div>
     </>

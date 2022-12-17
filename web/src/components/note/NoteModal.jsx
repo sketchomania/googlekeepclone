@@ -8,7 +8,7 @@ import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
 import Button from "../UI/Button";
-import styles from "../../constants/Styles";
+import Styles from "../../constants/Styles";
 // import { inputchangeHandler } from "../../constants/helper";
 
 const NoteModal = ({ note, onCancel, onConfirm }) => {
@@ -110,9 +110,9 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
   };
 
   return (
-    <div className={`${styles.backdropContainer}`}>
+    <div className={`${Styles.backdropContainer}`}>
       <div
-        className={styles.backdropStyle}
+        className={Styles.backdropStyle}
         onClick={() => {
           console.log("Note Modal clicked");
           onCancel();
