@@ -15,8 +15,6 @@ import Styles from "../../constants/Styles";
 const ListLabels = ({ showLabel, setShowNotesByLabel }) => {
   const iconStyle = "fill-gray-600 h-11 w-11 p-2.5";
   const round = showLabel ? "rounded-r-3xl" : "rounded-3xl";
-  const defaultLabelStyle = `${round} pl-4 h-12 flex items-center hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer`;
-  const defaultLabelNameStyle = "scale-90 ml-5 text-gray-800 font-medium";
 
   const { isLoading, labels, isError } = useSelector((state) => state.labelReducer);
   const [showEditLabel, setShowEditLabel] = useState(false);

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { fetchLabels } from "../../redux/actions/labelActions";
-import Label from "./label/Label";
 import ListLabels from "./ListLabels";
 
 const MainMenu = ({ showLabel, setShowNotesByLabel }) => {

@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import IconHolder from "../UI/IconHolder";
-import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg";
-import { ReactComponent as Pin } from "../../icons/push_pin_black_filled_24dp.svg";
 import { createNote, updateNote } from "../../redux/actions/noteActions";
 import ActionBar from "../note/AtionBar";
 import Styles from "../../constants/Styles";
+
+import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg";
+import { ReactComponent as Pin } from "../../icons/push_pin_black_filled_24dp.svg";
+import { ReactComponent as Brush } from "../../icons/brush_black_24dp.svg";
+import { ReactComponent as ImageIcon } from "../../icons/image_black_24dp.svg";
 
 const AddNote = ({ currentId, setCurrentId }) => {
   const [noteData, setNoteData] = useState({
@@ -127,10 +130,10 @@ const AddNote = ({ currentId, setCurrentId }) => {
                     <CheckBox className={Styles.iconStyleBig} />
                   </IconHolder>
                   <IconHolder>
-                    <CheckBox className={Styles.iconStyleBig} />
+                    <Brush className={Styles.iconStyleBig} />
                   </IconHolder>
                   <IconHolder>
-                    <CheckBox className={Styles.iconStyleBig} />
+                    <ImageIcon className={Styles.iconStyleBig} />
                   </IconHolder>
                 </>
               )}
