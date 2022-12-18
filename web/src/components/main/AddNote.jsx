@@ -104,7 +104,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
                   ></textarea>
                 </p>
                 <IconHolder>
-                  <Pin className={Styles.iconStyleBig} />
+                  <Pin className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`} />
                 </IconHolder>
               </div>
             )}
@@ -127,13 +127,13 @@ const AddNote = ({ currentId, setCurrentId }) => {
               {!isExpanded && (
                 <>
                   <IconHolder>
-                    <CheckBox className={Styles.iconStyleBig} />
+                    <CheckBox className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`} />
                   </IconHolder>
                   <IconHolder>
-                    <Brush className={Styles.iconStyleBig} />
+                    <Brush className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`} />
                   </IconHolder>
                   <IconHolder>
-                    <ImageIcon className={Styles.iconStyleBig} />
+                    <ImageIcon className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`} />
                   </IconHolder>
                 </>
               )}

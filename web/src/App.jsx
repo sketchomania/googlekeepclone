@@ -15,9 +15,8 @@ function App() {
   const [showLabel, setShowLabel] = useState(true);
 
   useEffect(() => {
-    console.log("app page useEffect");
     console.log(
-      "authData (App.jsx) ",
+      "(App.jsx) useEffect, authData: ",
       "token: ",
       token,
       "isLoading: ",
@@ -31,9 +30,7 @@ function App() {
     };
   }, []);
 
-  const { token, isLoading, isError } = useSelector(
-    (state) => state.authReducer
-  );
+  const { token, isLoading, isError } = useSelector((state) => state.authReducer);
   // const token = getToken();
 
   const toggleTheme = () => {
@@ -47,11 +44,6 @@ function App() {
   };
 
   const toggleLabelMenu = () => {
-    console.log(
-      "toggleLabelMenu clicked !!!",
-      "showLabel was before: ",
-      showLabel
-    );
     setShowLabel(!showLabel);
   };
 

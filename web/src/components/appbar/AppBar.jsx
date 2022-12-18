@@ -11,8 +11,6 @@ import Styles from "../../constants/Styles";
 import Spinner from "../UI/Spinner";
 
 import { ReactComponent as Menu } from "../../icons/menu_black_24dp.svg";
-import { ReactComponent as Light } from "../../icons/light_mode_black_24dp.svg";
-import { ReactComponent as Dark } from "../../icons/dark_mode_black_24dp.svg";
 import { ReactComponent as View } from "../../icons/view_agenda_black_24dp.svg";
 import { ReactComponent as Grid } from "../../icons/grid_view_black_24dp.svg";
 import { ReactComponent as Setting } from "../../icons/settings_black_24dp.svg";
@@ -58,16 +56,12 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
           <div>
             <Menu
               title="Main menu"
-              className={Styles.iconStyleBig}
+              className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`}
               onClick={toggleLabelMenu}
             />
           </div>
           <>
-            <Link
-              to="/"
-              title="Google keep clone"
-              style={{ textDecoration: "none" }}
-            >
+            <Link to="/" title="Google keep clone" style={{ textDecoration: "none" }}>
               <div className={`${container}`}>
                 <div>{logo}</div>
                 <h3 className="font-medium text-2xl scale-95 text-zinc-500 ml-1">
@@ -80,7 +74,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
         <SearchBar />
         <div className={`${container}`}>
           <ul className={`${ulSty}`}>
-            <li className={`${Styles.iconStyleBig}`}>
+            <li className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`}>
               {labelLoading || noteLoading ? (
                 <div className="scale-75">
                   <Spinner title="loading" />
@@ -89,26 +83,19 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                 <Refresh title="Refresh" onClick={refreshHandler} />
               )}
             </li>
-            {/* <li title="theme" onClick={toggleTheme}>
-              {darkMode ? (
-                <Light className={Styles.iconStyleBig} />
-              ) : (
-                <Dark className={Styles.iconStyleBig} />
-              )}
-            </li> */}
             <li title="view" onClick={toggleTheme}>
               {darkMode ? (
-                <Grid className={Styles.iconStyleBig} />
+                <Grid className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`} />
               ) : (
-                <View className={Styles.iconStyleBig} />
+                <View className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`} />
               )}
             </li>
             <li className="relative">
               <Setting
                 title="Setting"
-                className={`${Styles.iconStyleBig}`}
+                className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`}
                 onClick={() => {
-                  console.log("user Backdrop chilcked");
+                  // console.log("user Backdrop chilcked");
                   setShowSettingCard(true);
                 }}
               />
@@ -117,19 +104,12 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                   <div
                     className="fixed h-full w-full top-0 left-0"
                     onClick={() => {
-                      console.log("Setting Backdrop chilcked");
+                      // console.log("Setting Backdrop chilcked");
                       setShowSettingCard(false);
                     }}
                   ></div>
-                  <div
-                    className="absolute flex flex-col justify-around shadow-md shadow-zinc-400 border-t border-t-zinc-100 text-zinc-700 text-sm py-1.5 w-max bg-white rounded-lg"
-                    onClick={() => {
-                      console.log("Settings Modal clicked");
-                    }}
-                  >
-                    <h3 className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer">
-                      Settings
-                    </h3>
+                  <div className="absolute flex flex-col justify-around shadow-md shadow-zinc-400 border-t border-t-zinc-100 text-zinc-700 text-sm py-1.5 w-max bg-white rounded-lg">
+                    <h3 className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer">Settings</h3>
                     <h3
                       className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer"
                       onClick={toggleTheme}
@@ -139,9 +119,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                     <h3 className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer">
                       Send feedback
                     </h3>
-                    <h3 className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer">
-                      Help
-                    </h3>
+                    <h3 className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer">Help</h3>
                     <h3 className="hover:bg-zinc-200 pl-5 pr-3 py-1 cursor-pointer">
                       App downloads
                     </h3>
@@ -157,14 +135,17 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
         <div className={`${container} mr-4`}>
           <ul className={`${ulSty}`}>
             <li>
-              <Github title="Github" className={`${Styles.iconStyleBig}`} />
+              <Github
+                title="Github"
+                className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`}
+              />
             </li>
 
             <li className="relative" title={`User`}>
               {auth.token && (
                 <Account
                   // title={auth ? auth.user.email : "User"}
-                  className={`${Styles.iconStyleBig}`}
+                  className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`}
                   onClick={() => {
                     setShowUserCard(true);
                     // console.log("👤: ", auth);
@@ -176,7 +157,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                   <div
                     className="fixed h-full w-full top-0 left-0"
                     onClick={() => {
-                      console.log("user Backdrop chilcked");
+                      // console.log("user Backdrop chilcked");
                       setShowUserCard(false);
                     }}
                   ></div>
@@ -184,9 +165,6 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                     className={`absolute flex flex-col items-center justify-around right-0 w-80 bg-white rounded-lg
                      shadow-lg shadow-zinc-400 border-t border-t-zinc-200 text-zinc-700  text-sm
                     `}
-                    onClick={() => {
-                      console.log("user Modal clicked");
-                    }}
                   >
                     <h3
                       className="mt-8 font-semibold text-zinc-500 scale-90"
@@ -206,7 +184,7 @@ const AppBar = ({ darkMode, toggleTheme, toggleLabelMenu }) => {
                     {/* <Logout
                       title="Logout"
                       onClick={logoutHandler}
-                      className={Styles.iconStyleBig}
+                      className={`${Styles.iconStyleBig + Styles.iconCommonStyle}`}
                     /> */}
                     <h3
                       title="Logout"

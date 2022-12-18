@@ -147,6 +147,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ Login with test credentials
   - ✅ show note color change modal
   - ✅ Appbar icons and functionality,
   - ✅ loading spinner UI improvement

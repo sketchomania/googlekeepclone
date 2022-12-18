@@ -38,7 +38,14 @@ const AuthForm = () => {
       dispatch(signupUser(credential));
       console.log("User Sign-up:", credential);
     }
-    console.log("Navigations done:");
+  };
+
+  const loginWithTestCredential = () => {
+    const testCredential = {
+      email: "test-p-123456789@gmail.com",
+      password: "123456789",
+    };
+    dispatch(login(testCredential));
   };
 
   return (
@@ -99,17 +106,6 @@ const AuthForm = () => {
                   {showPassword ? "hide" : "show"}
                 </p>
               </div>
-
-              {/* <div className="flex flex-col mb-6">
-                <div className="p-3 mx-6 flex border-b border-gray-500">
-                  <input
-                    placeholder="Password"
-                    className="bg-transparent text-yellow-500 focus:outline-none focus:rang w-full"
-                    type="password"
-                  />
-                  <div className="w-auto text-yellow-500">eyes</div>
-                </div>
-              </div> */}
             </div>
 
             <div className="mx-12 mb-2 mt-10 text-gray-400">
@@ -127,7 +123,7 @@ const AuthForm = () => {
 
               <div className="p-2">
                 <label className="inline-flex flex-wrap relative items-center  cursor-pointer">
-                  <input type="checkbox" value="" className="sr-only peer" />
+                  <input type="checkbox" value="" className="sr-only peer" checked />
                   <div className="w-9 h-5 bg-gray-400 rounded-full peer dark:bg-gray-00 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"></div>
                   <span className="ml-3 text-sm font-medium hover:text-gray-300">
                     Accept all terms and conditions
@@ -138,12 +134,22 @@ const AuthForm = () => {
 
             <div className="w-full px-12">
               <button
-                className="font-semibold bg-yellow-500 p-3 rounded-3xl w-full h-full hover:bg-yellow-600"
+                className="font-semibold bg-yellow-500 p-3 rounded-3xl w-full h-full opacity-75 hover:opacity-100"
                 type="submit"
                 title={isLoginMode ? "Login" : "Create account"}
               >
-                {" "}
                 {isLoginMode ? "Login" : "Create account"}
+              </button>
+            </div>
+            <div className="w-full px-12 mt-4">
+              <button
+                className={`font-semibold transition p-2.5 rounded-3xl w-full h-full opacity-75 hover:opacity-100
+                text-yellow-600 hover:text-yellow-500 border-2 border-yellow-600  hover:border-yellow-500`}
+                type="button"
+                title={"Login with Test Credentials"}
+                onClick={loginWithTestCredential}
+              >
+                {"Login with Test Credentials"}
               </button>
             </div>
           </form>
