@@ -137,6 +137,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
             togglePinNote={togglePinNote}
             inputChangeHandler={inputChangeHandler}
             pinned={noteUpdateData.pinned}
+            isMouseOver={true}
           />
           <Content
             description={note.description}
@@ -150,6 +151,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
             noteBackgrounchange={toggleBackgroundChange}
             archived={noteUpdateData.archived}
             onConfirm={onConfirm}
+            isMouseOver={true}
           />
         </div>
         <div className="flex border-t">

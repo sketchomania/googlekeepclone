@@ -9,30 +9,20 @@ import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
 import { ReactComponent as Unarchive } from "../../icons/unarchive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
 import Button from "../UI/Button";
+import Styles from "../../constants/Styles";
 
 const AtionBar = (props) => {
-  // useEffect(() => {
-  //   console.log("....NoteActionBar uesEffect");
-
-  //   return () => {
-  //     console.log("...NoteActionBar CleanUp");
-  //   };
-  // }, []);
   const [showColorModal, setShowColorModal] = useState(false);
 
-  const mouseOverStyle = props.isMouseOver ? "fill-gray-500" : "fill-none";
-  const iconStyle =
-    // mouseOverStyle +
-    "mx-2 p-2 h-8 w-8 fill-zinc-700 hover:fill-black hover:bg-gray-100 rounded-full cursor-pointer hover:bg-zinc-700 hover:bg-opacity-10";
+  const iconStyle = `mx-2 p-2 h-8 w-8 ${props.isMouseOver ? "fill-zinc-700" : "fill-none"} ${
+    Styles.iconCommonStyle
+  }`;
 
   return (
     <div className="flex items-center justify-between my-1">
       <div className="flex">
         <Alert title="Remind me" className={iconStyle} />
-        <Person
-          title="Collaborator"
-          className={`${iconStyle} cursor-not-allowed fill-gray-500`}
-        />
+        <Person title="Collaborator" className={`${iconStyle} cursor-not-allowed fill-gray-500`} />
         <li className="list-none relative z-0">
           <Color
             title="Background options"
@@ -211,36 +201,18 @@ const AtionBar = (props) => {
         </li>
         <Label title="Edit Labels" className={`${iconStyle}`} />
         {props.archived ? (
-          <Unarchive
-            title={"Unarchive"}
-            className={`${iconStyle}`}
-            onClick={props.toggleArchive}
-          />
+          <Unarchive title={"Unarchive"} className={`${iconStyle}`} onClick={props.toggleArchive} />
         ) : (
-          <Archive
-            title={"Archive"}
-            className={`${iconStyle}`}
-            onClick={props.toggleArchive}
-          />
+          <Archive title={"Archive"} className={`${iconStyle}`} onClick={props.toggleArchive} />
         )}
         <CheckBox
           title="Checkbox mode"
           className={`${iconStyle}`}
           onClick={props.toggleCheckBoxMode}
         />
-        <Delete
-          title="Delete Note"
-          className={`${iconStyle}`}
-          onClick={props.toggleDelete}
-        />
+        <Delete title="Delete Note" className={`${iconStyle}`} onClick={props.toggleDelete} />
       </div>
       <div className="flex mr-3">
-        {/* <button
-          className="font-medium text-gray-800 text-sm rounded-md w-20 h-8 hover:bg-zinc-500 hover:bg-opacity-5"
-          onClick={props.onConfirm}
-        >
-          Close
-        </button> */}
         <Button onClick={props.onConfirm}>Close</Button>
       </div>
     </div>

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 
+import NoteModal from "./NoteModal";
 import ActionBar from "./AtionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
-import { ReactComponent as CheckFilled } from "../../icons/check_circle_filled_black_24dp.svg";
 
-import Backdrop from "../UI/Backdrop";
-import NoteModal from "./NoteModal";
+import { ReactComponent as CheckFilled } from "../../icons/check_circle_filled_black_24dp.svg";
 
 const Note = ({ note }) => {
   const [creating, setCreating] = useState(false);
@@ -25,16 +24,19 @@ const Note = ({ note }) => {
     setCreating(false);
   };
 
-  const mouseOverHandler = () => {
+  // const mouseOverHandler = () => {
+  //   console.log("mouseOver", isMouseOver);
+  //   setIsMouseOver(true);
+  // };
+  const mouseMoveHandler = () => {
     if (!isMouseOver) {
-      // console.log("mouseOver", isMouseOver);
-      // setIsMouseOver(true);
+      console.log("mouseMove: ", isMouseOver);
+      setIsMouseOver(true);
     }
   };
-
   const mouseLeaveHandler = () => {
-    // console.log("mouseLeave", isMouseOver);
-    // setIsMouseOver(false);
+    console.log("mouseLeave", isMouseOver);
+    setIsMouseOver(false);
   };
 
   useEffect(() => {
@@ -48,39 +50,33 @@ const Note = ({ note }) => {
 
   return (
     <>
-      {/* {creating && <Backdrop onCancel={modalCancelHandler} />} */}
       {creating && (
-        <NoteModal
-          note={note}
-          onCancel={modalCancelHandler}
-          onConfirm={modalConfirmHandler}
-        />
+        <NoteModal note={note} onCancel={modalCancelHandler} onConfirm={modalConfirmHandler} />
       )}
       <div
         className={`${note.background} border border-gray-200 m-1 max-w-2xl w-60 max-h-144 rounded-2xl hover:shadow-md hover:shadow-gray-400 
-         overflow-hidden`}
-        // onMouseOver={(e) => {console.log("mouse-over")}}
+         overflow-hidden text-sm`}
         // onClick={() => {
-        //   console.log("Note clicked:", note._id);
+        //   console.log("Note clicked:", note._id, isMouseOver);
         // }}
+        // onPointerEnter={() => {
+        //     console.log("Note clicked:", note._id);
+        //   }}
+        // onMouseOver={mouseOverHandler}
+        onMouseMove={mouseMoveHandler}
         onMouseLeave={mouseLeaveHandler}
-        onMouseMove={mouseOverHandler}
         onClick={startCreateEventHandler}
       >
         {/* <CheckFilled /> */}
-        <div className="text-sm">
-          <div>
-            {/* <div className="overflow-y-scroll overflow-x-hidden scroll-smooth"></div> */}
-            <Title title={note.title} isMouseOver={isMouseOver} />
-            <Content description={note.description} />
-          </div>
+        <div>
+          <Title title={note.title} isMouseOver={isMouseOver} />
+          <Content description={note.description} />
           <LabelBar labels={note.labels} />
-          <ActionBar isMouseOver={isMouseOver} />
         </div>
+        <ActionBar isMouseOver={isMouseOver} />
       </div>
     </>
   );
 };
 
-// note have a 1px border of selected colour
 export default Note;

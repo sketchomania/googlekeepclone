@@ -147,6 +147,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ show note icons on hover effect
   - ✅ Login with test credentials
   - ✅ show note color change modal
   - ✅ Appbar icons and functionality,
