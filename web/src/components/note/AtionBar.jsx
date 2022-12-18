@@ -14,9 +14,9 @@ import Styles from "../../constants/Styles";
 const AtionBar = (props) => {
   const [showColorModal, setShowColorModal] = useState(false);
 
-  const iconStyle = `mx-2 p-2 h-8 w-8 ${props.isMouseOver ? "fill-zinc-700" : "fill-none"} ${
-    Styles.iconCommonStyle
-  }`;
+  const iconStyle = `p-2 h-8 w-8 ${props.isMouseOver ? "fill-zinc-700" : "fill-none"} ${
+    props.creating ? "mx-2" : "mx-px"
+  } ${Styles.iconCommonStyle}`;
 
   return (
     <div className="flex items-center justify-between my-1">
@@ -212,9 +212,11 @@ const AtionBar = (props) => {
         />
         <Delete title="Delete Note" className={`${iconStyle}`} onClick={props.toggleDelete} />
       </div>
-      <div className="flex mr-3">
-        <Button onClick={props.onConfirm}>Close</Button>
-      </div>
+      {props.creating && (
+        <div className="flex mr-3">
+          <Button onClick={props.onConfirm}>Close</Button>
+        </div>
+      )}
     </div>
   );
 };

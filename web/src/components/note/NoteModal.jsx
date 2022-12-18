@@ -152,6 +152,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
             archived={noteUpdateData.archived}
             onConfirm={onConfirm}
             isMouseOver={true}
+            creating={true}
           />
         </div>
         <div className="flex border-t">

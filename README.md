@@ -147,6 +147,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { done }
+  - ✅ show check and action bar on note component
   - ✅ show note icons on hover effect
   - ✅ Login with test credentials
   - ✅ show note color change modal
