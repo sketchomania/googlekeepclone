@@ -8,10 +8,12 @@ import { ReactComponent as Person } from "../../icons/person_add_alt_black_24dp.
 import { ReactComponent as Archive } from "../../icons/archive_black_24dp.svg";
 import { ReactComponent as Unarchive } from "../../icons/unarchive_black_24dp.svg";
 import { ReactComponent as Color } from "../../icons/color_lens_black_24dp.svg";
+import { ReactComponent as RemoveColor } from "../../icons/color_reset_black_24dp.svg";
+import { ReactComponent as RemoveImage } from "../../icons/hide_image_black_24dp.svg";
 import Button from "../UI/Button";
 import Styles from "../../constants/Styles";
 
-const AtionBar = (props) => {
+const ActionBar = (props) => {
   const [showColorModal, setShowColorModal] = useState(false);
 
   const iconStyle = `p-2 h-8 w-8 ${props.isMouseOver ? "fill-zinc-700" : "fill-none"} ${
@@ -49,11 +51,13 @@ const AtionBar = (props) => {
               >
                 <div className="flex p-2">
                   <div
-                    className="bg-zinc-700  rounded-full m-0.5 p-3.5 cursor-pointer"
+                    className="border-2 rounded-full m-0.5 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-zinc-500");
+                      props.noteBackgrounchange("bg-white");
                     }}
-                  ></div>
+                  >
+                    <RemoveColor title="Default" className={"scale-75 h-6 w-6 "} />
+                  </div>
                   <div
                     className="bg-red  rounded-full m-0.5 p-3.5 cursor-pointer"
                     onClick={() => {
@@ -123,11 +127,13 @@ const AtionBar = (props) => {
                 </div>
                 <div className="flex justify-center py-1.5 border-t">
                   <div
-                    className="bg-zinc-700  rounded-full m-px p-4 cursor-pointer"
+                    className="border-2 flex items-center rounded-full m-px cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-zinc-500");
+                      props.noteBackgrounchange("bg-white");
                     }}
-                  ></div>
+                  >
+                    <RemoveImage title="Default" className={" h-6 w-6 mx-0.5 "} />
+                  </div>
                   <div
                     className="bg-red  rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
@@ -221,4 +227,4 @@ const AtionBar = (props) => {
   );
 };
 
-export default AtionBar;
+export default ActionBar;

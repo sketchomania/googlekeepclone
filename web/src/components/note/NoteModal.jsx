@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { deleteNote, updateNote } from "../../redux/actions/noteActions";
 
-import ActionBar from "./AtionBar";
+import ActionBar from "./ActionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
@@ -100,10 +100,10 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
   };
   const deleteHandler = () => {
     dispatch(deleteNote(note._id));
-    
+
     console.log("deleteHandler called", note._id);
   };
-  
+
   const noteUpdateHandler = () => {
     dispatch(updateNote(note._id, noteUpdateData));
     onConfirm();
@@ -120,8 +120,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
       ></div>
       <div
         className={`absolute top-16 ${noteUpdateData.background} z-10 
-          h-max rounded-lg max-w-2xl w-144
-          scroll-smooth scroll-2 scrollbar-sm 
+          overflow-y-visible h-max rounded-lg max-w-2xl w-144
           `}
         // className={`top-16 mx-auto relative bg-white z-10
         // max-h-144 h-auto rounded-2xl max-w-2xl w-144 m-4
@@ -131,7 +130,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
         //   console.log("NoteModaal clicked");
         // }}
       >
-        <div className="overflow-visible">
+        <div className="overflow-y-scroll scroll-smooth scrollbar-sm overflow-x-hidden max-h-144">
           <Title
             title={note.title}
             togglePinNote={togglePinNote}
@@ -139,22 +138,19 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
             pinned={noteUpdateData.pinned}
             isMouseOver={true}
           />
-          <Content
-            description={note.description}
-            inputChangeHandler={inputChangeHandler}
-          />
+          <Content description={note.description} inputChangeHandler={inputChangeHandler} />
           <LabelBar labels={note.labels} edited={note.updatedAt} />
-          <ActionBar
-            toggleArchive={toggleArchive}
-            toggleCheckBoxMode={toggleCheckBoxMode}
-            toggleDelete={toggleDelete}
-            noteBackgrounchange={toggleBackgroundChange}
-            archived={noteUpdateData.archived}
-            onConfirm={onConfirm}
-            isMouseOver={true}
-            creating={true}
-          />
         </div>
+        <ActionBar
+          toggleArchive={toggleArchive}
+          toggleCheckBoxMode={toggleCheckBoxMode}
+          toggleDelete={toggleDelete}
+          noteBackgrounchange={toggleBackgroundChange}
+          archived={noteUpdateData.archived}
+          onConfirm={onConfirm}
+          isMouseOver={true}
+          creating={true}
+        />
         <div className="flex border-t">
           <Button onClick={onCancel}>Cancel</Button>
           <Button onClick={onConfirm}>Confirm</Button>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import NoteModal from "./NoteModal";
-import ActionBar from "./AtionBar";
+import ActionBar from "./ActionBar";
 import LabelBar from "./LabelBar";
 import Content from "./Content";
 import Title from "./Title";
@@ -11,7 +11,7 @@ import Styles from "../../constants/Styles";
 
 const Note = ({ note }) => {
   const [creating, setCreating] = useState(false);
-  const [isMouseOver, setIsMouseOver] = useState(true);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const startCreateEventHandler = () => {
     setCreating(true);

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import IconHolder from "../UI/IconHolder";
 import { createNote, updateNote } from "../../redux/actions/noteActions";
-import ActionBar from "../note/AtionBar";
+import ActionBar from "../note/ActionBar";
 import Styles from "../../constants/Styles";
 
 import { ReactComponent as CheckBox } from "../../icons/check_box_black_24dp.svg";
@@ -12,6 +12,7 @@ import { ReactComponent as Brush } from "../../icons/brush_black_24dp.svg";
 import { ReactComponent as ImageIcon } from "../../icons/image_black_24dp.svg";
 
 const AddNote = ({ currentId, setCurrentId }) => {
+  const [isExpanded, setExpanded] = useState(false);
   const [noteData, setNoteData] = useState({
     title: "",
     description: "",
@@ -23,7 +24,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
     currentId ? state.notes.find((n) => n._id === currentId) : null
   );
   const dispatch = useDispatch();
-  const [isExpanded, setExpanded] = useState(false);
 
   const expandHandler = () => {
     setExpanded(true);
@@ -83,7 +83,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
     <>
       <div className="p-2 flex items-center justify-center">
         <form
-          className="w-144 my-6 flex items-center border rounded-md shadow-md shadow-gray-400"
+          className="bg-white w-144 my-6 flex items-center border rounded-md shadow-md shadow-gray-400"
           onSubmit={submitHandler}
         >
           <div className="flex-col w-full">
@@ -98,9 +98,6 @@ const AddNote = ({ currentId, setCurrentId }) => {
                     placeholder="Title"
                     value={noteData.title}
                     onChange={(e) => inputchangeHandler(e)}
-                    // onChange={(e) => {
-                    //   setNoteData({ ...noteData, title: e.target.value });
-                    // }}
                   ></textarea>
                 </p>
                 <IconHolder>
@@ -108,7 +105,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
                 </IconHolder>
               </div>
             )}
-            <div className="flex">
+            <div className="flex" onClick={expandHandler}>
               <p className={`${para} w-full`}>
                 <textarea
                   className={`${text} text-sm`}
@@ -116,12 +113,8 @@ const AddNote = ({ currentId, setCurrentId }) => {
                   name="description"
                   type="description"
                   placeholder="Take a note..."
-                  onClick={expandHandler}
                   value={noteData.description}
                   onChange={(e) => inputchangeHandler(e)}
-                  // onChange={(e) => {
-                  // setNoteData({ ...noteData, description: e.target.value });
-                  // }}
                 ></textarea>
               </p>
               {!isExpanded && (
@@ -140,17 +133,7 @@ const AddNote = ({ currentId, setCurrentId }) => {
             </div>
             {isExpanded && (
               <>
-                <button
-                  className="w-16 h-6 rounded-full bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
-                  type="submit"
-                  onClick={() => {
-                    console.log(noteData);
-                  }}
-                >
-                  Done
-                </button>
-
-                <ActionBar onConfirm={collapsHandler} />
+                <ActionBar onConfirm={collapsHandler} isMouseOver={true} creating={true} />
               </>
             )}
           </div>

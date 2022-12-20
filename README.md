@@ -109,7 +109,6 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 ### Web
 
 - { todo }
-  - {Color} show color change modal on note
   - show label name on appBar when viewing particular label
   - check login valid for 1 hour only
 - { note }
@@ -119,18 +118,17 @@ git clone https://github.com/sketchomania/googlekeepclone.git
     - archieve note
     - copy note
     - move to bin
-    - note modal close behavior
+    - note have a 1px border of selected colour
   - { Color and theme }
-    - show color change modal on note
     - show background change modal on note
     - add themes for notes
+  - add note bar closed when clicked outside
   - { label }
 - { design }
   - improve design & theme look
 - { mobile View }
   - check all designs for mobile view
 - { archieve }
-  - note modal close when clicked outside note modal (behavior)
   - show refresh button
   - bin feature , archive feature
   - change view from grid to box
@@ -144,33 +142,36 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ## DONE 🎉🎉
 
-### Web
+### Working on Web
 
 - { done }
-  - ✅ show check and action bar on note component
-  - ✅ show note icons on hover effect
-  - ✅ Login with test credentials
-  - ✅ show note color change modal
+  - ✅ {note}: show check and action bar on note component
+  - ✅ {note}: show note icons on hover effect
+  - ✅ {auth}: Login with test credentials
+  - ✅ show color change modal on note
   - ✅ Appbar icons and functionality,
-  - ✅ loading spinner UI improvement
+  - ✅ {UI}: loading spinner UI improvement
   - ✅ {label}: Edit/update, delete feature (Modal)
-    - CRUD for label from side bar
-  - ✅ Google keep logo
+  - 🎉 modal close when clicked outside note modal (behavior)
   - ✅ {label}: show modal for CRUD Labels
-  - ✅ show all notes of a label, when clicked on it
-    - separate page for each label to show notes of that label
-  - ✅ Auth form stylings
+  - ✅ {label}: CRUD for label from side bar
+  - ✅ {label}: show all notes of a label, when clicked on it
+  - ✅ {label}: separate page for each label to show notes of that label
+  - ✅ {auth}: Auth form stylings
   - ✅ {note}: show label inside note
   - ✅ {note}: show last edited time
   - ✅ {note}: show labels in label tab
   - ✅ {note}: update feature (edit note)
   - ✅ {note, label}: delete feature
   - ✅ push notes and labels in redux state data (when created)
-  - ✅ Show loading Spinner while loading
+  - ✅ {UI}: Show loading Spinner while loading
+  - ✅ {note}: show note modal when clicked on it (anywhere)
   - ✅ show label and notes from DB
-  - ✅ show note modal when clicked on it (anywhere)
-  - ✅ Login issues fixed
+  - {auth}:
+    - ✅ {auth}:Login issues fixed
   - { design }
+    - ✅ scollbar border and hover effect as google keep
+    - ✅ Google keep logo
     - ✅ note icons trasparent background
     - ✅ removed extra side scroll bar
     - ✅ Note component styling

@@ -27,8 +27,8 @@ module.exports = {
       },
     },
     colors: {
-      transparent: 'transparent',
-      inherit: 'inherit',
+      transparent: "transparent",
+      inherit: "inherit",
       default: "#0000",
       black: "#000000",
       white: "#ffffff",
@@ -85,40 +85,26 @@ module.exports = {
     plugin(function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-sm": {
-          /* IE and Edge */
-          // "-ms-overflow-style": "none",
-
           /* Firefox */
-          // "scrollbar-width": "10px",
-
           /* Safari and Chrome */
-          // "&::-webkit-scrollbar": {
-          //   // display: "none",
-          //   width: "10px",
-          //   // background: "red",
-          // },
-
-          /* width */
-
           "&::-webkit-scrollbar": {
-            width: "8px",
+            width: "9px",
           },
 
-          // /* Track */
-          // "&::-webkit-scrollbar-track": {
-          //   boxShadow: "inset 0 0 5px grey",
-          //   borderRadius: "10px",
-          // },
+          /* Track */
+          "&::-webkit-scrollbar-track:hover": {
+            border: "1px solid #c4c4c4",
+          },
 
           // /* Handle */
           "&::-webkit-scrollbar-thumb": {
-            background: "lightgray",
+            background: "#d2d2d2",
           },
 
-          // /* Handle on hover */
-          // "&::-webkit-scrollbar-thumb:hover":{
-          //   background: "#b30000",
-          // },
+          /* Handle on hover */
+          "&::-webkit-scrollbar-thumb:hover": {
+            background: "#939393",
+          },
         },
       });
     }),
