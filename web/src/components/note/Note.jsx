@@ -7,6 +7,7 @@ import Content from "./Content";
 import Title from "./Title";
 
 import { ReactComponent as CheckFilled } from "../../icons/check_circle_filled_black_24dp.svg";
+import { ReactComponent as noteBackgroundImage } from "../../icons/grocery_light_0609.svg";
 import Styles from "../../constants/Styles";
 
 const Note = ({ note }) => {
@@ -58,7 +59,7 @@ const Note = ({ note }) => {
       )}
       <div
         className={`${note.background} border border-gray-200 m-1 max-w-2xl w-60 max-h-144 rounded-lg hover:shadow-md hover:shadow-gray-400 
-        relative flex flex-col  text-sm`}
+        relative flex flex-col  text-sm bg-grocery-pattern bg-cover `}
         // onClick={() => {
         //   console.log("Note clicked:", note._id, isMouseOver);
         // }}
@@ -74,7 +75,7 @@ const Note = ({ note }) => {
         <div className="absolute -left-2 -top-2">
           <CheckFilled className={`${iconStyle}`} />
         </div>
-        <div className="mb-10 overflow-hidden" onClick={startCreateEventHandler}>
+        <div className="mb-10 overflow-hidden " onClick={startCreateEventHandler}>
           <Title title={note.title} isMouseOver={isMouseOver} />
           <Content description={note.description} />
           <LabelBar labels={note.labels} />

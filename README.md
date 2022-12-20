@@ -100,96 +100,104 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ### 📌 Priority
 
-- appBar show label name
+- note background image
+- add label in note
+- dark mode in tailwind
+- make noteData and its modificaton function in note component only (not in note modal)
+
+### TODO Web
+
 - Make Readme
 - search note, label
 - docker integration
 - Cleanup functions, check where it can be used
-
-### Web
-
-- { todo }
+- APPBAR :
+- LABEL :
   - show label name on appBar when viewing particular label
-  - check login valid for 1 hour only
-- { note }
-  - features
-    - CRUD in label form note
-    - pin note on the top
-    - archieve note
-    - copy note
-    - move to bin
-    - note have a 1px border of selected colour
-  - { Color and theme }
-    - show background change modal on note
-    - add themes for notes
+- AUTH :
+  - check login validity for 1 hour only
+- NOTE :
   - add note bar closed when clicked outside
-  - { label }
-- { design }
+  - show pinned note on top then other notes
+  - CRUD in label form note
+  - pin note on the top
+  - archieve note
+  - copy note
+  - move to bin
+  - note have a 1px border of selected colour
+- { Color and theme }
+  - show background change modal on note
+  - add themes for notes
+- DESIGN :
   - improve design & theme look
-- { mobile View }
+  - dark mode perfection
+- MOBILE VIEW :
   - check all designs for mobile view
-- { archieve }
-  - show refresh button
+- ARCHIEVE :
   - bin feature , archive feature
   - change view from grid to box
-  - dark mode perfection
   - add central asset source for svg (not working)
 
-### 📃Server
+### Todo Server
 
-- { todo }
-  - Send data only related to the user like notes and labels of logged in user only (working on it)
+- Send data only related to the user like notes and labels of logged in user only (working on it)
+- {Backend}: note: backgroundImage backgroundColor
 
-## DONE 🎉🎉
+## 📃 DONE 🎉🎉
 
-### Working on Web
+### 🚀 Working on Web
 
-- { done }
+- 🎉 Deployed and working
+- **NOTE :**
   - ✅ {note}: show check and action bar on note component
   - ✅ {note}: show note icons on hover effect
-  - ✅ {auth}: Login with test credentials
-  - ✅ show color change modal on note
-  - ✅ Appbar icons and functionality,
-  - ✅ {UI}: loading spinner UI improvement
+  - ✅ {note}: show color change modal on note
+  - ✅ {note}: show label inside note
+  - ✅ {note}: show last edited time
+  - ✅ {note, label}: delete feature
+  - ✅ {note}: show labels in label tab
+  - ✅ {note}: update feature (edit note)
+  - ✅ {note}: show note modal when clicked on it (anywhere)
+- **LABEL :**
   - ✅ {label}: Edit/update, delete feature (Modal)
-  - 🎉 modal close when clicked outside note modal (behavior)
   - ✅ {label}: show modal for CRUD Labels
   - ✅ {label}: CRUD for label from side bar
   - ✅ {label}: show all notes of a label, when clicked on it
   - ✅ {label}: separate page for each label to show notes of that label
-  - ✅ {auth}: Auth form stylings
-  - ✅ {note}: show label inside note
-  - ✅ {note}: show last edited time
-  - ✅ {note}: show labels in label tab
-  - ✅ {note}: update feature (edit note)
-  - ✅ {note, label}: delete feature
+- **APPBAR :**
+  - ✅ Appbar icons and functionality
+  - ✅ Appbar refresh button with spinner
+- **DATA & REDUX :**
   - ✅ push notes and labels in redux state data (when created)
+  - ✅ show label and notes from DataBase
+- **UI :**
+  - 🎉 modal close when clicked outside note modal (behavior)
+  - ✅ show refresh button
+  - ✅ {UI}: loading spinner UI improvement
   - ✅ {UI}: Show loading Spinner while loading
-  - ✅ {note}: show note modal when clicked on it (anywhere)
-  - ✅ show label and notes from DB
-  - {auth}:
-    - ✅ {auth}:Login issues fixed
-  - { design }
-    - ✅ scollbar border and hover effect as google keep
-    - ✅ Google keep logo
-    - ✅ note icons trasparent background
-    - ✅ removed extra side scroll bar
-    - ✅ Note component styling
-    - ✅ AddNote bar design Done
-    - ✅ remove borders of the components
-    - ✅ make main head bar fix even when scrolling
+- **AUTH :**
+  - ✅ {auth}: Login with test credentials
+  - ✅ {auth}: Auth form stylings
+  - ✅ {auth}:Login issues fixed
+- **DESIGN :**
+  - ✅ scollbar border and hover effect as google keep
+  - ✅ Google keep logo
+  - ✅ note icons trasparent background
+  - ✅ removed extra side scroll bar
+  - ✅ Note component styling
+  - ✅ AddNote bar design Done
+  - ✅ remove borders of the components
+  - ✅ make main head bar fix even when scrolling
 
-### Server
+### 🚀 Working on Server
 
-- { done }
-
-  - 🎉 server deployed and working
-  - ✅ create separate branch for working with backend part
-  - ✅ send user data in authPayload form server
-  - ✅ user, notes and labels deeply nested resolvers
-  - ✅ user, notes and labels shcema
-  - ✅ send data related to user only
-  - ✅ create note and label
+- 🎉 server deployed and working
+- ✅ create separate branch for working with backend part
+- ✅ send user data in authPayload form server
+- ✅ user, notes and labels deeply nested resolvers
+- ✅ user, notes and labels shcema
+- ✅ send data related to user only
+- ✅ create note and label
 
 - https://giphy.com/gifs/socializeagency-illustration-rocket-flipbook-ii8uedZgeKlIKJq1Rz
 - https://giphy.com/gifs/coming-soon-14ko1wkUS2thu

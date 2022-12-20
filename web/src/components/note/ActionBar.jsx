@@ -37,7 +37,7 @@ const ActionBar = (props) => {
           {showColorModal && (
             <>
               <div
-                className="fixed bg-bgray-200 opacity-30 h-full w-full top-0 left-0"
+                className="fixed h-full w-full top-0 left-0"
                 onClick={() => {
                   console.log("color Backdrop chilcked");
                   setShowColorModal(false);

@@ -25,6 +25,9 @@ module.exports = {
       boxShadow: {
         "3xl": "0 0 0 rgba(0, 0, 0, 0.25)",
       },
+      backgroundImage: {
+        'grocery-pattern': "url('icons/grocery_light_0609.svg')",
+      }
     },
     colors: {
       transparent: "transparent",

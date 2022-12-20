@@ -130,7 +130,7 @@ const NoteModal = ({ note, onCancel, onConfirm }) => {
         //   console.log("NoteModaal clicked");
         // }}
       >
-        <div className="overflow-y-scroll scroll-smooth scrollbar-sm overflow-x-hidden max-h-144">
+        <div className="bg-grocery-pattern bg-cover rounded-t-lg overflow-y-scroll scroll-smooth scrollbar-sm overflow-x-hidden max-h-144">
           <Title
             title={note.title}
             togglePinNote={togglePinNote}
