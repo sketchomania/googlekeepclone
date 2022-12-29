@@ -1,29 +1,32 @@
 import { useRef, useState } from "react";
+
 import { ReactComponent as Search } from "../../icons/search_black_24dp.svg";
 import { ReactComponent as Close } from "../../icons/close_black_24dp.svg";
 
 const SearchBar = () => {
-  // remove useRef
-  const searchInputRef = useRef();
+  const [searchTerm, setSearchTerm] = useState("");
   const [isExpanded, setExpanded] = useState(false);
 
   const fromSubmitHandler = (event) => {
     event.preventDefault();
-    searchInputRef.current.value = "";
+    setSearchTerm("");
   };
 
   const expandHandler = () => {
     setExpanded(true);
   };
-  const collapsHandler = () => {
+  // const collapsHandler = () => {
+  //   setExpanded(false);
+  // };
+
+  const clear = () => {
     setExpanded(false);
+    setSearchTerm("");
   };
 
   const searchHandler = (event) => {
-    console.log(searchInputRef.current.value);
-    const searchedTerm = searchInputRef.current.value;
-    console.log(searchedTerm);
-    // filtering, validity, search_part -> logic
+    setSearchTerm(event.target.value);
+    console.log("searchHandler: ", event.target.value);
   };
 
   return (
@@ -32,10 +35,7 @@ const SearchBar = () => {
       className="flex w-6/12 h-12 p-0.5 px-2 rounded-lg justify-between items-center bg-gray-100 dark:bg-zinc-500"
     >
       <label>
-        <Search
-          className={`${iconStyle}`}
-          onClick={expandHandler}
-        />
+        <Search className={`${iconStyle}`} onClick={expandHandler} />
       </label>
       <input
         className="bg-inherit min-w-4/5 w-full h-7 my-0 outline-none"
@@ -44,12 +44,12 @@ const SearchBar = () => {
         type="text"
         placeholder="Search"
         autoComplete="off"
-        ref={searchInputRef}
+        value={searchTerm}
         onClick={expandHandler}
-        onChange={searchHandler}
+        onChange={(e) => searchHandler(e)}
       ></input>
       {isExpanded && (
-        <button onClick={collapsHandler}>
+        <button onClick={clear}>
           <Close className={`${iconStyle}`} />
         </button>
       )}
@@ -57,6 +57,7 @@ const SearchBar = () => {
   );
 };
 
-const iconStyle = "stroke-2 fill-gray-500 p-2 h-10 w-10 hover:bg-gray-200 dark:fill-white hover:rounded-full cursor-pointer"
+const iconStyle =
+  "stroke-2 fill-gray-500 p-2 h-10 w-10 hover:bg-gray-200 dark:fill-white hover:rounded-full cursor-pointer";
 
 export default SearchBar;
