@@ -13,12 +13,47 @@ import { ReactComponent as RemoveImage } from "../../icons/hide_image_black_24dp
 import Button from "../UI/Button";
 import Styles from "../../constants/Styles";
 
-const ActionBar = (props) => {
+const ActionBar = ({
+  archived,
+  toggleArchive,
+  toggleCheckBoxMode,
+  toggleDelete,
+  noteBackgrounchange,
+  toggleThemeChange,
+  onConfirm,
+  isMouseOver,
+  isCreating,
+}) => {
   const [showColorModal, setShowColorModal] = useState(false);
 
-  const iconStyle = `p-2 h-8 w-8 ${props.isMouseOver ? "fill-zinc-700" : "fill-none"} ${
-    props.creating ? "mx-2" : "mx-px"
+  const iconStyle = `p-2 h-8 w-8 ${isMouseOver ? "fill-zinc-700" : "fill-none"} ${
+    isCreating ? "mx-2" : "mx-px"
   } ${Styles.iconCommonStyle}`;
+
+  const BackgroundContainer = ({ background }) => {
+    const changeNoteBackground = () => {
+      noteBackgrounchange(`bg-${background}`);
+    };
+    return (
+      <div
+        title={`${background}`}
+        onClick={changeNoteBackground}
+        className={`bg-${background} border-${background} m-0.5 p-3.5 border-2 hover:border-black rounded-full cursor-pointer`}
+      ></div>
+    );
+  };
+  const ThemeContainer = ({ theme }) => {
+    const changeNoteTheme = () => {
+      toggleThemeChange(`bg-${theme}`);
+    };
+    return (
+      <div
+        title={`${theme}`}
+        onClick={changeNoteTheme}
+        className={`bg-${theme}-thumb bg-cover m-0.5 p-5 hover:shadow-xl rounded-full cursor-pointer`}
+      ></div>
+    );
+  };
 
   return (
     <div className="flex items-center justify-between my-1">
@@ -30,8 +65,10 @@ const ActionBar = (props) => {
             title="Background options"
             className={`${iconStyle}`}
             onClick={() => {
-              console.log("color Backdrop chilcked");
-              setShowColorModal(true);
+              if (isCreating) {
+                console.log("color Backdrop chilcked");
+                setShowColorModal(true);
+              }
             }}
           />
           {showColorModal && (
@@ -51,173 +88,63 @@ const ActionBar = (props) => {
               >
                 <div className="flex p-2">
                   <div
-                    className="border-2 rounded-full m-0.5 cursor-pointer"
+                    className="border-2 hover:border-black rounded-full m-0.5 cursor-pointer flex items-center justify-center"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-white");
+                      noteBackgrounchange("bg-white");
                     }}
                   >
-                    <RemoveColor title="Default" className={"scale-75 h-6 w-6 "} />
+                    <RemoveColor title="Default" className={"scale-75 h-6 w-7 "} />
                   </div>
-                  <div
-                    className="bg-red  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-red");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-orange  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-orange");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-yellow  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-yellow");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-green  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-green");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-teal   rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-teal");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-blue  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-blue");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-darkblue  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-darkblue");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-purple  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-purple");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-pink  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-pink");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-brown  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-brown");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-grey  rounded-full m-0.5 p-3.5 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-grey");
-                    }}
-                  ></div>
+                  <BackgroundContainer background={"red"} />
+                  <BackgroundContainer background={"orange"} />
+                  <BackgroundContainer background={"yellow"} />
+                  <BackgroundContainer background={"green"} />
+                  <BackgroundContainer background={"teal"} />
+                  <BackgroundContainer background={"blue"} />
+                  <BackgroundContainer background={"darkblue"} />
+                  <BackgroundContainer background={"purple"} />
+                  <BackgroundContainer background={"pink"} />
+                  <BackgroundContainer background={"brown"} />
+                  <BackgroundContainer background={"grey"} />
                 </div>
                 <div className="flex justify-center py-1.5 border-t">
                   <div
-                    className="border-2 flex items-center rounded-full m-px cursor-pointer"
+                    className="border-2 hover:border-black flex items-center rounded-full m-px cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-white");
+                      noteBackgrounchange("bg-white");
                     }}
                   >
-                    <RemoveImage title="Default" className={" h-6 w-6 mx-0.5 "} />
+                    <RemoveImage
+                      title="Default"
+                      className={"pl-1.5 hover:shadow-xl h-6 w-9 mx-0.5 "}
+                    />
                   </div>
-                  <div
-                    title="grocery"
-                    className="bg-grocery-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-grocery");
-                    }}
-                  ></div>
-                  <div
-                    title="food"
-                    className="bg-food-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-food");
-                    }}
-                  ></div>
-                  <div
-                    title="music"
-                    className="bg-music-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-music");
-                    }}
-                  ></div>
-                  <div
-                    title="recipe"
-                    className="bg-recipe-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-recipe");
-                    }}
-                  ></div>
-                  <div
-                    title="notes"
-                    className="bg-notes-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-notes");
-                    }}
-                  ></div>
-                  <div
-                    title="places"
-                    className="bg-places-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-places");
-                    }}
-                  ></div>
-                  <div
-                    title="travel"
-                    className="bg-travel-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-travel");
-                    }}
-                  ></div>
-                  <div
-                    title="video"
-                    className="bg-video-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-video");
-                    }}
-                  ></div>
-                  <div
-                    title="celbration"
-                    className="bg-celebration bg-cover rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-celebration");
-                    }}
-                  ></div>
+                  <ThemeContainer theme={"grocery"} />
+                  <ThemeContainer theme={"food"} />
+                  <ThemeContainer theme={"music"} />
+                  <ThemeContainer theme={"recipe"} />
+                  <ThemeContainer theme={"notes"} />
+                  <ThemeContainer theme={"places"} />
+                  <ThemeContainer theme={"travel"} />
+                  <ThemeContainer theme={"video"} />
+                  <ThemeContainer theme={"celebration"} />
                 </div>
               </div>
             </>
           )}
         </li>
         <Label title="Edit Labels" className={`${iconStyle}`} />
-        {props.archived ? (
-          <Unarchive title={"Unarchive"} className={`${iconStyle}`} onClick={props.toggleArchive} />
+        {archived ? (
+          <Unarchive title={"Unarchive"} className={`${iconStyle}`} onClick={toggleArchive} />
         ) : (
-          <Archive title={"Archive"} className={`${iconStyle}`} onClick={props.toggleArchive} />
+          <Archive title={"Archive"} className={`${iconStyle}`} onClick={toggleArchive} />
         )}
-        <CheckBox
-          title="Checkbox mode"
-          className={`${iconStyle}`}
-          onClick={props.toggleCheckBoxMode}
-        />
-        <Delete title="Delete Note" className={`${iconStyle}`} onClick={props.toggleDelete} />
+        <CheckBox title="Checkbox mode" className={`${iconStyle}`} onClick={toggleCheckBoxMode} />
+        <Delete title="Delete Note" className={`${iconStyle}`} onClick={toggleDelete} />
       </div>
-      {props.creating && (
+      {isCreating && (
         <div className="flex mr-3">
-          <Button onClick={props.onConfirm}>Close</Button>
+          <Button onClick={onConfirm}>Close</Button>
         </div>
       )}
     </div>
