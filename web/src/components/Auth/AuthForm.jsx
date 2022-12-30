@@ -53,8 +53,8 @@ const AuthForm = () => {
       <div className="h-screen w-full">
         <div className="bg-gray-800 h-screen mx-auto max-w-md">
           <div className="pt-8 pb-2 px-12">
-            <p className="text-4xl pt-8 text-yellow-500 font-bold">Google Keep Clone</p>
-            {/* <p className="text-3xl pt-8 text-yellow-500 font-bold">Welcome,</p> */}
+            <p className="text-4xl pt-8 text-sun-500 font-bold">Google Keep Clone</p>
+            {/* <p className="text-3xl pt-8 text-sun-500 font-bold">Welcome,</p> */}
             <p className="text-xl py-3 text-gray-400 font-semibold">
               {isLoginMode ? "Login" : "Sign-up"} in to continue
             </p>
@@ -98,7 +98,7 @@ const AuthForm = () => {
                   required
                 />
                 <p
-                  className="px-2 py-px my-4 text-yellow-500 text-opacity-75 hover:text-opacity-100 bg-zinc-700 bg-opacity-40 max-w-max rounded-full text-sm cursor-pointer"
+                  className="px-2 py-px my-4 text-sun-500 text-opacity-75 hover:text-opacity-100 bg-zinc-700 bg-opacity-40 max-w-max rounded-full text-sm cursor-pointer"
                   onClick={() => {
                     setShowPassword(!showPassword);
                   }}
@@ -112,7 +112,7 @@ const AuthForm = () => {
               <div className="p-2 justify-between flex flex-wrap ">
                 <label className="inline-flex flex-wrap relative items-center  cursor-pointer">
                   <input type="checkbox" value="" className="sr-only peer" checked />
-                  <div className="w-9 h-5 bg-gray-400 rounded-full peer dark:bg-gray-00 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"></div>
+                  <div className="w-9 h-5 bg-gray-400 rounded-full peer dark:bg-gray-00 peer-focus:ring-4 peer-focus:ring-sun-300 dark:peer-focus:ring-sun-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-sun-400"></div>
                   <span className="ml-3 text-sm font-medium hover:text-gray-300">remember me</span>
                 </label>
 
@@ -124,7 +124,7 @@ const AuthForm = () => {
               <div className="p-2">
                 <label className="inline-flex flex-wrap relative items-center  cursor-pointer">
                   <input type="checkbox" value="" className="sr-only peer" checked />
-                  <div className="w-9 h-5 bg-gray-400 rounded-full peer dark:bg-gray-00 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"></div>
+                  <div className="w-9 h-5 bg-gray-400 rounded-full peer dark:bg-gray-00 peer-focus:ring-4 peer-focus:ring-sun-300 dark:peer-focus:ring-sun-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-sun-400"></div>
                   <span className="ml-3 text-sm font-medium hover:text-gray-300">
                     Accept all terms and conditions
                   </span>
@@ -134,7 +134,7 @@ const AuthForm = () => {
 
             <div className="w-full px-12">
               <button
-                className="font-semibold bg-yellow-500 p-3 rounded-3xl w-full h-full opacity-75 hover:opacity-100"
+                className="font-semibold bg-sun-500 p-3 rounded-3xl w-full h-full opacity-75 hover:opacity-100"
                 type="submit"
                 title={isLoginMode ? "Login" : "Create account"}
               >
@@ -144,7 +144,7 @@ const AuthForm = () => {
             <div className="w-full px-12 mt-4">
               <button
                 className={`font-semibold transition p-2.5 rounded-3xl w-full h-full opacity-75 hover:opacity-100
-                text-yellow-600 hover:text-yellow-500 border-2 border-yellow-600  hover:border-yellow-500`}
+                text-sun-600 hover:text-sun-500 border-2 border-sun-600  hover:border-sun-500`}
                 type="button"
                 title={"Login with Test Credentials"}
                 onClick={loginWithTestCredential}
@@ -158,7 +158,7 @@ const AuthForm = () => {
             <p className="mx-auto text-center text-sm text-gray-400">
               {isLoginMode ? "Don't" : "Already"} have an account?{" "}
               <button
-                className="text-md font-semibold text-yellow-700 hover:text-yellow-500"
+                className="text-md font-semibold text-sun-700 hover:text-sun-500"
                 type="button"
                 title={isLoginMode ? "Sign-up" : "Login"}
                 onClick={switchModeHandler}
@@ -189,6 +189,6 @@ rounded-2xl
 border border-gray-400
 w-full
 py-2
-focus:outline-none focus:border-yellow-500
-bg-transparent text-yellow-500 
+focus:outline-none focus:border-sun-500
+bg-transparent text-sun-500 
 `;

@@ -2,7 +2,7 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   mode: "jit",
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html", "./public/images"],
   theme: {
     screens: {
       sm: "480px",
@@ -26,7 +26,24 @@ module.exports = {
         "3xl": "0 0 0 rgba(0, 0, 0, 0.25)",
       },
       backgroundImage: {
-        'grocery-pattern': "url('icons/grocery_light_0609.svg')",
+        'celebration': "url('backgrounds/celebration_light_0609.svg')",
+        'celebration-thumb': "url('backgrounds/celebration_light_thumb_0615.svg')",
+        'food': "url('backgrounds/food_light_0609.svg')",
+        'food-thumb': "url('backgrounds/food_light_thumb_0615.svg')",
+        'grocery': "url('backgrounds/grocery_light_0609.svg')",
+        'grocery-thumb': "url('backgrounds/grocery_light_thumb_0615.svg')",
+        'music': "url('backgrounds/music_light_0609.svg')",
+        'music-thumb': "url('backgrounds/music_light_thumb_0615.svg')",
+        'notes': "url('backgrounds/notes_light_0609.svg')",
+        'notes-thumb': "url('backgrounds/notes_light_thumb_0615.svg')",
+        'places': "url('backgrounds/places_light_0609.svg')",
+        'places-thumb': "url('backgrounds/places_light_thumb_0615.svg')",
+        'recipe': "url('backgrounds/recipe_light_0609.svg')",
+        'recipe-thumb': "url('backgrounds/recipe_light_thumb_0615.svg')",
+        'travel': "url('backgrounds/travel_light_0609.svg')",
+        'travel-thumb': "url('backgrounds/travel_light_thumb_0615.svg')",
+        'video': "url('backgrounds/video_light_0609.svg')",
+        'video-thumb': "url('backgrounds/video_light_thumb_0615.svg')",
       }
     },
     colors: {
@@ -70,7 +87,7 @@ module.exports = {
         800: "#27272a",
         900: "#18181b",
       },
-      yellow: {
+      sun: {
         50: "#FFF475",
         100: "#fef9c3",
         200: "#fef08a",

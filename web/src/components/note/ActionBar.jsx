@@ -71,9 +71,9 @@ const ActionBar = (props) => {
                     }}
                   ></div>
                   <div
-                    className="bg-yellow-50  rounded-full m-0.5 p-3.5 cursor-pointer"
+                    className="bg-yellow  rounded-full m-0.5 p-3.5 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-yellow-50");
+                      props.noteBackgrounchange("bg-yellow");
                     }}
                   ></div>
                   <div
@@ -135,69 +135,66 @@ const ActionBar = (props) => {
                     <RemoveImage title="Default" className={" h-6 w-6 mx-0.5 "} />
                   </div>
                   <div
-                    className="bg-red  rounded-full m-px p-4 cursor-pointer"
+                    title="grocery"
+                    className="bg-grocery-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-red");
+                      props.noteBackgrounchange("bg-grocery");
                     }}
                   ></div>
                   <div
-                    className="bg-orange  rounded-full m-px p-4 cursor-pointer"
+                    title="food"
+                    className="bg-food-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-orange");
+                      props.noteBackgrounchange("bg-food");
                     }}
                   ></div>
                   <div
-                    className="bg-yellow-50  rounded-full m-px p-4 cursor-pointer"
+                    title="music"
+                    className="bg-music-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-yellow-50");
+                      props.noteBackgrounchange("bg-music");
                     }}
                   ></div>
                   <div
-                    className="bg-green  rounded-full m-px p-4 cursor-pointer"
+                    title="recipe"
+                    className="bg-recipe-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-green");
+                      props.noteBackgrounchange("bg-recipe");
                     }}
                   ></div>
                   <div
-                    className="bg-teal   rounded-full m-px p-4 cursor-pointer"
+                    title="notes"
+                    className="bg-notes-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-teal");
+                      props.noteBackgrounchange("bg-notes");
                     }}
                   ></div>
                   <div
-                    className="bg-blue  rounded-full m-px p-4 cursor-pointer"
+                    title="places"
+                    className="bg-places-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-blue");
+                      props.noteBackgrounchange("bg-places");
                     }}
                   ></div>
                   <div
-                    className="bg-darkblue  rounded-full m-px p-4 cursor-pointer"
+                    title="travel"
+                    className="bg-travel-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-darkblue");
+                      props.noteBackgrounchange("bg-travel");
                     }}
                   ></div>
                   <div
-                    className="bg-purple  rounded-full m-px p-4 cursor-pointer"
+                    title="video"
+                    className="bg-video-thumb bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-purple");
+                      props.noteBackgrounchange("bg-video");
                     }}
                   ></div>
                   <div
-                    className="bg-pink  rounded-full m-px p-4 cursor-pointer"
+                    title="celbration"
+                    className="bg-celebration bg-cover rounded-full m-px p-4 cursor-pointer"
                     onClick={() => {
-                      props.noteBackgrounchange("bg-pink");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-brown  rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-brown");
-                    }}
-                  ></div>
-                  <div
-                    className="bg-grey  rounded-full m-px p-4 cursor-pointer"
-                    onClick={() => {
-                      props.noteBackgrounchange("bg-grey");
+                      props.noteBackgrounchange("bg-celebration");
                     }}
                   ></div>
                 </div>
