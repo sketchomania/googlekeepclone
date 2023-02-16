@@ -90,7 +90,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ## Contribution
 
-- note modal close when clicked outside note modal (behavior)
+- make noteData and its modificaton function in note component only (not in note modal)(enhancements)
 
 ### Features
 
@@ -98,12 +98,13 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 ## 📃 TODO
 
-### 📌 Priority
+### 📌 Priority (Rewire)
 
-- note background image
-- add label in note
+- search note
+- add label in note'
+- checkbox mode
+- note update all values
 - dark mode in tailwind
-- make noteData and its modificaton function in note component only (not in note modal)
 
 ### TODO Web
 
@@ -149,6 +150,7 @@ git clone https://github.com/sketchomania/googlekeepclone.git
 
 - 🎉 Deployed and working
 - **NOTE :**
+  - ✅ {note}: change theme and background of note
   - ✅ {note}: show check and action bar on note component
   - ✅ {note}: show note icons on hover effect
   - ✅ {note}: show color change modal on note
