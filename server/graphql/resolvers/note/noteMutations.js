@@ -11,6 +11,15 @@ const noteMutations = {
       title: args.noteCreateInput.title,
       description: args.noteCreateInput.description,
       creator: req.userId,
+      // labels: [Label!],
+      background: args.noteCreateInput.background,
+      pinned: args.noteCreateInput.pinned,
+      selected: args.noteCreateInput.selected,
+      listMode: args.noteCreateInput.listMode,
+      archived: args.noteCreateInput.archived,
+      deleted: args.noteCreateInput.deleted,
+      // createdAt: String!,
+      // updatedAt: String!,
     });
     let createdNote;
     try {

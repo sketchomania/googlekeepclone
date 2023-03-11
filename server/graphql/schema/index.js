@@ -42,6 +42,12 @@ type AuthData {
 input NoteCreateInput {
  title: String!
  description: String!
+ background: String!
+ pinned: Boolean!
+ selected: Boolean!
+ listMode: Boolean!
+ archived: Boolean!
+ deleted: Boolean!
 }
 
 input NoteUpdateInput {
